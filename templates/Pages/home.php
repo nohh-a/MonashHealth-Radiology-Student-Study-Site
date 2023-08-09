@@ -21,213 +21,585 @@ use Cake\Error\Debugger;
 use Cake\Http\Exception\NotFoundException;
 
 $this->disableAutoLayout();
-
-$checkConnection = function (string $name) {
-    $error = null;
-    $connected = false;
-    try {
-        $connection = ConnectionManager::get($name);
-        $connected = $connection->connect();
-    } catch (Exception $connectionError) {
-        $error = $connectionError->getMessage();
-        if (method_exists($connectionError, 'getAttributes')) {
-            $attributes = $connectionError->getAttributes();
-            if (isset($attributes['message'])) {
-                $error .= '<br />' . $attributes['message'];
-            }
-        }
-    }
-
-    return compact('connected', 'error');
-};
-
-if (!Configure::read('debug')) :
-    throw new NotFoundException(
-        'Please replace templates/Pages/home.php with your own version or re-enable debug mode.'
-    );
-endif;
-
 ?>
+
 <!DOCTYPE html>
-<html>
-<head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        CakePHP: the rapid development PHP framework:
-        <?= $this->fetch('title') ?>
-    </title>
-    <?= $this->Html->meta('icon') ?>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+		<title>Monash Health</title>
+		<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+		<link href="assets/css/master.css" rel="stylesheet">
+		<link href="assets/plugins/iview/css/iview.css" rel="stylesheet">
+		<link href="assets/plugins/iview/css/skin/style.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+		<!-- SWITCHER -->
+		<link href="assets/plugins/switcher/css/switcher.css" rel="stylesheet" id="switcher-css" media="all">
+		<link href="assets/plugins/switcher/css/color1.css" rel="alternate stylesheet" title="color1" media="all">
+		<link href="assets/plugins/switcher/css/color2.css" rel="alternate stylesheet" title="color2" media="all">
+		<link href="assets/plugins/switcher/css/color3.css" rel="alternate stylesheet" title="color3" media="all">
+		<link href="assets/plugins/switcher/css/color4.css" rel="alternate stylesheet" title="color4" media="all">
+		<link href="assets/plugins/switcher/css/color5.css" rel="alternate stylesheet" title="color5" media="all">
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'home']) ?>
+		<script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
 
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
-</head>
-<body>
-    <header>
-        <div class="container text-center">
-            <a href="https://cakephp.org/" target="_blank" rel="noopener">
-                <img alt="CakePHP" src="https://cakephp.org/v2/img/logos/CakePHP_Logo.svg" width="350" />
-            </a>
-            <h1>
-                Welcome to CakePHP <?= h(Configure::version()) ?> Strawberry (🍓)
-            </h1>
-        </div>
-    </header>
-    <main class="main">
+	</head>
+
+
+	<body>
+
+    <!-- Loader -->
+<div id="page-preloader"><span class="spinner"></span></div>
+<!-- Loader end -->
+
+
+		<div  id="this-top" class="layout-theme animated-css"  data-header="sticky" data-header-top="200"  >
+
+			<!-- Start Switcher -->
+			<div class="switcher-wrapper">
+				<div class="demo_changer">
+					<div class="demo-icon customBgColor"><i class="fa fa-cog fa-spin fa-2x"></i></div>
+					<div class="form_holder">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="predefined_styles">
+									<div class="skin-theme-switcher">
+										<h4>Color</h4>
+										<a href="javascript:void(0);" data-switchcolor="color1" class="styleswitch" style="background-color:#fe5656;"> </a>
+										<a href="javascript:void(0);" data-switchcolor="color2" class="styleswitch" style="background-color:#4fb0fd;"> </a>
+										<a href="javascript:void(0);" data-switchcolor="color3" class="styleswitch" style="background-color:#ffc73c;"> </a>
+										<a href="javascript:void(0);" data-switchcolor="color4" class="styleswitch" style="background-color:#ff8300;"> </a>
+										<a href="javascript:void(0);" data-switchcolor="color5" class="styleswitch" style="background-color:#02cc8b;"> </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<script src="assets/plugins/switcher/js/bootstrap-select.js"></script>
+				<script src="assets/plugins/switcher/js/evol.colorpicker.min.js"></script>
+				<script src="assets/plugins/switcher/js/dmss.js"></script>
+			</div>
+			<!-- End Switcher -->
+
+			<div id="wrapper">
+
+				<!-- HEADER -->
+				<div class="header">
+
+
+
+					<div class="header__inner">
         <div class="container">
-            <div class="content">
-                <div class="row">
-                    <div class="column">
-                        <div class="message default text-center">
-                            <small>Please be aware that this page will not be shown if you turn off debug mode unless you replace templates/Pages/home.php with your own version.</small>
-                        </div>
-                        <div id="url-rewriting-warning" style="padding: 1rem; background: #fcebea; color: #cc1f1a; border-color: #ef5753;">
-                            <ul>
-                                <li class="bullet problem">
-                                    URL rewriting is not properly configured on your server.<br />
-                                    1) <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/installation.html#url-rewriting">Help me configure it</a><br />
-                                    2) <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/development/configuration.html#general-configuration">I don't / can't use URL rewriting</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <?php Debugger::checkSecurityKeys(); ?>
-                    </div>
+          <div class="row">
+            <div class="col-md-12 col-xs-12"> <a href="index.html" class="logo"> <img class="logo__img img-responsive" src="assets/img/logo.png" height="50" width="111" alt="Logo"> </a>
+              <div class="navbar yamm">
+                <div class="navbar-header hidden-md hidden-lg hidden-sm">
+                  <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                  <a href="javascript:void(0);" class="navbar-brand"></a> </div>
+                <div id="navbar-collapse-1" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                    <li><a href="home.html">HOME</a></li>
+                    <li><a href="vehicle-listings.html">VEHICLE LISTINGS</a> </li>
+                    <li><a href="car-details.html">CAR DETAILS</a></li>
+                    <li class="dropdown" ><a href="news.html">NEWS</a>
+                      <ul  class="dropdown-menu">
+                        <li> <a href="news-grid.html">DROPDOWN</a> </li>
+                        <li> <a href="news-details.html">DROPDOWN</a> </li>
+                      </ul>
+                    </li>
+                    <li><a href="news-grid.html">NEWS GRID</a></li>
+                    <li><a href="news-details.html">NEWS DETAILS</a></li>
+                  </ul>
                 </div>
-                <div class="row">
-                    <div class="column">
-                        <h4>Environment</h4>
-                        <ul>
-                        <?php if (version_compare(PHP_VERSION, '7.4.0', '>=')) : ?>
-                            <li class="bullet success">Your version of PHP is 7.4.0 or higher (detected <?= PHP_VERSION ?>).</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP is too low. You need PHP 7.4.0 or higher to use CakePHP (detected <?= PHP_VERSION ?>).</li>
-                        <?php endif; ?>
-
-                        <?php if (extension_loaded('mbstring')) : ?>
-                            <li class="bullet success">Your version of PHP has the mbstring extension loaded.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP does NOT have the mbstring extension loaded.</li>
-                        <?php endif; ?>
-
-                        <?php if (extension_loaded('openssl')) : ?>
-                            <li class="bullet success">Your version of PHP has the openssl extension loaded.</li>
-                        <?php elseif (extension_loaded('mcrypt')) : ?>
-                            <li class="bullet success">Your version of PHP has the mcrypt extension loaded.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP does NOT have the openssl or mcrypt extension loaded.</li>
-                        <?php endif; ?>
-
-                        <?php if (extension_loaded('intl')) : ?>
-                            <li class="bullet success">Your version of PHP has the intl extension loaded.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP does NOT have the intl extension loaded.</li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4>Filesystem</h4>
-                        <ul>
-                        <?php if (is_writable(TMP)) : ?>
-                            <li class="bullet success">Your tmp directory is writable.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your tmp directory is NOT writable.</li>
-                        <?php endif; ?>
-
-                        <?php if (is_writable(LOGS)) : ?>
-                            <li class="bullet success">Your logs directory is writable.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your logs directory is NOT writable.</li>
-                        <?php endif; ?>
-
-                        <?php $settings = Cache::getConfig('_cake_core_'); ?>
-                        <?php if (!empty($settings)) : ?>
-                            <li class="bullet success">The <em><?= h($settings['className']) ?></em> is being used for core caching. To change the config edit config/app.php</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your cache is NOT working. Please check the settings in config/app.php</li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column">
-                        <h4>Database</h4>
-                        <?php
-                        $result = $checkConnection('default');
-                        ?>
-                        <ul>
-                        <?php if ($result['connected']) : ?>
-                            <li class="bullet success">CakePHP is able to connect to the database.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">CakePHP is NOT able to connect to the database.<br /><?= h($result['error']) ?></li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4>DebugKit</h4>
-                        <ul>
-                        <?php if (Plugin::isLoaded('DebugKit')) : ?>
-                            <li class="bullet success">DebugKit is loaded.</li>
-                            <?php
-                            $result = $checkConnection('debug_kit');
-                            ?>
-                            <?php if ($result['connected']) : ?>
-                                <li class="bullet success">DebugKit can connect to the database.</li>
-                            <?php else : ?>
-                                <li class="bullet problem">DebugKit is <strong>not</strong> able to connect to the database.<br /><?= $result['error'] ?></li>
-                            <?php endif; ?>
-                        <?php else : ?>
-                            <li class="bullet problem">DebugKit is <strong>not</strong> loaded.</li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Getting Started</h3>
-                        <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/">CakePHP Documentation</a>
-                        <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/tutorials-and-examples/cms/installation.html">The 20 min CMS Tutorial</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Help and Bug Reports</h3>
-                        <a target="_blank" rel="noopener" href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
-                        <a target="_blank" rel="noopener" href="http://cakesf.herokuapp.com/">Slack</a>
-                        <a target="_blank" rel="noopener" href="https://github.com/cakephp/cakephp/issues">CakePHP Issues</a>
-                        <a target="_blank" rel="noopener" href="http://discourse.cakephp.org/">CakePHP Forum</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Docs and Downloads</h3>
-                        <a target="_blank" rel="noopener" href="https://api.cakephp.org/">CakePHP API</a>
-                        <a target="_blank" rel="noopener" href="https://bakery.cakephp.org">The Bakery</a>
-                        <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/">CakePHP Documentation</a>
-                        <a target="_blank" rel="noopener" href="https://plugins.cakephp.org">CakePHP plugins repo</a>
-                        <a target="_blank" rel="noopener" href="https://github.com/cakephp/">CakePHP Code</a>
-                        <a target="_blank" rel="noopener" href="https://github.com/FriendsOfCake/awesome-cakephp">CakePHP Awesome List</a>
-                        <a target="_blank" rel="noopener" href="https://www.cakephp.org">CakePHP</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Training and Certification</h3>
-                        <a target="_blank" rel="noopener" href="https://cakefoundation.org/">Cake Software Foundation</a>
-                        <a target="_blank" rel="noopener" href="https://training.cakephp.org/">CakePHP Training</a>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </main>
-</body>
+        <!-- end container -->
+      </div><!-- end header__inner -->
+				</div><!-- end header -->
+
+				<div class="block-title">
+					<div class="block-title__inner section-bg section-bg_second">
+						<div class="bg-inner">
+							<h1 class="ui-title-page">case listings</h1>
+							<div class="decor-1 center-block"></div>
+							<ol class="breadcrumb">
+								<li><a href="javascript:void(0);">HOME</a></li>
+								<li class="active">listings</li>
+							</ol>
+						</div><!-- end bg-inner -->
+					</div><!-- end block-title__inner -->
+				</div><!-- end block-title -->
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-9">
+							<main class="main-content">
+								<div class="sorting">
+									<div class="sorting__inner">
+										<div class="sorting__item">
+											<span class="sorting__title">select View</span>
+										</div>
+										<div class="sorting__item">
+											<span class="sorting__title">show on page</span>
+											<div  class="select jelect">
+												<input id="page" name="page" value="0" data-text="imagemin" type="text" class="jelect-input">
+												<div tabindex="0" role="button" class="jelect-current">10 Items</div>
+												<ul class="jelect-options">
+													<li  class="jelect-option jelect-option_state_active">10 Items</li>
+													<li  class="jelect-option">20 Items</li>
+													<li  class="jelect-option">30 Items</li>
+												</ul>
+											</div>
+										</div>
+										<div class="sorting__item">
+											<span class="sorting__title">Sort by</span>
+											<div  class="select jelect">
+												<input id="sort" name="sort" value="0" data-text="imagemin" type="text" class="jelect-input">
+												<div tabindex="0" role="button" class="jelect-current">Last Added</div>
+												<ul class="jelect-options">
+													<li  class="jelect-option jelect-option_state_active">Last Added</li>
+													<li  class="jelect-option">First Added</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div><!-- end sorting -->
+
+								<article class="card clearfix">
+									<div class="card__img">
+										<img class="img-responsive" src="assets/media/cards/1.jpg" height="196" width="235" alt="foto">
+									</div>
+									<div class="card__inner">
+										<h2 class="card__title ui-title-inner">MERCEDES-BENZ SLR MCLAREN</h2>
+										<div class="decor-1"></div>
+										<div class="card__description">
+											<p>In a pickup market gone fancy, the Silverado sticks to its basic-truck recipe. The steering is accurate and the Silverado ...</p>
+										</div>
+										<ul class="card__list list-unstyled">
+											<li class="card-list__row">
+												<span class="card-list__title">Body Style:</span>
+												<span class="card-list__info">Sedan</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Engine:</span>
+												<span class="card-list__info">DOHC 24-valve V-6</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Mileage:</span>
+												<span class="card-list__info">35,000 KM</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Color:</span>
+												<span class="card-list__info">White</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Transmission:</span>
+												<span class="card-list__info">6-Speed Auto</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Specs</span>
+												<span class="card-list__info">2-Passenger, 2-Door</span>
+											</li>
+										</ul>
+										<div class="card__price">PRICE:<span class="card__price-number">$33,905</span></div>
+									</div>
+								</article>
+
+								<article class="card clearfix">
+									<div class="card__img">
+										<img class="img-responsive" src="assets/media/cards/2.jpg" height="196" width="235" alt="foto">
+										<span class="card__wrap-label"><span class="card__label">FEATURED</span></span>
+									</div>
+									<div class="card__inner">
+										<h2 class="card__title ui-title-inner">MBENTLEY CONTINENTAL Supersports</h2>
+										<div class="decor-1"></div>
+										<div class="card__description">
+											<p>In a pickup market gone fancy, the Silverado sticks to its basic-truck recipe. The steering is accurate and the Silverado ...</p>
+										</div>
+										<ul class="card__list list-unstyled">
+											<li class="card-list__row">
+												<span class="card-list__title">Body Style:</span>
+												<span class="card-list__info">Sedan</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Engine:</span>
+												<span class="card-list__info">DOHC 24-valve V-6</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Mileage:</span>
+												<span class="card-list__info">35,000 KM</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Color:</span>
+												<span class="card-list__info">White</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Transmission:</span>
+												<span class="card-list__info">6-Speed Auto</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Specs</span>
+												<span class="card-list__info">2-Passenger, 2-Door</span>
+											</li>
+										</ul>
+										<div class="card__price">PRICE:<span class="card__price-number">$29,415</span></div>
+									</div>
+								</article>
+
+								<article class="card clearfix">
+									<div class="card__img">
+										<img class="img-responsive" src="assets/media/cards/3.jpg" height="196" width="235" alt="foto">
+									</div>
+									<div class="card__inner">
+										<h2 class="card__title ui-title-inner">2015 Ferrari FXX</h2>
+										<div class="decor-1"></div>
+										<div class="card__description">
+											<p>In a pickup market gone fancy, the Silverado sticks to its basic-truck recipe. The steering is accurate and the Silverado ...</p>
+										</div>
+										<ul class="card__list list-unstyled">
+											<li class="card-list__row">
+												<span class="card-list__title">Body Style:</span>
+												<span class="card-list__info">Sedan</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Engine:</span>
+												<span class="card-list__info">DOHC 24-valve V-6</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Mileage:</span>
+												<span class="card-list__info">35,000 KM</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Color:</span>
+												<span class="card-list__info">White</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Transmission:</span>
+												<span class="card-list__info">6-Speed Auto</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Specs</span>
+												<span class="card-list__info">2-Passenger, 2-Door</span>
+											</li>
+										</ul>
+										<div class="card__price">PRICE:<span class="card__price-number">$14,495</span></div>
+									</div>
+								</article>
+
+								<article class="card clearfix">
+									<div class="card__img">
+										<img class="img-responsive" src="assets/media/cards/4.jpg" height="196" width="235" alt="foto">
+									</div>
+									<div class="card__inner">
+										<h2 class="card__title ui-title-inner">DODGE VIPER 2015</h2>
+										<div class="decor-1"></div>
+										<div class="card__description">
+											<p>In a pickup market gone fancy, the Silverado sticks to its basic-truck recipe. The steering is accurate and the Silverado ...</p>
+										</div>
+										<ul class="card__list list-unstyled">
+											<li class="card-list__row">
+												<span class="card-list__title">Body Style:</span>
+												<span class="card-list__info">Sedan</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Engine:</span>
+												<span class="card-list__info">DOHC 24-valve V-6</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Mileage:</span>
+												<span class="card-list__info">35,000 KM</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Color:</span>
+												<span class="card-list__info">White</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Transmission:</span>
+												<span class="card-list__info">6-Speed Auto</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Specs</span>
+												<span class="card-list__info">2-Passenger, 2-Door</span>
+											</li>
+										</ul>
+										<div class="card__price">PRICE:<span class="card__price-number">$17,890</span></div>
+									</div>
+								</article>
+
+								<article class="card clearfix">
+									<div class="card__img">
+										<img class="img-responsive" src="assets/media/cards/5.jpg" height="196" width="235" alt="foto">
+									</div>
+									<div class="card__inner">
+										<h2 class="card__title ui-title-inner">LAND ROVER RANGE ROVER HSE</h2>
+										<div class="decor-1"></div>
+										<div class="card__description">
+											<p>In a pickup market gone fancy, the Silverado sticks to its basic-truck recipe. The steering is accurate and the Silverado ...</p>
+										</div>
+										<ul class="card__list list-unstyled">
+											<li class="card-list__row">
+												<span class="card-list__title">Body Style:</span>
+												<span class="card-list__info">Sedan</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Engine:</span>
+												<span class="card-list__info">DOHC 24-valve V-6</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Mileage:</span>
+												<span class="card-list__info">35,000 KM</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Color:</span>
+												<span class="card-list__info">White</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Transmission:</span>
+												<span class="card-list__info">6-Speed Auto</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Specs</span>
+												<span class="card-list__info">2-Passenger, 2-Door</span>
+											</li>
+										</ul>
+										<div class="card__price">PRICE:<span class="card__price-number">$29,500</span></div>
+									</div>
+								</article>
+
+								<article class="card clearfix">
+									<div class="card__img">
+										<img class="img-responsive" src="assets/media/cards/6.jpg" height="196" width="235" alt="foto">
+									</div>
+									<div class="card__inner">
+										<h2 class="card__title ui-title-inner">2014 LEXUS GX 470 PREMIUM</h2>
+										<div class="decor-1"></div>
+										<div class="card__description">
+											<p>In a pickup market gone fancy, the Silverado sticks to its basic-truck recipe. The steering is accurate and the Silverado ...</p>
+										</div>
+										<ul class="card__list list-unstyled">
+											<li class="card-list__row">
+												<span class="card-list__title">Body Style:</span>
+												<span class="card-list__info">Sedan</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Engine:</span>
+												<span class="card-list__info">DOHC 24-valve V-6</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Mileage:</span>
+												<span class="card-list__info">35,000 KM</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Color:</span>
+												<span class="card-list__info">White</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Transmission:</span>
+												<span class="card-list__info">6-Speed Auto</span>
+											</li>
+											<li class="card-list__row">
+												<span class="card-list__title">Specs</span>
+												<span class="card-list__info">2-Passenger, 2-Door</span>
+											</li>
+										</ul>
+										<div class="card__price">PRICE:<span class="card__price-number">$42,650</span></div>
+									</div>
+								</article>
+
+								<ul class="pagination">
+									<li><a href="javascript:void(0);">PREV</a></li>
+									<li class="active"><a href="javascript:void(0);">1</a></li>
+									<li><a href="javascript:void(0);">2</a></li>
+									<li><a href="javascript:void(0);">3</a></li>
+									<li><a href="javascript:void(0);">4</a></li>
+									<li><a href="javascript:void(0);">5</a></li>
+									<li><a href="javascript:void(0);">NEXT</a></li>
+								</ul>
+
+							</main><!-- end main-content -->
+						</div><!-- end col -->
+
+
+						<div class="col-md-3">
+							<aside class="sidebar">
+								<section class="widget widget_mod-a">
+									<h3 class="widget-title">BY MAKE</h3>
+									<div class="decor-1"></div>
+									<div class="widget-content">
+										<ul class="list-categories list-unstyled">
+											<li class="list-categories__item">
+												<a class="list-categories__link" href="javascript:void(0);">audi (5)</a>
+											</li>
+											<li class="list-categories__item">
+												<a class="list-categories__link" href="javascript:void(0);">BENTLEY (10)</a>
+											</li>
+											<li class="list-categories__item">
+												<a class="list-categories__link" href="javascript:void(0);">BMW (70)</a>
+											</li>
+											<li class="list-categories__item">
+												<a class="list-categories__link" href="javascript:void(0);">CHEVROLET (6)</a>
+											</li>
+											<li class="list-categories__item">
+												<a class="list-categories__link" href="javascript:void(0);">MERCEDES-BENZ (80)</a>
+											</li>
+											<li class="list-categories__item">
+												<a class="list-categories__link" href="javascript:void(0);">LAND ROVER (36)</a>
+											</li>
+										</ul>
+										<a class="list-categories__more" href="javascript:void(0);">VIEW MORE</a>
+									</div>
+								</section>
+
+								<div class="wrap-filter">
+									<section class="widget widget_mod-a">
+										<h3 class="widget-title">price range</h3>
+										<div class="decor-1"></div>
+										<div class="widget-content">
+											<div class="slider-price" id="slider-price"></div>
+											<span class="slider-price__wrap-input">
+												<input class="slider-price__input" id="slider-price_min">
+												<span>-</span>
+												<input class="slider-price__input" id="slider-price_max">
+											</span>
+										</div>
+									</section>
+
+									<section class="widget widget_mod-a">
+										<h3 class="widget-title">vehicle type</h3>
+										<div class="decor-1"></div>
+										<div class="widget-content">
+											<div  class="select select_mod-a jelect">
+												<input id="vehicle-type" name="vehicle-type" value="0" data-text="imagemin" type="text" class="jelect-input">
+												<div tabindex="0" role="button" class="jelect-current">All Types</div>
+												<ul class="jelect-options">
+													<li  class="jelect-option jelect-option_state_active">Type 1</li>
+													<li  class="jelect-option">Type 2</li>
+													<li  class="jelect-option">Type 3</li>
+												</ul>
+											</div>
+										</div>
+									</section>
+
+									<section class="widget widget_mod-a">
+										<h3 class="widget-title">Fuel Type</h3>
+										<div class="decor-1"></div>
+										<div class="widget-content">
+											<div  class="select select_mod-a jelect">
+												<input id="fuel-type" name="fuel-type" value="0" data-text="imagemin" type="text" class="jelect-input">
+												<div tabindex="0" role="button" class="jelect-current">All Fuel Types</div>
+												<ul class="jelect-options">
+													<li  class="jelect-option jelect-option_state_active">Type 1</li>
+													<li  class="jelect-option">Type 2</li>
+													<li  class="jelect-option">Type 3</li>
+												</ul>
+											</div>
+										</div>
+									</section>
+								</div><!-- end wrap-filter -->
+
+								<div class="btn">
+									<div class="btn-filter wrap__btn-skew-r js-filter">
+										<button class="btn-skew-r btn-effect "><span class="btn-skew-r__inner">filter vehicles</span></button>
+									</div>
+								</div>
+
+							</aside>
+						</div><!-- end col -->
+					</div><!-- end row -->
+				</div><!-- end container -->
+
+
+
+				<footer class="footer">
+					<div class="wrap-section-border">
+						<section class="section_mod-h section-bg section-bg_second">
+							<div class="bg-inner border-section-top border-section-top_mod-b">
+								<div class="container">
+									<div class="row">
+										<div class="col-xs-12">
+											<h2 class="footer-title">auto <span class="footer-title__inner">ZONE</span></h2>
+											<div class="decor-1 decor-1_mod-b"></div>
+										</div><!-- end col -->
+									</div><!-- end row -->
+
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="footer__name">: SHOWROOM LOCATION :</div>
+											<div class="footer__text">32 Market St.128, Deeja Town, Florida, CA 12345</div>
+										</div><!-- end col -->
+									</div><!-- end row -->
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="footer__item">
+												<span class="footer__name">Phone:</span>
+												<span class="footer__text">+1 (234) 567 8900</span>
+											</div>
+											<div class="footer__item">
+												<span class="footer__name">Fax:</span>
+												<span class="footer__text">+1 (234) 567 8998</span>
+											</div>
+											<div class="footer__item">
+												<span class="footer__name">email:</span>
+												<span class="footer__text">info@autozone.com</span>
+											</div>
+											<div class="footer__item">
+												<span class="footer__name">Hours:</span>
+												<span class="footer__text">Mon - Fri :: 9am - 6pm</span>
+											</div>
+										</div><!-- end col -->
+									</div><!-- end row -->
+									<div class="row">
+										<div class="col-xs-12">
+											<ul class="social-links list-inline">
+												<li><a class="icon fa fa-facebook" href="javascript:void(0);"></a></li>
+												<li><a class="icon fa fa-twitter" href="javascript:void(0);"></a></li>
+												<li><a class="icon fa fa-youtube-play" href="javascript:void(0);"></a></li>
+												<li><a class="icon fa fa-instagram" href="javascript:void(0);"></a></li>
+												<li><a class="icon fa fa-google-plus" href="javascript:void(0);"></a></li>
+											</ul>
+										</div><!-- end col -->
+									</div><!-- end row -->
+								</div><!-- end container -->
+							</div><!-- end bg-inner -->
+						</section><!-- end section_mod-b -->
+					</div><!-- end wrap-section-border -->
+					<div class="footer__wrap-btn"> <a class="footer__btn scroll" href="#this-top">top</a> </div>
+
+					<div class="copyright">Copyrights 2015 <a class="copyright__link" href="javascript:void(0);">AutoZONE</a> : : All rights reserved</div>
+				</footer>
+
+			</div><!-- end #wrapper -->
+</div><!-- end layout-theme -->
+
+		<span class="scroll-top"> <i class="fa fa-angle-up"> </i></span>
+
+
+
+
+
+		<!-- SCRIPTS -->
+        <script src="assets/js/jquery-migrate-1.2.1.js"></script>
+		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="assets/js/modernizr.custom.js"></script>
+		<script src="assets/plugins/owl-carousel/owl.carousel.min.js"></script>
+		<script src="assets/js/waypoints.min.js"></script>
+		<script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+		<script src="assets/plugins/jelect/jquery.jelect.js"></script>
+		<script src="assets/plugins/nouislider/jquery.nouislider.all.min.js"></script>
+
+
+		<!--THEME-->
+		<script src="assets/js/cssua.min.js"></script>
+		<script src="assets/js/wow.min.js"></script>
+		<script src="assets/js/custom.js"></script>
+
+
+	</body>
 </html>
+
