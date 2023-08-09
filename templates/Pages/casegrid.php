@@ -74,8 +74,8 @@ $this->disableAutoLayout();
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
-                            <a href="<?= $this->Url->build('/assets/img/logo.png') ?>" class="logo">
-                                <img class="logo__img img-responsive" src="<?= $this->Url->image('logo.png', ['height' => 50, 'width' => 111, 'alt' => 'Logo']) ?>" />
+                            <a href="<?= $this->Url->build('/') ?>" class="logo">
+                                <img class="logo__img img-responsive" src="<?= $this->Url->image('logo.png') ?>" height="50" width="111" alt="Logo">
                             </a>
                             <div class="navbar yamm">
                                 <div class="navbar-header hidden-md hidden-lg hidden-sm">
