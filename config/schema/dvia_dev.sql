@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 09, 2023 at 06:47 AM
+-- Generation Time: Aug 10, 2023 at 06:45 AM
 -- Server version: 11.0.2-MariaDB
 -- PHP Version: 8.2.8
 
@@ -28,27 +28,27 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `moncases` (
-  `id` int(99) NOT NULL,
+  `id` int(11) NOT NULL,
   `accession_no` text DEFAULT NULL,
   `case_type` enum('OSCER','LONG','MEDIUM','SHORT','GENERAL') NOT NULL,
   `date` date NOT NULL,
-  `history` longtext NOT NULL,
+  `history` text NOT NULL,
   `imaging` text NOT NULL,
   `max_marks` int(2) DEFAULT NULL,
-  `observation` longtext DEFAULT NULL,
-  `intepretation` longtext DEFAULT NULL,
+  `observation` text DEFAULT NULL,
+  `intepretation` text DEFAULT NULL,
   `safety` text DEFAULT NULL,
   `intrinsic_roles` text DEFAULT NULL,
   `management` text DEFAULT NULL,
-  `anatomy` longtext DEFAULT NULL,
-  `pathology` longtext DEFAULT NULL,
-  `findings` longtext DEFAULT NULL,
-  `diagnosis` longtext DEFAULT NULL,
-  `differential_diagnosis` longtext DEFAULT NULL,
-  `further_investigation` longtext DEFAULT NULL,
-  `teaching_points` longtext DEFAULT NULL,
+  `anatomy` text DEFAULT NULL,
+  `pathology` text DEFAULT NULL,
+  `findings` text DEFAULT NULL,
+  `diagnosis` text DEFAULT NULL,
+  `differential_diagnosis` text DEFAULT NULL,
+  `further_investigation` text DEFAULT NULL,
+  `teaching_points` text DEFAULT NULL,
   `seen_by` text DEFAULT NULL,
-  `tags` longtext DEFAULT NULL,
+  `tags` text DEFAULT NULL,
   `contributer` enum('TRAINEE','CONSULTANT','LIBRARY') NOT NULL,
   `speciality` text NOT NULL,
   `rating` int(1) DEFAULT NULL
@@ -58,9 +58,6 @@ CREATE TABLE `moncases` (
 -- Dumping data for table `moncases`
 --
 
-INSERT INTO `moncases` (`id`, `accession_no`, `case_type`, `date`, `history`, `imaging`, `max_marks`, `observation`, `intepretation`, `safety`, `intrinsic_roles`, `management`, `anatomy`, `pathology`, `findings`, `diagnosis`, `differential_diagnosis`, `further_investigation`, `teaching_points`, `seen_by`, `tags`, `contributer`, `speciality`, `rating`) VALUES
-(15, '8794501', 'OSCER', '2023-06-05', 'Know malignancy follow up staging', 'CT chest', 10, 'Tree in bud opacities bronchiectasis', 'Tree in bud - not perilymphatic', 'Need to raised possibility endobronchial TB', '', 'Call treating unit\r\n', '', 'Bronchiectasis - ', NULL, NULL, NULL, NULL, 'How to differentiate tree in bud vs perilympahtic \r\nSparing of subpleural space\r\nAtypical mycobacterial infection', 'MN', '', 'CONSULTANT', 'CARDIOTHORACIC', 4),
-(16, 'll\\\\llllll', 'MEDIUM', '2023-07-27', 'dsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadad', 'dsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsada222222222', 99, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'dsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsada222222222', NULL, NULL, NULL, 'dsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsada222222222', 'dsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsada222222222', 'dsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsadadsada222222222', 'TRAINEE', 'BREAST', 4);
 
 -- --------------------------------------------------------
 
