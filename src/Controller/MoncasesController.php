@@ -105,46 +105,46 @@ class MoncasesController extends AppController
 
     public function oscer()
     {
-        $moncase = $this->paginate($this->Moncases, [
+        $moncases = $this->paginate($this->Moncases, [
             'conditions' => ['case_type' => 'Oscer']
         ]);
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncases'));
     }
 
     public function long()
     {
-        $moncase = $this->paginate($this->Moncases, [
+        $moncases = $this->paginate($this->Moncases, [
             'conditions' => ['case_type' => 'Long']
         ]);
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncases'));
     }
 
     public function medium()
     {
-        $moncase = $this->paginate($this->Moncases, [
+        $moncases = $this->paginate($this->Moncases, [
             'conditions' => ['case_type' => ',Medium']
         ]);
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncases'));
     }
 
     public function short()
     {
-        $moncase = $this->paginate($this->Moncases, [
+        $moncases = $this->paginate($this->Moncases, [
             'conditions' => ['case_type' => 'Short']
         ]);
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncases'));
     }
 
     public function general()
     {
-        $moncase = $this->paginate($this->Moncases, [
+        $moncases = $this->paginate($this->Moncases, [
             'conditions' => ['case_type' => 'General']
         ]);
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncases'));
     }
 }

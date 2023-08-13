@@ -5,7 +5,7 @@
  */
 ?>
 <div class="moncases index content">
-    <?= $this->Html->link(__('New Moncase'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('Add a New Case'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('General Cases') ?></h3>
     <div class="table-responsive">
         <table>

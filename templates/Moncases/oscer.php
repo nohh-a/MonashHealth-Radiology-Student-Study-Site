@@ -8,7 +8,7 @@ echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js',['block'=
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['block'=>true]);
 ?>
 <div class="moncases index content">
-    <?= $this->Html->link(__('New Moncase'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('Add a New Case'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Oscer Cases') ?></h3>
     <div class="table-responsive">
         <table>
