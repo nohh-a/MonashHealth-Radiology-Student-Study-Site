@@ -1,0 +1,105 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Controller;
+
+/**
+ * Moncases Controller
+ *
+ * @property \App\Model\Table\MoncasesTable $Moncases
+ * @method \App\Model\Entity\Moncase[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ */
+class MoncasesController extends AppController
+{
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null|void Renders view
+     */
+    public function index()
+    {
+        $moncases = $this->paginate($this->Moncases);
+
+        $this->set(compact('moncases'));
+    }
+
+    /**
+     * View method
+     *
+     * @param string|null $id Moncase id.
+     * @return \Cake\Http\Response|null|void Renders view
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function view($id = null)
+    {
+        $moncase = $this->Moncases->get($id, [
+            'contain' => [],
+        ]);
+
+        $this->set(compact('moncase'));
+    }
+
+    /**
+     * Add method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     */
+    public function add()
+    {
+        $moncase = $this->Moncases->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('The moncase has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The moncase could not be saved. Please, try again.'));
+        }
+        $this->set(compact('moncase'));
+    }
+
+    /**
+     * Edit method
+     *
+     * @param string|null $id Moncase id.
+     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function edit($id = null)
+    {
+        $moncase = $this->Moncases->get($id, [
+            'contain' => [],
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('The moncase has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The moncase could not be saved. Please, try again.'));
+        }
+        $this->set(compact('moncase'));
+    }
+
+    /**
+     * Delete method
+     *
+     * @param string|null $id Moncase id.
+     * @return \Cake\Http\Response|null|void Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $moncase = $this->Moncases->get($id);
+        if ($this->Moncases->delete($moncase)) {
+            $this->Flash->success(__('The moncase has been deleted.'));
+        } else {
+            $this->Flash->error(__('The moncase could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+}
