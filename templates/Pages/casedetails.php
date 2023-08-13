@@ -99,14 +99,9 @@ $this->disableAutoLayout();
 
         <div class="block-title">
             <div class="block-title__inner section-bg section-bg_second">
-                <div class="bg-inner">
-                    <h1 class="ui-title-page">car details</h1>
-                    <div class="decor-1 center-block"></div>
-                    <ol class="breadcrumb">
-                        <li><a href="#">HOME</a></li>
-                        <li class="active">car details</li>
-                    </ol>
-                </div><!-- end bg-inner -->
+
+                <h1 class="ui-title-page">Case Details</h1>
+
             </div><!-- end block-title__inner -->
         </div><!-- end block-title -->
 

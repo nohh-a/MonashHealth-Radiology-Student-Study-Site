@@ -26,25 +26,26 @@ $this->disableAutoLayout();
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
-		<title>Monash Health</title>
-		<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
-		<link href="assets/css/master.css" rel="stylesheet">
-		<link href="assets/plugins/iview/css/iview.css" rel="stylesheet">
-		<link href="assets/plugins/iview/css/skin/style.css" rel="stylesheet">
+        <?= $this->Html->charset() ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+        <title>Case List</title>
+        <?= $this->Html->meta('icon', 'favicon.ico', ['type' => 'image/x-icon']) ?>
+        <?= $this->Html->css('/assets/css/master.css') ?>
+        <?= $this->Html->css('/assets/plugins/iview/css/iview.css') ?>
+        <?= $this->Html->css('/assets/plugins/iview/css/skin/style.css', ['class' => 'skin']) ?>
 
-		<!-- SWITCHER -->
-		<link href="assets/plugins/switcher/css/switcher.css" rel="stylesheet" id="switcher-css" media="all">
-		<link href="assets/plugins/switcher/css/color1.css" rel="alternate stylesheet" title="color1" media="all">
-		<link href="assets/plugins/switcher/css/color2.css" rel="alternate stylesheet" title="color2" media="all">
-		<link href="assets/plugins/switcher/css/color3.css" rel="alternate stylesheet" title="color3" media="all">
-		<link href="assets/plugins/switcher/css/color4.css" rel="alternate stylesheet" title="color4" media="all">
-		<link href="assets/plugins/switcher/css/color5.css" rel="alternate stylesheet" title="color5" media="all">
+        <!-- SWITCHER -->
+        <?= $this->Html->css('/assets/plugins/switcher/css/switcher.css', ['id' => 'switcher-css', 'media' => 'all']) ?>
+        <?= $this->Html->css('/assets/plugins/switcher/css/color1.css', ['title' => 'color1', 'media' => 'all', 'rel' => 'alternate stylesheet']) ?>
+        <?= $this->Html->css('/assets/plugins/switcher/css/color2.css', ['title' => 'color2', 'media' => 'all', 'rel' => 'alternate stylesheet']) ?>
+        <?= $this->Html->css('/assets/plugins/switcher/css/color3.css', ['title' => 'color3', 'media' => 'all', 'rel' => 'alternate stylesheet']) ?>
+        <?= $this->Html->css('/assets/plugins/switcher/css/color4.css', ['title' => 'color4', 'media' => 'all', 'rel' => 'alternate stylesheet']) ?>
+        <?= $this->Html->css('/assets/plugins/switcher/css/color5.css', ['title' => 'color5', 'media' => 'all', 'rel' => 'alternate stylesheet']) ?>
 
-		<script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
+        <?= $this->Html->script('/assets/plugins/jquery/jquery-1.11.1.min.js') ?>
 
-	</head>
+
+    </head>
 
 
 	<body>
@@ -78,9 +79,9 @@ $this->disableAutoLayout();
 					</div>
 				</div>
 
-				<script src="assets/plugins/switcher/js/bootstrap-select.js"></script>
-				<script src="assets/plugins/switcher/js/evol.colorpicker.min.js"></script>
-				<script src="assets/plugins/switcher/js/dmss.js"></script>
+				<script src="webroot/plugins/switcher/js/bootstrap-select.js"></script>
+				<script src="webroot/plugins/switcher/js/evol.colorpicker.min.js"></script>
+				<script src="webroot/plugins/switcher/js/dmss.js"></script>
 			</div>
 			<!-- End Switcher -->
 
@@ -96,7 +97,7 @@ $this->disableAutoLayout();
           <div class="row">
             <div class="col-md-12 col-xs-12">
                 <a href="<?= $this->Url->build('/') ?>" class="logo">
-                    <img class="logo__img img-responsive" src="assets/img/logo.png" height="50" width="111" alt="Logo">
+                    <img class="logo__img img-responsive" src="webroot/img/logo.png" height="50" width="111" alt="Logo">
                 </a>
               <div class="navbar yamm">
                 <div class="navbar-header hidden-md hidden-lg hidden-sm">
@@ -127,14 +128,9 @@ $this->disableAutoLayout();
 
 				<div class="block-title">
 					<div class="block-title__inner section-bg section-bg_second">
-						<div class="bg-inner">
+
 							<h1 class="ui-title-page">case listings</h1>
-							<div class="decor-1 center-block"></div>
-							<ol class="breadcrumb">
-								<li><a href="javascript:void(0);">HOME</a></li>
-								<li class="active">listings</li>
-							</ol>
-						</div><!-- end bg-inner -->
+
 					</div><!-- end block-title__inner -->
 				</div><!-- end block-title -->
 
@@ -175,7 +171,7 @@ $this->disableAutoLayout();
 
 								<article class="card clearfix">
 									<div class="card__img">
-										<img class="img-responsive" src="assets/media/cards/1.jpg" height="196" width="235" alt="foto">
+										<img class="img-responsive" src="webroot/media/cards/1.jpg" height="196" width="235" alt="foto">
 									</div>
 									<div class="card__inner">
 										<h2 class="card__title ui-title-inner">MERCEDES-BENZ SLR MCLAREN</h2>
@@ -215,7 +211,7 @@ $this->disableAutoLayout();
 
 								<article class="card clearfix">
 									<div class="card__img">
-										<img class="img-responsive" src="assets/media/cards/2.jpg" height="196" width="235" alt="foto">
+										<img class="img-responsive" src="webroot/media/cards/2.jpg" height="196" width="235" alt="foto">
 										<span class="card__wrap-label"><span class="card__label">FEATURED</span></span>
 									</div>
 									<div class="card__inner">
@@ -256,7 +252,7 @@ $this->disableAutoLayout();
 
 								<article class="card clearfix">
 									<div class="card__img">
-										<img class="img-responsive" src="assets/media/cards/3.jpg" height="196" width="235" alt="foto">
+										<img class="img-responsive" src="webroot/media/cards/3.jpg" height="196" width="235" alt="foto">
 									</div>
 									<div class="card__inner">
 										<h2 class="card__title ui-title-inner">2015 Ferrari FXX</h2>
@@ -296,7 +292,7 @@ $this->disableAutoLayout();
 
 								<article class="card clearfix">
 									<div class="card__img">
-										<img class="img-responsive" src="assets/media/cards/4.jpg" height="196" width="235" alt="foto">
+										<img class="img-responsive" src="webroot/media/cards/4.jpg" height="196" width="235" alt="foto">
 									</div>
 									<div class="card__inner">
 										<h2 class="card__title ui-title-inner">DODGE VIPER 2015</h2>
@@ -336,7 +332,7 @@ $this->disableAutoLayout();
 
 								<article class="card clearfix">
 									<div class="card__img">
-										<img class="img-responsive" src="assets/media/cards/5.jpg" height="196" width="235" alt="foto">
+										<img class="img-responsive" src="webroot/media/cards/5.jpg" height="196" width="235" alt="foto">
 									</div>
 									<div class="card__inner">
 										<h2 class="card__title ui-title-inner">LAND ROVER RANGE ROVER HSE</h2>
@@ -376,7 +372,7 @@ $this->disableAutoLayout();
 
 								<article class="card clearfix">
 									<div class="card__img">
-										<img class="img-responsive" src="assets/media/cards/6.jpg" height="196" width="235" alt="foto">
+										<img class="img-responsive" src="webroot/media/cards/6.jpg" height="196" width="235" alt="foto">
 									</div>
 									<div class="card__inner">
 										<h2 class="card__title ui-title-inner">2014 LEXUS GX 470 PREMIUM</h2>
@@ -530,27 +526,22 @@ $this->disableAutoLayout();
 		<span class="scroll-top"> <i class="fa fa-angle-up"> </i></span>
 
 
-
-
-
-		<!-- SCRIPTS -->
-        <script src="assets/js/jquery-migrate-1.2.1.js"></script>
-		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-		<script src="assets/js/modernizr.custom.js"></script>
-		<script src="assets/plugins/owl-carousel/owl.carousel.min.js"></script>
-		<script src="assets/js/waypoints.min.js"></script>
-		<script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-		<script src="assets/plugins/jelect/jquery.jelect.js"></script>
-		<script src="assets/plugins/nouislider/jquery.nouislider.all.min.js"></script>
-
-
-		<!--THEME-->
-		<script src="assets/js/cssua.min.js"></script>
-		<script src="assets/js/wow.min.js"></script>
-		<script src="assets/js/custom.js"></script>
-
-
 	</body>
 </html>
+<!-- SCRIPTS -->
+<?= $this->Html->script('/assets/js/jquery-migrate-1.2.1.js'); ?>
+<?= $this->Html->script('/assets/plugins/bootstrap/js/bootstrap.min.js'); ?>
+<?= $this->Html->script('/assets/js/modernizr.custom.js'); ?>
+<?= $this->Html->script('/assets/plugins/owl-carousel/owl.carousel.min.js'); ?>
+<?= $this->Html->script('/assets/js/waypoints.min.js'); ?>
+<?= $this->Html->script('/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js'); ?>
+<?= $this->Html->script('http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'); ?>
+<?= $this->Html->script('/assets/plugins/jelect/jquery.jelect.js'); ?>
+<?= $this->Html->script('/assets/plugins/nouislider/jquery.nouislider.all.min.js'); ?>
+<?= $this->Html->script('/assets/plugins/flexslider/jquery.flexslider.js'); ?>
+
+<!--THEME-->
+<?= $this->Html->script('/assets/js/cssua.min.js'); ?>
+<?= $this->Html->script('/assets/js/wow.min.js'); ?>
+<?= $this->Html->script('/assets/js/custom.js'); ?>
 
