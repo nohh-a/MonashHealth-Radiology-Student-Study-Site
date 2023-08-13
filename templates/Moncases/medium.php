@@ -5,23 +5,23 @@
  */
 ?>
 <div class="moncases index content">
-    <?= $this->Html->link(__('Add a New Case'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Moncases') ?></h3>
+    <?= $this->Html->link(__('New Moncase'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <h3><?= __('Medium Cases') ?></h3>
     <div class="table-responsive">
         <table>
             <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('case_type') ?></th>
-                    <th><?= $this->Paginator->sort('date') ?></th>
-                    <th><?= $this->Paginator->sort('max_marks') ?></th>
-                    <th><?= $this->Paginator->sort('contributer') ?></th>
-                    <th><?= $this->Paginator->sort('rating') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
+            <tr>
+                <th><?= $this->Paginator->sort('id') ?></th>
+                <th><?= $this->Paginator->sort('case_type') ?></th>
+                <th><?= $this->Paginator->sort('date') ?></th>
+                <th><?= $this->Paginator->sort('max_marks') ?></th>
+                <th><?= $this->Paginator->sort('contributer') ?></th>
+                <th><?= $this->Paginator->sort('rating') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
             </thead>
             <tbody>
-                <?php foreach ($moncases as $moncase): ?>
+            <?php foreach ($moncases as $moncase): ?>
                 <tr>
                     <td><?= $this->Number->format($moncase->id) ?></td>
                     <td><?= h($moncase->case_type) ?></td>
@@ -35,7 +35,7 @@
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['confirm' => __('Are you sure you want to delete # {0}?', $moncase->id)]) ?>
                     </td>
                 </tr>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>

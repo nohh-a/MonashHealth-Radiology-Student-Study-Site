@@ -50,83 +50,52 @@
         </li>
 
         <hr class="sidebar-divider">
+
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'add']) ?>">
+                <i class="fas fa-fw fa-plus-square"></i>
+                <span>Add a New Case</span></a>
+        </li>
+
+        <hr class="sidebar-divider">
         <!-- Heading -->
         <div class="sidebar-heading">
             Cases
         </div>
 
-        <!-- Nav Item - Oscer Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOscer"
-               aria-expanded="false" aria-controls="collapseOscer">
+        <!-- Nav Item - Oscer -->
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'oscer']) ?>">
                 <span>Oscer</span>
             </a>
-            <div id="collapseOscer" class="collapse" aria-labelledby="headingOscer"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'add']) ?>">Add New Oscer Case</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'index']) ?>">View All Oscer Cases</a>
-                </div>
-            </div>
         </li>
 
-        <!-- Nav Item - Long Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLong"
-               aria-expanded="false" aria-controls="collapseLong">
+        <!-- Nav Item - Long -->
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'long']) ?>">
                 <span>Long</span>
             </a>
-            <div id="collapseLong" class="collapse" aria-labelledby="headingLong"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'add']) ?>">Add New Long Case</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'index']) ?>">View All Long Cases</a>
-                </div>
-            </div>
         </li>
 
-        <!-- Nav Item - Medium Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedium"
-               aria-expanded="false" aria-controls="collapseMedium">
+        <!-- Nav Item - Medium -->
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'medium']) ?>">
                 <span>Medium</span>
             </a>
-            <div id="collapseMedium" class="collapse" aria-labelledby="headingMedium"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'add']) ?>">Add New Medium Case</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'index']) ?>">View All Medium Cases</a>
-                </div>
-            </div>
         </li>
 
-        <!-- Nav Item - Short Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShort"
-               aria-expanded="false" aria-controls="collapseShort">
+        <!-- Nav Item - Short -->
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'short']) ?>">
                 <span>Short</span>
             </a>
-            <div id="collapseShort" class="collapse" aria-labelledby="headingShort"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'add']) ?>">Add New Short Case</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'index']) ?>">View All Short Cases</a>
-                </div>
-            </div>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGeneral"
-               aria-expanded="false" aria-controls="collapseGeneral">
+        <!-- Nav Item - General -->
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'general']) ?>">
                 <span>General</span>
             </a>
-            <div id="collapseGeneral" class="collapse" aria-labelledby="headingGeneral"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'add']) ?>">Add New General Case</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'index']) ?>">View All General Cases</a>
-                </div>
-            </div>
         </li>
 
         <!-- Divider -->
