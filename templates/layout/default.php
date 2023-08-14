@@ -36,7 +36,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build(['controller'=>'Pages','action'=> 'home']) ?>">
             <div class="sidebar-brand-icon">
-                <?= $this->Html->image('logo.png', ['height' => 35, 'width' => 100, 'alt' => 'Logo']) ?>
+                <?= $this->Html->image('logo.png', ['height' => 30, 'width' => 95, 'alt' => 'Logo']) ?>
             </div>
         </a>
 
@@ -45,8 +45,8 @@
 
         <li class="nav-item active">
             <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'index']) ?>">
-                <i class="fas fa-fw fa-bars"></i>
-                <span>Dashboard</span></a>
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span style="font-size: 100%;">Dashboard</span></a>
         </li>
 
         <hr class="sidebar-divider">
@@ -54,7 +54,7 @@
         <li class="nav-item active">
             <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'add']) ?>">
                 <i class="fas fa-fw fa-plus-square"></i>
-                <span>Add a New Case</span></a>
+                <span style="font-size: 100%;">Add a New Case</span></a>
         </li>
 
         <hr class="sidebar-divider">
@@ -66,35 +66,35 @@
         <!-- Nav Item - Oscer -->
         <li class="nav-item active">
             <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'oscer']) ?>">
-                <span>Oscer</span>
+                <span style="font-size: 100%;">Oscer</span>
             </a>
         </li>
 
         <!-- Nav Item - Long -->
         <li class="nav-item active">
             <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'long']) ?>">
-                <span>Long</span>
+                <span style="font-size: 100%;">Long</span>
             </a>
         </li>
 
         <!-- Nav Item - Medium -->
         <li class="nav-item active">
             <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'medium']) ?>">
-                <span>Medium</span>
+                <span style="font-size: 100%;">Medium</span>
             </a>
         </li>
 
         <!-- Nav Item - Short -->
         <li class="nav-item active">
             <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'short']) ?>">
-                <span>Short</span>
+                <span style="font-size: 100%;">Short</span>
             </a>
         </li>
 
         <!-- Nav Item - General -->
         <li class="nav-item active">
             <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'general']) ?>">
-                <span>General</span>
+                <span style="font-size: 100%;">General</span>
             </a>
         </li>
 
@@ -111,7 +111,7 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-user"></i>
-                <span>User Management</span>
+                <span style="font-size: 100%;">User Management</span>
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">

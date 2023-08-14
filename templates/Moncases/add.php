@@ -4,45 +4,179 @@
  * @var \App\Model\Entity\Moncase $moncase
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Moncases'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
+<div class="row justify-content-center align-items-center">
+    <div class="col-md-8">
         <div class="moncases form content">
+
             <?= $this->Form->create($moncase) ?>
-            <fieldset>
-                <legend><?= __('Add Moncase') ?></legend>
-                <?php
-                    echo $this->Form->control('accession_no');
-                    echo $this->Form->control('case_type');
-                    echo $this->Form->control('date');
-                    echo $this->Form->control('history');
-                    echo $this->Form->control('imaging');
-                    echo $this->Form->control('max_marks');
-                    echo $this->Form->control('observation');
-                    echo $this->Form->control('intepretation');
-                    echo $this->Form->control('safety');
-                    echo $this->Form->control('intrinsic_roles');
-                    echo $this->Form->control('management');
-                    echo $this->Form->control('anatomy');
-                    echo $this->Form->control('pathology');
-                    echo $this->Form->control('findings');
-                    echo $this->Form->control('diagnosis');
-                    echo $this->Form->control('differential_diagnosis');
-                    echo $this->Form->control('further_investigation');
-                    echo $this->Form->control('teaching_points');
-                    echo $this->Form->control('seen_by');
-                    echo $this->Form->control('tags');
-                    echo $this->Form->control('contributer');
-                    echo $this->Form->control('speciality');
-                    echo $this->Form->control('rating');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+
+            <div class="card">
+                <h5 class="card-header text-center"><?= __('Add New Case') ?></h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?=$this->Form->control('case_type', ['label' => 'Case Type',
+                                'class' => 'form-control',
+                                'options' => [
+                                    'Oscer' => 'Oscer',
+                                    'Long' => 'Long',
+                                    'Medium' => 'Medium',
+                                    'Short' => 'Short',
+                                    'General' => 'General'
+                                ]
+                            ])
+                            ?>
+                            <?= $this->Form->control('accession_no', [
+                                'class' => 'form-control',
+                                'type' => 'text',
+                                'maxlength' => 10
+                            ])
+                            ?>
+                            <?= $this->Form->control('date', ['class' => 'form-control']) ?>
+                            <?= $this->Form->control('history', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('imaging', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('max_marks', [
+                                'class' => 'form-control',
+                                'label' => 'Maximum Marks',
+                                'required' => true,
+                                'min' => 0,
+                                'max' => 99,
+                                'error' => ['value' => 'Maximum marks should be between -1 and 999']
+                            ])
+                            ?>
+                            <?= $this->Form->control('observation', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('diagnosis', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?= $this->Form->control('intepretation', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('safety', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('intrinsic_roles', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('management', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('anatomy', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('pathology', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?= $this->Form->control('findings', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('differential_diagnosis', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('further_investigation', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('teaching_points', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?= $this->Form->control('seen_by', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('tags', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
+                            <?= $this->Form->control('contributer', [
+                                'class' => 'form-control',
+                                'options' => [
+                                    'TRAINEE' => 'TRAINEE',
+                                    'CONSULTANT' => 'CONSULTANT',
+                                    'LIBRARY' => 'LIBRARY'
+                                ]
+                            ])
+                            ?>
+                            <?= $this->Form->label('speciality', 'Speciality') ?>
+                            <?= $this->Form->select('speciality', [
+                                'ABDOMINAL' => 'ABDOMINAL',
+                                'CARDIOTHORACIC' => 'CARDIOTHORACIC',
+                                'NEURO' => 'NEURO',
+                                'HEAD AND NECK' => 'HEAD AND NECK',
+                                'MSK' => 'MSK',
+                                'BREAST' => 'BREAST',
+                                'GYN' => 'GYN',
+                                'O+G' => 'O+G',
+                                'PEADS' => 'PEADS',
+                                'VASCULAR' => 'VASCULAR',
+                                'INTERVENTION' => 'INTERVENTION',
+                                // Abdominal, Cardiothoracic, Neuro, Head and Neck, MSK, Breast, Gyn, O+G, Paeds, Vascular, Intervention.
+                            ], [
+                                'class' => 'form-control',
+                                'required' => true,
+                                'empty' => '- Select Speciality -',
+                            ]) ?>
+                            <?= $this->Form->label('rating', 'Rating') ?>
+                            <?= $this->Form->select('rating', [
+                                '1' => 1,
+                                '2' => 2,
+                                '3' => 3,
+                                '4' => 4,
+                                '5' => 5,
+                            ], [
+                                'class' => 'form-control',
+                                'required' => true,
+                                'empty' => '- Select Rating -',
+                            ]) ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary btn-lg']) ?>
+                </div>
+            </div>
             <?= $this->Form->end() ?>
         </div>
     </div>

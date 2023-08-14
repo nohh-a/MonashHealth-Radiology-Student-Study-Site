@@ -7,49 +7,90 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css',['block
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js',['block'=>true]);
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['block'=>true]);
 ?>
-<div class="moncases index content">
-    <?= $this->Html->link(__('Add a New Case'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Oscer Cases') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
-            <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('case_type') ?></th>
-                <th><?= $this->Paginator->sort('date') ?></th>
-                <th><?= $this->Paginator->sort('max_marks') ?></th>
-                <th><?= $this->Paginator->sort('contributer') ?></th>
-                <th><?= $this->Paginator->sort('rating') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($moncases as $moncase): ?>
-                <tr>
-                    <td><?= $this->Number->format($moncase->id) ?></td>
-                    <td><?= h($moncase->case_type) ?></td>
-                    <td><?= h($moncase->date) ?></td>
-                    <td><?= $moncase->max_marks === null ? '' : $this->Number->format($moncase->max_marks) ?></td>
-                    <td><?= h($moncase->contributer) ?></td>
-                    <td><?= $moncase->rating === null ? '' : $this->Number->format($moncase->rating) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $moncase->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncase->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['confirm' => __('Are you sure you want to delete # {0}?', $moncase->id)]) ?>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
+<style>
+    /* Style the table header */
+    table th {
+        background-color: #466bd7;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* Style the table rows */
+    table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    /* Add a hover effect to the table rows */
+    table tr:hover {
+        background-color: rgba(6, 152, 225, 0.16);
+    }
+
+    /* Style the "Actions" column */
+    .actions {
+        white-space: nowrap;
+    }
+</style>
+<div class="container">
+    <div class="row align-items-center d-flex justify-content-center" data-animate="fadeInUp">
+        <div class="heading-text heading-section text-center mt-5">
+                <h1 style="color: black; font-weight: bold;">Oscer</h1>
+            <p> </p>
+        </div>
     </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+
+    <div class="container-fluid">
+        <div class="moncases index content">
+            <!-- Page Heading -->
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th><?= h('Accession No') ?></th>
+                        <th><?= h('Case Type') ?></th>
+                        <th><?= h('Date') ?></th>
+                        <th><?= h('Max Marks') ?></th>
+                        <th><?= h('Contributor') ?></th>
+
+                        <th class="actions"><?= __('Actions') ?></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($moncases as $moncases): ?>
+                        <tr>
+
+                            <td><?= h($moncases->accession_no) ?></td>
+                            <td><?= h($moncases->case_type) ?></td>
+                            <td><?= h($moncases->date) ?></td>
+                            <td><?= h($moncases->max_marks) ?></td>
+                            <td><?= h($moncases->contributor) ?></td>
+
+
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['action' => 'view', $moncases->id], ['class' => 'btn btn-primary']) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncases->id], ['class' => 'btn btn-warning']) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncases->id], ['class' => 'btn btn-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $moncases->id)]) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <script>
+                $(document).ready(function() {
+                    $('#dataTable').DataTable();
+                });
+
+            </script>
+        </div>
     </div>
+    <td><button class="btn btn-primary" onclick="goBack()">Go Back</button></td>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
 </div>
+
+

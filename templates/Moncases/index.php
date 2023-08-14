@@ -50,7 +50,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'oscer']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
                 <div class="text font-weight-bold text-success text-uppercase mb-1">oscer</div>
                 <div class="h3 font-weight-bold text-red mb-0 d-flex align-items-center">
-                    <span><?= h(1) ?></span>
+                    <span style="font-size: 65%;"><?= h(1) ?></span>
                 </div>
             </a>
         </div>
@@ -59,7 +59,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'long']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
                 <div class="text font-weight-bold text-success text-uppercase mb-1">long</div>
                 <div class="h3 font-weight-bold text-orange mb-0 d-flex align-items-center">
-                    <span><?= h(1) ?></span>
+                    <span style="font-size: 65%;"><?= h(1) ?></span>
                 </div>
             </a>
         </div>
@@ -68,7 +68,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'medium']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
                 <div class="text font-weight-bold text-success text-uppercase mb-1">medium</div>
                 <div class="h3 font-weight-bold text-pink mb-0 d-flex align-items-center">
-                    <span><?= h(1) ?></span>
+                    <span style="font-size: 65%;"><?= h(1) ?></span>
                 </div>
             </a>
         </div>
@@ -77,7 +77,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'short']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
                 <div class="text font-weight-bold text-success text-uppercase mb-1">short</div>
                 <div class="h3 font-weight-bold text-blue mb-0 d-flex align-items-center">
-                    <span><?= h(1) ?></span>
+                    <span style="font-size: 65%;"><?= h(1) ?></span>
                 </div>
             </a>
         </div>
@@ -86,7 +86,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'general']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
                 <div class="text font-weight-bold text-success text-uppercase mb-1">general</div>
                 <div class="h3 font-weight-bold text-blue mb-0 d-flex align-items-center">
-                    <span><?= h(1) ?></span>
+                    <span style="font-size: 65%;"><?= h(1) ?></span>
                 </div>
             </a>
         </div>
@@ -124,9 +124,9 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 
 
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['action' => 'view', $moncases->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncases->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncases->id], ['confirm' => __('Are you sure you want to delete # {0}?', $moncases->id)]) ?>
+                                <?= $this->Html->link(__('View'), ['action' => 'view', $moncases->id], ['class' => 'btn btn-primary']) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncases->id], ['class' => 'btn btn-warning']) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncases->id], ['class' => 'btn btn-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $moncases->id)]) ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
