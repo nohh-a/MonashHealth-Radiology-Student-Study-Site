@@ -44,7 +44,7 @@
         <hr class="sidebar-divider my-0">
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Pages','action'=> 'dashboard']) ?>">
+            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'index']) ?>">
                 <i class="fas fa-fw fa-bars"></i>
                 <span>Dashboard</span></a>
         </li>
