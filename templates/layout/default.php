@@ -177,6 +177,16 @@
         </div>
         <!-- End of Main Content -->
 
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; FIT3047 Team 53</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
     </div>
     <!-- End of Content Wrapper -->
 
@@ -210,13 +220,15 @@
 
 <!-- Bootstrap core JavaScript-->
 <?= $this->Html->script('/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>
-<?= $this->Html->script('/vendor/jquery/jquery.min.js') ?>
 
 <!-- Core plugin JavaScript-->
 <?= $this->Html->script('/vendor/jquery-easing/jquery.easing.min.js') ?>
 
 <!-- Custom scripts for all pages-->
 <?= $this->Html->script('/js/sb-admin-2.min.js') ?>
+<?= $this->fetch('script') ?>
+
+
 
 </body>
 
