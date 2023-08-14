@@ -10,6 +10,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 
 ?>
 
+
 <style>
     /* Style the table header */
     table th {
@@ -90,52 +91,57 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             </a>
         </div>
     </div>
+
     <br>
-    <div class="customers index content">
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">All Cases</h1>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                <tr>
-                    <th><?= h('Accession No') ?></th>
-                    <th><?= h('Case Type') ?></th>
-                    <th><?= h('Date') ?></th>
-                    <th><?= h('Max Marks') ?></th>
-                    <th><?= h('Contributor') ?></th>
-
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($moncases as $moncases): ?>
+    <div class="container-fluid">
+        <div class="moncases index content">
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">All Cases</h1>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
                     <tr>
+                        <th><?= h('Accession No') ?></th>
+                        <th><?= h('Case Type') ?></th>
+                        <th><?= h('Date') ?></th>
+                        <th><?= h('Max Marks') ?></th>
+                        <th><?= h('Contributor') ?></th>
 
-                        <td><?= h($moncases->accession_no) ?></td>
-                        <td><?= h($moncases->case_type) ?></td>
-                        <td><?= h($moncases->date) ?></td>
-                        <td><?= h($moncases->max_marks) ?></td>
-                        <td><?= h($moncases->contributor) ?></td>
-
-
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $moncases->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncases->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncases->id], ['confirm' => __('Are you sure you want to delete # {0}?', $moncases->id)]) ?>
-                        </td>
+                        <th class="actions"><?= __('Actions') ?></th>
                     </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-        <script>
-            $(document).ready(function() {
-                $('#dataTable').DataTable();
-            });
+                    </thead>
+                    <tbody>
+                    <?php foreach ($moncases as $moncases): ?>
+                        <tr>
 
-        </script>
+                            <td><?= h($moncases->accession_no) ?></td>
+                            <td><?= h($moncases->case_type) ?></td>
+                            <td><?= h($moncases->date) ?></td>
+                            <td><?= h($moncases->max_marks) ?></td>
+                            <td><?= h($moncases->contributor) ?></td>
+
+
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['action' => 'view', $moncases->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncases->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncases->id], ['confirm' => __('Are you sure you want to delete # {0}?', $moncases->id)]) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <script>
+                $(document).ready(function() {
+                    $('#dataTable').DataTable();
+                });
+
+            </script>
+        </div>
     </div>
 </div>
+
+
 
