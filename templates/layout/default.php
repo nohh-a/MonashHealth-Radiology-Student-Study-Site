@@ -181,7 +181,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; FIT3047 Team 53</span>
+                    <span>Copyright &copy; Monash Health</span>
                 </div>
             </div>
         </footer>
