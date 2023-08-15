@@ -40,8 +40,7 @@ class MoncasesController extends AppController
             ->where(['case_type' => 'General'])
             ->count();
 
-
-        $this->set(compact('moncases','oscerCount','longCount','mediumCount','shortCount','generalCount'));
+        $this->set(compact('moncases', 'oscerCount', 'longCount', 'mediumCount', 'shortCount', 'generalCount'));
     }
 
     /**
@@ -71,24 +70,25 @@ class MoncasesController extends AppController
         if ($this->request->is('post')) {
             $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
 
-            if(!$moncase->getErrors){
-                $imaging = $this->request->getData('image_file');
-                $name = $imaging->getClientFilename();
+            if (!$moncase->getErrors()) {
+                $image = $this->request->getData('imaging');
 
-                $targetPath = WWW_ROOT.'img'.DS.'case'.DS.$name;
+                $name = $image->getClientFilename();
 
-                if($name)
-                    $imaging->moveTo($targetPath);
-                $moncase->imaging = $name;
+                $targetPath = WWW_ROOT . 'img' . DS . 'case' . DS . $name;
+
+                if ($name) {
+                    $image->moveTo($targetPath);
+                    $moncase->imaging = 'case/' .  $name;
+                }
             }
 
-
             if ($this->Moncases->save($moncase)) {
-                $this->Flash->success(__('The moncase has been saved.'));
+                $this->Flash->success(__('The case has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The moncase could not be saved. Please, try again.'));
+            $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
         $this->set(compact('moncase'));
     }
@@ -140,7 +140,7 @@ class MoncasesController extends AppController
     public function oscer()
     {
         $moncases = $this->paginate($this->Moncases, [
-            'conditions' => ['case_type' => 'Oscer']
+            'conditions' => ['case_type' => 'Oscer'],
         ]);
 
         $this->set(compact('moncases'));
@@ -149,7 +149,7 @@ class MoncasesController extends AppController
     public function long()
     {
         $moncases = $this->paginate($this->Moncases, [
-            'conditions' => ['case_type' => 'Long']
+            'conditions' => ['case_type' => 'Long'],
         ]);
 
         $this->set(compact('moncases'));
@@ -158,7 +158,7 @@ class MoncasesController extends AppController
     public function medium()
     {
         $moncases = $this->paginate($this->Moncases, [
-            'conditions' => ['case_type' => ',Medium']
+            'conditions' => ['case_type' => ',Medium'],
         ]);
 
         $this->set(compact('moncases'));
@@ -167,7 +167,7 @@ class MoncasesController extends AppController
     public function short()
     {
         $moncases = $this->paginate($this->Moncases, [
-            'conditions' => ['case_type' => 'Short']
+            'conditions' => ['case_type' => 'Short'],
         ]);
 
         $this->set(compact('moncases'));
@@ -176,11 +176,9 @@ class MoncasesController extends AppController
     public function general()
     {
         $moncases = $this->paginate($this->Moncases, [
-            'conditions' => ['case_type' => 'General']
+            'conditions' => ['case_type' => 'General'],
         ]);
 
         $this->set(compact('moncases'));
     }
-
-
 }

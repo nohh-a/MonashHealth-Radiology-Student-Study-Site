@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -71,15 +69,15 @@ class MoncasesTable extends Table
 
         $validator
             ->notEmptyFile('imaging')
-            ->add('imaging',[
+            ->add('imaging', [
                 'mimeType' => [
                     'rule' => ['mimeType', ['image/jpg', 'image/png','image/jpeg']],
                     'message' => 'Please upload only JPG,PNG,JPEG images',
                 ],
-                'fileSize'=>[
-                    'rule'=>['fileSize','<=','1MB'],
-                    'message'=>'Image file size must be less than 1MB.',
-                ]
+                'fileSize' => [
+                    'rule' => ['fileSize','<=','1MB'],
+                    'message' => 'Image file size must be less than 1MB.',
+                ],
             ]);
 
         $validator

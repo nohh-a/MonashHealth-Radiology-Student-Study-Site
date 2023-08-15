@@ -13,6 +13,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
+                            <?= $this->Html->image('/img/' . $moncase->imaging, ['width' => '150px']); ?>
+                            <?= $this->Form->control('imaging', ['type' => 'file', 'class' => 'form-control']); ?>
+
                             <?=$this->Form->control('case_type', ['label' => 'Case Type',
                                 'class' => 'form-control',
                                 'options' => [
@@ -31,11 +34,7 @@
                                 'maxlength' => 236
                             ])
                             ?>
-                            <?= $this->Form->control('imaging', [
-                                'class' => 'form-control',
-                                'maxlength' => 236
-                            ])
-                            ?>
+
                             <?= $this->Form->control('max_marks', [
                                 'class' => 'form-control',
                                 'label' => 'Maximum Marks',
