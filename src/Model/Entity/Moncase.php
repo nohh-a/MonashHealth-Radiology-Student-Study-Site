@@ -29,9 +29,10 @@ use Cake\ORM\Entity;
  * @property string|null $teaching_points
  * @property string|null $seen_by
  * @property string|null $tags
- * @property string $contributer
+ * @property string $contributor
  * @property string $speciality
  * @property int|null $rating
+ * @property string $author
  */
 class Moncase extends Entity
 {
@@ -65,8 +66,9 @@ class Moncase extends Entity
         'teaching_points' => true,
         'seen_by' => true,
         'tags' => true,
-        'contributer' => true,
+        'contributor' => true,
         'speciality' => true,
         'rating' => true,
+        'author' => true,
     ];
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 15, 2023 at 09:58 AM
+-- Generation Time: Aug 15, 2023 at 04:55 PM
 -- Server version: 11.0.2-MariaDB
 -- PHP Version: 8.2.8
 
@@ -33,7 +33,7 @@ CREATE TABLE `moncases` (
   `case_type` enum('OSCER','LONG','MEDIUM','SHORT','GENERAL') NOT NULL,
   `date` date NOT NULL,
   `history` text NOT NULL,
-  `imaging` text NOT NULL,
+  `imaging` varchar(255) NOT NULL,
   `max_marks` int(2) DEFAULT NULL,
   `observation` text DEFAULT NULL,
   `intepretation` text DEFAULT NULL,

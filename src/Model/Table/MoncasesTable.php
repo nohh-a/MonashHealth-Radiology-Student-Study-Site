@@ -71,6 +71,7 @@ class MoncasesTable extends Table
 
         $validator
             ->scalar('imaging')
+            ->maxLength('imaging', 255)
             ->requirePresence('imaging', 'create')
             ->notEmptyString('imaging');
 
@@ -135,9 +136,9 @@ class MoncasesTable extends Table
             ->allowEmptyString('tags');
 
         $validator
-            ->scalar('contributer')
-            ->requirePresence('contributer', 'create')
-            ->notEmptyString('contributer');
+            ->scalar('contributor')
+            ->requirePresence('contributor', 'create')
+            ->notEmptyString('contributor');
 
         $validator
             ->scalar('speciality')
@@ -147,6 +148,11 @@ class MoncasesTable extends Table
         $validator
             ->integer('rating')
             ->allowEmptyString('rating');
+
+        $validator
+            ->scalar('author')
+            ->requirePresence('author', 'create')
+            ->notEmptyString('author');
 
         return $validator;
     }
