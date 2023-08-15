@@ -3,17 +3,24 @@ declare(strict_types=1);
 
 namespace App\Model\Entity;
 
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 use Cake\ORM\Entity;
 
 /**
  * User Entity
  *
- * @property int $id
+ * @property string $id
  * @property string $username
- * @property string $password
- * @property string|null $access_role
  * @property string $email
- * @property string|null $token
+ * @property string $password
+ * @property string $first_name
+ * @property string $last_name
+ * @property string|null $access_role
+ * @property string|null $avatar
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
+ * @property string|null $nonce
+ * @property \Cake\I18n\FrozenTime|null $nonce_expiry
  */
 class User extends Entity
 {
@@ -28,10 +35,16 @@ class User extends Entity
      */
     protected $_accessible = [
         'username' => true,
-        'password' => true,
-        'access_role' => true,
         'email' => true,
-        'token' => true,
+        'password' => true,
+        'first_name' => true,
+        'last_name' => true,
+        'access_role' => true,
+        'avatar' => true,
+        'created' => true,
+        'modified' => true,
+        'nonce' => true,
+        'nonce_expiry' => true,
     ];
 
     /**
@@ -41,6 +54,15 @@ class User extends Entity
      */
     protected $_hidden = [
         'password',
-        'token',
     ];
+
+    // Add this method
+    protected function _setPassword(string $password) : ?string
+    {
+        if (strlen($password) > 0) {
+            return (new DefaultPasswordHasher())->hash($password);
+        }
+
+        return $password;
+    }
 }

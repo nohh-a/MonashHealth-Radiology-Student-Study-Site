@@ -16,3 +16,8 @@
  */
 
 echo $content;
+?>
+
+==========
+Copyright (c) <?= date("Y"); ?> Monash FIT Industry Experience
+Don't like these emails? Unsubscribe at <?= $this->Url->build('/', ['fullBase' => 'true']) ?>

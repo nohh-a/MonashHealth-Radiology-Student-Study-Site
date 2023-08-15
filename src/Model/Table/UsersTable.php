@@ -24,6 +24,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class UsersTable extends Table
 {
@@ -40,6 +42,8 @@ class UsersTable extends Table
         $this->setTable('users');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
     }
 
     /**
@@ -56,23 +60,63 @@ class UsersTable extends Table
             ->notEmptyString('username');
 
         $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmptyString('email');
+
+        $validator
             ->scalar('password')
+            ->maxLength('password', 96)
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
+
+        $validator
+            ->scalar('first_name')
+            ->maxLength('first_name', 128)
+            ->requirePresence('first_name', 'create')
+            ->notEmptyString('first_name');
+
+        $validator
+            ->scalar('last_name')
+            ->maxLength('last_name', 128)
+            ->requirePresence('last_name', 'create')
+            ->notEmptyString('last_name');
 
         $validator
             ->scalar('access_role')
             ->allowEmptyString('access_role');
 
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmptyString('email');
+            ->scalar('avatar')
+            ->allowEmptyString('avatar');
 
         $validator
-            ->scalar('token')
-            ->maxLength('token', 255)
-            ->allowEmptyString('token');
+            ->scalar('nonce')
+            ->maxLength('nonce', 128)
+            ->allowEmptyString('nonce');
+
+        $validator
+            ->dateTime('nonce_expiry')
+            ->allowEmptyDateTime('nonce_expiry');
+
+        return $validator;
+    }
+
+    public function validationResetPassword(Validator $validator): Validator {
+        $validator
+            ->scalar('password')
+            ->requirePresence('password', 'reset-password')
+            ->notEmptyString('password');
+
+        // Validate retyped password
+        $validator
+            ->requirePresence('password_confirm', 'reset-password')
+            ->sameAs('password_confirm', 'password', 'Both passwords must match');
+
+        $validator
+            ->uuid('nonce')
+            ->maxLength('nonce', 128)
+            ->allowEmptyString('nonce');
 
         return $validator;
     }

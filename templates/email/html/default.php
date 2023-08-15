@@ -15,8 +15,42 @@
  * @var string $content
  */
 
-$lines = explode("\n", $content);
+$content_split = explode("\n", $content);
+$body = '';
 
-foreach ($lines as $line) :
-    echo '<p> ' . $line . "</p>\n";
+foreach ($content_split as $line) :
+    $body .= '<p> ' . h($line) . "</p>\n";
 endforeach;
+
+?>
+<div class="content">
+    <!-- START CENTERED WHITE CONTAINER -->
+    <table role="presentation" class="main">
+        <!-- START MAIN CONTENT AREA -->
+        <tr>
+            <td class="wrapper">
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <?= $body ?>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!-- END MAIN CONTENT AREA -->
+    </table>
+    <!-- END CENTERED WHITE CONTAINER -->
+    <!-- START FOOTER -->
+    <div class="footer">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="content-block">
+                    Copyright &copy; <?= date("Y"); ?> Monash FIT Industry Experience
+                    <br> Don't like these emails? <?= $this->Html->link('Unsubscribe', ['/'], ['fullBase' => true]) ?>.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- END FOOTER -->
+</div>

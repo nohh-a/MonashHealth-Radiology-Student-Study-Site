@@ -49,9 +49,10 @@ CREATE TABLE `moncases` (
   `teaching_points` text DEFAULT NULL,
   `seen_by` text DEFAULT NULL,
   `tags` text DEFAULT NULL,
-  `contributer` enum('TRAINEE','CONSULTANT','LIBRARY') NOT NULL,
+  `contributor` enum('TRAINEE','CONSULTANT','LIBRARY') NOT NULL,
   `speciality` text NOT NULL,
-  `rating` int(1) DEFAULT NULL
+  `rating` int(1) DEFAULT NULL,
+  `author` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -65,13 +66,20 @@ CREATE TABLE `moncases` (
 -- Table structure for table `users`
 --
 
+
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` char(36) NOT NULL,
   `username` text NOT NULL,
-  `password` text NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `password` varchar(96) NOT NULL,
+  `first_name` varchar(128) NOT NULL,
+  `last_name` varchar(128) NOT NULL,
   `access_role` enum('ADMIN','CONSULTANT','TRAINEE','') DEFAULT NULL,
-  `email` varchar(50) NOT NULL,
-  `token` varchar(255) DEFAULT NULL
+  `avatar` text DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `modified` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `nonce` char(128) DEFAULT NULL,
+  `nonce_expiry` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -98,13 +106,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `moncases`
 --
 ALTER TABLE `moncases`
-  MODIFY `id` int(99) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
