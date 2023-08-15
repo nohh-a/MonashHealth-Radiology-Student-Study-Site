@@ -2,6 +2,11 @@
 /**
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\Moncase> $moncases
+ * @var int $oscerCount
+ * @var int $longCount
+ * @var int $mediumCount
+ * @var int $shortCount
+ * @var int $generalCount
  */
 
 echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css',['block'=>true]);
@@ -50,7 +55,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'oscer']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
                 <div class="text font-weight-bold text-success text-uppercase mb-1">oscer</div>
                 <div class="h3 font-weight-bold text-red mb-0 d-flex align-items-center">
-                    <span style="font-size: 65%;"><?= h(1) ?></span>
+                    <span style="font-size: 65%;"><?= h($oscerCount) ?></span>
                 </div>
             </a>
         </div>
@@ -59,7 +64,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'long']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
                 <div class="text font-weight-bold text-success text-uppercase mb-1">long</div>
                 <div class="h3 font-weight-bold text-orange mb-0 d-flex align-items-center">
-                    <span style="font-size: 65%;"><?= h(1) ?></span>
+                    <span style="font-size: 65%;"><?= h($longCount) ?></span>
                 </div>
             </a>
         </div>
@@ -68,7 +73,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'medium']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
                 <div class="text font-weight-bold text-success text-uppercase mb-1">medium</div>
                 <div class="h3 font-weight-bold text-pink mb-0 d-flex align-items-center">
-                    <span style="font-size: 65%;"><?= h(1) ?></span>
+                    <span style="font-size: 65%;"><?= h($mediumCount) ?></span>
                 </div>
             </a>
         </div>
@@ -77,7 +82,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'short']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
                 <div class="text font-weight-bold text-success text-uppercase mb-1">short</div>
                 <div class="h3 font-weight-bold text-blue mb-0 d-flex align-items-center">
-                    <span style="font-size: 65%;"><?= h(1) ?></span>
+                    <span style="font-size: 65%;"><?= h($shortCount) ?></span>
                 </div>
             </a>
         </div>
@@ -86,7 +91,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'general']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
                 <div class="text font-weight-bold text-success text-uppercase mb-1">general</div>
                 <div class="h3 font-weight-bold text-blue mb-0 d-flex align-items-center">
-                    <span style="font-size: 65%;"><?= h(1) ?></span>
+                    <span style="font-size: 65%;"><?= h($generalCount) ?></span>
                 </div>
             </a>
         </div>
@@ -98,6 +103,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">All Cases</h1>
+                <?= $this->Html->link(__('Add a New Case'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

@@ -20,7 +20,28 @@ class MoncasesController extends AppController
     {
         $moncases = $this->paginate($this->Moncases);
 
-        $this->set(compact('moncases'));
+        $oscerCount = $this->Moncases->find()
+            ->where(['case_type' => 'Oscer'])
+            ->count();
+
+        $longCount = $this->Moncases->find()
+            ->where(['case_type' => 'Long'])
+            ->count();
+
+        $mediumCount = $this->Moncases->find()
+            ->where(['case_type' => 'Medium'])
+            ->count();
+
+        $shortCount = $this->Moncases->find()
+            ->where(['case_type' => 'Short'])
+            ->count();
+
+        $generalCount = $this->Moncases->find()
+            ->where(['case_type' => 'General'])
+            ->count();
+
+
+        $this->set(compact('moncases','oscerCount','longCount','mediumCount','shortCount','generalCount'));
     }
 
     /**
@@ -147,4 +168,6 @@ class MoncasesController extends AppController
 
         $this->set(compact('moncases'));
     }
+
+
 }
