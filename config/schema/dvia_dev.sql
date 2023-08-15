@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 10, 2023 at 06:45 AM
+-- Generation Time: Aug 15, 2023 at 09:58 AM
 -- Server version: 11.0.2-MariaDB
 -- PHP Version: 8.2.8
 
@@ -55,17 +55,11 @@ CREATE TABLE `moncases` (
   `author` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `moncases`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
-
 
 CREATE TABLE `users` (
   `id` char(36) NOT NULL,
@@ -81,6 +75,13 @@ CREATE TABLE `users` (
   `nonce` char(128) DEFAULT NULL,
   `nonce_expiry` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `access_role`, `avatar`, `created`, `modified`, `nonce`, `nonce_expiry`) VALUES
+('25d2e98e-ffd2-4649-bd1c-3fb05ac9a217', 'Admin', 'zwan0237@student.monash.edu', '$2y$10$U4EKLjmBzp5mirg5g4m6SueV/52uOOtSh8FDvxUF1tCm50amgcifG', 'Roger', 'Wang', 'ADMIN', '', '2023-08-15 09:09:04', '2023-08-15 09:43:29', '819c2a16b9622af7d6288348ca9d3d610ffe0ae979222c478bc7660dc8d7046a08481cb6332515af97fa400bea7363ff06ba8d0f8279d90328d28eee766316f1', '2023-08-22 09:43:29');
 
 --
 -- Indexes for dumped tables
@@ -107,10 +108,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `moncases`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `users`
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
