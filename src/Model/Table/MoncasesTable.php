@@ -70,9 +70,17 @@ class MoncasesTable extends Table
             ->notEmptyString('history');
 
         $validator
-            ->scalar('imaging')
-            ->requirePresence('imaging', 'create')
-            ->notEmptyString('imaging');
+            ->notEmptyFile('imaging')
+            ->add('imaging',[
+                'mimeType' => [
+                    'rule' => ['mimeType', ['image/jpg', 'image/png','image/jpeg']],
+                    'message' => 'Please upload only JPG,PNG,JPEG images',
+                ],
+                'fileSize'=>[
+                    'rule'=>['fileSize','<=','1MB'],
+                    'message'=>'Image file size must be less than 1MB.',
+                ]
+            ]);
 
         $validator
             ->integer('max_marks')
