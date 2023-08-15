@@ -70,6 +70,19 @@ class MoncasesController extends AppController
         $moncase = $this->Moncases->newEmptyEntity();
         if ($this->request->is('post')) {
             $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+
+            if(!$moncase->getErrors){
+                $imaging = $this->request->getData('image_file');
+                $name = $imaging->getClientFilename();
+
+                $targetPath = WWW_ROOT.'img'.DS.'case'.DS.$name;
+
+                if($name)
+                    $imaging->moveTo($targetPath);
+                $moncase->imaging = $name;
+            }
+
+
             if ($this->Moncases->save($moncase)) {
                 $this->Flash->success(__('The moncase has been saved.'));
 

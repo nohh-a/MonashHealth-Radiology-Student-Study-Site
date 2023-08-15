@@ -36,6 +36,10 @@
             </table>
             <table class="table table-bordered table-hover dataTable">
                 <tr>
+                    <th><?= __('Imaging') ?></th>
+                    <td><?= $this->Html->image($moncase->imaging) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Case Type') ?></th>
                     <td><?= h($moncase->case_type) ?></td>
 
@@ -64,10 +68,6 @@
                     <th><?= __('History') ?></th>
                     <td><?= h($moncase->history) ?></td>
 
-                </tr>
-                <tr>
-                    <th><?= __('Imaging') ?></th>
-                    <td><?= h($moncase->imaging) ?></td>
                 </tr>
 
                 <tr>
