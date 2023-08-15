@@ -75,7 +75,7 @@ $this->disableAutoLayout();
             <div class="login100-form validate-form">
 
                 <span class="login100-form-title p-b-43">
-						Login to Dashboard
+						Login
 					</span>
                 <?= $this->Form->create() ?>
                 <?= $this->Flash->render() ?>
