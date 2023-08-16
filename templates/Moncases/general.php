@@ -47,6 +47,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
+                        <th><?= h('Imaging') ?></th>
                         <th><?= h('Accession No') ?></th>
                         <th><?= h('Case Type') ?></th>
                         <th><?= h('Date') ?></th>
@@ -60,6 +61,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                     <?php foreach ($moncases as $moncases): ?>
                         <tr>
 
+                            <td><?= $this->Html->image($moncases->imaging, ['width' => '150px']); ?></td>
                             <td><?= h($moncases->accession_no) ?></td>
                             <td><?= h($moncases->case_type) ?></td>
                             <td><?= h($moncases->date) ?></td>
