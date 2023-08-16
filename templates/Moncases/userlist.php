@@ -118,8 +118,9 @@ $this->disableAutoLayout();
                         <?php if ($moncases->count() > 0) : ?>
                         <?php foreach ($moncases as $moncases) : ?>
                         <article class="card clearfix">
+                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncases->id])?>">
                             <div class="card__img">
-                                <img class="img-responsive" src="webroot/media/cards/1.jpg" height="196" width="235" alt="foto">
+                                <img class="img-responsive" src=<?php echo $this->Url->image($moncases -> imaging) ?> height="196" width="235" alt="foto">
                             </div>
                             <div class="card__inner">
                                 <h2 class="card__title ui-title-inner"><?= h($moncases->differential_diagnosis) ?></h2>
@@ -129,10 +130,6 @@ $this->disableAutoLayout();
                                 </div>
                                 <ul class="card__list list-unstyled">
                                     <li class="card-list__row">
-                                        <span class="card-list__title">Imaging:</span>
-                                        <span class="card-list__info"><?= h($moncases->imaging) ?></span>
-                                    </li>
-                                    <li class="card-list__row">
                                         <span class="card-list__title">Findings:</span>
                                         <span class="card-list__info"><?= h($moncases->findings) ?></span>
                                     </li>
@@ -141,7 +138,6 @@ $this->disableAutoLayout();
                                         <span class="card-list__info"><?= h($moncases->teaching_points) ?></span>
                                     </li>
                                 </ul>
-
                         </article>
                             <?php endforeach; ?>
                         <?php else: ?>
@@ -220,7 +216,7 @@ $this->disableAutoLayout();
                             <?= $this->Form->end() ?>
                             </div>
                         </div>
-                            </aside>dfc
+                            </aside>
                         </div><!-- end wrap-filter -->
             </div><!-- end row -->
         </div><!-- end container -->

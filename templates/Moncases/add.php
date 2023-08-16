@@ -62,6 +62,11 @@
                                 'maxlength' => 236
                             ])
                             ?>
+                            <?= $this->Form->control('author', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
                         </div>
                         <div class="col-md-6">
                             <?= $this->Form->control('intepretation', [
