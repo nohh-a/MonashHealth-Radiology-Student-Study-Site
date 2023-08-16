@@ -49,11 +49,14 @@ $this->disableAutoLayout();
         .section-bg_second {
             background-color: #7d9afd;
         }
-        .jelect-option_state_active {
+        .jelect-option_state_active, .jelect-option:hover {
             background-color: #7d9afd;
         }
         .btn-skew-r {
             background-color: #7d9afd;
+        }
+        .a, .li.active, a:focus, a:hover {
+            background-color: #bacdff;
         }
 
     </style>
@@ -87,20 +90,12 @@ $this->disableAutoLayout();
                     <main class="main-content">
                         <div class="sorting">
                             <div class="sorting__inner">
-                                <div class="sorting__item">
-                                    <span class="sorting__title">select View</span>
-                                </div>
-                                <div class="sorting__item">
-                                    <span class="sorting__title">show on page</span>
-                                    <div  class="select jelect">
-                                        <input id="page" name="page" value="0" data-text="imagemin" type="text" class="jelect-input">
-                                        <div tabindex="0" role="button" class="jelect-current">10 Items</div>
-                                        <ul class="jelect-options">
-                                            <li  class="jelect-option jelect-option_state_active">10 Items</li>
-                                            <li  class="jelect-option">20 Items</li>
-                                            <li  class="jelect-option">30 Items</li>
-                                        </ul>
-                                    </div>
+                                <div class ="sorting__item">
+                                <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                <?= $this->Form->text('search', ['placeholder' => 'Search Name']) ?>
+                                <?= $this->Form->button(__('Search')) ?>
+                                <?= $this->Form->button(__('Reset'), ['type' => 'search', 'class' => 'reset-button']) ?>
+                                <?= $this->Form->end() ?>
                                 </div>
                                 <div class="sorting__item">
                                     <span class="sorting__title">Sort by</span>
@@ -113,6 +108,10 @@ $this->disableAutoLayout();
                                         </ul>
                                     </div>
                                 </div>
+                                <div class ="sorting__item">
+                                    <a <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'add'], ['class'=> 'list-tags__link'])?> </a>
+                                </div>
+
                             </div>
                         </div><!-- end sorting -->
 
@@ -173,22 +172,6 @@ $this->disableAutoLayout();
                             </div>
                         </section>
                             <section class="widget widget_mod-a">
-                                <h3 class="widget-title">Date</h3>
-                                <div class="decor-1"></div>
-                                <div class="widget-content">
-                                    <?= $this->Form->select('date', [
-                                        'Oscer' => 'Oscer',
-                                        'Long' => 'Long',
-                                        'Medium' => 'Medium',
-                                        'Short' => 'Short',
-                                        'General' => 'General',
-                                    ], [
-                                        'class' => 'select select_mod-a jelect',
-                                        'empty' => 'Select Date'
-                                    ]); ?>
-                                </div>
-                            </section>
-                            <section class="widget widget_mod-a">
                                 <h3 class="widget-title">Contributer</h3>
                                 <div class="decor-1"></div>
                                 <div class="widget-content">
@@ -237,7 +220,7 @@ $this->disableAutoLayout();
                             <?= $this->Form->end() ?>
                             </div>
                         </div>
-                            </aside>
+                            </aside>dfc
                         </div><!-- end wrap-filter -->
             </div><!-- end row -->
         </div><!-- end container -->
@@ -248,7 +231,7 @@ $this->disableAutoLayout();
 
 
 </body>
-</html> 63,mk
+</html>
 <!-- SCRIPTS -->
 <?= $this->Html->script('/assets/js/jquery-migrate-1.2.1.js'); ?>
 <?= $this->Html->script('/assets/plugins/bootstrap/js/bootstrap.min.js'); ?>
@@ -266,3 +249,12 @@ $this->disableAutoLayout();
 <?= $this->Html->script('/assets/js/wow.min.js'); ?>
 <?= $this->Html->script('/assets/js/custom.js'); ?>
 
+<!-- Bootstrap core JavaScript-->
+<?= $this->Html->script('/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>
+
+<!-- Core plugin JavaScript-->
+<?= $this->Html->script('/vendor/jquery-easing/jquery.easing.min.js') ?>
+
+<!-- Custom scripts for all pages-->
+<?= $this->Html->script('/js/sb-admin-2.min.js') ?>
+<?= $this->fetch('script') ?>

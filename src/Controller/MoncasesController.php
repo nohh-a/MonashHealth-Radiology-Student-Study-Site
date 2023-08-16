@@ -184,7 +184,18 @@ class MoncasesController extends AppController
 
     public function userlist()
     {
+        // obtain cases list
         $moncases = $this->Moncases->find();
+
+        //search functionality
+        $search = $this->request->getQuery('search');
+        if ($search) {
+            $moncases->where(['OR' => [
+                'author LIKE' => "%$search%",
+            ]]);
+        }
+
+        // filter functionality
         $filter = [];
 
         $caseTypeFilter = $this->request->getQuery('case_type');
