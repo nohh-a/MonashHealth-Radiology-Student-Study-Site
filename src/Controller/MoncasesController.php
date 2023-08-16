@@ -71,15 +71,15 @@ class MoncasesController extends AppController
             $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
 
             if (!$moncase->getErrors()) {
-                $image = $this->request->getData('imaging');
+                $image = $this->request->getUploadedFile('imaging');
 
                 $name = $image->getClientFilename();
 
-                $targetPath = WWW_ROOT . 'img' . DS . 'case' . DS . $name;
+                $targetPath = WWW_ROOT.'img'.DS.'uploads'.DS.$name;
 
                 if ($name) {
                     $image->moveTo($targetPath);
-                    $moncase->imaging = 'case/' .  $name;
+                    $moncase->imaging='uploads/'.$name;
                 }
             }
 

@@ -123,7 +123,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                     <?php foreach ($moncases as $moncases): ?>
                         <tr>
 
-                            <td><?= $this->Html->image($moncases->imaging, ['width' => '150px']); ?><td>
+                            <td><?= $this->Html->image($moncases->imaging, ['width' => '150px']); ?></td>
                             <td><?= h($moncases->accession_no) ?></td>
                             <td><?= h($moncases->case_type) ?></td>
                             <td><?= h($moncases->date) ?></td>

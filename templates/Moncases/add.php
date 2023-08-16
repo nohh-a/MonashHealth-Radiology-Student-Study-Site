@@ -8,7 +8,7 @@
     <div class="col-md-8">
         <div class="moncases form content">
 
-            <?= $this->Form->create($moncase, ['type'=>'file']) ?>
+            <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
 
             <div class="card">
                 <h5 class="card-header text-center"><?= __('Add New Case') ?></h5>
@@ -16,7 +16,6 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <?= $this->Html->image('/img/'. $moncase->imaging, ['width' => '150px']); ?>
                             <?= $this->Form->control('imaging', ['type' => 'file']); ?>
 
                             <?=$this->Form->control('case_type', ['label' => 'Case Type',
