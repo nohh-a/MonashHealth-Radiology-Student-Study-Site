@@ -181,4 +181,42 @@ class MoncasesController extends AppController
 
         $this->set(compact('moncases'));
     }
+
+    public function userlist()
+    {
+        $moncases = $this->Moncases->find();
+        $filter = [];
+
+        $caseTypeFilter = $this->request->getQuery('case_type');
+        /* $dateFilter = $this->request->getQuery('date'); */
+        $contributorFilter = $this->request->getQuery('contributor');
+        $ratingFilter = $this->request->getQuery('rating');
+        $imagingFilter = $this->request->getQuery('imaging');
+
+
+        if ($caseTypeFilter !== '') {
+            $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
+        }
+        /*
+        if ($dateFilter !== '') {
+            $filter[] = ['date LIKE' => '%' . $dateFilter . '%'];
+        } */
+        if ($contributorFilter !== '') {
+            $filter[] = ['contributor LIKE' => '%' . $contributorFilter . '%'];
+        }
+        if ($ratingFilter !== '') {
+            $ratingFilter = (int)$ratingFilter;
+
+            $filter[] = ['rating' => $ratingFilter];
+        }
+        if ($imagingFilter !== '') {
+            $filter[] = ['imaging LIKE' => '%' . $imagingFilter . '%'];
+        }
+
+        if ($filter) {
+            $moncases->where(['AND' => $filter]);
+        }
+        $this->set(compact('moncases', 'filter'));
+    }
+
 }
