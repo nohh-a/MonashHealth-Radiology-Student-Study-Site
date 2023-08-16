@@ -4,38 +4,46 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="users form content">
-            <?= $this->Form->create($user) ?>
-            <fieldset>
-                <legend><?= __('Add User') ?></legend>
-                <?php
-                    echo $this->Form->control('username');
-                    echo $this->Form->control('email');
-                    echo $this->Form->control('password');
-                    // Validate password by repeating it
-                    echo $this->Form->control('password_confirm', [
-                        'style' => 'width: 500px',
-                        'type' => 'password',
-                        'value' => '',  // Ensure password is not sending back to the client side
-                        'label' => 'Retype Password',
-                        'templateVars' => ['container_class' => 'column']
-                    ]);
-                    echo $this->Form->control('first_name');
-                    echo $this->Form->control('last_name');
-                    echo $this->Form->control('access_role');
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header text-center"><?= __('Add User') ?></div>
+                <div class="card-body">
+                    <?= $this->Form->create($user) ?>
+                    <fieldset>
+                        <div class="form-group">
+                            <?= $this->Form->control('username', [
+                                'type' => 'text',
+                                'class' => 'form-control',
+                                'maxlength' => 20
+                            ])
+                            ?>
+                        </div>
+                        <div class="form-group">
+                            <?= $this->Form->control('email', ['class' => 'form-control']) ?>
+                        </div>
+                        <div class="form-group">
+                            <?= $this->Form->control('password', ['class' => 'form-control']) ?>
+                        </div>
+                        <div class="form-group">
+                            <?= $this->Form->label('access_role', 'Access Role') ?>
+                            <?= $this->Form->select('access_role', [
+                                'ADMIN' => 'ADMIN',
+                                'TRAINEE' => 'TRAINEE',
+                                'CONSULTANT' => 'CONSULTANT',
+                            ], [
+                                'class' => 'form-control',
+                                'required' => true,
+                                'empty' => '- Select Access Role -',
+                            ]) ?>
+                        </div>
+                    </fieldset>
+                    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+                    <?= $this->Form->end() ?>
+                </div>
+            </div>
 
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
         </div>
     </div>
 </div>
