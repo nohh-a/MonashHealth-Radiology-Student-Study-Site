@@ -190,7 +190,7 @@ class MoncasesController extends AppController
         $search = $this->request->getQuery('search');
         if ($search) {
             $moncases->where([
-                'diagnosis LIKE' => "%$search%",
+                'differential_diagnosis LIKE' => "%$search%",
             ]);
         }
 

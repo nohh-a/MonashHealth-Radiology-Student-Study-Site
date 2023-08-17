@@ -48,8 +48,9 @@ $this->disableAutoLayout();
         .btn-skew-r {
             background-color: #7d9afd;
         }
-        .a, .li.active, a:focus, a:hover {
-            background-color: #bacdff;
+
+        .card-list__info, .card__title, .card__description {
+            overflow-wrap: break-word; /* Alternative for better browser support */
         }
 
     </style>
