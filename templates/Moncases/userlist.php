@@ -94,12 +94,25 @@ $this->disableAutoLayout();
                                 <div class="sorting__item">
                                     <span class="sorting__title">Sort by</span>
                                     <div  class="select jelect">
-                                        <input id="sort" name="sort" value="0" data-text="imagemin" type="text" class="jelect-input">
-                                        <div tabindex="0" role="button" class="jelect-current">Last Added</div>
-                                        <ul class="jelect-options">
-                                            <li  class="jelect-option jelect-option_state_active">Last Added</li>
-                                            <li  class="jelect-option">First Added</li>
-                                        </ul>
+                                        <?= $this->Form->create(null, ['type' => 'get']) ?>
+                                        <?= $this->Form->select(
+                                            'sort',
+                                            [
+                                                'newest' => ' Newest',
+                                                'oldest' => 'Oldest',
+                                                'az' => 'A-Z',
+                                                'za' => 'Z-A',
+                                                'date' => 'Date',
+                                                'rating' => 'Rating',
+                                                ],
+                                            [
+                                                'empty' => false,
+                                                'default' => $this -> request -> getQuery('sort'),
+                                                'class' => 'select jelect',
+                                            ]
+                                        ) ?>
+                                        <?= $this->Form->button(__('Apply')) ?>
+                                        <?= $this->Form->end() ?>
                                     </div>
                                 </div>
                                 <div class ="sorting__item">

@@ -196,18 +196,14 @@ class MoncasesController extends AppController
 
         // filter functionality
         $filter = [];
-
         $caseTypeFilter = $this->request->getQuery('case_type');
-        /* $dateFilter = $this->request->getQuery('date'); */
         $contributorFilter = $this->request->getQuery('contributor');
         $ratingFilter = $this->request->getQuery('rating');
         /* $imagingFilter = $this->request->getQuery('imaging'); */
 
-
         if ($caseTypeFilter !== '') {
             $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
         }
-
         if ($contributorFilter !== '') {
             $filter[] = ['contributor LIKE' => '%' . $contributorFilter . '%'];
         }
@@ -217,12 +213,31 @@ class MoncasesController extends AppController
                 $filter[] = ['rating' => $ratingFilter];
             }
         }
-
         if ($filter) {
             $moncases->where(['AND' => $filter]);
         }
 
-        $this->set(compact('moncases','search', 'filter'));
+        // Sorting feature
+        $sort = $this->request->getQuery('sort');
+        switch ($sort) {
+            case 'newest':
+                $moncases->order(['date' => 'DESC']);
+                break;
+            case 'oldest':
+                $moncases->order(['date' => 'ASC']);
+                break;
+            case 'az':
+                $moncases->order(['differential_diagnosis' => 'ASC']);
+                break;
+            case 'za':
+                $moncases->order(['differential_diagnosis' => 'DESC']);
+                break;
+            case 'rating':
+                $moncases->order(['rating' => 'ASC']);
+                break;
+        }
+
+        $this->set(compact('moncases','search', 'filter','sort'));
     }
 
 }
