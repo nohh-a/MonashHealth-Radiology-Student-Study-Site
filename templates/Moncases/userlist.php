@@ -12,14 +12,7 @@
  * @link      https://cakephp.org CakePHP(tm) Project
  * @since     0.10.0
  * @license   https://opensource.org/licenses/mit-license.php MIT License
- * @var \App\View\AppView $this
  */
-use Cake\Cache\Cache;
-use Cake\Core\Configure;
-use Cake\Core\Plugin;
-use Cake\Datasource\ConnectionManager;
-use Cake\Error\Debugger;
-use Cake\Http\Exception\NotFoundException;
 
 /**
  * @var \App\View\AppView $this
@@ -91,8 +84,8 @@ $this->disableAutoLayout();
                         <div class="sorting">
                             <div class="sorting__inner">
                                 <div class ="sorting__item">
-                                <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
-                                <?= $this->Form->text('search', ['placeholder' => 'Search Name']) ?>
+                                <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                <?= $this->Form->text('search', ['placeholder' => 'Search Diagnosis']) ?>
                                 <?= $this->Form->button(__('Search')) ?>
                                 <?= $this->Form->button(__('Reset'), ['type' => 'search', 'class' => 'reset-button']) ?>
                                 <?= $this->Form->end() ?>
@@ -109,38 +102,38 @@ $this->disableAutoLayout();
                                     </div>
                                 </div>
                                 <div class ="sorting__item">
-                                    <a <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'add'], ['class'=> 'list-tags__link'])?> </a>
+                                    <a <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'add'], ['class' => 'list-tags__link'])?> </a>
                                 </div>
 
                             </div>
                         </div><!-- end sorting -->
-
                         <?php if ($moncases->count() > 0) : ?>
-                        <?php foreach ($moncases as $moncases) : ?>
+                            <?php foreach ($moncases as $moncase) : ?>
                         <article class="card clearfix">
-                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncases->id])?>">
+                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
                             <div class="card__img">
-                                <img class="img-responsive" src=<?php echo $this->Url->image($moncases -> imaging) ?> height="196" width="235" alt="foto">
+                                <img class="img-responsive" src=<?php echo $this->Url->image($moncase -> imaging) ?> height="196" width="235" alt="foto">
                             </div>
                             <div class="card__inner">
-                                <h2 class="card__title ui-title-inner"><?= h($moncases->differential_diagnosis) ?></h2>
+                                <h2 class="card__title ui-title-inner"><?= h($moncase->differential_diagnosis) ?></h2>
                                 <div class="decor-1"></div>
                                 <div class="card__description">
-                                    <p><?= h($moncases->diagnosis) ?></p>
+                                    <p><?= h($moncase->diagnosis) ?></p>
                                 </div>
                                 <ul class="card__list list-unstyled">
                                     <li class="card-list__row">
                                         <span class="card-list__title">Findings:</span>
-                                        <span class="card-list__info"><?= h($moncases->findings) ?></span>
+                                        <span class="card-list__info"><?= h($moncase->findings) ?></span>
                                     </li>
                                     <li class="card-list__row">
                                         <span class="card-list__title">Teaching Points:</span>
-                                        <span class="card-list__info"><?= h($moncases->teaching_points) ?></span>
+                                        <span class="card-list__info"><?= h($moncase->teaching_points) ?></span>
                                     </li>
                                 </ul>
+                                <a/>
                         </article>
                             <?php endforeach; ?>
-                        <?php else: ?>
+                        <?php else : ?>
                             <p>No results found.</p>
                         <?php endif; ?>
 
@@ -150,8 +143,8 @@ $this->disableAutoLayout();
                 <div class="col-md-3">
                     <aside class="sidebar">
                         <!-- FILTER CASE TYPE-->
+                        <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                         <section class="widget widget_mod-a">
-                            <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                             <h3 class="widget-title">CASE TYPE</h3>
                             <div class="decor-1"></div>
                             <div class="widget-content">
@@ -163,7 +156,7 @@ $this->disableAutoLayout();
                                     'General' => 'General',
                                 ], [
                                     'class' => 'select select_mod-a jelect',
-                                    'empty' => 'Choose Case Type'
+                                    'empty' => 'Choose Case Type',
                                 ]); ?>
                             </div>
                         </section>
@@ -177,7 +170,7 @@ $this->disableAutoLayout();
                                         'Library' => 'Library',
                                     ], [
                                         'class' => 'select select_mod-a jelect',
-                                        'empty' => 'Choose Contributor'
+                                        'empty' => 'Choose Contributor',
                                     ]); ?>
                                 </div>
                             </section>
@@ -193,11 +186,11 @@ $this->disableAutoLayout();
                                         '5' => '5',
                                     ], [
                                         'class' => 'select select_mod-a jelect',
-                                        'empty' => 'Choose Rating'
+                                        'empty' => 'Choose Rating',
                                     ]); ?>
                                 </div>
                             </section>
-                            <section class="widget widget_mod-a">
+                             <!-- <section class="widget widget_mod-a">
                                 <h3 class="widget-title">Imaging</h3>
                                 <div class="decor-1"></div>
                                 <div class="widget-content">
@@ -205,14 +198,15 @@ $this->disableAutoLayout();
                                         'Test' => 'Test',
                                     ], [
                                         'class' => 'select select_mod-a jelect',
-                                        'empty' => 'Choose Imaging'
+                                        'empty' => 'Choose Imaging',
                                     ]); ?>
                                 </div>
                             </section>
+                            -->
 
                         <div class="btn">
                             <div class="btn-filter wrap__btn-skew-r js-filter">
-                            <?= $this->Form->button(__('Filter'), ['class' =>'btn-skew-r btn-effect btn-skew-r__inner']) ?>
+                            <?= $this->Form->button(__('Filter'), ['class' => 'btn-skew-r btn-effect btn-skew-r__inner']) ?>
                             <?= $this->Form->end() ?>
                             </div>
                         </div>
@@ -241,16 +235,13 @@ $this->disableAutoLayout();
 <?= $this->Html->script('/assets/plugins/flexslider/jquery.flexslider.js'); ?>
 
 <!--THEME-->
-<?= $this->Html->script('/assets/js/cssua.min.js'); ?>
-<?= $this->Html->script('/assets/js/wow.min.js'); ?>
+
 <?= $this->Html->script('/assets/js/custom.js'); ?>
 
 <!-- Bootstrap core JavaScript-->
 <?= $this->Html->script('/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>
-
 <!-- Core plugin JavaScript-->
 <?= $this->Html->script('/vendor/jquery-easing/jquery.easing.min.js') ?>
-
 <!-- Custom scripts for all pages-->
 <?= $this->Html->script('/js/sb-admin-2.min.js') ?>
 <?= $this->fetch('script') ?>

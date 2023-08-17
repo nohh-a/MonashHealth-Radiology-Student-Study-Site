@@ -186,13 +186,12 @@ class MoncasesController extends AppController
     {
         // obtain cases list
         $moncases = $this->Moncases->find();
-
         //search functionality
         $search = $this->request->getQuery('search');
         if ($search) {
-            $moncases->where(['OR' => [
-                'author LIKE' => "%$search%",
-            ]]);
+            $moncases->where([
+                'diagnosis LIKE' => "%$search%",
+            ]);
         }
 
         // filter functionality
@@ -202,32 +201,28 @@ class MoncasesController extends AppController
         /* $dateFilter = $this->request->getQuery('date'); */
         $contributorFilter = $this->request->getQuery('contributor');
         $ratingFilter = $this->request->getQuery('rating');
-        $imagingFilter = $this->request->getQuery('imaging');
+        /* $imagingFilter = $this->request->getQuery('imaging'); */
 
 
         if ($caseTypeFilter !== '') {
             $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
         }
-        /*
-        if ($dateFilter !== '') {
-            $filter[] = ['date LIKE' => '%' . $dateFilter . '%'];
-        } */
+
         if ($contributorFilter !== '') {
             $filter[] = ['contributor LIKE' => '%' . $contributorFilter . '%'];
         }
         if ($ratingFilter !== '') {
             $ratingFilter = (int)$ratingFilter;
-
-            $filter[] = ['rating' => $ratingFilter];
-        }
-        if ($imagingFilter !== '') {
-            $filter[] = ['imaging LIKE' => '%' . $imagingFilter . '%'];
+            if ($ratingFilter > 0 && $ratingFilter <= 5) {
+                $filter[] = ['rating' => $ratingFilter];
+            }
         }
 
         if ($filter) {
             $moncases->where(['AND' => $filter]);
         }
-        $this->set(compact('moncases', 'filter'));
+
+        $this->set(compact('moncases','search', 'filter'));
     }
 
 }
