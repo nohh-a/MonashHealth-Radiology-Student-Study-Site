@@ -50,14 +50,6 @@
         </li>
 
         <hr class="sidebar-divider">
-
-        <li class="nav-item active">
-            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'add']) ?>">
-                <i class="fas fa-fw fa-plus-square"></i>
-                <span style="font-size: 100%;">Add a New Case</span></a>
-        </li>
-
-        <hr class="sidebar-divider">
         <!-- Heading -->
         <div class="sidebar-heading">
             Cases

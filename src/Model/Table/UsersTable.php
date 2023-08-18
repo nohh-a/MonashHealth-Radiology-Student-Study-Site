@@ -84,7 +84,7 @@ class UsersTable extends Table
 
         $validator
             ->scalar('access_role')
-            ->allowEmptyString('access_role');
+            ->notEmptyString('access_role');
 
         $validator
             ->scalar('avatar')
