@@ -39,18 +39,22 @@ $this->disableAutoLayout();
     <?= $this->Html->css('/assets/plugins/iview/css/skin/style.css', ['class' => 'skin']) ?>
 
     <style>
-        .section-bg_second {
+        .section-bg_second, .jelect-option_state_active, .jelect-option:hover, .btn-skew-r{
             background-color: #7d9afd;
         }
-        .jelect-option_state_active, .jelect-option:hover {
-            background-color: #7d9afd;
+        .a, .card__description, .a:hover {
+            color: #365eec;
         }
-        .btn-skew-r {
-            background-color: #7d9afd;
-        }
-
         .card-list__info, .card__title, .card__description {
             overflow-wrap: break-word; /* Alternative for better browser support */
+        }
+        .card-list__row, .card__description {
+            font-size: 14px;
+        }
+        .btn-skew-r__inner, .btn-skew-r {
+            transform: skewX(0deg);
+            border-radius: 5px;
+            box-shadow: 0px 0 0 0#7d9afd;
         }
 
     </style>
@@ -68,15 +72,49 @@ $this->disableAutoLayout();
 
 <div  id="this-top" class="layout-theme animated-css"  data-header="sticky" data-header-top="200"  >
 
+
+
+
     <div id="wrapper">
+        <div class="header">
+            <div class="top-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </div><!-- end top-header -->
+
+
+            <div class="header__inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12"> <a href="<?= $this->Url->build(['controller'=>'Pages']) ?>" class="logo"> <img class="logo__img img-responsive" src="assets/img/logo.png" height="50" width="111" alt="Logo"> </a>
+                            <div class="navbar yamm">
+                                <div class="navbar-header hidden-md hidden-lg hidden-sm">
+                                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                                    <a href="javascript:void(0);" class="navbar-brand"></a> </div>
+                                <div id="navbar-collapse-1" class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="vehicle-listings.html">ACCOUNT</a> </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end container -->
+            </div><!-- end header__inner -->
+        </div><!-- end header -->
 
         <div class="block-title" style="position: ; color:">
             <div class="block-title__inner section-bg_second">
-
                 <h1 class="ui-title-page">Cases</h1>
-
-            </div><!-- end block-title__inner -->
-        </div><!-- end block-title -->
+            </div>
+        </div>
 
         <div class="container">
             <div class="row">
@@ -116,9 +154,10 @@ $this->disableAutoLayout();
                                     </div>
                                 </div>
                                 <div class ="sorting__item">
-                                    <a <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'add'], ['class' => 'list-tags__link'])?> </a>
+                                    <div class = "btn">
+                                        <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'add'], ['class' => 'btn-skew-r btn-effect btn-skew-r__inner'])?>
+                                    </div>
                                 </div>
-
                             </div>
                         </div><!-- end sorting -->
                         <?php if ($moncases->count() > 0) : ?>
@@ -129,11 +168,12 @@ $this->disableAutoLayout();
                                 <img class="img-responsive" src=<?php echo $this->Url->image($moncase -> imaging) ?> height="196" width="235" alt="foto">
                             </div>
                             <div class="card__inner">
-                                <h2 class="card__title ui-title-inner"><?= h($moncase->differential_diagnosis) ?></h2>
+                                <h2 class="card__title ui-title-inner"><?= h($moncase->diagnosis) ?></h2>
                                 <div class="decor-1"></div>
                                 <div class="card__description">
-                                    <p><?= h($moncase->diagnosis) ?></p>
+                                    <?= h($moncase->differential_diagnosis) ?>
                                 </div>
+                                <p></p>
                                 <ul class="card__list list-unstyled">
                                     <li class="card-list__row">
                                         <span class="card-list__title">Findings:</span>
@@ -217,14 +257,15 @@ $this->disableAutoLayout();
                                 </div>
                             </section>
                             -->
-
-                        <div class="btn">
-                            <div class="btn-filter wrap__btn-skew-r js-filter">
-                            <?= $this->Form->button(__('Filter'), ['class' => 'btn-skew-r btn-effect btn-skew-r__inner']) ?>
+                        <div class="widget-content">
+                            <div class="btn">
+                            <div class="btn-filter btn-skew-r js-filter" style ="padding: 0px 10px 0px;">
+                            <?= $this->Form->button(__('Filter'), ['class' => 'btn-skew-r btn-effect', 'style' => 'margin-left: -20px;']) ?>
                             <?= $this->Form->end() ?>
                             </div>
                         </div>
-                            </aside>
+                        </div>
+                    </aside>
                         </div><!-- end wrap-filter -->
             </div><!-- end row -->
         </div><!-- end container -->
