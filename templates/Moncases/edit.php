@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <?= $this->Html->image('/img/' . $moncase->imaging, ['width' => '150px']); ?>
-                            <?= $this->Form->control('imaging', ['type' => 'file', 'class' => 'form-control']); ?>
+                            <?= $this->Form->control('image', ['type' => 'file', 'class' => 'form-control']); ?>
 
                             <?=$this->Form->control('case_type', ['label' => 'Case Type',
                                 'class' => 'form-control',

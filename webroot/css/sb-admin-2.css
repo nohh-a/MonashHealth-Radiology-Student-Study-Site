@@ -10969,11 +10969,9 @@ form.user .btn-user {
 }
 
 .error {
-  color: #5a5c69;
-  font-size: 7rem;
-  position: relative;
-  line-height: 1;
-  width: 12.5rem;
+    background: #fcebea;
+    color: #cc1f1a;
+    border-color: #ef5753;
 }
 
 @-webkit-keyframes noise-anim {

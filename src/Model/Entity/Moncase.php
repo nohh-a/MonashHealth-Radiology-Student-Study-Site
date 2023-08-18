@@ -14,6 +14,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenDate $date
  * @property string $history
  * @property string $imaging
+ * @property string $image_url
  * @property int|null $max_marks
  * @property string|null $observation
  * @property string|null $intepretation
@@ -51,6 +52,7 @@ class Moncase extends Entity
         'date' => true,
         'history' => true,
         'imaging' => true,
+        'image_url' => true,
         'max_marks' => true,
         'observation' => true,
         'intepretation' => true,

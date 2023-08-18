@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Cake\ORM\Query;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -68,8 +70,13 @@ class MoncasesTable extends Table
             ->notEmptyString('history');
 
         $validator
-            ->notEmptyFile('imaging')
-            ->add('imaging', [
+            ->scalar('imaging')
+            ->requirePresence('imaging', 'create')
+            ->notEmptyString('imaging');
+
+        $validator
+            ->notEmptyFile('image_url')
+            ->add('image_url', [
                 'mimeType' => [
                     'rule' => ['mimeType', ['image/jpg', 'image/png','image/jpeg']],
                     'message' => 'Please upload only JPG,PNG,JPEG images',
@@ -141,9 +148,9 @@ class MoncasesTable extends Table
             ->allowEmptyString('tags');
 
         $validator
-            ->scalar('contributer')
-            ->requirePresence('contributer', 'create')
-            ->notEmptyString('contributer');
+            ->scalar('contributor')
+            ->requirePresence('contributor', 'create')
+            ->notEmptyString('contributor');
 
         $validator
             ->scalar('speciality')
@@ -153,6 +160,11 @@ class MoncasesTable extends Table
         $validator
             ->integer('rating')
             ->allowEmptyString('rating');
+
+        $validator
+            ->scalar('author')
+            ->requirePresence('author', 'create')
+            ->notEmptyString('author');
 
         return $validator;
     }

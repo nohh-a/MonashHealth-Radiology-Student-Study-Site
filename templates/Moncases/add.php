@@ -25,7 +25,13 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <?= $this->Form->control('imaging', ['type' => 'file']); ?>
+                            <?= $this->Form->control('image_url', ['type' => 'file']); ?>
+
+                            <?= $this->Form->control('imaging', [
+                                'class' => 'form-control',
+                                'maxlength' => 236
+                            ])
+                            ?>
 
                             <?=$this->Form->control('case_type', ['label' => 'Case Type',
                                 'class' => 'form-control',
@@ -42,7 +48,7 @@
                             <?= $this->Form->control('accession_no', [
                                 'class' => 'form-control',
                                 'type' => 'text',
-                                'maxlength' => 10
+                                'maxlength' => 50
                             ])
                             ?>
                             <?= $this->Form->control('date', ['class' => 'form-control']) ?>
@@ -88,6 +94,7 @@
                                 'maxlength' => 236
                             ])
                             ?>
+
                             <?= $this->Form->control('intrinsic_roles', [
                                 'class' => 'form-control',
                                 'maxlength' => 236
@@ -144,15 +151,19 @@
                                 'maxlength' => 236
                             ])
                             ?>
-                            <?= $this->Form->control('contributer', [
+
+                            <?= $this->Form->label('contributor', 'Contributor') ?>
+                            <?= $this->Form->select('contributor', [
+                                'TRAINEE' => 'TRAINEE',
+                                'CONSULTANT' => 'CONSULTANT',
+                                'LIBRARY' => 'LIBRARY'
+                            ], [
                                 'class' => 'form-control',
-                                'options' => [
-                                    'TRAINEE' => 'TRAINEE',
-                                    'CONSULTANT' => 'CONSULTANT',
-                                    'LIBRARY' => 'LIBRARY'
-                                ]
+                                'required' => true,
+                                'empty' => '- Select Contributor -',
                             ])
                             ?>
+
                             <?= $this->Form->label('speciality', 'Speciality') ?>
                             <?= $this->Form->select('speciality', [
                                 'ABDOMINAL' => 'ABDOMINAL',
