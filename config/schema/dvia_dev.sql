@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 15, 2023 at 04:55 PM
+-- Generation Time: Aug 18, 2023 at 07:53 PM
 -- Server version: 11.0.2-MariaDB
 -- PHP Version: 8.2.8
 
@@ -33,7 +33,8 @@ CREATE TABLE `moncases` (
   `case_type` enum('OSCER','LONG','MEDIUM','SHORT','GENERAL') NOT NULL,
   `date` date NOT NULL,
   `history` text NOT NULL,
-  `imaging` varchar(255) NOT NULL,
+  `imaging` text NOT NULL,
+  `image_url` varchar(255) NOT NULL,
   `max_marks` int(2) DEFAULT NULL,
   `observation` text DEFAULT NULL,
   `intepretation` text DEFAULT NULL,
@@ -55,6 +56,14 @@ CREATE TABLE `moncases` (
   `author` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `moncases`
+--
+
+INSERT INTO `moncases` (`id`, `accession_no`, `case_type`, `date`, `history`, `imaging`, `image_url`, `max_marks`, `observation`, `intepretation`, `safety`, `intrinsic_roles`, `management`, `anatomy`, `pathology`, `findings`, `diagnosis`, `differential_diagnosis`, `further_investigation`, `teaching_points`, `seen_by`, `tags`, `contributor`, `speciality`, `rating`, `author`) VALUES
+(17, 'q', 'OSCER', '2023-08-18', 'q', 'q', 'uploads/6b52dedaf1ec7b7ae663e14a92b4bb6e.jpg', 1, 'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q', 'q', '1', '1', 'q', 'q', 'TRAINEE', 'CARDIOTHORACIC', 1, 'q'),
+(18, '12345678', 'OSCER', '2023-08-18', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'uploads/914504f61feb5691cb0d433b0725b618.jpg', 12, 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', 'CONSULTANT', 'CARDIOTHORACIC', 1, 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq');
+
 -- --------------------------------------------------------
 
 --
@@ -63,12 +72,12 @@ CREATE TABLE `moncases` (
 
 CREATE TABLE `users` (
   `id` char(36) NOT NULL,
-  `username` text NOT NULL,
+  `username` varchar(65) NOT NULL,
   `email` varchar(254) NOT NULL,
   `password` varchar(96) NOT NULL,
   `first_name` varchar(128) NOT NULL,
   `last_name` varchar(128) NOT NULL,
-  `access_role` enum('ADMIN','CONSULTANT','TRAINEE','') DEFAULT NULL,
+  `access_role` enum('ADMIN','CONSULTANT','TRAINEE','') NOT NULL,
   `avatar` text DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -107,7 +116,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `moncases`
 --
 ALTER TABLE `moncases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
