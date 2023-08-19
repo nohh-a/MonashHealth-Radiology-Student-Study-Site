@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\ORM\TableRegistry;
 /**
  * Moncases Controller
  *
@@ -238,6 +239,87 @@ class MoncasesController extends AppController
         }
 
         $this->set(compact('moncases','search', 'filter','sort'));
+    }
+
+
+    public function step1() {
+        $moncasesTable = TableRegistry::getTableLocator()->get('Moncases');
+        $moncase = $moncasesTable->newEntity(['field1' => 'value1', 'field2' => 'value2',]);
+
+        if ($this->request->is('post')) {
+            $moncase = $moncasesTable->patchEntity($moncase, $this->request->getData());
+            if ($moncasesTable->save($moncase)) {
+                $this->Flash->success(__('This step has been saved.'));
+                return $this->redirect(['action' => 'step2', $moncase->id]);
+            }
+            $this->Flash->error(__('This step could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+    }
+
+    public function step2($id) {
+        $moncasesTable = TableRegistry::getTableLocator()->get('Moncases');
+        $moncase = $moncasesTable->get($id);
+
+        if ($this->request->is('post')) {
+            $moncase = $moncasesTable->patchEntity($moncase, $this->request->getData());
+            if ($moncasesTable->save($moncase)) {
+                $this->Flash->success(__('This step has been saved.'));
+                return $this->redirect(['action' => 'step3', $moncase->id]);
+            }
+            $this->Flash->error(__('This step could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+    }
+
+    public function step3($id) {
+        $moncasesTable = TableRegistry::getTableLocator()->get('Moncases');
+        $moncase = $moncasesTable->get($id);
+
+        if ($this->request->is('post')) {
+            $moncase = $moncasesTable->patchEntity($moncase, $this->request->getData());
+            if ($moncasesTable->save($moncase)) {
+                $this->Flash->success(__('This step has been saved.'));
+                return $this->redirect(['action' => 'step4', $moncase->id]);
+            }
+            $this->Flash->error(__('This step could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+    }
+
+    public function step4($id) {
+        $moncasesTable = TableRegistry::getTableLocator()->get('Moncases');
+        $moncase = $moncasesTable->get($id);
+
+        if ($this->request->is('post')) {
+            $moncase = $moncasesTable->patchEntity($moncase, $this->request->getData());
+            if ($moncasesTable->save($moncase)) {
+                $this->Flash->success(__('This step has been saved.'));
+                return $this->redirect(['action' => 'step5', $moncase->id]);
+            }
+            $this->Flash->error(__('This step could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+    }
+
+    public function step5($id) {
+        $moncasesTable = TableRegistry::getTableLocator()->get('Moncases');
+        $moncase = $moncasesTable->get($id);
+
+        if ($this->request->is('post')) {
+            $moncase = $moncasesTable->patchEntity($moncase, $this->request->getData());
+            if ($moncasesTable->save($moncase)) {
+                $this->Flash->success(__('The case has been saved.'));
+                return $this->redirect(['action' => 'userlist']);
+            }
+            $this->Flash->error(__('The case could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
     }
 
 }

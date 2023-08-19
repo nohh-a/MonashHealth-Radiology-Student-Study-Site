@@ -208,38 +208,6 @@
 </div>
 
 
-<div class="multisteps-form__panel js-active" data-animation="slideHorz">
-    <!-- div 1 -->
-    <div class="multisteps-form__panel js-active" data-animation="slideHorz">
-        <div class="form-inner-area">
-            <input type="text" name="full_name" class="form-control required" minlength="2" placeholder="First and last name *" required="">
-            <input type="email" name="email" class="form-control required" placeholder="Email Address *" required="">
-            <input type="text" name="phone" placeholder="Phone">
-        </div>
-    </div>
-    <!-- div 2 -->
-    <div class="multisteps-form__panel" data-animation="slideHorz">
-        <span><input id="condition1" type="radio" name="service_name" value="Freelancing Services"></span>
-    </div>
-    <!-- div 3 -->
-    <div class="multisteps-form__panel" data-animation="slideHorz">
-        <div class="row conditional" data-condition="#condition1 && service_name == 'Freelancing Services'">
-            <div class="col-md-12 form-inner-area">
-                <label for="field"><h3>Which Sector</h3></label>
-                <input type="text" name="field" class="form-control" minlength="2" placeholder="Write Here">
-            </div>
-        </div>
-    </div>
-    <!-- div 4 -->
-    <div class="multisteps-form__panel" data-animation="slideHorz">
-        ...
-    </div>
-    <!-- div 5 -->
-    <div class="multisteps-form__panel" data-animation="slideHorz">
-        ...
-    </div>
-</div>
-
 <?= $this->Html->script('/webroot/js/bootstrap.min.js'); ?>
 <?= $this->Html->script('/webroot/js/bootstrap-datepicker.min.js'); ?>
 <?= $this->Html->script('/webroot/js/jquery.validate.min.js'); ?>
