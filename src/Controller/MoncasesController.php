@@ -46,13 +46,28 @@ class MoncasesController extends AppController
     }
 
     /**
-     * View method
+     * View method by admin
      *
      * @param string|null $id Moncase id.
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
+    {
+        $moncase = $this->Moncases->get($id, [
+            'contain' => [],
+        ]);
+
+        $this->set(compact('moncase'));
+    }
+    /**
+     * View method by not admin
+     *
+     * @param string|null $id Moncase id.
+     * @return \Cake\Http\Response|null|void Renders view
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function viewNotadmin($id = null)
     {
         $moncase = $this->Moncases->get($id, [
             'contain' => [],
@@ -68,6 +83,7 @@ class MoncasesController extends AppController
      */
     public function add()
     {
+
         $moncase = $this->Moncases->newEmptyEntity();
         if ($this->request->is('post')) {
             $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
@@ -242,6 +258,63 @@ class MoncasesController extends AppController
         $this->set(compact('moncases','search', 'filter','sort'));
     }
 
+    public function userlistNotadmin()
+    {
+        // obtain cases list
+        $moncases = $this->Moncases->find();
+        //search functionality
+        $search = $this->request->getQuery('search');
+        if ($search) {
+            $moncases->where([
+                'differential_diagnosis LIKE' => "%$search%",
+            ]);
+        }
+
+        // filter functionality
+        $filter = [];
+        $caseTypeFilter = $this->request->getQuery('case_type');
+        $contributorFilter = $this->request->getQuery('contributor');
+        $ratingFilter = $this->request->getQuery('rating');
+        /* $imagingFilter = $this->request->getQuery('imaging'); */
+
+        if ($caseTypeFilter !== '') {
+            $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
+        }
+        if ($contributorFilter !== '') {
+            $filter[] = ['contributor LIKE' => '%' . $contributorFilter . '%'];
+        }
+        if ($ratingFilter !== '') {
+            $ratingFilter = (int)$ratingFilter;
+            if ($ratingFilter > 0 && $ratingFilter <= 5) {
+                $filter[] = ['rating' => $ratingFilter];
+            }
+        }
+        if ($filter) {
+            $moncases->where(['AND' => $filter]);
+        }
+
+        // Sorting feature
+        $sort = $this->request->getQuery('sort');
+        switch ($sort) {
+            case 'newest':
+                $moncases->order(['date' => 'DESC']);
+                break;
+            case 'oldest':
+                $moncases->order(['date' => 'ASC']);
+                break;
+            case 'az':
+                $moncases->order(['differential_diagnosis' => 'ASC']);
+                break;
+            case 'za':
+                $moncases->order(['differential_diagnosis' => 'DESC']);
+                break;
+            case 'rating':
+                $moncases->order(['rating' => 'ASC']);
+                break;
+        }
+
+        $this->set(compact('moncases','search', 'filter','sort'));
+    }
 
     public function step1()
     {

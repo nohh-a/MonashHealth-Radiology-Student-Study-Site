@@ -12,7 +12,7 @@ $this->disableAutoLayout();
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
-    <title>Case Detail by Admin</title>
+    <title>Case Detail by Not Admin</title>
     <?= $this->Html->meta('icon', 'favicon.ico', ['type' => 'image/x-icon']) ?>
     <?= $this->Html->css('/assets/css/master.css') ?>
     <?= $this->Html->css('/assets/plugins/iview/css/iview.css') ?>
@@ -36,6 +36,15 @@ $this->disableAutoLayout();
         .block-title-second {
             background-color: #7d9afd;
         }
+
+        .message.error {
+            color: red;
+            background-color: #edd4d4;
+            border-color: #e6c3c3;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
     </style>
 
 </head>
@@ -81,7 +90,7 @@ $this->disableAutoLayout();
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
-                            <a href="<?= $this->Url->build('/') ?>" class="logo">
+                            <a href="<?= $this->Url->build(['controller' => 'moncases','action' => 'userlistNotadmin']) ?>" class="logo">
                                 <img class="logo__img img-responsive" src="<?= $this->Url->image('logo.png') ?>" height="50" width="111" alt="Logo">
                             </a>
                             <div class="navbar yamm">
@@ -90,8 +99,7 @@ $this->disableAutoLayout();
                                     <a href="javascript:void(0);" class="navbar-brand"></a> </div>
                                 <div id="navbar-collapse-1" class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="<?= $this->Url->build('/') ?>">HOME</a></li>
-                                        <li><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a> </li>
+                                        <li><a href="<?= $this->Url->build(['controller' => 'moncases','action' => 'userlistNotadmin']) ?>">HOME</a></li>
                                         <li><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'], ['confirm' => __("Are you sure you want to Logout?")]) ?></li>
 
                                     </ul>
@@ -116,6 +124,9 @@ $this->disableAutoLayout();
             <div class="row">
                 <div class="col-md-8">
                     <main class="main-content">
+
+                        <?= $this->Flash->render() ?>
+
                         <article class="car-details">
                             <div class="car-details__wrap-title clearfix">
                                 <h2 class="car-details__title">Diagnosis</h2>
@@ -234,15 +245,15 @@ $this->disableAutoLayout();
                                     </dvi>
 
                                     <td class="actions">
-                                        <td><button class="btn btn-primary" onclick="goBack()">Go Back</button></td>
-                                        <script>
-                                            function goBack() {
-                                                window.history.back();
-                                            }
-                                        </script>
-                                        <br><br>
-                                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncase->id], ['class' => 'btn btn-warning']) ?>
-                                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['class' => 'btn btn-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $moncase->id)]) ?>
+                                    <td><button class="btn btn-primary" onclick="goBack()">Go Back</button></td>
+                                    <script>
+                                        function goBack() {
+                                            window.history.back();
+                                        }
+                                    </script>
+                                    <br><br>
+                                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncase->id], ['class' => 'btn btn-warning']) ?>
+
                                     </td>
 
                                 </dl>

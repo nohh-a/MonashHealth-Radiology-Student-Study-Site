@@ -32,7 +32,7 @@ $this->disableAutoLayout();
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
-    <title>Case List by Admin</title>
+    <title>Case List by Not Admin</title>
     <?= $this->Html->meta('icon', 'favicon.ico', ['type' => 'image/x-icon']) ?>
     <?= $this->Html->css('/assets/css/master.css') ?>
     <?= $this->Html->css('/assets/plugins/iview/css/iview.css') ?>
@@ -51,6 +51,14 @@ $this->disableAutoLayout();
 
         .card-list__info, .card__title, .card__description {
             overflow-wrap: break-word; /* Alternative for better browser support */
+        }
+
+        .message.error {
+            color: red;
+            background-color: #edd4d4;
+            border-color: #e6c3c3;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
         }
 
     </style>
@@ -75,7 +83,7 @@ $this->disableAutoLayout();
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
-                            <a href="<?= $this->Url->build('/') ?>" class="logo">
+                            <a href="<?= $this->Url->build(['controller' => 'moncases','action' => 'userlistNotadmin']) ?>" class="logo">
                                 <img class="logo__img img-responsive" src="<?= $this->Url->image('logo.png') ?>" height="50" width="111" alt="Logo">
                             </a>
                             <div class="navbar yamm">
@@ -84,9 +92,9 @@ $this->disableAutoLayout();
                                     <a href="javascript:void(0);" class="navbar-brand"></a> </div>
                                 <div id="navbar-collapse-1" class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="<?= $this->Url->build('/') ?>">HOME</a></li>
-                                        <li><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a> </li>
+                                        <li><a href="<?= $this->Url->build(['controller' => 'moncases','action' => 'userlistNotadmin']) ?>">HOME</a></li>
                                         <li><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'], ['confirm' => __("Are you sure you want to Logout?")]) ?></li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -109,14 +117,17 @@ $this->disableAutoLayout();
             <div class="row">
                 <div class="col-md-9">
                     <main class="main-content">
+
+                        <?= $this->Flash->render() ?>
+
                         <div class="sorting">
                             <div class="sorting__inner">
                                 <div class ="sorting__item">
-                                <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
-                                <?= $this->Form->text('search', ['placeholder' => 'Search Diagnosis']) ?>
-                                <?= $this->Form->button(__('Search')) ?>
-                                <?= $this->Form->button(__('Reset'), ['type' => 'search', 'class' => 'reset-button']) ?>
-                                <?= $this->Form->end() ?>
+                                    <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                    <?= $this->Form->text('search', ['placeholder' => 'Search Diagnosis']) ?>
+                                    <?= $this->Form->button(__('Search')) ?>
+                                    <?= $this->Form->button(__('Reset'), ['type' => 'search', 'class' => 'reset-button']) ?>
+                                    <?= $this->Form->end() ?>
                                 </div>
                                 <div class="sorting__item">
                                     <span class="sorting__title">Sort by</span>
@@ -131,7 +142,7 @@ $this->disableAutoLayout();
                                                 'za' => 'Z-A',
                                                 'date' => 'Date',
                                                 'rating' => 'Rating',
-                                                ],
+                                            ],
                                             [
                                                 'empty' => false,
                                                 'default' => $this -> request -> getQuery('sort'),
@@ -150,29 +161,29 @@ $this->disableAutoLayout();
                         </div><!-- end sorting -->
                         <?php if ($moncases->count() > 0) : ?>
                             <?php foreach ($moncases as $moncase) : ?>
-                        <article class="card clearfix">
-                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
-                            <div class="card__img">
-                                <img class="img-responsive" src=<?php echo $this->Url->image($moncase -> image_url) ?> height="196" width="235" alt="foto">
-                            </div>
-                            <div class="card__inner">
-                                <h2 class="card__title ui-title-inner"><?= h($moncase->differential_diagnosis) ?></h2>
-                                <div class="decor-1"></div>
-                                <div class="card__description">
-                                    <p><?= h($moncase->diagnosis) ?></p>
-                                </div>
-                                <ul class="card__list list-unstyled">
-                                    <li class="card-list__row">
-                                        <span class="card-list__title">Findings:</span>
-                                        <span class="card-list__info"><?= h($moncase->findings) ?></span>
-                                    </li>
-                                    <li class="card-list__row">
-                                        <span class="card-list__title">Teaching Points:</span>
-                                        <span class="card-list__info"><?= h($moncase->teaching_points) ?></span>
-                                    </li>
-                                </ul>
-                                <a/>
-                        </article>
+                                <article class="card clearfix">
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>">
+                                        <div class="card__img">
+                                            <img class="img-responsive" src=<?php echo $this->Url->image($moncase -> image_url) ?> height="196" width="235" alt="foto">
+                                        </div>
+                                        <div class="card__inner">
+                                            <h2 class="card__title ui-title-inner"><?= h($moncase->differential_diagnosis) ?></h2>
+                                            <div class="decor-1"></div>
+                                            <div class="card__description">
+                                                <p><?= h($moncase->diagnosis) ?></p>
+                                            </div>
+                                            <ul class="card__list list-unstyled">
+                                                <li class="card-list__row">
+                                                    <span class="card-list__title">Findings:</span>
+                                                    <span class="card-list__info"><?= h($moncase->findings) ?></span>
+                                                </li>
+                                                <li class="card-list__row">
+                                                    <span class="card-list__title">Teaching Points:</span>
+                                                    <span class="card-list__info"><?= h($moncase->teaching_points) ?></span>
+                                                </li>
+                                            </ul>
+                                            <a/>
+                                </article>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <p>No results found.</p>
@@ -201,58 +212,58 @@ $this->disableAutoLayout();
                                 ]); ?>
                             </div>
                         </section>
-                            <section class="widget widget_mod-a">
-                                <h3 class="widget-title">Contributer</h3>
-                                <div class="decor-1"></div>
-                                <div class="widget-content">
-                                    <?= $this->Form->select('contributor', [
-                                        'Trainee' => 'Trainee',
-                                        'Consultant' => 'Consultant',
-                                        'Library' => 'Library',
-                                    ], [
-                                        'class' => 'select select_mod-a jelect',
-                                        'empty' => 'Choose Contributor',
-                                    ]); ?>
-                                </div>
-                            </section>
-                            <section class="widget widget_mod-a">
-                                <h3 class="widget-title">Rating</h3>
-                                <div class="decor-1"></div>
-                                <div class="widget-content">
-                                    <?= $this->Form->select('rating', [
-                                        '1' => '1',
-                                        '2' => '2',
-                                        '3' => '3',
-                                        '4' => '4',
-                                        '5' => '5',
-                                    ], [
-                                        'class' => 'select select_mod-a jelect',
-                                        'empty' => 'Choose Rating',
-                                    ]); ?>
-                                </div>
-                            </section>
-                             <!-- <section class="widget widget_mod-a">
+                        <section class="widget widget_mod-a">
+                            <h3 class="widget-title">Contributer</h3>
+                            <div class="decor-1"></div>
+                            <div class="widget-content">
+                                <?= $this->Form->select('contributor', [
+                                    'Trainee' => 'Trainee',
+                                    'Consultant' => 'Consultant',
+                                    'Library' => 'Library',
+                                ], [
+                                    'class' => 'select select_mod-a jelect',
+                                    'empty' => 'Choose Contributor',
+                                ]); ?>
+                            </div>
+                        </section>
+                        <section class="widget widget_mod-a">
+                            <h3 class="widget-title">Rating</h3>
+                            <div class="decor-1"></div>
+                            <div class="widget-content">
+                                <?= $this->Form->select('rating', [
+                                    '1' => '1',
+                                    '2' => '2',
+                                    '3' => '3',
+                                    '4' => '4',
+                                    '5' => '5',
+                                ], [
+                                    'class' => 'select select_mod-a jelect',
+                                    'empty' => 'Choose Rating',
+                                ]); ?>
+                            </div>
+                        </section>
+                        <!-- <section class="widget widget_mod-a">
                                 <h3 class="widget-title">Imaging</h3>
                                 <div class="decor-1"></div>
                                 <div class="widget-content">
                                     <?= $this->Form->select('Imaging', [
-                                        'Test' => 'Test',
-                                    ], [
-                                        'class' => 'select select_mod-a jelect',
-                                        'empty' => 'Choose Imaging',
-                                    ]); ?>
+                            'Test' => 'Test',
+                        ], [
+                            'class' => 'select select_mod-a jelect',
+                            'empty' => 'Choose Imaging',
+                        ]); ?>
                                 </div>
                             </section>
                             -->
 
                         <div class="btn">
                             <div class="btn-filter wrap__btn-skew-r js-filter">
-                            <?= $this->Form->button(__('Filter'), ['class' => 'btn-skew-r btn-effect btn-skew-r__inner']) ?>
-                            <?= $this->Form->end() ?>
+                                <?= $this->Form->button(__('Filter'), ['class' => 'btn-skew-r btn-effect btn-skew-r__inner']) ?>
+                                <?= $this->Form->end() ?>
                             </div>
                         </div>
-                            </aside>
-                        </div><!-- end wrap-filter -->
+                    </aside>
+                </div><!-- end wrap-filter -->
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end #wrapper -->

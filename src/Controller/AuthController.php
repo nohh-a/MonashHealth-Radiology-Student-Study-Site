@@ -186,8 +186,15 @@ class AuthController extends AppController {
 
         // if user passes authentication, grant access to the system
         if ($result && $result->isValid()) {
-            // set a fallback location in case user logged in without triggering 'unauthenticatedRedirect'
-            $fallbackLocation = ['controller' => 'Pages', 'action' => 'home'];
+            if($this->getRequest()->getSession()->read('Auth.User.access_role') == "ADMIN" ){
+
+                // set a fallback location in case user logged in without triggering 'unauthenticatedRedirect'
+                $fallbackLocation = ['controller' => 'Moncases', 'action' => 'userlist'];
+
+            }else{
+                // set a fallback location in case user logged in without triggering 'unauthenticatedRedirect'
+                $fallbackLocation = ['controller' => 'Moncases', 'action' => 'userlistNotadmin'];
+            }
 
             // and redirect user to the location they're trying to access
             return $this->redirect($this->Authentication->getLoginRedirect() ?? $fallbackLocation);

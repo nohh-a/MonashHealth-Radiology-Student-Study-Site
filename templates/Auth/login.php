@@ -62,6 +62,14 @@ $this->disableAutoLayout();
             padding: 0.75rem 1.25rem;
             margin-bottom: 1rem;
         }
+
+        .message.success {
+            background: #e3fcec;
+            color: #1f9d55;
+            border-color: #51d88a;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
     </style>
 
 
@@ -98,8 +106,6 @@ $this->disableAutoLayout();
                 <?= $this->Html->link(__('Forget Password?'), ['controller' => 'Auth', 'action' => 'forgetPassword'], ['class' => 'login100-form-btn']) ?>
 
                 <br>
-
-                <?= $this->Html->link(__('Back to Login'), ['controller' => 'Auth', 'action' => 'login'], ['class' => 'login100-form-btn']) ?>
 
 
             </div>

@@ -18,6 +18,11 @@ class UsersController extends AppController
      */
     public function index()
     {
+        if($this->getRequest()->getSession()->read('Auth.User.access_role') !== "ADMIN" ){
+            $this->Flash->error(__('You are not authorized to access that page.'));
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
@@ -32,6 +37,11 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+        if($this->getRequest()->getSession()->read('Auth.User.access_role') !== "ADMIN" ){
+            $this->Flash->error(__('You are not authorized to access that page.'));
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
@@ -46,6 +56,11 @@ class UsersController extends AppController
      */
     public function add()
     {
+        if($this->getRequest()->getSession()->read('Auth.User.access_role') !== "ADMIN" ){
+            $this->Flash->error(__('You are not authorized to access that page.'));
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
@@ -68,6 +83,11 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+        if($this->getRequest()->getSession()->read('Auth.User.access_role') !== "ADMIN" ){
+            $this->Flash->error(__('You are not authorized to access that page.'));
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
@@ -92,6 +112,11 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
+        if($this->getRequest()->getSession()->read('Auth.User.access_role') !== "ADMIN" ){
+            $this->Flash->error(__('You are not authorized to access that page.'));
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
