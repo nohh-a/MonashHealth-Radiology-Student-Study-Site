@@ -86,7 +86,7 @@ $this->disableAutoLayout();
                                     <ul class="nav navbar-nav">
                                         <li><a href="<?= $this->Url->build('/') ?>">HOME</a></li>
                                         <li><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a> </li>
-
+                                        <li><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'], ['confirm' => __("Are you sure you want to Logout?")]) ?></li>
                                     </ul>
                                 </div>
                             </div>

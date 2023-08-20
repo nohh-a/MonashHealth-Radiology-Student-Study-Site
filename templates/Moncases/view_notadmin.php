@@ -91,7 +91,7 @@ $this->disableAutoLayout();
                                 <div id="navbar-collapse-1" class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav">
                                         <li><a href="<?= $this->Url->build(['controller' => 'moncases','action' => 'userlistNotadmin']) ?>">HOME</a></li>
-
+                                        <li><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'], ['confirm' => __("Are you sure you want to Logout?")]) ?></li>
 
                                     </ul>
                                 </div>
