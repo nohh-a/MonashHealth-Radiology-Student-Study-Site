@@ -116,6 +116,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                         <th><?= h('Max Marks') ?></th>
                         <th><?= h('Contributor') ?></th>
 
+
                         <th class="actions"><?= __('Actions') ?></th>
                     </tr>
                     </thead>

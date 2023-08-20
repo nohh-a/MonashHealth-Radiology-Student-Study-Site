@@ -25,7 +25,7 @@ $this->assign('title', 'Change User Password - Users');
                 <h5 class="card-header text-center"><?= __('Change User Password') ?></h5>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 mx-auto">
                             <?php
                             echo $this->Form->control('password', [
                                 'label' => 'New Password',
