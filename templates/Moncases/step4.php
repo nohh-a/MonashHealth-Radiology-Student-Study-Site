@@ -21,7 +21,7 @@
     <div class="col-md-8">
         <div class="moncases form content">
 
-            <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
+            <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'step4']]) ?>
 
             <div class="card">
                 <h5 class="card-header text-center"><?= __('Add New Case') ?></h5>
@@ -38,12 +38,14 @@
 
                             <?= $this->Form->control('anatomy', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
                             <?= $this->Form->control('pathology', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
 
@@ -52,12 +54,14 @@
                         <div class="col-md-6">
                             <?= $this->Form->control('findings', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
                             <?= $this->Form->control('differential_diagnosis', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
 
@@ -66,7 +70,11 @@
 
                 </div>
                 <div class="card-footer text-right">
-                    <?= $this->Form->button(__('Next'), ['class' => 'btn btn-primary btn-lg']) ?>
+                    <?= $this->Form->button('Next', [
+                        'type' => 'submit',
+                        'class' => 'btn btn-primary btn-lg'
+                    ])
+                    ?>
                 </div>
             </div>
             <?= $this->Form->end() ?>

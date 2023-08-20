@@ -15,16 +15,28 @@
     <?= $this->Html->css('/webroot/css/bootstrap-datepicker.css') ?>
     <?= $this->Html->css('/webroot/css/fontawesome-all.css') ?>
 
+    <style>
+        .message.error {
+            color: red;
+            background-color: #edd4d4;
+            border-color: #e6c3c3;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+    </style>
+
 </head>
 
 <div class="row justify-content-center align-items-center">
     <div class="col-md-8">
         <div class="moncases form content">
 
-            <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
+            <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'step5'], 'enctype' => 'multipart/form-data']) ?>
 
             <div class="card">
                 <h5 class="card-header text-center"><?= __('Add New Case') ?></h5>
+                <?= $this->Flash->render() ?>
                 <div class="wizard-progress">
                     <span>5 of 5 Completed</span>
                     <div class="progress">
@@ -38,12 +50,14 @@
 
                             <?= $this->Form->control('further_investigation', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
                             <?= $this->Form->control('teaching_points', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
 
@@ -52,12 +66,14 @@
                         <div class="col-md-6">
                             <?= $this->Form->control('seen_by', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
                             <?= $this->Form->control('tags', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
 
@@ -81,7 +97,11 @@
 
                 </div>
                 <div class="card-footer text-right">
-                    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary btn-lg']) ?>
+                    <?= $this->Form->button('Submit', [
+                        'type' => 'submit',
+                        'class' => 'btn btn-primary btn-lg'
+                    ])
+                    ?>
                 </div>
             </div>
             <?= $this->Form->end() ?>

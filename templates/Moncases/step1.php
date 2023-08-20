@@ -25,7 +25,7 @@
         <div class="col-md-8">
             <div class="moncases form content">
 
-                <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
+                <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'step1'], 'enctype' => 'multipart/form-data']) ?>
 
                 <div class="card">
                     <h5 class="card-header text-center"><?= __('Add New Case') ?></h5>
@@ -40,12 +40,18 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <?= $this->Form->control('image_url', ['type' => 'file']); ?>
-                                <?= $this->Form->control('date', ['class' => 'form-control']); ?>
+                                <?= $this->Form->control('date', [
+                                    'class' => 'form-control',
+                                    'type' => 'date',
+                                    'required' => true
+                                ])
+                                ?>
                             </div>
                             <div class="col-md-6">
                                 <?= $this->Form->control('imaging', [
                                     'class' => 'form-control',
-                                    'maxlength' => 236
+                                    'maxlength' => 236,
+                                    'required' => true
                                 ]); ?>
                             </div>
                         </div>
@@ -60,14 +66,16 @@
                                         'Medium' => 'Medium',
                                         'Short' => 'Short',
                                         'General' => 'General'
-                                    ]
+                                    ],
+                                    'required' => true
                                 ]); ?>
                             </div>
                             <div class="col-md-6">
                                 <?= $this->Form->control('accession_no', [
                                     'class' => 'form-control',
                                     'type' => 'text',
-                                    'maxlength' => 50
+                                    'maxlength' => 50,
+                                    'required' => true
                                 ]); ?>
                             </div>
                         </div>
@@ -77,14 +85,16 @@
                             <div class="col-md-6">
                                 <?= $this->Form->control('history', [
                                     'class' => 'form-control',
-                                    'maxlength' => 236
+                                    'maxlength' => 236,
+                                    'required' => true
                                 ])
                                 ?>
                             </div>
                             <div class="col-md-6">
                                 <?= $this->Form->control('author', [
                                     'class' => 'form-control',
-                                    'maxlength' => 236
+                                    'maxlength' => 236,
+                                    'required' => true
                                 ])
                                 ?>
                             </div>
@@ -132,7 +142,11 @@
 
                     </div>
                     <div class="card-footer text-right">
-                        <?= $this->Form->button(__('Next'), ['class' => 'btn btn-primary btn-lg']) ?>
+                        <?= $this->Form->button('Next', [
+                            'type' => 'submit',
+                            'class' => 'btn btn-primary btn-lg'
+                        ])
+                        ?>
                     </div>
                 </div>
                 <?= $this->Form->end() ?>
@@ -140,4 +154,5 @@
         </div>
     </div>
 </div>
+
 

@@ -21,7 +21,7 @@
     <div class="col-md-8">
         <div class="moncases form content">
 
-            <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
+            <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'step3']]) ?>
 
             <div class="card">
                 <h5 class="card-header text-center"><?= __('Add New Case') ?></h5>
@@ -38,25 +38,32 @@
 
                             <?= $this->Form->control('intepretation', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
-                            <?= $this->Form->control('safety', [
+
+                            <?= $this->Form->control('intrinsic_roles', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
+
                         </div>
 
                         <div class="col-md-6">
-                            <?= $this->Form->control('intepretation', [
+                            <?= $this->Form->control('management', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
+
                             <?= $this->Form->control('safety', [
                                 'class' => 'form-control',
-                                'maxlength' => 236
+                                'maxlength' => 236,
+                                'required' => true
                             ])
                             ?>
                         </div>
@@ -64,7 +71,11 @@
 
                 </div>
                 <div class="card-footer text-right">
-                    <?= $this->Form->button(__('Next'), ['class' => 'btn btn-primary btn-lg']) ?>
+                    <?= $this->Form->button('Next', [
+                        'type' => 'submit',
+                        'class' => 'btn btn-primary btn-lg'
+                    ])
+                    ?>
                 </div>
             </div>
             <?= $this->Form->end() ?>
