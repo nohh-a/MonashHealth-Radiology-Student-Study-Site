@@ -36,6 +36,15 @@ $this->disableAutoLayout();
         .block-title-second {
             background-color: #7d9afd;
         }
+
+        .message.error {
+            color: red;
+            background-color: #edd4d4;
+            border-color: #e6c3c3;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
     </style>
 
 </head>
@@ -115,6 +124,9 @@ $this->disableAutoLayout();
             <div class="row">
                 <div class="col-md-8">
                     <main class="main-content">
+
+                        <?= $this->Flash->render() ?>
+
                         <article class="car-details">
                             <div class="car-details__wrap-title clearfix">
                                 <h2 class="car-details__title">Diagnosis</h2>

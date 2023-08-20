@@ -53,6 +53,14 @@ $this->disableAutoLayout();
             overflow-wrap: break-word; /* Alternative for better browser support */
         }
 
+        .message.error {
+            color: red;
+            background-color: #edd4d4;
+            border-color: #e6c3c3;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
     </style>
 
 
@@ -109,6 +117,9 @@ $this->disableAutoLayout();
             <div class="row">
                 <div class="col-md-9">
                     <main class="main-content">
+
+                        <?= $this->Flash->render() ?>
+
                         <div class="sorting">
                             <div class="sorting__inner">
                                 <div class ="sorting__item">
