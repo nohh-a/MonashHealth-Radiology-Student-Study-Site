@@ -62,6 +62,14 @@ $this->disableAutoLayout();
             padding: 0.75rem 1.25rem;
             margin-bottom: 1rem;
         }
+
+        .message.success {
+            background: #e3fcec;
+            color: #1f9d55;
+            border-color: #51d88a;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
     </style>
 
 
