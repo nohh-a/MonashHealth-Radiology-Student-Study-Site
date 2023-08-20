@@ -186,8 +186,7 @@ class AuthController extends AppController {
 
         // if user passes authentication, grant access to the system
         if ($result && $result->isValid()) {
-            $auth = $this->getRequest()->getSession()->read('Auth');
-            $access_role = $auth['access_role'];
+            $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
 
             if($access_role == "ADMIN" ){
 

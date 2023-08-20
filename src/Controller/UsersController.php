@@ -18,8 +18,7 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $auth = $this->getRequest()->getSession()->read('Auth');
-        $access_role = $auth['access_role'];
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
             $this->Flash->error(__('You are not authorized to access that page.'));
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
@@ -39,8 +38,7 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
-        $auth = $this->getRequest()->getSession()->read('Auth');
-        $access_role = $auth['access_role'];
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
             $this->Flash->error(__('You are not authorized to access that page.'));
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
@@ -60,8 +58,7 @@ class UsersController extends AppController
      */
     public function add()
     {
-        $auth = $this->getRequest()->getSession()->read('Auth');
-        $access_role = $auth['access_role'];
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
             $this->Flash->error(__('You are not authorized to access that page.'));
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
@@ -89,8 +86,7 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-        $auth = $this->getRequest()->getSession()->read('Auth');
-        $access_role = $auth['access_role'];
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
             $this->Flash->error(__('You are not authorized to access that page.'));
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
@@ -120,8 +116,7 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
-        $auth = $this->getRequest()->getSession()->read('Auth');
-        $access_role = $auth['access_role'];
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
             $this->Flash->error(__('You are not authorized to access that page.'));
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
