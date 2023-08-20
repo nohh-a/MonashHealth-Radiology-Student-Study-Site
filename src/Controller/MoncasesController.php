@@ -10,6 +10,7 @@ use Cake\ORM\TableRegistry;
  * @property \App\Model\Table\MoncasesTable $Moncases
  * @method \App\Model\Entity\Moncase[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
+
 class MoncasesController extends AppController
 {
     /**
@@ -242,84 +243,113 @@ class MoncasesController extends AppController
     }
 
 
-    public function step1() {
+    public function step1()
+    {
         $moncasesTable = TableRegistry::getTableLocator()->get('Moncases');
-        $moncase = $moncasesTable->newEntity(['field1' => 'value1', 'field2' => 'value2',]);
+        $moncase = $moncasesTable->newEmptyEntity();
 
         if ($this->request->is('post')) {
             $moncase = $moncasesTable->patchEntity($moncase, $this->request->getData());
+
             if ($moncasesTable->save($moncase)) {
-                $this->Flash->success(__('This step has been saved.'));
-                return $this->redirect(['action' => 'step2', $moncase->id]);
+                $this->Flash->success(__('Data has been saved.'));
+                $this->redirect(['action' => 'step2', '?' => ['id' => $moncase->id]]);
+            } else {
+                $this->Flash->error(__('Data could not be saved. Please, try again.'));
             }
-            $this->Flash->error(__('This step could not be saved. Please, try again.'));
         }
 
         $this->set(compact('moncase'));
     }
 
-    public function step2($id) {
-        $moncasesTable = TableRegistry::getTableLocator()->get('Moncases');
-        $moncase = $moncasesTable->get($id);
+    public function step2()
+    {
+        $id = $this->request->getQuery('id');
 
-        if ($this->request->is('post')) {
-            $moncase = $moncasesTable->patchEntity($moncase, $this->request->getData());
-            if ($moncasesTable->save($moncase)) {
-                $this->Flash->success(__('This step has been saved.'));
-                return $this->redirect(['action' => 'step3', $moncase->id]);
-            }
-            $this->Flash->error(__('This step could not be saved. Please, try again.'));
-        }
-
-        $this->set(compact('moncase'));
-    }
-
-    public function step3($id) {
         $moncasesTable = TableRegistry::getTableLocator()->get('Moncases');
         $moncase = $moncasesTable->get($id);
 
         if ($this->request->is('post')) {
             $moncase = $moncasesTable->patchEntity($moncase, $this->request->getData());
+            $this->set(compact('moncase'));
+
             if ($moncasesTable->save($moncase)) {
-                $this->Flash->success(__('This step has been saved.'));
-                return $this->redirect(['action' => 'step4', $moncase->id]);
+                $this->Flash->success(__('Data has been saved.'));
+                $this->redirect(['action' => 'step3', '?' => ['id' => $moncase->id]]);
+            } else {
+                $this->Flash->error(__('Data could not be saved. Please, try again.'));
             }
-            $this->Flash->error(__('This step could not be saved. Please, try again.'));
         }
 
         $this->set(compact('moncase'));
     }
 
-    public function step4($id) {
+    public function step3()
+    {
+        $id = $this->request->getQuery('id');
+
         $moncasesTable = TableRegistry::getTableLocator()->get('Moncases');
         $moncase = $moncasesTable->get($id);
 
         if ($this->request->is('post')) {
             $moncase = $moncasesTable->patchEntity($moncase, $this->request->getData());
+            $this->set(compact('moncase'));
+
             if ($moncasesTable->save($moncase)) {
-                $this->Flash->success(__('This step has been saved.'));
-                return $this->redirect(['action' => 'step5', $moncase->id]);
+                $this->Flash->success(__('Data has been saved.'));
+                $this->redirect(['action' => 'step4', '?' => ['id' => $moncase->id]]);
+            } else {
+                $this->Flash->error(__('Data could not be saved. Please, try again.'));
             }
-            $this->Flash->error(__('This step could not be saved. Please, try again.'));
         }
 
         $this->set(compact('moncase'));
     }
 
-    public function step5($id) {
+    public function step4()
+    {
+        $id = $this->request->getQuery('id');
+
         $moncasesTable = TableRegistry::getTableLocator()->get('Moncases');
         $moncase = $moncasesTable->get($id);
 
         if ($this->request->is('post')) {
             $moncase = $moncasesTable->patchEntity($moncase, $this->request->getData());
+            $this->set(compact('moncase'));
+
             if ($moncasesTable->save($moncase)) {
-                $this->Flash->success(__('The case has been saved.'));
-                return $this->redirect(['action' => 'userlist']);
+                $this->Flash->success(__('Data has been saved.'));
+                $this->redirect(['action' => 'step5', '?' => ['id' => $moncase->id]]);
+            } else {
+                $this->Flash->error(__('Data could not be saved. Please, try again.'));
             }
-            $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
         $this->set(compact('moncase'));
     }
+
+    public function step5()
+    {
+        $id = $this->request->getQuery('id');
+
+        $moncasesTable = TableRegistry::getTableLocator()->get('Moncases');
+        $moncase = $moncasesTable->get($id);
+
+        if ($this->request->is('post')) {
+            $moncase = $moncasesTable->patchEntity($moncase, $this->request->getData());
+
+            if ($moncasesTable->save($moncase)) {
+                $this->Flash->success(__('Data has been saved.'));
+                $this->redirect(['action' => 'userlist']);
+            } else {
+                $this->Flash->error(__('Data could not be saved. Please, try again.'));
+            }
+        }
+
+        $this->set(compact('moncase'));
+    }
+
+
+
 
 }

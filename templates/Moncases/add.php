@@ -3,13 +3,14 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Moncase $moncase
  */
+
 ?>
 
 <?= $this->Html->css('/webroot/css/animate.min.css') ?>
 <?= $this->Html->css('/webroot/css/bootstrap.min.css') ?>
-<?= $this->Html->css('/webroot/css/bootstrap-datepicker.min.css') ?>
-<?= $this->Html->css('/webroot/css/fontawesome.css') ?>
-<?= $this->Html->css('/webroot/css/bootstrap.min.css') ?>
+<?= $this->Html->css('/webroot/css/bootstrap-datepicker.css') ?>
+<?= $this->Html->css('/webroot/css/fontawesome-all.css') ?>
+
 
 
 
@@ -95,12 +96,12 @@
                             ])
                             ?>
 
-                            <?= $this->Form->control('intrinsic_roles', [
+                            <?= $this->Form->control('intepretation', [
                                 'class' => 'form-control',
                                 'maxlength' => 236
                             ])
                             ?>
-                            <?= $this->Form->control('management', [
+                            <?= $this->Form->control('safety', [
                                 'class' => 'form-control',
                                 'maxlength' => 236
                             ])
@@ -207,15 +208,3 @@
     </div>
 </div>
 
-
-<?= $this->Html->script('/webroot/js/bootstrap.min.js'); ?>
-<?= $this->Html->script('/webroot/js/bootstrap-datepicker.min.js'); ?>
-<?= $this->Html->script('/webroot/js/jquery.validate.min.js'); ?>
-<?= $this->Html->script('/webroot/js/jquery-3.3.1.min.js'); ?>
-<?= $this->Html->script('/webroot/js/main.js'); ?>
-<?= $this->Html->script('/webroot/js/switch.js'); ?>
-<?= $this->Html->script('/webroot/step/step-1.js'); ?>
-<?= $this->Html->script('/webroot/step/step-2.js'); ?>
-<?= $this->Html->script('/webroot/step/step-3.js'); ?>
-<?= $this->Html->script('/webroot/step/step-4.js'); ?>
-<?= $this->Html->script('/webroot/step/step-5.js'); ?>

@@ -88,6 +88,21 @@ class MoncasesTable extends Table
             ]);
 
         $validator
+            ->scalar('contributor')
+            ->requirePresence('contributor', 'create')
+            ->notEmptyString('contributor');
+
+        $validator
+            ->scalar('speciality')
+            ->requirePresence('speciality', 'create')
+            ->notEmptyString('speciality');
+
+        $validator
+            ->scalar('author')
+            ->requirePresence('author', 'create')
+            ->notEmptyString('author');
+
+        $validator
             ->integer('max_marks')
             ->allowEmptyString('max_marks');
 
@@ -147,24 +162,14 @@ class MoncasesTable extends Table
             ->scalar('tags')
             ->allowEmptyString('tags');
 
-        $validator
-            ->scalar('contributor')
-            ->requirePresence('contributor', 'create')
-            ->notEmptyString('contributor');
 
-        $validator
-            ->scalar('speciality')
-            ->requirePresence('speciality', 'create')
-            ->notEmptyString('speciality');
+
 
         $validator
             ->integer('rating')
             ->allowEmptyString('rating');
 
-        $validator
-            ->scalar('author')
-            ->requirePresence('author', 'create')
-            ->notEmptyString('author');
+
 
         return $validator;
     }
