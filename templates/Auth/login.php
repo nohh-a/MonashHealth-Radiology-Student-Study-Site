@@ -99,8 +99,6 @@ $this->disableAutoLayout();
 
                 <br>
 
-                <?= $this->Html->link(__('Back to Login'), ['controller' => 'Auth', 'action' => 'login'], ['class' => 'login100-form-btn']) ?>
-
 
             </div>
 
