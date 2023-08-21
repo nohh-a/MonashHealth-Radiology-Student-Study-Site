@@ -18,6 +18,10 @@
 
     <!-- Custom styles for this template-->
     <?= $this->Html->css('sb-admin-2.css') ?>
+    <style>
+
+
+    </style>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -47,16 +51,6 @@
 
         </div>
         <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Monash Health</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->
@@ -99,8 +93,7 @@
 <?= $this->Html->script('/js/sb-admin-2.min.js') ?>
 <?= $this->fetch('script') ?>
 
-
-
 </body>
+
 
 </html>

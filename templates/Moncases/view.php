@@ -18,13 +18,19 @@ $this->disableAutoLayout();
     <?= $this->Html->css('/assets/plugins/iview/css/iview.css') ?>
     <?= $this->Html->css('/assets/plugins/iview/css/skin/style.css', ['class' => 'skin']) ?>
 
-    <!-- SWITCHER -->
-    <?= $this->Html->css('/assets/plugins/switcher/css/switcher.css', ['id' => 'switcher-css', 'media' => 'all']) ?>
-    <?= $this->Html->css('/assets/plugins/switcher/css/color1.css', ['title' => 'color1', 'media' => 'all', 'rel' => 'alternate stylesheet']) ?>
-    <?= $this->Html->css('/assets/plugins/switcher/css/color2.css', ['title' => 'color2', 'media' => 'all', 'rel' => 'alternate stylesheet']) ?>
-    <?= $this->Html->css('/assets/plugins/switcher/css/color3.css', ['title' => 'color3', 'media' => 'all', 'rel' => 'alternate stylesheet']) ?>
-    <?= $this->Html->css('/assets/plugins/switcher/css/color4.css', ['title' => 'color4', 'media' => 'all', 'rel' => 'alternate stylesheet']) ?>
-    <?= $this->Html->css('/assets/plugins/switcher/css/color5.css', ['title' => 'color5', 'media' => 'all', 'rel' => 'alternate stylesheet']) ?>
+    <style>
+        .btn-skew-r__inner, .btn-skew-r {
+            transform: skewX(0deg);
+            border-radius: 5px;
+            box-shadow: 0px 0 0 0#7d9afd;
+            margin-left: 0px;
+        }
+
+        .section-bg_second, .jelect-option_state_active, .jelect-option:hover, .btn-skew-r, .car-details__price{
+            background-color: #7d9afd;
+        }
+
+    </style>
 
     <?= $this->Html->script('/assets/plugins/jquery/jquery-1.11.1.min.js') ?>
 
@@ -33,8 +39,26 @@ $this->disableAutoLayout();
             word-wrap: break-word;
         }
 
-        .block-title-second {
+        .block-title-second{
             background-color: #7d9afd;
+        }
+
+        .car-details__title {
+            box-shadow: -4px 0 0 0 #7d9afd;
+        }
+
+        a, .color_primary, .ui-title-inner .icon:before, .link-img__link:hover .link-img__title, .main-block__title strong, .decor-3, .list-services:hover .list-services__title, .list-progress .icon, .footer-title__inner, .card__price-number, .list-categories__link:before, .list-categories__link:hover, .list-descriptions dt:before, .widget-post1__price, .nav-tabs > li.active > a, .nav-tabs > li > a:hover, .nav-tabs > li.active > a:focus, .social-blog__item:before, blockquote:before, .comments-list .comment-datetime {
+            color: #7d9afd;
+        }
+
+        .ui-title-inner {
+            line-height: 0px;
+        }
+
+        p, .body {
+            font-weight: 100;
+            font-size: 16px;
+            color: #0f0f0f;
         }
     </style>
 
@@ -42,36 +66,14 @@ $this->disableAutoLayout();
 
 
 <body>
+
+
+<!-- Loader -->
+<div id="page-preloader"><span class="spinner"></span></div>
+<!-- Loader end -->
+
 <div  id="this-top" class="layout-theme animated-css"  data-header="sticky" data-header-top="200"  >
 
-    <!-- Start Switcher -->
-    <div class="switcher-wrapper">
-        <div class="demo_changer">
-            <div class="demo-icon customBgColor"><i class="fa fa-cog fa-spin fa-2x"></i></div>
-            <div class="form_holder">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="predefined_styles">
-                            <div class="skin-theme-switcher">
-                                <h4>Color</h4>
-                                <a href="javascript:void(0);" data-switchcolor="color1" class="styleswitch" style="background-color:#fe5656;"> </a>
-                                <a href="javascript:void(0);" data-switchcolor="color2" class="styleswitch" style="background-color:#4fb0fd;"> </a>
-                                <a href="javascript:void(0);" data-switchcolor="color3" class="styleswitch" style="background-color:#ffc73c;"> </a>
-                                <a href="javascript:void(0);" data-switchcolor="color4" class="styleswitch" style="background-color:#ff8300;"> </a>
-                                <a href="javascript:void(0);" data-switchcolor="color5" class="styleswitch" style="background-color:#02cc8b;"> </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <?= $this->Html->script('/assets/plugins/switcher/js/bootstrap-select.js'); ?>
-        <?= $this->Html->script('/assets/plugins/switcher/js/evol.colorpicker.min.js'); ?>
-        <?= $this->Html->script('/assets/plugins/switcher/js/dmss.js'); ?>
-
-    </div>
-    <!-- End Switcher -->
 
     <div id="wrapper">
 
@@ -81,19 +83,17 @@ $this->disableAutoLayout();
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
-                            <a href="<?= $this->Url->build('/') ?>" class="logo">
-                                <img class="logo__img img-responsive" src="<?= $this->Url->image('logo.png') ?>" height="50" width="111" alt="Logo">
-                            </a>
                             <div class="navbar yamm">
                                 <div class="navbar-header hidden-md hidden-lg hidden-sm">
                                     <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                                    <a href="javascript:void(0);" class="navbar-brand"></a> </div>
+                                    <a href="<?= $this->Url->build('/') ?>" class="navbar-brand">
+                                        <img class="logo__img img-responsive" src="<?= $this->Url->image('logo.png') ?>" height="50" width="111" alt="Logo">
+                                    </a>
+                                </div>
                                 <div id="navbar-collapse-1" class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="<?= $this->Url->build('/') ?>">HOME</a></li>
                                         <li><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a> </li>
                                         <li><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'], ['confirm' => __("Are you sure you want to Logout?")]) ?></li>
-
                                     </ul>
                                 </div>
                             </div>
@@ -118,13 +118,9 @@ $this->disableAutoLayout();
                     <main class="main-content">
                         <article class="car-details">
                             <div class="car-details__wrap-title clearfix">
-                                <h2 class="car-details__title">Diagnosis</h2>
+                                <h3 class="car-details__title"> <?= h($moncase->diagnosis) ?> </h3>
                                 <div class="car-details__wrap-price">
-                                    <span class="car-details__price">
-                                        <span class="car-details__price-inner">
-                                            <?= h($moncase->diagnosis) ?>
-                                        </span>
-                                    </span>
+
                                 </div>
                             </div>
 
@@ -142,9 +138,9 @@ $this->disableAutoLayout();
                             <!-- Nav tabs -->
                             <div class="wrap-nav-tabs">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab1" data-toggle="tab">overviwe ?</a></li>
-                                    <li><a href="#tab2" data-toggle="tab">observations ?</a></li>
-                                    <li><a href="#tab3" data-toggle="tab">teaching points ?</a></li>
+                                    <li class="active"><a href="#tab1" data-toggle="tab">Overview</a></li>
+                                    <li><a href="#tab2" data-toggle="tab">Observations</a></li>
+                                    <li><a href="#tab3" data-toggle="tab">Teaching Points</a></li>
                                 </ul>
                             </div>
 
@@ -171,6 +167,11 @@ $this->disableAutoLayout();
                                         <h3 class="ui-title-inner">Teaching Points</h3>
                                         <div class="decor-1"></div>
                                         <p><?= h($moncase->teaching_points) ?></p>
+
+                                        <h3 class="ui-title-inner">Speciality</h3>
+                                        <div class="decor-1"></div>
+                                        <p><?= h($moncase->speciality) ?></p>
+
                                     </dvi>
                                 </div>
 
@@ -192,8 +193,46 @@ $this->disableAutoLayout();
 
                                 <div class="tab-pane" id="tab3">
                                     <dvi class="tab_words">
-                                        <h3 class="ui-title-inner">Everything else ?</h3>
+                                        <h3 class="ui-title-inner">History</h3>
                                         <div class="decor-1"></div>
+                                        <p><?= h($moncase->history) ?></p>
+
+                                        <h3 class="ui-title-inner">Imaging</h3>
+                                        <div class="decor-1"></div>
+                                        <p><?= h($moncase->imaging) ?></p>
+
+                                        <h3 class="ui-title-inner">Observation</h3>
+                                        <div class="decor-1"></div>
+                                        <p><?= h($moncase->observation) ?></p>
+
+                                        <h3 class="ui-title-inner">Interpretation</h3>
+                                        <div class="decor-1"></div>
+                                        <p><?= h($moncase->intepretation) ?></p>
+
+                                        <h3 class="ui-title-inner">Management</h3>
+                                        <div class="decor-1"></div>
+                                        <p><?= h($moncase->management) ?></p>
+
+                                        <h3 class="ui-title-inner">Anatomy</h3>
+                                        <div class="decor-1"></div>
+                                        <p><?= h($moncase->anatomy) ?></p>
+
+                                        <h3 class="ui-title-inner">Findings</h3>
+                                        <div class="decor-1"></div>
+                                        <p><?= h($moncase->findings) ?></p>
+
+                                        <h3 class="ui-title-inner">Further Investigation</h3>
+                                        <div class="decor-1"></div>
+                                        <p><?= h($moncase->further_investigation) ?></p>
+
+                                        <h3 class="ui-title-inner">Seen By</h3>
+                                        <div class="decor-1"></div>
+                                        <p><?= h($moncase->seen_by) ?></p>
+
+                                        <h3 class="ui-title-inner">Tags</h3>
+                                        <div class="decor-1"></div>
+                                        <p><?= h($moncase->tags) ?></p>
+
                                     </dvi>
                                 </div>
 
@@ -221,8 +260,8 @@ $this->disableAutoLayout();
                                         <dt>Case Type:</dt>
                                         <dd><?= h($moncase->case_type) ?></dd>
 
-                                        <dt>Consultant:(not sure)</dt>
-                                        <dd><?= h($moncase->accession_no) ?></dd>
+                                        <dt>Contributor:</dt>
+                                        <dd><?= h($moncase->contributor) ?></dd>
 
                                         <dt>Marks:</dt>
                                         <dd><?= h($moncase->max_marks) ?></dd>
@@ -231,10 +270,12 @@ $this->disableAutoLayout();
                                         <dd><?= h($moncase->date) ?></dd>
                                         <dt>Author:</dt>
                                         <dd><?= h($moncase->author) ?></dd>
+                                        <dt>Rating:</dt>
+                                        <dd><?= h($moncase->rating) ?></dd>
                                     </dvi>
 
                                     <td class="actions">
-                                        <td><button class="btn btn-primary" onclick="goBack()">Go Back</button></td>
+                                        <td><button class="btn btn-skew-r btn-effect btn-skew-r__inner" onclick="goBack()">Go Back</button></td>
                                         <script>
                                             function goBack() {
                                                 window.history.back();
@@ -257,13 +298,6 @@ $this->disableAutoLayout();
         </div><!-- end container -->
 
 
-
-        <footer class="footer">
-
-            <div class="footer__wrap-btn"> <a class="footer__btn scroll" href="#this-top">top</a> </div>
-
-        </footer>
-
     </div><!-- end #wrapper -->
 </div><!-- end layout-theme -->
 
@@ -271,6 +305,8 @@ $this->disableAutoLayout();
 
 
 </body>
+
+
 </html>
 
 <!-- SCRIPTS -->

@@ -130,7 +130,7 @@ class MoncasesController extends AppController
             if ($this->Moncases->save($moncase)) {
                 $this->Flash->success(__('The moncase has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'userlist']);
             }
             $this->Flash->error(__('The moncase could not be saved. Please, try again.'));
         }
