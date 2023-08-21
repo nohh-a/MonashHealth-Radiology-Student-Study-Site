@@ -3,14 +3,16 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Moncase $moncase
  */
+
+$this->disableAutoLayout();
 ?>
 
 <html lang="en">
 <br>
 <head>
     <meta charset="utf-8">
-    <title>Add a New Case</title>
-    <?= $this->Html->meta('icon') ?>
+    <title>Add a New Case(1/2)</title>
+    <?= $this->Html->meta('icon', 'favicon.ico', ['type' => 'image/x-icon']) ?>
 
     <?= $this->Html->css('/webroot/css/animate.min.css') ?>
     <?= $this->Html->css('/webroot/css/bootstrap.min.css') ?>
@@ -30,92 +32,33 @@
                 <div class="card">
                     <h5 class="card-header text-center"><?= __('Add New Case') ?></h5>
                     <div class="wizard-progress">
-                        <span>1 of 5 Completed</span>
+                        <span>1 of 2 Completed</span>
                         <div class="progress">
-                            <div class="progress-bar">
+                            <div class="progress-bar", style="width: 50%;">
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <?= $this->Form->control('image_url', ['type' => 'file']); ?>
-                                <?= $this->Form->control('date', [
-                                    'class' => 'form-control',
-                                    'type' => 'date',
-                                    'required' => true
-                                ])
-                                ?>
-                            </div>
-                            <div class="col-md-6">
-                                <?= $this->Form->control('imaging', [
-                                    'class' => 'form-control',
-                                    'maxlength' => 236,
-                                    'required' => true
+                                <?= $this->Form->control('image_url', [
+                                    'type' => 'file',
+                                    'label' => 'Image Upload'
                                 ]); ?>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <?=$this->Form->control('case_type', ['label' => 'Case Type',
-                                    'class' => 'form-control',
-                                    'options' => [
-                                        'Oscer' => 'Oscer',
-                                        'Long' => 'Long',
-                                        'Medium' => 'Medium',
-                                        'Short' => 'Short',
-                                        'General' => 'General'
-                                    ],
-                                    'required' => true
-                                ]); ?>
-                            </div>
-                            <div class="col-md-6">
                                 <?= $this->Form->control('accession_no', [
                                     'class' => 'form-control',
                                     'type' => 'text',
                                     'maxlength' => 50,
                                     'required' => true
                                 ]); ?>
-                            </div>
-                        </div>
 
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <?= $this->Form->control('history', [
+                                <?= $this->Form->control('imaging', [
                                     'class' => 'form-control',
                                     'maxlength' => 236,
                                     'required' => true
-                                ])
-                                ?>
-                            </div>
-                            <div class="col-md-6">
-                                <?= $this->Form->control('author', [
-                                    'class' => 'form-control',
-                                    'maxlength' => 236,
-                                    'required' => true
-                                ])
-                                ?>
-                            </div>
-                        </div>
+                                ]); ?>
 
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <?= $this->Form->label('contributor', 'Contributor') ?>
-                                <?= $this->Form->select('contributor', [
-                                    'TRAINEE' => 'TRAINEE',
-                                    'CONSULTANT' => 'CONSULTANT',
-                                    'LIBRARY' => 'LIBRARY'
-                                ], [
-                                    'class' => 'form-control',
-                                    'required' => true,
-                                    'empty' => '- Select Contributor -',
-                                ])
-                                ?>
-                            </div>
-                            <div class="col-md-6">
                                 <?= $this->Form->label('speciality', 'Speciality') ?>
                                 <?= $this->Form->select('speciality', [
                                     'ABDOMINAL' => 'ABDOMINAL',
@@ -135,6 +78,86 @@
                                     'required' => true,
                                     'empty' => '- Select Speciality -',
                                 ]) ?>
+
+                                <?= $this->Form->control('differential_diagnosis', [
+                                    'class' => 'form-control',
+                                    'maxlength' => 236,
+                                    'required' => true
+                                ])
+                                ?>
+
+                            </div>
+                            <div class="col-md-6">
+                                <?=$this->Form->control('case_type', ['label' => 'Case Type',
+                                    'class' => 'form-control',
+                                    'options' => [
+                                        'Oscer' => 'Oscer',
+                                        'Long' => 'Long',
+                                        'Medium' => 'Medium',
+                                        'Short' => 'Short',
+                                        'General' => 'General'
+                                    ],
+                                    'required' => true
+                                ]); ?>
+
+                                <?= $this->Form->control('date', [
+                                    'class' => 'form-control',
+                                    'type' => 'date',
+                                    'value' => date('d-m-Y'),
+                                    'required' => true
+                                ])
+                                ?>
+
+                                <?= $this->Form->control('diagnosis', [
+                                    'class' => 'form-control',
+                                    'maxlength' => 236,
+                                    'required' => true,
+                                ])
+                                ?>
+
+                                <?= $this->Form->control('teaching_points', [
+                                    'class' => 'form-control',
+                                    'maxlength' => 236,
+                                    'required' => true
+                                ])
+                                ?>
+
+                                <?= $this->Form->control('findings', [
+                                    'class' => 'form-control',
+                                    'maxlength' => 236,
+                                    'required' => true
+                                ])
+                                ?>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+                            </div>
+                            <div class="col-md-6">
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+                            </div>
+                            <div class="col-md-6">
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+                            </div>
+                            <div class="col-md-6">
+
                             </div>
                         </div>
 
@@ -147,6 +170,9 @@
                             'class' => 'btn btn-primary btn-lg'
                         ])
                         ?>
+
+<!--                        --><?php //= $this->Html->link(__('Next'), ['controller' => 'moncases', 'action' => 'step2'], ['class' => 'btn btn-primary btn-lg']) ?>
+
                     </div>
                 </div>
                 <?= $this->Form->end() ?>

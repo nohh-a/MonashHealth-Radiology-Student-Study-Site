@@ -12,8 +12,9 @@ $this->disableAutoLayout();
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
-    <title>Case Detail by Not Admin</title>
+    <title>Case Detail</title>
     <?= $this->Html->meta('icon', 'favicon.ico', ['type' => 'image/x-icon']) ?>
+
     <?= $this->Html->css('/assets/css/master.css') ?>
     <?= $this->Html->css('/assets/plugins/iview/css/iview.css') ?>
     <?= $this->Html->css('/assets/plugins/iview/css/skin/style.css', ['class' => 'skin']) ?>

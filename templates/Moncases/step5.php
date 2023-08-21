@@ -48,50 +48,19 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <?= $this->Form->control('further_investigation', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
-                            <?= $this->Form->control('teaching_points', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
+
+
 
                         </div>
 
                         <div class="col-md-6">
-                            <?= $this->Form->control('seen_by', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
-                            <?= $this->Form->control('tags', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
+
+
 
                         </div>
 
                         <div class="col-md-6">
-                            <?= $this->Form->label('rating', 'Rating') ?>
-                            <?= $this->Form->select('rating', [
-                                '1' => 1,
-                                '2' => 2,
-                                '3' => 3,
-                                '4' => 4,
-                                '5' => 5,
-                            ], [
-                                'class' => 'form-control',
-                                'required' => true,
-                                'empty' => '- Select Rating -',
-                            ]) ?>
+
 
                     </div>
 

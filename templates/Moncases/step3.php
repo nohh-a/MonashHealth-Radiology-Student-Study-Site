@@ -36,36 +36,11 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <?= $this->Form->control('intepretation', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
-
-                            <?= $this->Form->control('intrinsic_roles', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
 
                         </div>
 
                         <div class="col-md-6">
-                            <?= $this->Form->control('management', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
 
-                            <?= $this->Form->control('safety', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
                         </div>
                     </div>
 

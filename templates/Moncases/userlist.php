@@ -110,7 +110,7 @@ $this->disableAutoLayout();
 
     <div class="block-title">
             <div class="block-title__inner section-bg_second">
-                <h1 class="ui-title-page">Cases</h1>
+                <h1 class="ui-title-page">Cases List</h1>
             </div>
         </div>
 

@@ -36,34 +36,14 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <?= $this->Form->control('anatomy', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
-                            <?= $this->Form->control('pathology', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
+
+
 
                         </div>
 
                         <div class="col-md-6">
-                            <?= $this->Form->control('findings', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
-                            <?= $this->Form->control('differential_diagnosis', [
-                                'class' => 'form-control',
-                                'maxlength' => 236,
-                                'required' => true
-                            ])
-                            ?>
+
+
 
                         </div>
                     </div>
