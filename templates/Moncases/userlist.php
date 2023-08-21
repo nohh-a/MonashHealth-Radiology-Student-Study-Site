@@ -1,4 +1,3 @@
-
 <?php
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
@@ -32,25 +31,29 @@ $this->disableAutoLayout();
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
-    <title>Case List by Admin</title>
+    <title>Case List</title>
     <?= $this->Html->meta('icon', 'favicon.ico', ['type' => 'image/x-icon']) ?>
     <?= $this->Html->css('/assets/css/master.css') ?>
     <?= $this->Html->css('/assets/plugins/iview/css/iview.css') ?>
     <?= $this->Html->css('/assets/plugins/iview/css/skin/style.css', ['class' => 'skin']) ?>
 
     <style>
-        .section-bg_second {
+        .section-bg_second, .jelect-option_state_active, .jelect-option:hover, .btn-skew-r{
             background-color: #7d9afd;
         }
-        .jelect-option_state_active, .jelect-option:hover {
-            background-color: #7d9afd;
+        .a, .card__description, .a:hover {
+            color: #365eec;
         }
-        .btn-skew-r {
-            background-color: #7d9afd;
-        }
-
         .card-list__info, .card__title, .card__description {
             overflow-wrap: break-word; /* Alternative for better browser support */
+        }
+        .card-list__row, .card__description {
+            font-size: 14px;
+        }
+        .btn-skew-r__inner, .btn-skew-r {
+            transform: skewX(0deg);
+            border-radius: 5px;
+            box-shadow: 0px 0 0 0#7d9afd;
         }
 
     </style>
@@ -68,42 +71,45 @@ $this->disableAutoLayout();
 
 <div  id="this-top" class="layout-theme animated-css"  data-header="sticky" data-header-top="200"  >
 
+
+
+
     <div id="wrapper">
-        <!-- HEADER -->
-        <div class="header">
-            <div class="header__inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-xs-12">
-                            <a href="<?= $this->Url->build('/') ?>" class="logo">
-                                <img class="logo__img img-responsive" src="<?= $this->Url->image('logo.png') ?>" height="50" width="111" alt="Logo">
-                            </a>
-                            <div class="navbar yamm">
-                                <div class="navbar-header hidden-md hidden-lg hidden-sm">
-                                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                                    <a href="javascript:void(0);" class="navbar-brand"></a> </div>
-                                <div id="navbar-collapse-1" class="navbar-collapse collapse">
-                                    <ul class="nav navbar-nav">
-                                        <li><a href="<?= $this->Url->build('/') ?>">HOME</a></li>
-                                        <li><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a> </li>
-                                        <li><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'], ['confirm' => __("Are you sure you want to Logout?")]) ?></li>
-                                    </ul>
-                                </div>
+        <div class = "header">
+        <div class="header__inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <a href="<?= $this->Url->build('/') ?>" class="logo">
+                            <img class="logo__img img-responsive" src="<?= $this->Url->image('logo.png') ?>" height="50" width="111" alt="Logo">
+                        </a>
+                        <div class="navbar yamm">
+                            <div class="navbar-header hidden-md hidden-lg hidden-sm">
+                                <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                                <a href="javascript:void(0);" class="navbar-brand"></a> </div>
+                            <div id="navbar-collapse-1" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="<?= $this->Url->build('/') ?>">HOME</a></li>
+                                    <li><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a> </li>
+                                    <li><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'], ['confirm' => __("Are you sure you want to Logout?")]) ?></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- end container -->
-            </div><!-- end header__inner -->
-        </div><!-- end header -->
+            </div>
+            <!-- end container -->
+        </div><!-- end header__inner -->
+    </div><!-- end header -->
 
-        <div class="block-title" style="position: ; color:">
+
+
+
+    <div class="block-title" style="position: ; color:">
             <div class="block-title__inner section-bg_second">
-
                 <h1 class="ui-title-page">Cases</h1>
-
-            </div><!-- end block-title__inner -->
-        </div><!-- end block-title -->
+            </div>
+        </div>
 
         <div class="container">
             <div class="row">
@@ -112,11 +118,11 @@ $this->disableAutoLayout();
                         <div class="sorting">
                             <div class="sorting__inner">
                                 <div class ="sorting__item">
-                                <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
-                                <?= $this->Form->text('search', ['placeholder' => 'Search Diagnosis']) ?>
-                                <?= $this->Form->button(__('Search')) ?>
-                                <?= $this->Form->button(__('Reset'), ['type' => 'search', 'class' => 'reset-button']) ?>
-                                <?= $this->Form->end() ?>
+                                    <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                    <?= $this->Form->text('search', ['placeholder' => 'Search Diagnosis']) ?>
+                                    <?= $this->Form->button(__('Search')) ?>
+                                    <?= $this->Form->button(__('Reset'), ['type' => 'search', 'class' => 'reset-button']) ?>
+                                    <?= $this->Form->end() ?>
                                 </div>
                                 <div class="sorting__item">
                                     <span class="sorting__title">Sort by</span>
@@ -131,7 +137,7 @@ $this->disableAutoLayout();
                                                 'za' => 'Z-A',
                                                 'date' => 'Date',
                                                 'rating' => 'Rating',
-                                                ],
+                                            ],
                                             [
                                                 'empty' => false,
                                                 'default' => $this -> request -> getQuery('sort'),
@@ -143,36 +149,38 @@ $this->disableAutoLayout();
                                     </div>
                                 </div>
                                 <div class ="sorting__item">
-                                    <a <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'step1'], ['class' => 'list-tags__link'])?> </a>
+                                    <div class = "btn">
+                                        <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'add'], ['class' => 'btn-skew-r btn-effect btn-skew-r__inner'])?>
+                                    </div>
                                 </div>
-
                             </div>
                         </div><!-- end sorting -->
                         <?php if ($moncases->count() > 0) : ?>
                             <?php foreach ($moncases as $moncase) : ?>
-                        <article class="card clearfix">
-                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
-                            <div class="card__img">
-                                <img class="img-responsive" src=<?php echo $this->Url->image($moncase -> image_url) ?> height="196" width="235" alt="foto">
-                            </div>
-                            <div class="card__inner">
-                                <h2 class="card__title ui-title-inner"><?= h($moncase->differential_diagnosis) ?></h2>
-                                <div class="decor-1"></div>
-                                <div class="card__description">
-                                    <p><?= h($moncase->diagnosis) ?></p>
-                                </div>
-                                <ul class="card__list list-unstyled">
-                                    <li class="card-list__row">
-                                        <span class="card-list__title">Findings:</span>
-                                        <span class="card-list__info"><?= h($moncase->findings) ?></span>
-                                    </li>
-                                    <li class="card-list__row">
-                                        <span class="card-list__title">Teaching Points:</span>
-                                        <span class="card-list__info"><?= h($moncase->teaching_points) ?></span>
-                                    </li>
-                                </ul>
-                                <a/>
-                        </article>
+                                <article class="card clearfix">
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
+                                        <div class="card__img">
+                                            <img class="img-responsive" src=<?php echo $this->Url->image($moncase -> image_url) ?> height="196" width="235" alt="foto">
+                                        </div>
+                                        <div class="card__inner">
+                                            <h2 class="card__title ui-title-inner"><?= h($moncase->diagnosis) ?></h2>
+                                            <div class="decor-1"></div>
+                                            <div class="card__description">
+                                                <?= h($moncase->differential_diagnosis) ?>
+                                            </div>
+                                            <p></p>
+                                            <ul class="card__list list-unstyled">
+                                                <li class="card-list__row">
+                                                    <span class="card-list__title">Findings:</span>
+                                                    <span class="card-list__info"><?= h($moncase->findings) ?></span>
+                                                </li>
+                                                <li class="card-list__row">
+                                                    <span class="card-list__title">Teaching Points:</span>
+                                                    <span class="card-list__info"><?= h($moncase->teaching_points) ?></span>
+                                                </li>
+                                            </ul>
+                                            <a/>
+                                </article>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <p>No results found.</p>
@@ -201,58 +209,59 @@ $this->disableAutoLayout();
                                 ]); ?>
                             </div>
                         </section>
-                            <section class="widget widget_mod-a">
-                                <h3 class="widget-title">Contributer</h3>
-                                <div class="decor-1"></div>
-                                <div class="widget-content">
-                                    <?= $this->Form->select('contributor', [
-                                        'Trainee' => 'Trainee',
-                                        'Consultant' => 'Consultant',
-                                        'Library' => 'Library',
-                                    ], [
-                                        'class' => 'select select_mod-a jelect',
-                                        'empty' => 'Choose Contributor',
-                                    ]); ?>
-                                </div>
-                            </section>
-                            <section class="widget widget_mod-a">
-                                <h3 class="widget-title">Rating</h3>
-                                <div class="decor-1"></div>
-                                <div class="widget-content">
-                                    <?= $this->Form->select('rating', [
-                                        '1' => '1',
-                                        '2' => '2',
-                                        '3' => '3',
-                                        '4' => '4',
-                                        '5' => '5',
-                                    ], [
-                                        'class' => 'select select_mod-a jelect',
-                                        'empty' => 'Choose Rating',
-                                    ]); ?>
-                                </div>
-                            </section>
-                             <!-- <section class="widget widget_mod-a">
+                        <section class="widget widget_mod-a">
+                            <h3 class="widget-title">Contributer</h3>
+                            <div class="decor-1"></div>
+                            <div class="widget-content">
+                                <?= $this->Form->select('contributor', [
+                                    'Trainee' => 'Trainee',
+                                    'Consultant' => 'Consultant',
+                                    'Library' => 'Library',
+                                ], [
+                                    'class' => 'select select_mod-a jelect',
+                                    'empty' => 'Choose Contributor',
+                                ]); ?>
+                            </div>
+                        </section>
+                        <section class="widget widget_mod-a">
+                            <h3 class="widget-title">Rating</h3>
+                            <div class="decor-1"></div>
+                            <div class="widget-content">
+                                <?= $this->Form->select('rating', [
+                                    '1' => '1',
+                                    '2' => '2',
+                                    '3' => '3',
+                                    '4' => '4',
+                                    '5' => '5',
+                                ], [
+                                    'class' => 'select select_mod-a jelect',
+                                    'empty' => 'Choose Rating',
+                                ]); ?>
+                            </div>
+                        </section>
+                        <!-- <section class="widget widget_mod-a">
                                 <h3 class="widget-title">Imaging</h3>
                                 <div class="decor-1"></div>
                                 <div class="widget-content">
                                     <?= $this->Form->select('Imaging', [
-                                        'Test' => 'Test',
-                                    ], [
-                                        'class' => 'select select_mod-a jelect',
-                                        'empty' => 'Choose Imaging',
-                                    ]); ?>
+                            'Test' => 'Test',
+                        ], [
+                            'class' => 'select select_mod-a jelect',
+                            'empty' => 'Choose Imaging',
+                        ]); ?>
                                 </div>
                             </section>
                             -->
-
-                        <div class="btn">
-                            <div class="btn-filter wrap__btn-skew-r js-filter">
-                            <?= $this->Form->button(__('Filter'), ['class' => 'btn-skew-r btn-effect btn-skew-r__inner']) ?>
-                            <?= $this->Form->end() ?>
+                        <div class="widget-content">
+                            <div class="btn">
+                                <div class="btn-filter btn-skew-r js-filter" style ="padding: 0px 10px 0px;">
+                                    <?= $this->Form->button(__('Filter'), ['class' => 'btn-skew-r btn-effect', 'style' => 'margin-left: -20px;']) ?>
+                                    <?= $this->Form->end() ?>
+                                </div>
                             </div>
                         </div>
-                            </aside>
-                        </div><!-- end wrap-filter -->
+                    </aside>
+                </div><!-- end wrap-filter -->
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end #wrapper -->
