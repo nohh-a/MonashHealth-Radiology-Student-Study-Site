@@ -114,6 +114,13 @@ $this->disableAutoLayout();
         </div><!-- end block-title -->
 
         <div class="container">
+            <td><button class="btn btn-skew-r btn-effect btn-skew-r__inner" onclick="goBack()">Go Back</button></td>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+            <br><br>
             <div class="row">
                 <div class="col-md-8">
                     <main class="main-content">
@@ -276,13 +283,7 @@ $this->disableAutoLayout();
                                     </dvi>
 
                                     <td class="actions">
-                                        <td><button class="btn btn-skew-r btn-effect btn-skew-r__inner" onclick="goBack()">Go Back</button></td>
-                                        <script>
-                                            function goBack() {
-                                                window.history.back();
-                                            }
-                                        </script>
-                                        <br><br>
+
                                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncase->id], ['class' => 'btn btn-warning']) ?>
                                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['class' => 'btn btn-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $moncase->id)]) ?>
                                     </td>
@@ -326,3 +327,101 @@ $this->disableAutoLayout();
 <?= $this->Html->script('/assets/js/cssua.min.js'); ?>
 <?= $this->Html->script('/assets/js/wow.min.js'); ?>
 <?= $this->Html->script('/assets/js/custom.js'); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
