@@ -155,7 +155,7 @@ $this->disableAutoLayout();
                                 </div>
                                 <div class ="sorting__item">
                                     <div class = "btn">
-                                        <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'step1'], ['class' => 'btn-skew-r btn-effect btn-skew-r__inner'])?>
+                                        <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'add'], ['class' => 'btn-skew-r btn-effect btn-skew-r__inner'])?>
                                     </div>
                                 </div>
                             </div>

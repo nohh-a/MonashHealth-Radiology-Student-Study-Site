@@ -154,7 +154,7 @@ $this->disableAutoLayout();
                                     </div>
                                 </div>
                                 <div class ="sorting__item">
-                                    <a <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'step1'], ['class' => 'list-tags__link'])?> </a>
+                                    <a <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'add'], ['class' => 'list-tags__link'])?> </a>
                                 </div>
 
                             </div>
