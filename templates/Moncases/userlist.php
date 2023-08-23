@@ -121,11 +121,10 @@ $this->disableAutoLayout();
                         <div class="sorting">
                             <div class="sorting__inner">
                                 <div class ="sorting__item">
-                                    <div class = "form-search__input"
-                                    <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'step1'], 'type' => 'get']) ?>
+                                    <div class = "form-search__input">
+                                    <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                                     <?= $this->Form->text('search', ['placeholder' => 'Search Diagnosis']) ?>
                                     <?= $this->Form->button(__('Search')) ?>
-                                    <?= $this->Form->button(__('Reset'), ['type' => 'search', 'class' => 'reset-button']) ?>
                                     <?= $this->Form->end() ?>
                                 </div>
                                 </div>
@@ -140,8 +139,8 @@ $this->disableAutoLayout();
                                                 'oldest' => 'Oldest',
                                                 'az' => 'A-Z',
                                                 'za' => 'Z-A',
-                                                'date' => 'Date',
-                                                'rating' => 'Rating',
+                                                'rating_asc' => 'Rating ASC',
+                                                'rating_desc' => 'Rating DESC'
                                             ],
                                             [
                                                 'empty' => false,
@@ -190,7 +189,6 @@ $this->disableAutoLayout();
                         <?php else : ?>
                             <p>No results found.</p>
                         <?php endif; ?>
-
                     </main><!-- end main-content -->
                 </div><!-- end col -->
 

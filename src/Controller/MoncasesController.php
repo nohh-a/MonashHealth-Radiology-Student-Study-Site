@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Cake\ORM\TableRegistry;
 /**
  * Moncases Controller
  *
@@ -60,6 +59,7 @@ class MoncasesController extends AppController
 
         $this->set(compact('moncase'));
     }
+
     /**
      * View method by not admin
      *
@@ -94,11 +94,11 @@ class MoncasesController extends AppController
 //                debug($image);
                 $name = $image->getClientFilename();
 
-                $targetPath = WWW_ROOT.'img'.DS.'uploads'.DS.$name;
+                $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
 
                 if ($name) {
                     $image->moveTo($targetPath);
-                    $moncase->image_url='uploads/'.$name;
+                    $moncase->image_url = 'uploads/' . $name;
                 }
             }
 
@@ -107,10 +107,9 @@ class MoncasesController extends AppController
 
                 // check access_role, then redirect different page
                 $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
-                if($access_role == "ADMIN" ){
+                if ($access_role == 'ADMIN') {
                     $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
-
-                }else{
+                } else {
                     $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
                 }
             }
@@ -137,7 +136,13 @@ class MoncasesController extends AppController
             if ($this->Moncases->save($moncase)) {
                 $this->Flash->success(__('The moncase has been saved.'));
 
-                return $this->redirect(['action' => 'userlist']);
+                // check access_role, then redirect different page
+                $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+                if ($access_role == 'ADMIN') {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                } else {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                }
             }
             $this->Flash->error(__('The moncase could not be saved. Please, try again.'));
         }
@@ -161,7 +166,7 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The moncase could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'userlist']);
     }
 
     public function oscer()
@@ -213,12 +218,14 @@ class MoncasesController extends AppController
     {
         // obtain cases list
         $moncases = $this->Moncases->find();
+
         //search functionality
         $search = $this->request->getQuery('search');
         if ($search) {
-            $moncases->where([
+            $moncases->where(['OR' => [
                 'differential_diagnosis LIKE' => "%$search%",
-            ]);
+                'diagnosis LIKE' => "%$search%",
+            ]]);
         }
 
         // filter functionality
@@ -259,24 +266,28 @@ class MoncasesController extends AppController
             case 'za':
                 $moncases->order(['differential_diagnosis' => 'DESC']);
                 break;
-            case 'rating':
+            case 'rating_asc':
                 $moncases->order(['rating' => 'ASC']);
                 break;
+            case 'rating_desc':
+                $moncases->order(['rating' => 'DESC']);
         }
 
-        $this->set(compact('moncases','search', 'filter','sort'));
+        $this->set(compact('moncases', 'search', 'filter', 'sort'));
     }
 
     public function userlistNotadmin()
     {
         // obtain cases list
         $moncases = $this->Moncases->find();
+
         //search functionality
         $search = $this->request->getQuery('search');
         if ($search) {
-            $moncases->where([
+            $moncases->where(['OR' => [
                 'differential_diagnosis LIKE' => "%$search%",
-            ]);
+                'diagnosis LIKE' => "%$search%",
+            ]]);
         }
 
         // filter functionality
@@ -317,18 +328,20 @@ class MoncasesController extends AppController
             case 'za':
                 $moncases->order(['differential_diagnosis' => 'DESC']);
                 break;
-            case 'rating':
+            case 'rating_asc':
                 $moncases->order(['rating' => 'ASC']);
                 break;
+            case 'rating_desc':
+                $moncases->order(['rating' => 'DESC']);
         }
 
-        $this->set(compact('moncases','search', 'filter','sort'));
+        $this->set(compact('moncases', 'search', 'filter', 'sort'));
     }
 
-    public function step1() {
+    public function step1()
+    {
 
         if ($this->request->is('post')) {
-
             $newCase = $this->request->getSession()->read('newCase') ?? [];
 
             //get data from post data
@@ -359,7 +372,6 @@ class MoncasesController extends AppController
             $newCase['differential_diagnosis'] = $differential_diagnosisValue;
             $newCase['findings'] = $findingsValue;
 
-
             // write into session
             $this->request->getSession()->write('newCase', $newCase);
 
@@ -367,25 +379,24 @@ class MoncasesController extends AppController
 
             $this->redirect(['controller' => 'moncases', 'action' => 'step2']);
         }
-
     }
 
-    public function step2() {
+    public function step2()
+    {
 
         $moncase = $this->Moncases->newEmptyEntity();
 
         if ($this->request->is('post')) {
-
             $newCase = $this->request->getSession()->read('newCase') ?? [];
 
             // step 1 data
             $imageName = $newCase['image_url.name'];
 
-            $targetPath = WWW_ROOT.'img'.DS.'uploads'.DS.$imageName;
+            $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $imageName;
 
             if ($imageName) {
                 $imageName->moveTo($targetPath);
-                $imageUrlValue = 'uploads/'.$imageName;
+                $imageUrlValue = 'uploads/' . $imageName;
             }
 
             $case_typeValue = $newCase['case_type'];
@@ -416,9 +427,8 @@ class MoncasesController extends AppController
             $seen_byValue = $step2Data['seen_by'];
             $tagsValue = $step2Data['tags'];
 
-
             // database data array
-            $moncaseData = array(
+            $moncaseData = [
                 // 1
                 'image_url' => $imageUrlValue,
                 'date' => $dateValue,
@@ -446,7 +456,7 @@ class MoncasesController extends AppController
                 'seen_by' => $seen_byValue,
                 'tags' => $tagsValue,
                 'rating' => $ratingValue,
-            );
+            ];
 
             $moncase = $this->Moncases->patchEntity($moncase, $moncaseData);
 
@@ -459,35 +469,27 @@ class MoncasesController extends AppController
 
                 // check access_role, then redirect different page
                 $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
-                if($access_role == "ADMIN" ){
+                if ($access_role == 'ADMIN') {
                     $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
-
-                }else{
+                } else {
                     $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
                 }
             }
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
-
-
-
     }
 
-    public function step3() {
+    public function step3()
+    {
         if ($this->request->is('post')) {
-
             $newCase = $this->request->getSession()->read('newCase') ?? [];
 
-            //
             $step3Data = $this->request->getData();
 
-
-            //
             $newCase = array_merge($newCase, [
 
             ]);
 
-            //
             $this->request->getSession()->write('newCase', $newCase);
 
 //            $this->set(compact('newCase'));
@@ -496,23 +498,18 @@ class MoncasesController extends AppController
         }
     }
 
-    public function step4() {
+    public function step4()
+    {
 
         if ($this->request->is('post')) {
-
             $newCase = $this->request->getSession()->read('newCase') ?? [];
 
-            //
             $step4Data = $this->request->getData();
 
-
-
-            //
             $newCase = array_merge($newCase, [
 
             ]);
 
-            //
             $this->request->getSession()->write('newCase', $newCase);
 
 //            $this->set(compact('newCase'));
@@ -521,12 +518,7 @@ class MoncasesController extends AppController
         }
     }
 
-    public function step5() {
-
-
+    public function step5()
+    {
     }
-
-
-
-
 }

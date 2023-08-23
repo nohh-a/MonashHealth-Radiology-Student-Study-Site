@@ -285,7 +285,7 @@ $this->disableAutoLayout();
                                     <td class="actions">
 
                                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncase->id], ['class' => 'btn btn-warning']) ?>
-                                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['class' => 'btn btn-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $moncase->id)]) ?>
+                                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['class' => 'btn btn-danger', 'confirm' => __('Are you sure you want to delete this case "{0}" ?', $moncase->diagnosis)]) ?>
                                     </td>
 
                                 </dl>

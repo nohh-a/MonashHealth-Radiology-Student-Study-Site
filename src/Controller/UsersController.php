@@ -20,7 +20,6 @@ class UsersController extends AppController
     {
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
-            $this->Flash->error(__('You are not authorized to access that page.'));
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }
 
@@ -40,7 +39,6 @@ class UsersController extends AppController
     {
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
-            $this->Flash->error(__('You are not authorized to access that page.'));
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }
 
@@ -60,7 +58,6 @@ class UsersController extends AppController
     {
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
-            $this->Flash->error(__('You are not authorized to access that page.'));
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }
 
@@ -88,7 +85,6 @@ class UsersController extends AppController
     {
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
-            $this->Flash->error(__('You are not authorized to access that page.'));
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }
 
@@ -118,7 +114,6 @@ class UsersController extends AppController
     {
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
-            $this->Flash->error(__('You are not authorized to access that page.'));
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }
 

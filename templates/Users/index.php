@@ -4,9 +4,9 @@
  * @var iterable<\App\Model\Entity\User> $users
  */
 
-echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css',['block'=>true]);
-echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js',['block'=>true]);
-echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['block'=>true]);
+echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['block' => true]);
+echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
+echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 
 ?>
 <style>
@@ -62,7 +62,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($users as $user): ?>
+                    <?php foreach ($users as $user) : ?>
                         <tr>
 
                             <td><?= h($user->username) ?></td>
@@ -92,12 +92,10 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
         </div>
     </div>
 
-    <td><button class="btn btn-primary" onclick="goBack()">Go Back</button></td>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+    <td>
+        <?= $this->Html->link(__('Go back'), ['controller' => 'moncases', 'action' => 'userlist'], ['class' => 'btn btn-primary']) ?>
+    </td>
+
 </div>
 
 
