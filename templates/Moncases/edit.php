@@ -25,7 +25,6 @@
                                     'SHORT' => 'SHORT',
                                     'GENERAL' => 'GENERAL'
                                 ],
-                                'disabled' => 'true',
                             ])
                             ?>
                             <?= $this->Form->control('date', ['class' => 'form-control']) ?>
