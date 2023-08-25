@@ -9,12 +9,17 @@ use Cake\ORM\Entity;
  * Moncase Entity
  *
  * @property int $id
- * @property string|null $accession_no
- * @property string $case_type
- * @property \Cake\I18n\FrozenDate $date
- * @property string $history
- * @property string $imaging
  * @property string $image_url
+ * @property string|null $accession_no
+ * @property string|null $case_type
+ * @property \Cake\I18n\FrozenDate|null $date
+ * @property string|null $imaging
+ * @property string|null $diagnosis
+ * @property string|null $differential_diagnosis
+ * @property string|null $findings
+ * @property string|null $teaching_points
+ * @property string|null $speciality
+ * @property string|null $history
  * @property int|null $max_marks
  * @property string|null $observation
  * @property string|null $intepretation
@@ -23,17 +28,12 @@ use Cake\ORM\Entity;
  * @property string|null $management
  * @property string|null $anatomy
  * @property string|null $pathology
- * @property string|null $findings
- * @property string|null $diagnosis
- * @property string|null $differential_diagnosis
  * @property string|null $further_investigation
- * @property string|null $teaching_points
  * @property string|null $seen_by
  * @property string|null $tags
- * @property string $contributor
- * @property string $speciality
+ * @property string|null $contributor
  * @property int|null $rating
- * @property string $author
+ * @property string|null $author
  */
 class Moncase extends Entity
 {
@@ -47,12 +47,17 @@ class Moncase extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
+        'image_url' => true,
         'accession_no' => true,
         'case_type' => true,
         'date' => true,
-        'history' => true,
         'imaging' => true,
-        'image_url' => true,
+        'diagnosis' => true,
+        'differential_diagnosis' => true,
+        'findings' => true,
+        'teaching_points' => true,
+        'speciality' => true,
+        'history' => true,
         'max_marks' => true,
         'observation' => true,
         'intepretation' => true,
@@ -61,15 +66,10 @@ class Moncase extends Entity
         'management' => true,
         'anatomy' => true,
         'pathology' => true,
-        'findings' => true,
-        'diagnosis' => true,
-        'differential_diagnosis' => true,
         'further_investigation' => true,
-        'teaching_points' => true,
         'seen_by' => true,
         'tags' => true,
         'contributor' => true,
-        'speciality' => true,
         'rating' => true,
         'author' => true,
     ];

@@ -172,6 +172,10 @@ $this->disableAutoLayout();
                                         <div class="decor-1"></div>
                                         <p><?= h($moncase->findings) ?></p>
 
+                                        <h3 class="ui-title-inner">Imaging</h3>
+                                        <div class="decor-1"></div>
+                                        <p><?= h($moncase->imaging) ?></p>
+
                                         <h3 class="ui-title-inner">Teaching Points</h3>
                                         <div class="decor-1"></div>
                                         <p><?= h($moncase->teaching_points) ?></p>
@@ -236,9 +240,6 @@ $this->disableAutoLayout();
 
                                         <dt>Specialty:</dt>
                                         <dd><?= h($moncase->speciality) ?></dd>
-
-                                        <dt>Imaging:</dt></dt>
-                                        <dd><?= h($moncase->imaging) ?></dd>
 
                                         <dt>Seen by:</dt></dt>
                                         <dd><?= h($moncase->seen_by) ?></dd>

@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>">Home</a>
+                        <?= $this->Html->link(__('Back'), ['action' => 'addnewcase'], ['class' => 'btn btn-secondary btn-lg nav-button active']) ?>
                     </li>
 
                 </ul>
@@ -33,20 +33,14 @@
             <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
 
             <div class="card">
-                <h5 class="card-header text-center"><?= __('Add New Case') ?></h5>
+                <h5 class="card-header text-center"><?= __('Add New Long Case') ?></h5>
                 <div class="card-body">
                     <div style="text-align: center;">
-                        <?=$this->Form->control('case_type', ['label' => 'Case Type',
-                            'class' => 'form-control',
-                            'options' => [
-                                'Oscer' => 'Oscer',
-                                'Long' => 'Long',
-                                'Medium' => 'Medium',
-                                'Short' => 'Short',
-                                'General' => 'General'
-                            ],
-                            'required' => true
-                        ]); ?>
+                        <div style="text-align: center;">
+                            <?=$this->Form->control('case_type',  ['class' => 'form-control',
+                                'default' => 'LONG',
+                                'readonly' => true]) ?>
+                        </div>
                     </div>
                     <br><br>
                     <div class="row">
@@ -61,6 +55,13 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body">
+
+                                        <?= $this->Form->control('image_url', [
+                                            'type' => 'file',
+                                            'label' => 'Image Upload',
+                                            'class' => 'form-control'
+                                        ]); ?>
+
                                         <?= $this->Form->control('accession_no', [
                                             'class' => 'form-control',
                                             'type' => 'text',
@@ -69,25 +70,6 @@
                                         ]); ?>
 
 
-                                        <?= $this->Form->label('speciality', 'Speciality') ?>
-                                        <?= $this->Form->select('speciality', [
-                                            'ABDOMINAL' => 'ABDOMINAL',
-                                            'CARDIOTHORACIC' => 'CARDIOTHORACIC',
-                                            'NEURO' => 'NEURO',
-                                            'HEAD AND NECK' => 'HEAD AND NECK',
-                                            'MSK' => 'MSK',
-                                            'BREAST' => 'BREAST',
-                                            'GYN' => 'GYN',
-                                            'O+G' => 'O+G',
-                                            'PEADS' => 'PEADS',
-                                            'VASCULAR' => 'VASCULAR',
-                                            'INTERVENTION' => 'INTERVENTION',
-                                            // Abdominal, Cardiothoracic, Neuro, Head and Neck, MSK, Breast, Gyn, O+G, Paeds, Vascular, Intervention.
-                                        ], [
-                                            'class' => 'form-control',
-                                            'required' => true,
-                                            'empty' => '- Select Speciality -',
-                                        ]) ?>
 
                                         <?= $this->Form->control('diagnosis', [
                                             'class' => 'form-control',
@@ -138,28 +120,18 @@
                                         ])
                                         ?>
 
-                                        <?= $this->Form->control('author', [
-                                            'class' => 'form-control',
-                                            'maxlength' => 236,
-                                        ])
-                                        ?>
 
 
                                         <?= $this->Form->label('contributor', 'Contributor') ?>
                                         <?= $this->Form->select('contributor', [
-                                                'TRAINEE' => 'TRAINEE',
-                                                'CONSULTANT' => 'CONSULTANT',
-                                                'LIBRARY' => 'LIBRARY'
-                                            ], [
-                                                'class' => 'form-control',
-                                                'empty' => '- Select Contributor -',
-                                            ])
+                                            'TRAINEE' => 'TRAINEE',
+                                            'CONSULTANT' => 'CONSULTANT',
+                                            'LIBRARY' => 'LIBRARY'
+                                        ], [
+                                            'class' => 'form-control',
+                                            'empty' => '- Select Contributor -',
+                                        ])
                                         ?>
-
-                                        <?= $this->Form->control('image_url', [
-                                                'type' => 'file',
-                                                'label' => 'Image Upload'
-                                        ]); ?>
 
                                     </div>
                                 </div>
@@ -184,13 +156,6 @@
                                             ])
                                             ?>
 
-
-                                            <?= $this->Form->control('teaching_points', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                                'required' => true
-                                            ])
-                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -215,55 +180,6 @@
                                             ])
                                             ?>
 
-                                            <?= $this->Form->control('anatomy', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
-
-                                            <?= $this->Form->control('pathology', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
-
-
-                                            <?= $this->Form->control('intepretation', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
-
-                                            <?= $this->Form->control('tags', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
-
-                                            <?= $this->Form->control('observation', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
-
-                                            <?= $this->Form->control('safety', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
-
-                                            <?= $this->Form->control('intrinsic_roles', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
-
-
-                                            <?= $this->Form->control('seen_by', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
 
                                         </div>
                                     </div>

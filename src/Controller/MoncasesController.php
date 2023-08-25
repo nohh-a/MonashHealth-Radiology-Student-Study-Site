@@ -19,6 +19,11 @@ class MoncasesController extends AppController
      */
     public function index()
     {
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if($access_role !== "ADMIN" ){
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         $moncases = $this->paginate($this->Moncases);
 
         $oscerCount = $this->Moncases->find()
@@ -53,6 +58,11 @@ class MoncasesController extends AppController
      */
     public function view($id = null)
     {
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if($access_role !== "ADMIN" ){
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         $moncase = $this->Moncases->get($id, [
             'contain' => [],
         ]);
@@ -69,6 +79,7 @@ class MoncasesController extends AppController
      */
     public function viewNotadmin($id = null)
     {
+
         $moncase = $this->Moncases->get($id, [
             'contain' => [],
         ]);
@@ -128,6 +139,8 @@ class MoncasesController extends AppController
      */
     public function edit($id = null)
     {
+        //ToDo: user just can edit the case that they created
+
         $moncase = $this->Moncases->get($id, [
             'contain' => [],
         ]);
@@ -169,53 +182,15 @@ class MoncasesController extends AppController
         return $this->redirect(['action' => 'userlist']);
     }
 
-    public function oscer()
-    {
-        $moncases = $this->paginate($this->Moncases, [
-            'conditions' => ['case_type' => 'Oscer'],
-        ]);
 
-        $this->set(compact('moncases'));
-    }
-
-    public function long()
-    {
-        $moncases = $this->paginate($this->Moncases, [
-            'conditions' => ['case_type' => 'Long'],
-        ]);
-
-        $this->set(compact('moncases'));
-    }
-
-    public function medium()
-    {
-        $moncases = $this->paginate($this->Moncases, [
-            'conditions' => ['case_type' => ',Medium'],
-        ]);
-
-        $this->set(compact('moncases'));
-    }
-
-    public function short()
-    {
-        $moncases = $this->paginate($this->Moncases, [
-            'conditions' => ['case_type' => 'Short'],
-        ]);
-
-        $this->set(compact('moncases'));
-    }
-
-    public function general()
-    {
-        $moncases = $this->paginate($this->Moncases, [
-            'conditions' => ['case_type' => 'General'],
-        ]);
-
-        $this->set(compact('moncases'));
-    }
 
     public function userlist()
     {
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if($access_role !== 'ADMIN' ){
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         // obtain cases list
         $moncases = $this->Moncases->find();
 
@@ -278,6 +253,11 @@ class MoncasesController extends AppController
 
     public function userlistNotadmin()
     {
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if($access_role == 'ADMIN' ){
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+        }
+
         // obtain cases list
         $moncases = $this->Moncases->find();
 
@@ -337,4 +317,201 @@ class MoncasesController extends AppController
 
         $this->set(compact('moncases', 'search', 'filter', 'sort'));
     }
+
+
+    public function addnewcase(){
+        $moncases = $this->paginate($this->Moncases);
+
+        $this->set(compact('moncases'));
+
+    }
+
+    public function addoscer(){
+
+        $moncase = $this->Moncases->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $moncase = $this->Moncases->patchEntity($moncase, $data);
+
+            if (!$moncase->getErrors()) {
+                $image = $this->request->getUploadedFile('image_url');
+//                debug($image);
+                $name = $image->getClientFilename();
+
+                $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+
+                if ($name) {
+                    $image->moveTo($targetPath);
+                    $moncase->image_url = 'uploads/' . $name;
+                }
+            }
+
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('The case has been saved.'));
+
+                // check access_role, then redirect different page
+                $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+                if ($access_role == 'ADMIN') {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                } else {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                }
+            }
+            $this->Flash->error(__('The case could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+    }
+
+    public function addlong(){
+
+        $moncase = $this->Moncases->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $moncase = $this->Moncases->patchEntity($moncase, $data);
+
+            if (!$moncase->getErrors()) {
+                $image = $this->request->getUploadedFile('image_url');
+//                debug($image);
+                $name = $image->getClientFilename();
+
+                $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+
+                if ($name) {
+                    $image->moveTo($targetPath);
+                    $moncase->image_url = 'uploads/' . $name;
+                }
+            }
+
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('The case has been saved.'));
+
+                // check access_role, then redirect different page
+                $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+                if ($access_role == 'ADMIN') {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                } else {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                }
+            }
+            $this->Flash->error(__('The case could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+    }
+
+    public function addmedium(){
+
+        $moncase = $this->Moncases->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $moncase = $this->Moncases->patchEntity($moncase, $data);
+
+            if (!$moncase->getErrors()) {
+                $image = $this->request->getUploadedFile('image_url');
+//                debug($image);
+                $name = $image->getClientFilename();
+
+                $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+
+                if ($name) {
+                    $image->moveTo($targetPath);
+                    $moncase->image_url = 'uploads/' . $name;
+                }
+            }
+
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('The case has been saved.'));
+
+                // check access_role, then redirect different page
+                $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+                if ($access_role == 'ADMIN') {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                } else {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                }
+            }
+            $this->Flash->error(__('The case could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+    }
+
+    public function addshort(){
+
+        $moncase = $this->Moncases->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $moncase = $this->Moncases->patchEntity($moncase, $data);
+
+            if (!$moncase->getErrors()) {
+                $image = $this->request->getUploadedFile('image_url');
+//                debug($image);
+                $name = $image->getClientFilename();
+
+                $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+
+                if ($name) {
+                    $image->moveTo($targetPath);
+                    $moncase->image_url = 'uploads/' . $name;
+                }
+            }
+
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('The case has been saved.'));
+
+                // check access_role, then redirect different page
+                $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+                if ($access_role == 'ADMIN') {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                } else {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                }
+            }
+            $this->Flash->error(__('The case could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+    }
+
+    public function addgeneral(){
+
+        $moncase = $this->Moncases->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $moncase = $this->Moncases->patchEntity($moncase, $data);
+
+            if (!$moncase->getErrors()) {
+                $image = $this->request->getUploadedFile('image_url');
+//                debug($image);
+                $name = $image->getClientFilename();
+
+                $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+
+                if ($name) {
+                    $image->moveTo($targetPath);
+                    $moncase->image_url = 'uploads/' . $name;
+                }
+            }
+
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('The case has been saved.'));
+
+                // check access_role, then redirect different page
+                $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+                if ($access_role == 'ADMIN') {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                } else {
+                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                }
+            }
+            $this->Flash->error(__('The case could not be saved. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+    }
+
+
+
+
 }

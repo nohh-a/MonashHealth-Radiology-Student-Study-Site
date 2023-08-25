@@ -155,7 +155,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         ]);
 
         $authentication_fields = [
-            IdentifierInterface::CREDENTIAL_USERNAME => 'email',
+            IdentifierInterface::CREDENTIAL_USERNAME => 'username',
             IdentifierInterface::CREDENTIAL_PASSWORD => 'password'
         ];
 
