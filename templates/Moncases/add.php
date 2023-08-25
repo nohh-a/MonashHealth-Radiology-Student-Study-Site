@@ -65,7 +65,9 @@
                                             'class' => 'form-control',
                                             'type' => 'text',
                                             'maxlength' => 50,
-                                            'required' => true
+                                            'required' => true,
+                                            'pattern' => '[0-9]+',
+                                            'title' => 'It is must be number!'
                                         ]); ?>
 
 
