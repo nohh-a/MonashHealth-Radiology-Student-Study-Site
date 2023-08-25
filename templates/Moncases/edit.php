@@ -36,14 +36,15 @@
                             <?=$this->Form->control('case_type', ['label' => 'Case Type',
                                 'class' => 'form-control',
                                 'options' => [
-                                    'Oscer' => 'Oscer',
-                                    'Long' => 'Long',
-                                    'Medium' => 'Medium',
-                                    'Short' => 'Short',
-                                    'General' => 'General'
+                                    'OSCER' => 'OSCER',
+                                    'LONG' => 'LONG',
+                                    'MEDIUM' => 'MEDIUM',
+                                    'SHORT' => 'SHORT',
+                                    'GENERAL' => 'GENERAL'
                                 ],
-                                'required' => true
-                            ]); ?>
+                                'disabled' => 'true',
+                            ])
+                            ?>
                         </div>
                         <br><br>
                         <div class="row">
@@ -58,6 +59,15 @@
                                     </h2>
                                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                         <div class="accordion-body">
+                                            <?= $this->Form->create($moncase, ['type' => 'file']) ?>
+                                            <div class="row">
+                                                <?= $this->Html->image('/img/' . $moncase->image_url, ['width' => '100px']); ?>
+                                                <?= $this->Form->control('image_url', [
+                                                    'type' => 'file',
+                                                    'class' => 'form-control'
+                                                ]); ?>
+                                            </div>
+
                                             <?= $this->Form->control('accession_no', [
                                                 'class' => 'form-control',
                                                 'type' => 'text',
@@ -153,10 +163,7 @@
                                             ])
                                             ?>
 
-                                            <?= $this->Form->control('image_url', [
-                                                'type' => 'file',
-                                                'label' => 'Image Upload'
-                                            ]); ?>
+
 
                                         </div>
                                     </div>
