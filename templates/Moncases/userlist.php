@@ -225,7 +225,7 @@ $this->disableAutoLayout();
                                             <li><?= h($moncase->case_type) ?></li>
                                             <li><span>by</span>&nbsp;Author </li>
                                         </ul>
-                                        <h3><a href="blog-details.html"><?= h($moncase->diagnosis) ?></a></h3>
+                                        <h3><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><?= h($moncase->diagnosis) ?></a></h3>
                                         <p><?= h($moncase->differential_diagnosis) ?></p>
                                     </div>
                                 </div>
