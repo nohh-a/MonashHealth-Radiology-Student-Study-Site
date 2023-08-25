@@ -32,10 +32,10 @@ $this->disableAutoLayout();
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
     <title>Case List</title>
+
     <?= $this->Html->meta('icon', 'favicon.ico', ['type' => 'image/x-icon']) ?>
     <?= $this->Html->css('/assets/css/master.css') ?>
-    <?= $this->Html->css('/assets/plugins/iview/css/iview.css') ?>
-    <?= $this->Html->css('/assets/plugins/iview/css/skin/style.css', ['class' => 'skin']) ?>
+
 
     <style>
         .section-bg_second, .jelect-option_state_active, .jelect-option:hover, .btn-skew-r{
@@ -59,6 +59,9 @@ $this->disableAutoLayout();
         a, .color_primary, .ui-title-inner .icon:before, .link-img__link:hover .link-img__title, .main-block__title strong, .decor-3, .list-services:hover .list-services__title, .list-progress .icon, .footer-title__inner, .card__price-number, .list-categories__link:before, .list-categories__link:hover, .list-descriptions dt:before, .widget-post1__price, .nav-tabs > li.active > a, .nav-tabs > li > a:hover, .nav-tabs > li.active > a:focus, .social-blog__item:before, blockquote:before, .comments-list .comment-datetime {
             color: #7d9afd;
         }
+        .panel-group .panel {
+            padding-left: 0px;
+        }
 
     </style>
 
@@ -80,35 +83,35 @@ $this->disableAutoLayout();
 
     <div id="wrapper">
         <div class = "header">
-        <div class="header__inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-xs-12">
-                        <div class="navbar yamm">
-                            <div class="navbar-header hidden-md hidden-lg hidden-sm">
-                                <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                                <a href="<?= $this->Url->build('/') ?>" class="navbar-brand">
-                                <img class="logo__img img-responsive" src="<?= $this->Url->image('logo.png') ?>" height="50" width="111" alt="Logo">
-                                </a>
-                            </div>
-                            <div id="navbar-collapse-1" class="navbar-collapse collapse">
-                                <ul class="nav navbar-nav">
-                                    <li><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a> </li>
-                                    <li><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'], ['confirm' => __("Are you sure you want to Logout?")]) ?></li>
-                                </ul>
+            <div class="header__inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="navbar yamm">
+                                <div class="navbar-header hidden-md hidden-lg hidden-sm">
+                                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                                    <a href="<?= $this->Url->build('/') ?>" class="navbar-brand">
+                                        <img class="logo__img img-responsive" src="<?= $this->Url->image('logo.png') ?>" height="50" width="111" alt="Logo">
+                                    </a>
+                                </div>
+                                <div id="navbar-collapse-1" class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a> </li>
+                                        <li><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'], ['confirm' => __("Are you sure you want to Logout?")]) ?></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- end container -->
-        </div><!-- end header__inner -->
-    </div><!-- end header -->
+                <!-- end container -->
+            </div><!-- end header__inner -->
+        </div><!-- end header -->
 
 
 
 
-    <div class="block-title">
+        <div class="block-title">
             <div class="block-title__inner section-bg_second">
                 <h1 class="ui-title-page">Cases List</h1>
             </div>
@@ -122,11 +125,11 @@ $this->disableAutoLayout();
                             <div class="sorting__inner">
                                 <div class ="sorting__item">
                                     <div class = "form-search__input">
-                                    <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
-                                    <?= $this->Form->text('search', ['placeholder' => 'Search Diagnosis']) ?>
-                                    <?= $this->Form->button(__('Search')) ?>
-                                    <?= $this->Form->end() ?>
-                                </div>
+                                        <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                        <?= $this->Form->text('search', ['placeholder' => 'Search Diagnosis']) ?>
+                                        <?= $this->Form->button(__('Search')) ?>
+                                        <?= $this->Form->end() ?>
+                                    </div>
                                 </div>
                                 <div class="sorting__item">
                                     <span class="sorting__title">Sort by</span>
@@ -196,73 +199,90 @@ $this->disableAutoLayout();
                     <aside class="sidebar">
                         <!-- FILTER CASE TYPE-->
                         <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
-                        <section class="widget widget_mod-a">
-                            <h3 class="widget-title">CASE TYPE</h3>
-                            <div class="decor-1"></div>
-                            <div class="widget-content">
-                                <?= $this->Form->select('case_type', [
-                                    'Oscer' => 'Oscer',
-                                    'Long' => 'Long',
-                                    'Medium' => 'Medium',
-                                    'Short' => 'Short',
-                                    'General' => 'General',
-                                ], [
-                                    'class' => 'select select_mod-a jelect',
-                                    'empty' => 'Choose Case Type',
-                                ]); ?>
-                            </div>
-                        </section>
-                        <section class="widget widget_mod-a">
-                            <h3 class="widget-title">Contributer</h3>
-                            <div class="decor-1"></div>
-                            <div class="widget-content">
-                                <?= $this->Form->select('contributor', [
-                                    'Trainee' => 'Trainee',
-                                    'Consultant' => 'Consultant',
-                                    'Library' => 'Library',
-                                ], [
-                                    'class' => 'select select_mod-a jelect',
-                                    'empty' => 'Choose Contributor',
-                                ]); ?>
-                            </div>
-                        </section>
-                        <section class="widget widget_mod-a">
-                            <h3 class="widget-title">Rating</h3>
-                            <div class="decor-1"></div>
-                            <div class="widget-content">
-                                <?= $this->Form->select('rating', [
-                                    '1' => '1',
-                                    '2' => '2',
-                                    '3' => '3',
-                                    '4' => '4',
-                                    '5' => '5',
-                                ], [
-                                    'class' => 'select select_mod-a jelect',
-                                    'empty' => 'Choose Rating',
-                                ]); ?>
-                            </div>
-                        </section>
-                        <!-- <section class="widget widget_mod-a">
-                                <h3 class="widget-title">Imaging</h3>
-                                <div class="decor-1"></div>
-                                <div class="widget-content">
-                                    <?= $this->Form->select('Imaging', [
-                            'Test' => 'Test',
-                        ], [
-                            'class' => 'select select_mod-a jelect',
-                            'empty' => 'Choose Imaging',
-                        ]); ?>
+                        <div class="panel-group accordion" id="accordion-1">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a class="btn-collapse" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-1"><i class="icon"></i></a>
+                                    <h3 class="panel-title">Case Type</h3>
                                 </div>
-                            </section>
-                            -->
-                        <div class="widget-content">
-                            <div class="btn">
-                                <div class="btn-filter btn-skew-r js-filter" style ="padding: 0px 10px 0px;">
-                                    <?= $this->Form->button(__('Filter'), ['class' => 'btn-skew-r btn-effect', 'style' => 'margin-left: -20px;']) ?>
-                                    <?= $this->Form->end() ?>
+                                <div id="collapse-1" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <?= $this->Form->select('case_type', [
+                                            'Oscer' => 'Oscer',
+                                            'Long' => 'Long',
+                                            'Medium' => 'Medium',
+                                            'Short' => 'Short',
+                                            'General' => 'General',
+                                        ], [
+                                            'class' => 'select select_mod-a jelect',
+                                            'empty' => 'Choose Case Type',
+                                        ]); ?>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div><!-- end panel -->
+
+                            <div class="panel-group accordion" id="accordion-2">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <a class="btn-collapse" data-toggle="collapse" data-parent="#accordion-2" href="#collapse-2"><i class="icon"></i></a>
+                                        <h3 class="panel-title">Contributor</h3>
+                                    </div>
+                                    <div id="collapse-2" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <?= $this->Form->select('contributor', [
+                                                'Trainee' => 'Trainee',
+                                                'Consultant' => 'Consultant',
+                                                'Library' => 'Library',
+                                            ], [
+                                                'class' => 'select select_mod-a jelect',
+                                                'empty' => 'Choose Contributor',
+                                            ]); ?>
+                                        </div>
+                                    </div>
+                                </div><!-- end panel -->
+
+                                <div class="panel-group accordion" id="accordion-3">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a class="btn-collapse" data-toggle="collapse" data-parent="#accordion-3" href="#collapse-3"><i class="icon"></i></a>
+                                            <h3 class="panel-title">Rating</h3>
+                                        </div>
+                                        <div id="collapse-3" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <?= $this->Form->select('rating', [
+                                                    '1' => '1',
+                                                    '2' => '2',
+                                                    '3' => '3',
+                                                    '4' => '4',
+                                                    '5' => '5',
+                                                ], [
+                                                    'class' => 'select select_mod-a jelect',
+                                                    'empty' => 'Choose Rating',
+                                                ]); ?>                                    </div>
+                                        </div>
+                                    </div><!-- end panel -->
+
+                                    <!-- <section class="widget widget_mod-a">
+                                    <h3 class="widget-title">Imaging</h3>
+                                    <div class="decor-1"></div>
+                                    <div class="widget-content">
+                                        <?= $this->Form->select('Imaging', [
+                                        'Test' => 'Test',
+                                    ], [
+                                        'class' => 'select select_mod-a jelect',
+                                        'empty' => 'Choose Imaging',
+                                    ]); ?>
+                                    </div>
+                                </section>
+                                -->
+                                    <div class="widget-content">
+                                        <div class="btn">
+                                            <div class="btn-filter btn-skew-r js-filter" style ="padding: 0px 10px 0px;">
+                                                <?= $this->Form->button(__('Filter'), ['class' => 'btn-skew-r btn-effect', 'style' => 'margin-left: -20px;']) ?>
+                                                <?= $this->Form->end() ?>
+                                            </div>
+                                        </div>
+                                    </div>
                     </aside>
                 </div><!-- end wrap-filter -->
             </div><!-- end row -->
