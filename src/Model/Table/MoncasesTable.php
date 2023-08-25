@@ -176,14 +176,12 @@ class MoncasesTable extends Table
 
     public function validateUnique($value, array $options, ?array $context = null): bool
     {
-        $primaryKeyValue = $context['data'][$this->getPrimaryKey()] ?? null;
-
-        $query = $this->find()->where(['accession_no' => $value]);
-
-        if ($primaryKeyValue !== null) {
-            $query = $query->andWhere([$this->getPrimaryKey() . ' !=' => $primaryKeyValue]);
+        // If a new record is being created, do a uniqueness check
+        if (!empty($context['data']['id']) && $context['data']['id'] === 'new') {
+            $query = $this->find()->where(['accession_no' => $value]);
+            return $query->isEmpty();
         }
 
-        return $query->isEmpty();
+        return true; // No uniqueness checks when editing
     }
 }

@@ -102,7 +102,6 @@ class MoncasesController extends AppController
 
             if (!$moncase->getErrors()) {
                 $image = $this->request->getUploadedFile('image_url');
-//                debug($image);
                 $name = $image->getClientFilename();
 
                 $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
@@ -119,9 +118,9 @@ class MoncasesController extends AppController
                 // check access_role, then redirect different page
                 $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
                 if ($access_role == 'ADMIN') {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
                 } else {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
                 }
             }
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
@@ -152,9 +151,9 @@ class MoncasesController extends AppController
                 // check access_role, then redirect different page
                 $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
                 if ($access_role == 'ADMIN') {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
                 } else {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
                 }
             }
             $this->Flash->error(__('The moncase could not be saved. Please, try again.'));
@@ -352,9 +351,9 @@ class MoncasesController extends AppController
                 // check access_role, then redirect different page
                 $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
                 if ($access_role == 'ADMIN') {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
                 } else {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
                 }
             }
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
@@ -389,9 +388,9 @@ class MoncasesController extends AppController
                 // check access_role, then redirect different page
                 $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
                 if ($access_role == 'ADMIN') {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
                 } else {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
                 }
             }
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
@@ -426,9 +425,9 @@ class MoncasesController extends AppController
                 // check access_role, then redirect different page
                 $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
                 if ($access_role == 'ADMIN') {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
                 } else {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
                 }
             }
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
@@ -463,9 +462,9 @@ class MoncasesController extends AppController
                 // check access_role, then redirect different page
                 $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
                 if ($access_role == 'ADMIN') {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
                 } else {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
                 }
             }
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
@@ -500,9 +499,9 @@ class MoncasesController extends AppController
                 // check access_role, then redirect different page
                 $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
                 if ($access_role == 'ADMIN') {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
                 } else {
-                    $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
                 }
             }
             $this->Flash->error(__('The case could not be saved. Please, try again.'));

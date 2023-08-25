@@ -28,7 +28,7 @@
             <div class="moncases form content">
 
                 <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
-
+                <?= $this->Flash->render() ?>
                 <div class="card">
                     <h5 class="card-header text-center"><?= __('Edit Case') ?></h5>
                     <div class="card-body">
@@ -42,7 +42,6 @@
                                     'SHORT' => 'SHORT',
                                     'GENERAL' => 'GENERAL'
                                 ],
-                                'disabled' => 'true',
                             ])
                             ?>
                         </div>
@@ -64,7 +63,7 @@
                                                 <?= $this->Html->image('/img/' . $moncase->image_url, ['width' => '100px']); ?>
                                                 <?= $this->Form->control('image_url', [
                                                     'type' => 'file',
-                                                    'class' => 'form-control'
+                                                    'label' => 'Image Upload'
                                                 ]); ?>
                                             </div>
 
@@ -99,21 +98,21 @@
                                             <?= $this->Form->control('diagnosis', [
                                                 'class' => 'form-control',
                                                 'maxlength' => 236,
-                                                'required' => true,
+
                                             ])
                                             ?>
 
                                             <?= $this->Form->control('differential_diagnosis', [
                                                 'class' => 'form-control',
                                                 'maxlength' => 236,
-                                                'required' => true
+
                                             ])
                                             ?>
 
                                             <?= $this->Form->control('imaging', [
                                                 'class' => 'form-control',
                                                 'maxlength' => 236,
-                                                'required' => true
+
                                             ]); ?>
 
                                             <?= $this->Form->label('rating', 'Rating') ?>
@@ -184,7 +183,7 @@
                                                 <?= $this->Form->control('findings', [
                                                     'class' => 'form-control',
                                                     'maxlength' => 236,
-                                                    'required' => true
+
                                                 ])
                                                 ?>
 
@@ -192,7 +191,7 @@
                                                 <?= $this->Form->control('teaching_points', [
                                                     'class' => 'form-control',
                                                     'maxlength' => 236,
-                                                    'required' => true
+
                                                 ])
                                                 ?>
                                             </div>
