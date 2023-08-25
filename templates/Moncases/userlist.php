@@ -64,6 +64,33 @@ $this->disableAutoLayout();
             width: 50%;
             margin-bottom: 20px;
         }
+        .sidebar-page-container {
+            padding-top: 15px;
+        }
+        .blog-grid {
+            padding-top: 15px;
+        }
+
+        .page-title {
+            padding-bottom: 25px;
+            padding-top: 100px;
+        }
+
+        .message.error {
+            color: red;
+            background-color: #edd4d4;
+            border-color: #e6c3c3;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .message.success {
+            background: #e3fcec;
+            color: #1f9d55;
+            border-color: #51d88a;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
 
 
     </style>
@@ -170,7 +197,7 @@ $this->disableAutoLayout();
     </div>
 </section>
 <!--End Page Title-->
-
+<?= $this->Flash->render() ?>
 <!-- blog-grid -->
 <section class="sidebar-page-container blog-grid">
     <div class="auto-container">

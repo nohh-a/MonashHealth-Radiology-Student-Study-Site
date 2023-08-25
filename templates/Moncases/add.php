@@ -4,14 +4,42 @@
  * @var \App\Model\Entity\Moncase $moncase
  */
 
+$this->disableAutoLayout();
 ?>
 
-<?= $this->Html->css('/webroot/css/animate.min.css') ?>
-<?= $this->Html->css('/webroot/css/bootstrap.min.css') ?>
-<?= $this->Html->css('/webroot/css/bootstrap-datepicker.css') ?>
-<?= $this->Html->css('/webroot/css/fontawesome-all.css') ?>
-<?= $this->Html->css('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css', ['integrity' => 'sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9', 'crossorigin' => 'anonymous']) ?>
+<head>
+    <?= $this->Html->css('/webroot/css/animate.min.css') ?>
+    <?= $this->Html->css('/webroot/css/bootstrap.min.css') ?>
+    <?= $this->Html->css('/webroot/css/bootstrap-datepicker.css') ?>
+    <?= $this->Html->css('/webroot/css/fontawesome-all.css') ?>
+    <?= $this->Html->css('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css', ['integrity' => 'sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9', 'crossorigin' => 'anonymous']) ?>
 
+    <style>
+        .message.error {
+            color: red;
+            background-color: #edd4d4;
+            border-color: #e6c3c3;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .message.success {
+            background: #e3fcec;
+            color: #1f9d55;
+            border-color: #51d88a;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .input.text.required.error {
+            color: red;
+            background-color: #edd4d4;
+            border-color: #e6c3c3;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
 
 
 <div class="row justify-content-center align-items-center">
@@ -34,6 +62,7 @@
 
             <div class="card">
                 <h5 class="card-header text-center"><?= __('Add New Case') ?></h5>
+                <?= $this->Flash->render() ?>
                 <div class="card-body">
                     <div style="text-align: center;">
                         <?=$this->Form->control('case_type', ['label' => 'Case Type',
@@ -121,6 +150,7 @@
                                         ], [
                                             'class' => 'form-control',
                                             'empty' => '- Select Rating -',
+                                            'required' => true
                                         ]) ?>
 
                                         <?= $this->Form->control('max_marks', [
@@ -128,7 +158,8 @@
                                             'label' => 'Maximum Marks',
                                             'min' => 0,
                                             'max' => 99,
-                                            'error' => ['value' => 'Maximum marks should be between -1 and 999']
+                                            'error' => ['value' => 'Maximum marks should be between -1 and 999'],
+                                            'required' => true
                                         ])
                                         ?>
 
@@ -155,6 +186,7 @@
                                             ], [
                                                 'class' => 'form-control',
                                                 'empty' => '- Select Contributor -',
+                                                'required' => true
                                             ])
                                         ?>
 
@@ -182,7 +214,6 @@
                                             <?= $this->Form->control('findings', [
                                                 'class' => 'form-control',
                                                 'maxlength' => 236,
-                                                'required' => true
                                             ])
                                             ?>
 
@@ -190,7 +221,6 @@
                                             <?= $this->Form->control('teaching_points', [
                                                 'class' => 'form-control',
                                                 'maxlength' => 236,
-                                                'required' => true
                                             ])
                                             ?>
                                         </div>

@@ -65,7 +65,12 @@ class MoncasesTable extends Table
 
         $validator
             ->scalar('accession_no')
-            ->allowEmptyString('accession_no');
+            ->allowEmptyString('accession_no')
+            ->add('accession_no', 'unique', [
+                'rule' => 'validateUnique',
+                'provider' => 'table',
+                'message' => 'This accession number is already taken.'
+            ]);
 
         $validator
             ->scalar('case_type')
@@ -160,5 +165,25 @@ class MoncasesTable extends Table
             ->allowEmptyString('author');
 
         return $validator;
+    }
+
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->isUnique(['accession_no']));
+
+        return $rules;
+    }
+
+    public function validateUnique($value, array $options, ?array $context = null): bool
+    {
+        $primaryKeyValue = $context['data'][$this->getPrimaryKey()] ?? null;
+
+        $query = $this->find()->where(['accession_no' => $value]);
+
+        if ($primaryKeyValue !== null) {
+            $query = $query->andWhere([$this->getPrimaryKey() . ' !=' => $primaryKeyValue]);
+        }
+
+        return $query->isEmpty();
     }
 }
