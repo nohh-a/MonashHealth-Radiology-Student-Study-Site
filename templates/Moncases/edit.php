@@ -13,20 +13,23 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <?= $this->Html->image('/img/' . $moncase->imaging, ['width' => '150px']); ?>
+                            <?= $this->Html->image('/img/' . $moncase->image_url, ['width' => '150px']); ?>
                             <?= $this->Form->control('image', ['type' => 'file', 'class' => 'form-control']); ?>
+
 
                             <?=$this->Form->control('case_type', ['label' => 'Case Type',
                                 'class' => 'form-control',
                                 'options' => [
-                                    'OSCER' => 'OSCER',
-                                    'LONG' => 'LONG',
-                                    'MEDIUM' => 'MEDIUM',
-                                    'SHORT' => 'SHORT',
-                                    'GENERAL' => 'GENERAL'
+                                    'Oscer' => 'Oscer',
+                                    'Long' => 'Long',
+                                    'Medium' => 'Medium',
+                                    'Short' => 'Short',
+                                    'General' => 'General'
                                 ],
-                            ])
-                            ?>
+                                'required' => true
+                            ]); ?>
+
+
                             <?= $this->Form->control('date', ['class' => 'form-control']) ?>
                             <?= $this->Form->control('history', [
                                 'class' => 'form-control',

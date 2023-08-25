@@ -19,6 +19,11 @@ class MoncasesController extends AppController
      */
     public function index()
     {
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if($access_role !== "ADMIN" ){
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         $moncases = $this->paginate($this->Moncases);
 
         $oscerCount = $this->Moncases->find()
@@ -53,6 +58,11 @@ class MoncasesController extends AppController
      */
     public function view($id = null)
     {
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if($access_role !== "ADMIN" ){
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         $moncase = $this->Moncases->get($id, [
             'contain' => [],
         ]);
@@ -69,6 +79,7 @@ class MoncasesController extends AppController
      */
     public function viewNotadmin($id = null)
     {
+
         $moncase = $this->Moncases->get($id, [
             'contain' => [],
         ]);
@@ -128,6 +139,8 @@ class MoncasesController extends AppController
      */
     public function edit($id = null)
     {
+        //ToDo: user just can edit the case that they created
+
         $moncase = $this->Moncases->get($id, [
             'contain' => [],
         ]);
@@ -216,6 +229,11 @@ class MoncasesController extends AppController
 
     public function userlist()
     {
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if($access_role !== 'ADMIN' ){
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         // obtain cases list
         $moncases = $this->Moncases->find();
 
@@ -278,6 +296,11 @@ class MoncasesController extends AppController
 
     public function userlistNotadmin()
     {
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if($access_role == 'ADMIN' ){
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+        }
+
         // obtain cases list
         $moncases = $this->Moncases->find();
 
@@ -498,27 +521,5 @@ class MoncasesController extends AppController
         }
     }
 
-    public function step4()
-    {
 
-        if ($this->request->is('post')) {
-            $newCase = $this->request->getSession()->read('newCase') ?? [];
-
-            $step4Data = $this->request->getData();
-
-            $newCase = array_merge($newCase, [
-
-            ]);
-
-            $this->request->getSession()->write('newCase', $newCase);
-
-//            $this->set(compact('newCase'));
-
-            $this->redirect(['controller' => 'moncases', 'action' => 'step5']);
-        }
-    }
-
-    public function step5()
-    {
-    }
 }

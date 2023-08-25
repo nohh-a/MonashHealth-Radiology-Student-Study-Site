@@ -19,7 +19,7 @@ class UsersController extends AppController
     public function index()
     {
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
-        if($access_role !== "ADMIN" ){
+        if($access_role !== 'ADMIN' ){
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }
 
