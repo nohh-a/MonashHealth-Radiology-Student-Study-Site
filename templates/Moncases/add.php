@@ -61,11 +61,6 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body">
-                                        <?= $this->Form->control('image_url', [
-                                            'type' => 'file',
-                                            'label' => 'Image Upload'
-                                        ]); ?>
-
                                         <?= $this->Form->control('accession_no', [
                                             'class' => 'form-control',
                                             'type' => 'text',
@@ -160,6 +155,11 @@
                                                 'empty' => '- Select Contributor -',
                                             ])
                                         ?>
+
+                                        <?= $this->Form->control('image_url', [
+                                                'type' => 'file',
+                                                'label' => 'Image Upload'
+                                        ]); ?>
 
                                     </div>
                                 </div>
