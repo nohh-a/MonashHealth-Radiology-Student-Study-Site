@@ -51,30 +51,6 @@ class MoncasesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('accession_no')
-            ->allowEmptyString('accession_no');
-
-        $validator
-            ->scalar('case_type')
-            ->requirePresence('case_type', 'create')
-            ->notEmptyString('case_type');
-
-        $validator
-            ->date('date')
-            ->requirePresence('date', 'create')
-            ->notEmptyDate('date');
-
-        $validator
-            ->scalar('history')
-            ->requirePresence('history', 'create')
-            ->notEmptyString('history');
-
-        $validator
-            ->scalar('imaging')
-            ->requirePresence('imaging', 'create')
-            ->notEmptyString('imaging');
-
-        $validator
             ->notEmptyFile('image_url')
             ->add('image_url', [
                 'mimeType' => [
@@ -88,19 +64,44 @@ class MoncasesTable extends Table
             ]);
 
         $validator
-            ->scalar('contributor')
-            ->requirePresence('contributor', 'create')
-            ->notEmptyString('contributor');
+            ->scalar('accession_no')
+            ->allowEmptyString('accession_no');
+
+        $validator
+            ->scalar('case_type')
+            ->allowEmptyString('case_type');
+
+        $validator
+            ->date('date')
+            ->allowEmptyDate('date');
+
+        $validator
+            ->scalar('imaging')
+            ->allowEmptyString('imaging');
+
+        $validator
+            ->scalar('diagnosis')
+            ->allowEmptyString('diagnosis');
+
+        $validator
+            ->scalar('differential_diagnosis')
+            ->allowEmptyString('differential_diagnosis');
+
+        $validator
+            ->scalar('findings')
+            ->allowEmptyString('findings');
+
+        $validator
+            ->scalar('teaching_points')
+            ->allowEmptyString('teaching_points');
 
         $validator
             ->scalar('speciality')
-            ->requirePresence('speciality', 'create')
-            ->notEmptyString('speciality');
+            ->allowEmptyString('speciality');
 
         $validator
-            ->scalar('author')
-            ->requirePresence('author', 'create')
-            ->notEmptyString('author');
+            ->scalar('history')
+            ->allowEmptyString('history');
 
         $validator
             ->integer('max_marks')
@@ -135,24 +136,8 @@ class MoncasesTable extends Table
             ->allowEmptyString('pathology');
 
         $validator
-            ->scalar('findings')
-            ->allowEmptyString('findings');
-
-        $validator
-            ->scalar('diagnosis')
-            ->allowEmptyString('diagnosis');
-
-        $validator
-            ->scalar('differential_diagnosis')
-            ->allowEmptyString('differential_diagnosis');
-
-        $validator
             ->scalar('further_investigation')
             ->allowEmptyString('further_investigation');
-
-        $validator
-            ->scalar('teaching_points')
-            ->allowEmptyString('teaching_points');
 
         $validator
             ->scalar('seen_by')
@@ -162,14 +147,17 @@ class MoncasesTable extends Table
             ->scalar('tags')
             ->allowEmptyString('tags');
 
-
-
+        $validator
+            ->scalar('contributor')
+            ->allowEmptyString('contributor');
 
         $validator
             ->integer('rating')
             ->allowEmptyString('rating');
 
-
+        $validator
+            ->scalar('author')
+            ->allowEmptyString('author');
 
         return $validator;
     }
