@@ -143,12 +143,12 @@ $this->disableAutoLayout();
                             </div>
 
 
-                            <!-- Nav tabs -->
                             <div class="wrap-nav-tabs">
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab1" data-toggle="tab">Overview</a></li>
-                                    <li><a href="#tab2" data-toggle="tab">Observations</a></li>
-                                    <li><a href="#tab3" data-toggle="tab">Teaching Points</a></li>
+                                <ul class="nav nav-tabs ">
+                                    <li class="active"><a href="#tab1" data-toggle="tab">Tab 1</a></li>
+                                    <li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
+                                    <!-- Nav tabs -->
+
                                 </ul>
                             </div>
 
@@ -164,11 +164,11 @@ $this->disableAutoLayout();
                                         <div class="decor-1"></div>
                                         <p><?= h($moncase->differential_diagnosis) ?></p>
 
-                                        <h3 class="ui-title-inner">Pathology</h3>
+                                        <h3 class="ui-title-inner">History</h3>
                                         <div class="decor-1"></div>
-                                        <p><?= h($moncase->pathology) ?></p>
+                                        <p><?= h($moncase->history) ?></p>
 
-                                        <h3 class="ui-title-inner">Imaging findings</h3>
+                                        <h3 class="ui-title-inner">Findings</h3>
                                         <div class="decor-1"></div>
                                         <p><?= h($moncase->findings) ?></p>
 
@@ -176,46 +176,15 @@ $this->disableAutoLayout();
                                         <div class="decor-1"></div>
                                         <p><?= h($moncase->teaching_points) ?></p>
 
-                                        <h3 class="ui-title-inner">Speciality</h3>
-                                        <div class="decor-1"></div>
-                                        <p><?= h($moncase->speciality) ?></p>
-
                                     </dvi>
                                 </div>
 
                                 <div class="tab-pane" id="tab2">
                                     <dvi class="tab_words">
-                                        <h3 class="ui-title-inner">Safety</h3>
-                                        <div class="decor-1"></div>
-                                        <p><?= h($moncase->safety) ?></p>
 
-                                        <h3 class="ui-title-inner">Intrinsic Roles</h3>
+                                        <h3 class="ui-title-inner">Further Investigation</h3>
                                         <div class="decor-1"></div>
-                                        <p><?= h($moncase->intrinsic_roles) ?></p>
-
-                                        <h3 class="ui-title-inner">Pathology</h3>
-                                        <div class="decor-1"></div>
-                                        <p><?= h($moncase->pathology) ?></p>
-                                    </dvi>
-                                </div>
-
-                                <div class="tab-pane" id="tab3">
-                                    <dvi class="tab_words">
-                                        <h3 class="ui-title-inner">History</h3>
-                                        <div class="decor-1"></div>
-                                        <p><?= h($moncase->history) ?></p>
-
-                                        <h3 class="ui-title-inner">Imaging</h3>
-                                        <div class="decor-1"></div>
-                                        <p><?= h($moncase->imaging) ?></p>
-
-                                        <h3 class="ui-title-inner">Observation</h3>
-                                        <div class="decor-1"></div>
-                                        <p><?= h($moncase->observation) ?></p>
-
-                                        <h3 class="ui-title-inner">Interpretation</h3>
-                                        <div class="decor-1"></div>
-                                        <p><?= h($moncase->intepretation) ?></p>
+                                        <p><?= h($moncase->further_investigation) ?></p>
 
                                         <h3 class="ui-title-inner">Management</h3>
                                         <div class="decor-1"></div>
@@ -225,24 +194,21 @@ $this->disableAutoLayout();
                                         <div class="decor-1"></div>
                                         <p><?= h($moncase->anatomy) ?></p>
 
-                                        <h3 class="ui-title-inner">Findings</h3>
+                                        <h3 class="ui-title-inner">Pathology</h3>
                                         <div class="decor-1"></div>
-                                        <p><?= h($moncase->findings) ?></p>
+                                        <p><?= h($moncase->pathology) ?></p>
 
-                                        <h3 class="ui-title-inner">Further Investigation</h3>
+                                        <h3 class="ui-title-inner">Safety</h3>
                                         <div class="decor-1"></div>
-                                        <p><?= h($moncase->further_investigation) ?></p>
+                                        <p><?= h($moncase->safety) ?></p>
 
-                                        <h3 class="ui-title-inner">Seen By</h3>
+                                        <h3 class="ui-title-inner">Intrinsic Roles</h3>
                                         <div class="decor-1"></div>
-                                        <p><?= h($moncase->seen_by) ?></p>
-
-                                        <h3 class="ui-title-inner">Tags</h3>
-                                        <div class="decor-1"></div>
-                                        <p><?= h($moncase->tags) ?></p>
+                                        <p><?= h($moncase->intrinsic_roles) ?></p>
 
                                     </dvi>
                                 </div>
+
 
                             </div>
 
@@ -268,16 +234,30 @@ $this->disableAutoLayout();
                                         <dt>Case Type:</dt>
                                         <dd><?= h($moncase->case_type) ?></dd>
 
-                                        <dt>Contributor:</dt>
-                                        <dd><?= h($moncase->contributor) ?></dd>
+                                        <dt>Specialty:</dt>
+                                        <dd><?= h($moncase->speciality) ?></dd>
 
-                                        <dt>Marks:</dt>
-                                        <dd><?= h($moncase->max_marks) ?></dd>
+                                        <dt>Imaging:</dt></dt>
+                                        <dd><?= h($moncase->imaging) ?></dd>
+
+                                        <dt>Seen by:</dt></dt>
+                                        <dd><?= h($moncase->seen_by) ?></dd>
+
+                                        <dt>Tags:</dt></dt>
+                                        <dd><?= h($moncase->tags) ?></dd>
 
                                         <dt>Date:</dt>
                                         <dd><?= h($moncase->date) ?></dd>
+
+                                        <dt>Max Marks:</dt>
+                                        <dd><?= h($moncase->max_marks) ?></dd>
+
+                                        <dt>Contributor:</dt>
+                                        <dd><?= h($moncase->contributor) ?></dd>
+
                                         <dt>Author:</dt>
                                         <dd><?= h($moncase->author) ?></dd>
+
                                         <dt>Rating:</dt>
                                         <dd><?= h($moncase->rating) ?></dd>
                                     </dvi>
