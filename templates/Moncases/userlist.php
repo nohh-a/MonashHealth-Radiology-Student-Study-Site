@@ -440,7 +440,6 @@ $this->disableAutoLayout();
 <?= $this->Html->script('/detoxpack/detox/assets/js/jquery.js') ?>
 <?= $this->Html->script('/detoxpack/detox/assets/js/popper.min.js') ?>
 <?= $this->Html->script('/detoxpack/detox/assets/js/bootstrap.min.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/owl.js') ?>
 <?= $this->Html->script('/detoxpack/detox/assets/js/wow.js') ?>
 <?= $this->Html->script('/detoxpack/detox/assets/js/validation.js') ?>
 <?= $this->Html->script('/detoxpack/detox/assets/js/jquery.fancybox.js') ?>
