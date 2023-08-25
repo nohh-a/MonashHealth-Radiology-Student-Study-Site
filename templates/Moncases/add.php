@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>">Home</a>
+                        <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>">Home</a>
                     </li>
 
                 </ul>
@@ -35,11 +35,24 @@
             <div class="card">
                 <h5 class="card-header text-center"><?= __('Add New Case') ?></h5>
                 <div class="card-body">
-
+                    <div style="text-align: center;">
+                        <?=$this->Form->control('case_type', ['label' => 'Case Type',
+                            'class' => 'form-control',
+                            'options' => [
+                                'Oscer' => 'Oscer',
+                                'Long' => 'Long',
+                                'Medium' => 'Medium',
+                                'Short' => 'Short',
+                                'General' => 'General'
+                            ],
+                            'required' => true
+                        ]); ?>
+                    </div>
+                    <br><br>
                     <div class="row">
                         <!--must enter in-->
-
                         <div class="accordion" id="accordionPanelsStayOpenExample">
+
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -55,17 +68,6 @@
                                             'required' => true
                                         ]); ?>
 
-                                        <?=$this->Form->control('case_type', ['label' => 'Case Type',
-                                            'class' => 'form-control',
-                                            'options' => [
-                                                'Oscer' => 'Oscer',
-                                                'Long' => 'Long',
-                                                'Medium' => 'Medium',
-                                                'Short' => 'Short',
-                                                'General' => 'General'
-                                            ],
-                                            'required' => true
-                                        ]); ?>
 
                                         <?= $this->Form->label('speciality', 'Speciality') ?>
                                         <?= $this->Form->select('speciality', [
@@ -84,7 +86,7 @@
                                         ], [
                                             'class' => 'form-control',
                                             'required' => true,
-                                            'empty' => 'Select Speciality',
+                                            'empty' => '- Select Speciality -',
                                         ]) ?>
 
                                         <?= $this->Form->control('diagnosis', [
@@ -142,23 +144,23 @@
                                         ])
                                         ?>
 
-                                        <div class="col-md-6">
-                                            <?= $this->Form->label('contributor', 'Contributor') ?>
-                                            <?= $this->Form->select('contributor', [
+
+                                        <?= $this->Form->label('contributor', 'Contributor') ?>
+                                        <?= $this->Form->select('contributor', [
                                                 'TRAINEE' => 'TRAINEE',
                                                 'CONSULTANT' => 'CONSULTANT',
                                                 'LIBRARY' => 'LIBRARY'
                                             ], [
                                                 'class' => 'form-control',
-                                                'empty' => 'Select Contributor',
+                                                'empty' => '- Select Contributor -',
                                             ])
-                                            ?>
+                                        ?>
 
-                                            <?= $this->Form->control('image_url', [
+                                        <?= $this->Form->control('image_url', [
                                                 'type' => 'file',
                                                 'label' => 'Image Upload'
-                                            ]); ?>
-                                        </div>
+                                        ]); ?>
+
                                     </div>
                                 </div>
                                 <div class="accordion-item">
