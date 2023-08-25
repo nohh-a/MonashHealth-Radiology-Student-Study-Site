@@ -158,40 +158,40 @@
                                                 'type' => 'file',
                                                 'label' => 'Image Upload'
                                             ]); ?>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                      Case Details #2
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <?= $this->Form->control('history', [
-                                            'class' => 'form-control',
-                                            'maxlength' => 236,
-                                        ])
-                                        ?>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Case Details #2
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <?= $this->Form->control('history', [
+                                                'class' => 'form-control',
+                                                'maxlength' => 236,
+                                            ])
+                                            ?>
 
-                                        <?= $this->Form->control('findings', [
-                                            'class' => 'form-control',
-                                            'maxlength' => 236,
-                                            'required' => true
-                                        ])
-                                        ?>
+                                            <?= $this->Form->control('findings', [
+                                                'class' => 'form-control',
+                                                'maxlength' => 236,
+                                                'required' => true
+                                            ])
+                                            ?>
 
 
-                                        <?= $this->Form->control('teaching_points', [
-                                            'class' => 'form-control',
-                                            'maxlength' => 236,
-                                            'required' => true
-                                        ])
-                                        ?>
+                                            <?= $this->Form->control('teaching_points', [
+                                                'class' => 'form-control',
+                                                'maxlength' => 236,
+                                                'required' => true
+                                            ])
+                                            ?>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
@@ -266,18 +266,18 @@
                                         </div>
                                     </div>
                                 </div>
-                <div class="card-footer text-center">
-                    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary btn-lg']) ?>
+                                <div class="card-footer text-center">
+                                    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary btn-lg']) ?>
+                                </div>
+                            </div>
+                            <?= $this->Form->end() ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
-</div>
 
-    <?= $this->Html->script(
-        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js',
-        ['integrity' => 'sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm', 'crossorigin' => 'anonymous']
-    ) ?>
+                <?= $this->Html->script(
+                    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js',
+                    ['integrity' => 'sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm', 'crossorigin' => 'anonymous']
+                ) ?>
 
 
