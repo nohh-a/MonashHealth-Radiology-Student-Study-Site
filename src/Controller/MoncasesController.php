@@ -319,6 +319,87 @@ class MoncasesController extends AppController
     }
 
 
+    public function addnewcase(){
+        $moncases = $this->paginate($this->Moncases);
+
+        $this->set(compact('moncases'));
+
+    }
+
+    public function addoscer(){
+
+        $moncase = $this->Moncases->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('A new case has been added successfully.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('An error occurred when trying to add a case. Please try again.'));
+        }
+        $this->set(compact('moncase'));
+    }
+
+    public function addlong(){
+
+        $moncase = $this->Moncases->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('A new case has been added successfully.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('An error occurred when trying to add a case. Please try again.'));
+        }
+        $this->set(compact('moncase'));
+    }
+
+    public function addmedium(){
+
+        $moncase = $this->Moncases->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('A new case has been added successfully.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('An error occurred when trying to add a case. Please try again.'));
+        }
+        $this->set(compact('moncase'));
+    }
+
+    public function addshort(){
+
+        $moncase = $this->Moncases->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('A new case has been added successfully.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('An error occurred when trying to add a case. Please try again.'));
+        }
+        $this->set(compact('moncase'));
+    }
+
+    public function addgeneral(){
+
+        $moncase = $this->Moncases->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('A new case has been added successfully.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('An error occurred when trying to add a case. Please try again.'));
+        }
+        $this->set(compact('moncase'));
+    }
 
 
 }
