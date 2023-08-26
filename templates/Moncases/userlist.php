@@ -226,7 +226,7 @@ $this->disableAutoLayout();
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="btn">
-                    <?= $this->Html->link('Create Case', ['controller' => 'moncases', 'action' => 'add'], ['class' => 'theme-btn style-one']) ?>
+                    <?= $this->Html->link('Create Case', ['controller' => 'moncases', 'action' => 'addnewcase'], ['class' => 'theme-btn style-one']) ?>
                 </div>
             </div>
         </div>
