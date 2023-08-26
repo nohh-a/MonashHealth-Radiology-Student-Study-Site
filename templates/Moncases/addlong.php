@@ -101,6 +101,7 @@
                                         ], [
                                             'class' => 'form-control',
                                             'empty' => '- Select Rating -',
+                                            'required' => true
                                         ]) ?>
 
                                         <?= $this->Form->control('max_marks', [
@@ -108,7 +109,8 @@
                                             'label' => 'Maximum Marks',
                                             'min' => 0,
                                             'max' => 99,
-                                            'error' => ['value' => 'Maximum marks should be between -1 and 999']
+                                            'error' => ['value' => 'Maximum marks should be between -1 and 999'],
+                                            'required' => true
                                         ])
                                         ?>
 
@@ -130,6 +132,7 @@
                                         ], [
                                             'class' => 'form-control',
                                             'empty' => '- Select Contributor -',
+                                            'required' => true
                                         ])
                                         ?>
 
@@ -152,7 +155,6 @@
                                             <?= $this->Form->control('findings', [
                                                 'class' => 'form-control',
                                                 'maxlength' => 236,
-                                                'required' => true
                                             ])
                                             ?>
 
