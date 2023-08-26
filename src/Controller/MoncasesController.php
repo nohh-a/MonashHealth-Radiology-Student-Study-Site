@@ -146,6 +146,31 @@ class MoncasesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+
+            if(!$moncase->getErrors()){
+                $image = $this->request->getUploadedFile('image_url');
+
+                $name = $image->getClientFilename();
+
+                if($name){
+                    $targetPath = WWW_ROOT.'img'.DS.'uploads'.DS.$name;
+
+                    $image->moveTo($targetPath);
+
+                    $imgpath =WWW_ROOT.'img'.DS.$moncase->image_url;
+
+                    $pathinfo = pathinfo($imgpath);
+                    if (isset($pathinfo['dirname']) && $pathinfo['dirname'] === WWW_ROOT.'img'.DS.'uploads') {
+                        if (file_exists($imgpath)) {
+                            unlink($imgpath);
+                        }
+                    }
+
+                    $moncase->image_url='uploads/'.$name;
+                }
+
+            }
+
             if ($this->Moncases->save($moncase)) {
                 $this->Flash->success(__('The moncase has been saved.'));
 
