@@ -25,210 +25,296 @@
 $this->disableAutoLayout();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
     <title>Case List</title>
 
-    <?= $this->Html->meta('icon', 'favicon.ico', ['type' => 'image/x-icon']) ?>
-    <?= $this->Html->css('/assets/css/master.css') ?>
+    <!-- Fav Icon -->
+    <?= $this->Html->meta('icon', '/assets/img/favicon.ico', ['type' => 'image/x-icon']); ?>
 
+    <!-- Google Fonts -->
+    <?= $this->Html->css('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap'); ?>
+    <?= $this->Html->css('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap'); ?>
+
+    <!-- Stylesheets -->
+    <?= $this->Html->css('/detoxpack/detox/assets/css/font-awesome-all.css') ?>
+    <?= $this->Html->css('/detoxpack/detox/assets/css/flaticon.css') ?>
+    <?= $this->Html->css('/detoxpack/detox/assets/css/bootstrap.css') ?>
+    <?= $this->Html->css('/detoxpack/detox/assets/css/jquery.fancybox.min.css') ?>
+    <?= $this->Html->css('/detoxpack/detox/assets/css/animate.css') ?>
+    <?= $this->Html->css('/detoxpack/detox/assets/css/imagebg.css') ?>
+    <?= $this->Html->css('/detoxpack/detox/assets/css/color/theme-color.css') ?>
+    <?= $this->Html->css('/detoxPack/detox/assets/css/style.css') ?>
+    <?= $this->Html->css('/detoxpack/detox/assets/css/responsive.css') ?>
 
     <style>
-        .section-bg_second, .jelect-option_state_active, .jelect-option:hover, .btn-skew-r{
-            background-color: #7d9afd;
+        .radio-filter {
+            display: block; /* Make each label occupy a full line */
+            margin-bottom: 5px; /* Add some space between radio buttons */
         }
-        .a, .card__description, .a:hover {
-            color: #365eec;
+        .theme-btn {
+            padding: 5px 20px;
         }
-        .card-list__info, .card__title, .card__description {
-            overflow-wrap: break-word; /* Alternative for better browser support */
+        .custom-select {
+            width: 50%;
+            margin-bottom: 20px;
         }
-        .card-list__row, .card__description {
-            font-size: 14px;
+        .sidebar-page-container {
+            padding-top: 15px;
         }
-        .btn-skew-r__inner, .btn-skew-r {
-            transform: skewX(0deg);
-            border-radius: 5px;
-            box-shadow: 0px 0 0 0#7d9afd;
+        .blog-grid {
+            padding-top: 15px;
         }
 
-        a, .color_primary, .ui-title-inner .icon:before, .link-img__link:hover .link-img__title, .main-block__title strong, .decor-3, .list-services:hover .list-services__title, .list-progress .icon, .footer-title__inner, .card__price-number, .list-categories__link:before, .list-categories__link:hover, .list-descriptions dt:before, .widget-post1__price, .nav-tabs > li.active > a, .nav-tabs > li > a:hover, .nav-tabs > li.active > a:focus, .social-blog__item:before, blockquote:before, .comments-list .comment-datetime {
-            color: #7d9afd;
+        .page-title {
+            padding-bottom: 25px;
+            padding-top: 100px;
         }
-        .panel-group .panel {
-            padding-left: 0px;
+
+        .message.error {
+            color: red;
+            background-color: #edd4d4;
+            border-color: #e6c3c3;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
         }
+
+        .message.success {
+            background: #e3fcec;
+            color: #1f9d55;
+            border-color: #51d88a;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
 
     </style>
 
-
-    <?= $this->Html->script('/assets/plugins/jquery/jquery-1.11.1.min.js') ?>
-
 </head>
 
-<body>
 
-<!-- Loader -->
-<div id="page-preloader"><span class="spinner"></span></div>
-<!-- Loader end -->
+<!-- page wrapper -->
+<body class="boxed_wrapper ltr">
 
-<div  id="this-top" class="layout-theme animated-css"  data-header="sticky" data-header-top="200"  >
-
-
+<!-- preloader -->
+<div class="preloader"></div>
+<!-- preloader -->
 
 
-    <div id="wrapper">
-        <div class = "header">
-            <div class="header__inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-xs-12">
-                            <div class="navbar yamm">
-                                <div class="navbar-header hidden-md hidden-lg hidden-sm">
-                                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                                    <a href="<?= $this->Url->build('/') ?>" class="navbar-brand">
-                                        <img class="logo__img img-responsive" src="<?= $this->Url->image('logo.png') ?>" height="50" width="111" alt="Logo">
-                                    </a>
-                                </div>
-                                <div id="navbar-collapse-1" class="navbar-collapse collapse">
-                                    <ul class="nav navbar-nav">
-                                        <li><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a> </li>
-                                        <li><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'], ['confirm' => __("Are you sure you want to Logout?")]) ?></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+<!-- main header -->
+<header class="main-header">
+    <div class="outer-container">
+        <div class="header-upper clearfix">
+            <div class="outer-box pull-left">
+                <div class="logo-box pull-left">
+                    <figure class="logo"><a href="<?= $this->Url->build('/') ?>">  <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
                 </div>
-                <!-- end container -->
-            </div><!-- end header__inner -->
-        </div><!-- end header -->
+                <div class="menu-area pull-left">
+                    <!--Mobile Navigation Toggler-->
+                    <div class="mobile-nav-toggler">
+                        <i class="icon-bar"></i>
+                        <i class="icon-bar"></i>
+                        <i class="icon-bar"></i>
+                    </div>
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                            <ul class="navigation clearfix">
+                                <li class="current"><a href="<?= $this->Url->build('/') ?>">Case List</a>
+                                </li>
+                                <li class=""><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="menu-right-content pull-right">
+                <div class="btn-box"><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'],
+                        ['confirm' => __("Are you sure you want to Logout?")]) ?></div>
+            </div>
+        </div>
+    </div>
+
+    <!--sticky Header-->
+    <div class="sticky-header">
+        <div class="container clearfix">
+            <figure class="logo-box"><a href="index.html"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
+            <div class="menu-area">
+                <nav class="main-menu clearfix">
+                    <!--Keep This Empty / Menu will come through Javascript-->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- main-header end -->
+
+<!-- Mobile Menu  -->
+<div class="mobile-menu">
+    <div class="menu-backdrop"></div>
+    <div class="close-btn"><i class="fas fa-times"></i></div>
+
+    <nav class="menu-box">
+        <div class="nav-logo"><a href="index.html"><?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></div>
+        <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+        <div class="contact-info">
+            <h4>Contact Info</h4>
+            <ul>
+                <li>Chicago 12, Melborne City, USA</li>
+                <li><a href="tel:+8801682648101">+88 01682648101</a></li>
+                <li><a href="mailto:info@example.com">info@example.com</a></li>
+            </ul>
+        </div>
+        <div class="social-links">
+            <ul class="clearfix">
+                <li><a href="blog-grid.html"><span class="fab fa-twitter"></span></a></li>
+                <li><a href="blog-grid.html"><span class="fab fa-facebook-square"></span></a></li>
+                <li><a href="blog-grid.html"><span class="fab fa-pinterest-p"></span></a></li>
+                <li><a href="blog-grid.html"><span class="fab fa-instagram"></span></a></li>
+                <li><a href="blog-grid.html"><span class="fab fa-youtube"></span></a></li>
+            </ul>
+        </div>
+    </nav>
+</div><!-- End Mobile Menu -->
 
 
-
-
-        <div class="block-title">
-            <div class="block-title__inner section-bg_second">
-                <h1 class="ui-title-page">Cases List</h1>
+<!--Page Title-->
+<section class="page-title bg-color-1 text-center">
+    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
+    <div class="auto-container">
+        <div class="content-box">
+            <h1>Case List</h1>
+            <ul class="bread-crumb clearfix">
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
+<?= $this->Flash->render() ?>
+<!-- blog-grid -->
+<section class="sidebar-page-container blog-grid">
+    <div class="auto-container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <h3> Sort by</h3>
+                <?= $this->Form->create(null, ['type' => 'get']) ?>
+                <?= $this->Form->select(
+                    'sort',
+                    [
+                        'newest' => ' Newest',
+                        'oldest' => 'Oldest',
+                        'az' => 'A-Z',
+                        'za' => 'Z-A',
+                        'rating_asc' => 'Rating ASC',
+                        'rating_desc' => 'Rating DESC'
+                    ],
+                    [
+                        'empty' => false,
+                        'default' => $this->request->getQuery('Apply'),
+                        'class' => 'custom-select',
+                    ]
+                ) ?>
+                <?= $this->Form->button(__('Apply'),['class'=>'btn btn-secondary', 'style'=>'margin-top: -20px;']) ?>
+                <?= $this->Form->end() ?>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="btn">
+                    <?= $this->Html->link('Create Case', ['controller' => 'moncases', 'action' => 'add'], ['class' => 'theme-btn style-one']) ?>
+                </div>
             </div>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9">
-                    <main class="main-content">
-                        <div class="sorting">
-                            <div class="sorting__inner">
-                                <div class ="sorting__item">
-                                    <div class = "form-search__input">
-                                        <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
-                                        <?= $this->Form->text('search', ['placeholder' => 'Search Diagnosis']) ?>
-                                        <?= $this->Form->button(__('Search')) ?>
-                                        <?= $this->Form->end() ?>
+        <div class="row clearfix">
+            <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+                <div class="blog-grid-content">
+                    <div class="row clearfix">
+                        <?php if ($moncases->count() > 0) : ?>
+                        <?php foreach ($moncases as $moncase) : ?>
+                        <div class="col-lg-6 col-md-6 col-sm-12 news-block">
+                            <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                                <div class="inner-box">
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"<a/>
+                                    <div class="image-holder">
+                                        <figure class="image-box">
+                                            <img src="<?= $this->Url->image($moncase -> image_url) ?>" height="196" width="235" alt="photo">
+                                        </figure>
+                                        <div class="link"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><i class="fas fa-arrow-right"></i></a></div>
                                     </div>
-                                </div>
-                                <div class="sorting__item">
-                                    <span class="sorting__title">Sort by</span>
-                                    <div  class="select jelect">
-                                        <?= $this->Form->create(null, ['type' => 'get']) ?>
-                                        <?= $this->Form->select(
-                                            'sort',
-                                            [
-                                                'newest' => ' Newest',
-                                                'oldest' => 'Oldest',
-                                                'az' => 'A-Z',
-                                                'za' => 'Z-A',
-                                                'rating_asc' => 'Rating ASC',
-                                                'rating_desc' => 'Rating DESC'
-                                            ],
-                                            [
-                                                'empty' => false,
-                                                'default' => $this -> request -> getQuery('sort'),
-                                                'class' => 'select jelect',
-                                            ]
-                                        ) ?>
-                                        <?= $this->Form->button(__('Apply')) ?>
-                                        <?= $this->Form->end() ?>
-                                    </div>
-                                </div>
-                                <div class ="sorting__item">
-                                    <div class = "btn">
-                                        <?= $this->Html->link('Create Case', ['controller' => 'moncases','action' => 'addnewcase'], ['class' => 'btn-skew-r btn-effect btn-skew-r__inner'])?>
+                                    <div class="lower-content">
+                                        <ul class="post-info">
+                                            <li><?= h($moncase->case_type) ?></li>
+                                            <li><span>by</span>&nbsp;Author </li>
+                                        </ul>
+                                        <h3><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><?= h($moncase->diagnosis) ?></a></h3>
+                                        <p><?= h($moncase->differential_diagnosis) ?></p>
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- end sorting -->
-                        <?php if ($moncases->count() > 0) : ?>
-                            <?php foreach ($moncases as $moncase) : ?>
-                                <article class="card clearfix">
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
-                                        <div class="card__img">
-                                            <img class="img-responsive" src=<?php echo $this->Url->image($moncase -> image_url) ?> height="196" width="235" alt="foto">
-                                        </div>
-                                        <div class="card__inner">
-                                            <h2 class="card__title ui-title-inner"><?= h($moncase->diagnosis) ?></h2>
-                                            <div class="decor-1"></div>
-                                            <div class="card__description">
-                                                <?= h($moncase->differential_diagnosis) ?>
-                                            </div>
-                                            <p></p>
-                                            <ul class="card__list list-unstyled">
-                                                <li class="card-list__row">
-                                                    <span class="card-list__title">Findings:</span>
-                                                    <span class="card-list__info"><?= h($moncase->findings) ?></span>
-                                                </li>
-                                                <li class="card-list__row">
-                                                    <span class="card-list__title">Teaching Points:</span>
-                                                    <span class="card-list__info"><?= h($moncase->teaching_points) ?></span>
-                                                </li>
-                                            </ul>
-                                            <a/>
-                                </article>
+                        </div>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <p>No results found.</p>
                         <?php endif; ?>
-                    </main><!-- end main-content -->
-                </div><!-- end col -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+                <div class="sidebar">
+                    <div class="sidebar-widget sidebar-search">
+                        <div class="widget-title">
+                            <h3>Search</h3>
+                        </div>
+                        <div class="widget-content">
+                            <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                            <div class="form-group">
+                                <?= $this->Form->input('search', ['type' => 'search', 'placeholder' => 'Search Diagnosis']) ?>
+                                <button type="submit" class="search-button">
+                                    <?= $this->Html->tag('i', '', ['class' => 'fas fa-search']) ?>
+                                </button>
+                            </div>
+                            <?= $this->Form->end() ?>
+                        </div>
+                    </div>
 
-                <div class="col-md-3">
-                    <aside class="sidebar">
-                        <!-- FILTER CASE TYPE-->
-                        <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
-                        <div class="panel-group accordion" id="accordion-1">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <a class="btn-collapse" data-toggle="collapse" data-parent="#accordion-1" href="#collapse-1"><i class="icon"></i></a>
-                                    <h3 class="panel-title">Case Type</h3>
-                                </div>
-                                <div id="collapse-1" class="panel-collapse collapse in">
-                                    <div class="panel-body">
-                                        <?= $this->Form->select('case_type', [
-                                            'Oscer' => 'Oscer',
-                                            'Long' => 'Long',
-                                            'Medium' => 'Medium',
-                                            'Short' => 'Short',
-                                            'General' => 'General',
-                                        ], [
-                                            'class' => 'select select_mod-a jelect',
-                                            'empty' => 'Choose Case Type',
-                                        ]); ?>
+                    <div class="sidebar-widget sidebar-categories">
+                        <div class="widget-title">
+                            <h3>FILTERS</h3>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="accordion-box">
+                                <li class="accordion block">
+                                    <div class="acc-btn">
+                                        <h4><span>-</span> Type</h4>
                                     </div>
-                                </div>
-                            </div><!-- end panel -->
-
-                            <div class="panel-group accordion" id="accordion-2">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <a class="btn-collapse" data-toggle="collapse" data-parent="#accordion-2" href="#collapse-2"><i class="icon"></i></a>
-                                        <h3 class="panel-title">Contributor</h3>
+                                    <div class="acc-content">
+                                        <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                        <div class="content">
+                                            <?= $this->Form->select('case_type', [
+                                                'Oscer' => 'Oscer',
+                                                'Long' => 'Long',
+                                                'Medium' => 'Medium',
+                                                'Short' => 'Short',
+                                                'General' => 'General',
+                                            ], [
+                                                'class' => 'select select_mod-a jelect',
+                                                'empty' => 'Choose Case Type',
+                                            ]); ?>
+                                        </div>
                                     </div>
-                                    <div id="collapse-2" class="panel-collapse collapse in">
-                                        <div class="panel-body">
+                                </li>
+                                <li class="accordion block">
+                                    <div class="acc-btn">
+                                        <h4><span>-</span>Contributor</h4>
+                                    </div>
+                                    <div class="acc-content">
+                                        <div class="content">
                                             <?= $this->Form->select('contributor', [
                                                 'Trainee' => 'Trainee',
                                                 'Consultant' => 'Consultant',
@@ -239,82 +325,158 @@ $this->disableAutoLayout();
                                             ]); ?>
                                         </div>
                                     </div>
-                                </div><!-- end panel -->
-
-                                <div class="panel-group accordion" id="accordion-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <a class="btn-collapse" data-toggle="collapse" data-parent="#accordion-3" href="#collapse-3"><i class="icon"></i></a>
-                                            <h3 class="panel-title">Rating</h3>
-                                        </div>
-                                        <div id="collapse-3" class="panel-collapse collapse in">
-                                            <div class="panel-body">
-                                                <?= $this->Form->select('rating', [
+                                </li>
+                                <li class="accordion block">
+                                    <div class="acc-btn">
+                                        <h4><span>-</span>Rating</h4>
+                                    </div>
+                                    <div class="acc-content">
+                                        <div class="content">
+                                            <p> <?= $this->Form->select('rating', [
                                                     '1' => '1',
                                                     '2' => '2',
                                                     '3' => '3',
                                                     '4' => '4',
                                                     '5' => '5',
                                                 ], [
-                                                    'class' => 'select select_mod-a jelect',
+                                                    'class' => 'form-select',
                                                     'empty' => 'Choose Rating',
-                                                ]); ?>                                    </div>
-                                        </div>
-                                    </div><!-- end panel -->
-
-                                    <!-- <section class="widget widget_mod-a">
-                                    <h3 class="widget-title">Imaging</h3>
-                                    <div class="decor-1"></div>
-                                    <div class="widget-content">
-                                        <?= $this->Form->select('Imaging', [
-                                        'Test' => 'Test',
-                                    ], [
-                                        'class' => 'select select_mod-a jelect',
-                                        'empty' => 'Choose Imaging',
-                                    ]); ?>
-                                    </div>
-                                </section>
-                                -->
-                                    <div class="widget-content">
-                                        <div class="btn">
-                                            <div class="btn-filter btn-skew-r js-filter" style ="padding: 0px 10px 0px;">
-                                                <?= $this->Form->button(__('Filter'), ['class' => 'btn-skew-r btn-effect', 'style' => 'margin-left: -20px;']) ?>
-                                                <?= $this->Form->end() ?>
-                                            </div>
+                                                ]); ?>
+                                            </p>
                                         </div>
                                     </div>
-                    </aside>
-                </div><!-- end wrap-filter -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end #wrapper -->
-</div><!-- end layout-theme -->
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget sidebar-tags">
+                        <div class="widget-title">
+                            <div class="widget-content">
+                                   <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style'=>'margin-left:40px']) ?>
+                                   <?= $this->Form->button(__('Reset Filter'), ['class' => 'theme-btn style-two']) ?>
+                                   <?= $this->Form->end() ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- blog-grid end -->
 
-<span class="scroll-top"> <i class="fa fa-angle-up"> </i></span>
+
+<!-- cta-section -->
+<section class="cta-section bg-color-2">
+    <div class="pattern-box">
+        <div class="pattern-1" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/shape/pattern-7.png') ?> "></div>
+        <div class="pattern-2" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/shape/pattern-8.png') ?> "></div>
+    </div>
+</section>
+<!-- cta-section end -->
 
 
-</body>
+<!-- main-footer -->
+<footer class="main-footer">
+    <div class="auto-container">
+        <div class="footer-top">
+            <div class="widget-section wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <div class="row clearfix">
+                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                        <div class="footer-widget logo-widget">
+                            <figure class="footer-logo"><a href="index.html"><?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                        <div class="footer-widget links-widget">
+                            <div class="widget-title">
+                                <h3>Quick Link</h3>
+                            </div>
+                            <div class="widget-content">
+                                <ul>
+                                    <li><a href="blog-grid.html">Company History</a></li>
+                                    <li><a href="blog-grid.html">About Us</a></li>
+                                    <li><a href="blog-grid.html">Contact Us</a></li>
+                                    <li><a href="blog-grid.html">Services</a></li>
+                                    <li><a href="blog-grid.html">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                        <div class="footer-widget links-widget">
+                            <div class="widget-title">
+                                <h3>Services</h3>
+                            </div>
+                            <div class="widget-content">
+                                <ul>
+                                    <li><a href="blog-grid.html">Company History</a></li>
+                                    <li><a href="blog-grid.html">About Us</a></li>
+                                    <li><a href="blog-grid.html">Contact Us</a></li>
+                                    <li><a href="blog-grid.html">Services</a></li>
+                                    <li><a href="blog-grid.html">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                        <div class="footer-widget contact-widget">
+                            <div class="widget-title">
+                                <h3>Contact Info</h3>
+                            </div>
+                            <div class="widget-content">
+                                <ul>
+                                    <li>Flat 20, Reynolds Neck, North Hele naville, FV77 8WS</li>
+                                    <li><a href="tel:23055873407">+2(305) 587-3407</a></li>
+                                    <li><a href="mailto:info@example.com">info@example.com</a></li>
+                                </ul>
+                            </div>
+                            <ul class="social-links clearfix">
+                                <li><a href="blog-grid.html"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="blog-grid.html"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="blog-grid.html"><i class="fab fa-vimeo-v"></i></a></li>
+                                <li><a href="blog-grid.html"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom clearfix">
+            <div class="copyright pull-left">
+                <p><a href="index.html">Monash Health</a> &copy; 2023 All Right Reserved</p>
+            </div>
+            <ul class="footer-nav pull-right">
+                <li><a href="blog-grid.html">Terms of Service</a></li>
+                <li><a href="blog-grid.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<!-- main-footer end -->
+
+
+
+<!--Scroll to top-->
+<button class="scroll-top scroll-to-target" data-target="html">
+    <span class="fa fa-arrow-up"></span>
+</button>
+
+
+<!-- jequery plugins -->
+<?= $this->Html->script('/detoxpack/detox/assets/js/jquery.js') ?>
+<?= $this->Html->script('/detoxpack/detox/assets/js/popper.min.js') ?>
+<?= $this->Html->script('/detoxpack/detox/assets/js/bootstrap.min.js') ?>
+<?= $this->Html->script('/detoxpack/detox/assets/js/wow.js') ?>
+<?= $this->Html->script('/detoxpack/detox/assets/js/validation.js') ?>
+<?= $this->Html->script('/detoxpack/detox/assets/js/jquery.fancybox.js') ?>
+<?= $this->Html->script('/detoxpack/detox/assets/js/appear.js') ?>
+<?= $this->Html->script('/detoxpack/detox/assets/js/scrollbar.js') ?>
+<?= $this->Html->script('/detoxpack/detox/assets/js/tilt.jquery.js') ?>
+
+
+<?= $this->Html->script('/detoxpack/detox/assets/js/script.js') ?>
+
+
+</body><!-- End of .page_wrapper -->
 </html>
-<!-- SCRIPTS -->
-<?= $this->Html->script('/assets/js/jquery-migrate-1.2.1.js'); ?>
-<?= $this->Html->script('/assets/plugins/bootstrap/js/bootstrap.min.js'); ?>
-<?= $this->Html->script('/assets/js/modernizr.custom.js'); ?>
-<?= $this->Html->script('/assets/plugins/owl-carousel/owl.carousel.min.js'); ?>
-<?= $this->Html->script('/assets/js/waypoints.min.js'); ?>
-<?= $this->Html->script('/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js'); ?>
-<?= $this->Html->script('http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'); ?>
-<?= $this->Html->script('/assets/plugins/jelect/jquery.jelect.js'); ?>
-<?= $this->Html->script('/assets/plugins/nouislider/jquery.nouislider.all.min.js'); ?>
-<?= $this->Html->script('/assets/plugins/flexslider/jquery.flexslider.js'); ?>
-
-<!--THEME-->
-
-<?= $this->Html->script('/assets/js/custom.js'); ?>
-
-<!-- Bootstrap core JavaScript-->
-<?= $this->Html->script('/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>
-<!-- Core plugin JavaScript-->
-<?= $this->Html->script('/vendor/jquery-easing/jquery.easing.min.js') ?>
-<!-- Custom scripts for all pages-->
-<?= $this->Html->script('/js/sb-admin-2.min.js') ?>
-<?= $this->fetch('script') ?>

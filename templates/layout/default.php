@@ -19,8 +19,21 @@
     <!-- Custom styles for this template-->
     <?= $this->Html->css('sb-admin-2.css') ?>
     <style>
+        .message.error {
+            color: red;
+            background-color: #edd4d4;
+            border-color: #e6c3c3;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
 
-
+        .message.success {
+            background: #e3fcec;
+            color: #1f9d55;
+            border-color: #51d88a;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
     </style>
 
     <?= $this->fetch('meta') ?>
@@ -44,7 +57,6 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <?= $this->Flash->render() ?>
                 <?= $this->fetch('content') ?>
             </div>
             <!-- /.container-fluid -->
