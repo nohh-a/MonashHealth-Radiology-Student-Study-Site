@@ -58,12 +58,12 @@
                                     </h2>
                                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                         <div class="accordion-body">
-                                            <?= $this->Form->create($moncase, ['type' => 'file']) ?>
+                                            <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
                                             <div class="row">
                                                 <?= $this->Html->image('/img/' . $moncase->image_url, ['width' => '100px']); ?>
                                                 <?= $this->Form->control('image_url', [
                                                     'type' => 'file',
-                                                    'label' => 'Image Upload'
+                                                    'class' => 'form-control',
                                                 ]); ?>
                                             </div>
 

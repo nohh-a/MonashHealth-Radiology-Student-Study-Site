@@ -51,7 +51,7 @@ class MoncasesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->notEmptyFile('image_url')
+            ->allowEmptyFile('image_url')
             ->add('image_url', [
                 'mimeType' => [
                     'rule' => ['mimeType', ['image/jpg', 'image/png','image/jpeg']],

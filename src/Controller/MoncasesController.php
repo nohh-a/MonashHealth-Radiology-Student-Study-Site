@@ -149,23 +149,19 @@ class MoncasesController extends AppController
             if(!$moncase->getErrors()){
                 $image = $this->request->getUploadedFile('image_url');
 
-                $name = $image->getClientFilename();
-
-                if($name){
-                    $targetPath = WWW_ROOT.'img'.DS.'uploads'.DS.$name;
+                if ($image) {
+                    $name = $image->getClientFilename();
+                    $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
 
                     $image->moveTo($targetPath);
 
-                    $imgpath =WWW_ROOT.'img'.DS.$moncase->image_url;
-
-                    $pathinfo = pathinfo($imgpath);
-                    if (isset($pathinfo['dirname']) && $pathinfo['dirname'] === WWW_ROOT.'img'.DS.'uploads') {
-                        if (file_exists($imgpath)) {
-                            unlink($imgpath);
-                        }
+                    // Delete the old image if it exists
+                    $oldImagePath = WWW_ROOT . 'img' . DS . $moncase->getOriginal('image_url');
+                    if (file_exists($oldImagePath)) {
+                        unlink($oldImagePath);
                     }
 
-                    $moncase->image_url='uploads/'.$name;
+                    $moncase->image_url = 'uploads/' . $name;
                 }
 
             }
