@@ -136,52 +136,50 @@ class MoncasesController extends AppController
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
+
     public function edit($id = null)
     {
-        //ToDo: user just can edit the case that they created
-
         $moncase = $this->Moncases->get($id, [
             'contain' => [],
         ]);
+
+        $originalImageUrl = $moncase->image_url; // Store the original image URL
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
 
-            if(!$moncase->getErrors()){
-                $image = $this->request->getUploadedFile('image_url');
+            $uploadedFile = $this->request->getUploadedFile('image_url');
+            if ($uploadedFile && $uploadedFile->getError() === UPLOAD_ERR_OK) {
+                $name = $uploadedFile->getClientFilename();
+                $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+                $uploadedFile->moveTo($targetPath);
 
-                if ($image) {
-                    $name = $image->getClientFilename();
-                    $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
-
-                    $image->moveTo($targetPath);
-
-                    // Delete the old image if it exists
-                    $oldImagePath = WWW_ROOT . 'img' . DS . $moncase->getOriginal('image_url');
-                    if (file_exists($oldImagePath)) {
-                        unlink($oldImagePath);
-                    }
-
-                    $moncase->image_url = 'uploads/' . $name;
+                // Delete the old image if it exists
+                $oldImagePath = WWW_ROOT . 'img' . DS . $originalImageUrl;
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
                 }
 
+                $moncase->image_url = 'uploads/' . $name;
+            } else {
+                // If no new image uploaded, retain the original image URL
+                $moncase->image_url = $originalImageUrl;
             }
 
             if ($this->Moncases->save($moncase)) {
                 $this->Flash->success(__('The moncase has been saved.'));
 
-                // check access_role, then redirect different page
-                $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
-                if ($access_role == 'ADMIN') {
-                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
-                } else {
-                    return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
-                }
+                // Redirect logic based on access_role
+                $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
+                $redirectAction = ($accessRole == 'ADMIN') ? 'userlist' : 'userlistNotadmin';
+                return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
             }
+
             $this->Flash->error(__('The moncase could not be saved. Please, try again.'));
         }
+
         $this->set(compact('moncase'));
     }
-
     /**
      * Delete method
      *
