@@ -131,8 +131,6 @@ $this->disableAutoLayout();
                             <ul class="navigation clearfix">
                                 <li><a href="<?= $this->Url->build('/') ?>">Case List</a>
                                 </li>
-                                <li class=""><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a>
-                                </li>
 
                             </ul>
                         </div>
@@ -234,28 +232,28 @@ $this->disableAutoLayout();
                                         <div class="pricing-block-one">
                                             <div class="pricing-table">
                                                 <section class="sidebar-page-container" style="padding: 0px 0px 0px 0px;">
-                                                <div class="sidebar" style="margin-left: 0px;">
-                                                <div class="table-header">
-                                                    <div class="sidebar-widget sidebar-tags">
-                                                        <div class="widget-title">
-                                                            <h3>Case Data</h3>
-                                                            <div class="widget-content">
-                                                                <ul class="clearfix">
-                                                                    <li><a><h5>Accession No: </h5> <?= h($moncase->accession_no) ?></a></li>
-                                                                    <li><a><h5>Specialty: </h5> <?= h($moncase->speciality) ?></a></li>
-                                                                    <li><a><h5>Seen By: </h5> <?= h($moncase->seen_by) ?></a></li>
-                                                                    <li><a><h5>Tags: </h5> <?= h($moncase->tags) ?></a></li>
-                                                                    <li><a><h5>Date: </h5> <?= h($moncase->date) ?></a></li>
-                                                                    <li><a><h5>Marks: </h5> <?= h($moncase->max_marks) ?></a></li>
-                                                                    <li><a><h5>Contributor: </h5> <?= h($moncase->contributor) ?></a></li>
-                                                                    <li><a><h5>Author: </h5> <?= h($moncase->author) ?></a></li>
-                                                                    <li><a><h5>Case Rating:</h5><?= h($moncase->rating) ?></a></li>
-                                                                </ul>
+                                                    <div class="sidebar" style="margin-left: 0px;">
+                                                        <div class="table-header">
+                                                            <div class="sidebar-widget sidebar-tags">
+                                                                <div class="widget-title">
+                                                                    <h3>Case Data</h3>
+                                                                    <div class="widget-content">
+                                                                        <ul class="clearfix">
+                                                                            <li><a><h5>Accession No: </h5> <?= h($moncase->accession_no) ?></a></li>
+                                                                            <li><a><h5>Specialty: </h5> <?= h($moncase->speciality) ?></a></li>
+                                                                            <li><a><h5>Seen By: </h5> <?= h($moncase->seen_by) ?></a></li>
+                                                                            <li><a><h5>Tags: </h5> <?= h($moncase->tags) ?></a></li>
+                                                                            <li><a><h5>Date: </h5> <?= h($moncase->date) ?></a></li>
+                                                                            <li><a><h5>Marks: </h5> <?= h($moncase->max_marks) ?></a></li>
+                                                                            <li><a><h5>Contributor: </h5> <?= h($moncase->contributor) ?></a></li>
+                                                                            <li><a><h5>Author: </h5> <?= h($moncase->author) ?></a></li>
+                                                                            <li><a><h5>Case Rating:</h5><?= h($moncase->rating) ?></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                </div>
                                                 </section>
                                                 <div class="table-content">
                                                     <ul>
@@ -271,11 +269,8 @@ $this->disableAutoLayout();
                                                 </div>
                                                 <div class="table-footer">
                                                     <div class="row">
-                                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                                            <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                                            <?= $this->Html->link(__('Delete Case'), ['action' => 'delete', $moncase->id], ['class' => 'theme-btn style-one', 'confirm' => __('Are you sure you want to delete this case "{0}" ?', $moncase->diagnosis)]) ?>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <a href="index.html" class="theme-btn style-two">Edit</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -332,11 +327,8 @@ $this->disableAutoLayout();
                                                 </div>
                                                 <div class="table-footer">
                                                     <div class="row">
-                                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                                            <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                                            <?= $this->Html->link(__('Delete Case'), ['action' => 'delete', $moncase->id], ['class' => 'theme-btn style-one', 'confirm' => __('Are you sure you want to delete this case "{0}" ?', $moncase->diagnosis)]) ?>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <a href="index.html" class="theme-btn style-two">Edit Details</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -351,105 +343,105 @@ $this->disableAutoLayout();
             </section>
         </div>
 
-<!-- main-footer -->
-<footer class="main-footer">
-    <div class="auto-container">
-        <div class="footer-top">
-            <div class="widget-section wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                <div class="row clearfix">
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget logo-widget">
-                            <figure class="footer-logo"><a href="index.html"><?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget links-widget">
-                            <div class="widget-title">
-                                <h3>Quick Link</h3>
+        <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="auto-container">
+                <div class="footer-top">
+                    <div class="widget-section wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="footer-widget logo-widget">
+                                    <figure class="footer-logo"><a href="index.html"><?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
+                                </div>
                             </div>
-                            <div class="widget-content">
-                                <ul>
-                                    <li><a href="blog-grid.html">Company History</a></li>
-                                    <li><a href="blog-grid.html">About Us</a></li>
-                                    <li><a href="blog-grid.html">Contact Us</a></li>
-                                    <li><a href="blog-grid.html">Services</a></li>
-                                    <li><a href="blog-grid.html">Privacy Policy</a></li>
-                                </ul>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="footer-widget links-widget">
+                                    <div class="widget-title">
+                                        <h3>Quick Link</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul>
+                                            <li><a href="blog-grid.html">Company History</a></li>
+                                            <li><a href="blog-grid.html">About Us</a></li>
+                                            <li><a href="blog-grid.html">Contact Us</a></li>
+                                            <li><a href="blog-grid.html">Services</a></li>
+                                            <li><a href="blog-grid.html">Privacy Policy</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget links-widget">
-                            <div class="widget-title">
-                                <h3>Services</h3>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="footer-widget links-widget">
+                                    <div class="widget-title">
+                                        <h3>Services</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul>
+                                            <li><a href="blog-grid.html">Company History</a></li>
+                                            <li><a href="blog-grid.html">About Us</a></li>
+                                            <li><a href="blog-grid.html">Contact Us</a></li>
+                                            <li><a href="blog-grid.html">Services</a></li>
+                                            <li><a href="blog-grid.html">Privacy Policy</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="widget-content">
-                                <ul>
-                                    <li><a href="blog-grid.html">Company History</a></li>
-                                    <li><a href="blog-grid.html">About Us</a></li>
-                                    <li><a href="blog-grid.html">Contact Us</a></li>
-                                    <li><a href="blog-grid.html">Services</a></li>
-                                    <li><a href="blog-grid.html">Privacy Policy</a></li>
-                                </ul>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="footer-widget contact-widget">
+                                    <div class="widget-title">
+                                        <h3>Contact Info</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul>
+                                            <li>Flat 20, Reynolds Neck, North Hele naville, FV77 8WS</li>
+                                            <li><a href="tel:23055873407">+2(305) 587-3407</a></li>
+                                            <li><a href="mailto:info@example.com">info@example.com</a></li>
+                                        </ul>
+                                    </div>
+                                    <ul class="social-links clearfix">
+                                        <li><a href="blog-grid.html"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="blog-grid.html"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="blog-grid.html"><i class="fab fa-vimeo-v"></i></a></li>
+                                        <li><a href="blog-grid.html"><i class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget contact-widget">
-                            <div class="widget-title">
-                                <h3>Contact Info</h3>
-                            </div>
-                            <div class="widget-content">
-                                <ul>
-                                    <li>Flat 20, Reynolds Neck, North Hele naville, FV77 8WS</li>
-                                    <li><a href="tel:23055873407">+2(305) 587-3407</a></li>
-                                    <li><a href="mailto:info@example.com">info@example.com</a></li>
-                                </ul>
-                            </div>
-                            <ul class="social-links clearfix">
-                                <li><a href="blog-grid.html"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="blog-grid.html"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="blog-grid.html"><i class="fab fa-vimeo-v"></i></a></li>
-                                <li><a href="blog-grid.html"><i class="fab fa-linkedin-in"></i></a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
+                <div class="footer-bottom clearfix">
+                    <div class="copyright pull-left">
+                        <p><a href="index.html">Monash Health</a> &copy; 2023 All Right Reserved</p>
+                    </div>
+                    <ul class="footer-nav pull-right">
+                        <li><a href="blog-grid.html">Terms of Service</a></li>
+                        <li><a href="blog-grid.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="footer-bottom clearfix">
-            <div class="copyright pull-left">
-                <p><a href="index.html">Monash Health</a> &copy; 2023 All Right Reserved</p>
-            </div>
-            <ul class="footer-nav pull-right">
-                <li><a href="blog-grid.html">Terms of Service</a></li>
-                <li><a href="blog-grid.html">Privacy Policy</a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
-<!-- main-footer end -->
+        </footer>
+        <!-- main-footer end -->
 
 
-<!--Scroll to top-->
-<button class="scroll-top scroll-to-target" data-target="html">
-    <span class="fa fa-arrow-up"></span>
-</button>
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
 
 
-<!-- jequery plugins -->
-<?= $this->Html->script('/detoxpack/detox/assets/js/jquery.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/popper.min.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/bootstrap.min.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/wow.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/validation.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/jquery.fancybox.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/appear.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/scrollbar.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/tilt.jquery.js') ?>
+        <!-- jequery plugins -->
+        <?= $this->Html->script('/detoxpack/detox/assets/js/jquery.js') ?>
+        <?= $this->Html->script('/detoxpack/detox/assets/js/popper.min.js') ?>
+        <?= $this->Html->script('/detoxpack/detox/assets/js/bootstrap.min.js') ?>
+        <?= $this->Html->script('/detoxpack/detox/assets/js/wow.js') ?>
+        <?= $this->Html->script('/detoxpack/detox/assets/js/validation.js') ?>
+        <?= $this->Html->script('/detoxpack/detox/assets/js/jquery.fancybox.js') ?>
+        <?= $this->Html->script('/detoxpack/detox/assets/js/appear.js') ?>
+        <?= $this->Html->script('/detoxpack/detox/assets/js/scrollbar.js') ?>
+        <?= $this->Html->script('/detoxpack/detox/assets/js/tilt.jquery.js') ?>
 
 
-<?= $this->Html->script('/detoxpack/detox/assets/js/script.js') ?>
+        <?= $this->Html->script('/detoxpack/detox/assets/js/script.js') ?>
 
 
 </body><!-- End of .page_wrapper -->

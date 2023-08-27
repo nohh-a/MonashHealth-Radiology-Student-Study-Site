@@ -189,7 +189,7 @@ class AuthController extends AppController {
 
             $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
             if($access_role == 'ADMIN' ){
-                return $this->redirect(['controller' => 'users', 'action' => 'index']);
+                return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
             }
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }

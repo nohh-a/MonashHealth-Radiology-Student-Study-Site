@@ -130,9 +130,6 @@ $this->disableAutoLayout();
                             <ul class="navigation clearfix">
                                 <li class="current"><a href="<?= $this->Url->build('/') ?>">Case List</a>
                                 </li>
-                                <li class=""><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a>
-                                </li>
-
                             </ul>
                         </div>
                     </nav>
@@ -240,28 +237,28 @@ $this->disableAutoLayout();
                 <div class="blog-grid-content">
                     <div class="row clearfix">
                         <?php if ($moncases->count() > 0) : ?>
-                        <?php foreach ($moncases as $moncase) : ?>
-                        <div class="col-lg-6 col-md-6 col-sm-12 news-block">
-                            <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                                <div class="inner-box">
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"<a/>
-                                    <div class="image-holder">
-                                        <figure class="image-box">
-                                            <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>">
-                                        </figure>
-                                        <div class="link"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><i class="fas fa-arrow-right"></i></a></div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <ul class="post-info">
-                                            <li><?= h($moncase->case_type) ?></li>
-                                            <li><span>by</span>&nbsp;<?= h($moncase->author) ?></li>
-                                        </ul>
-                                        <h3><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><?= h($moncase->diagnosis) ?></a></h3>
-                                        <p><?= h($moncase->differential_diagnosis) ?></p>
+                            <?php foreach ($moncases as $moncase) : ?>
+                                <div class="col-lg-6 col-md-6 col-sm-12 news-block">
+                                    <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                                        <div class="inner-box">
+                                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"<a/>
+                                            <div class="image-holder">
+                                                <figure class="image-box">
+                                                    <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>">
+                                                </figure>
+                                                <div class="link"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><i class="fas fa-arrow-right"></i></a></div>
+                                            </div>
+                                            <div class="lower-content">
+                                                <ul class="post-info">
+                                                    <li><?= h($moncase->case_type) ?></li>
+                                                    <li><span>by</span>&nbsp;<?= h($moncase->author) ?></li>
+                                                </ul>
+                                                <h3><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><?= h($moncase->diagnosis) ?></a></h3>
+                                                <p><?= h($moncase->differential_diagnosis) ?></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <p>No results found.</p>
@@ -356,9 +353,9 @@ $this->disableAutoLayout();
                     <div class="sidebar-widget sidebar-tags">
                         <div class="widget-title">
                             <div class="widget-content">
-                                   <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style'=>'margin-left:40px']) ?>
-                                   <?= $this->Form->button(__('Reset Filter'), ['class' => 'theme-btn style-two']) ?>
-                                   <?= $this->Form->end() ?>
+                                <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style'=>'margin-left:40px']) ?>
+                                <?= $this->Form->button(__('Reset Filter'), ['class' => 'theme-btn style-two']) ?>
+                                <?= $this->Form->end() ?>
                             </div>
                         </div>
                     </div>
