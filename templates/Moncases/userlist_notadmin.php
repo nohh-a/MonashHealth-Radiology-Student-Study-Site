@@ -241,19 +241,19 @@ $this->disableAutoLayout();
                                 <div class="col-lg-6 col-md-6 col-sm-12 news-block">
                                     <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                                         <div class="inner-box">
-                                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"<a/>
+                                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view_notadmin', $moncase->id])?>"<a/>
                                             <div class="image-holder">
                                                 <figure class="image-box">
                                                     <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>">
                                                 </figure>
-                                                <div class="link"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><i class="fas fa-arrow-right"></i></a></div>
+                                                <div class="link"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view_notadmin', $moncase->id])?>"><i class="fas fa-arrow-right"></i></a></div>
                                             </div>
                                             <div class="lower-content">
                                                 <ul class="post-info">
                                                     <li><?= h($moncase->case_type) ?></li>
                                                     <li><span>by</span>&nbsp;<?= h($moncase->author) ?></li>
                                                 </ul>
-                                                <h3><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><?= h($moncase->diagnosis) ?></a></h3>
+                                                <h3><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view_notadmin', $moncase->id])?>"><?= h($moncase->diagnosis) ?></a></h3>
                                                 <p><?= h($moncase->differential_diagnosis) ?></p>
                                             </div>
                                         </div>
