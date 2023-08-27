@@ -39,18 +39,33 @@ $this->disableAutoLayout();
 
     <!-- Google Fonts -->
     <?= $this->Html->css('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap'); ?>
-    <?= $this->Html->css('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap'); ?>
 
     <!-- Stylesheets -->
-    <?= $this->Html->css('/detoxpack/detox/assets/css/font-awesome-all.css') ?>
-    <?= $this->Html->css('/detoxpack/detox/assets/css/flaticon.css') ?>
-    <?= $this->Html->css('/detoxpack/detox/assets/css/bootstrap.css') ?>
-    <?= $this->Html->css('/detoxpack/detox/assets/css/jquery.fancybox.min.css') ?>
-    <?= $this->Html->css('/detoxpack/detox/assets/css/animate.css') ?>
-    <?= $this->Html->css('/detoxpack/detox/assets/css/imagebg.css') ?>
-    <?= $this->Html->css('/detoxpack/detox/assets/css/color/theme-color.css') ?>
-    <?= $this->Html->css('/detoxPack/detox/assets/css/style.css') ?>
-    <?= $this->Html->css('/detoxpack/detox/assets/css/responsive.css') ?>
+    <?= $this->Html->css('list/font-awesome-all.css') ?>
+
+    <!--===============================================================================================-->
+    <?= $this->Html->css('list/flaticon.css') ?>
+
+    <!--===============================================================================================-->
+    <?= $this->Html->css('list/bootstrap.css') ?>
+
+    <!--===============================================================================================-->
+    <?= $this->Html->css('list/jquery.fancybox.min.css') ?>
+
+    <!--===============================================================================================-->
+    <?= $this->Html->css('list/animate.css') ?>
+
+    <!--===============================================================================================-->
+    <?= $this->Html->css('list/imagebg.css') ?>
+
+    <!--===============================================================================================-->
+    <?= $this->Html->css('list/color/theme-color.css') ?>
+
+    <!--===============================================================================================-->
+    <?= $this->Html->css('list/style.css') ?>
+
+    <!--===============================================================================================-->
+    <?= $this->Html->css('list/responsive.css') ?>
 
     <style>
         .radio-filter {
@@ -438,18 +453,25 @@ $this->disableAutoLayout();
 
 
 <!-- jequery plugins -->
-<?= $this->Html->script('/detoxpack/detox/assets/js/jquery.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/popper.min.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/bootstrap.min.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/wow.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/validation.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/jquery.fancybox.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/appear.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/scrollbar.js') ?>
-<?= $this->Html->script('/detoxpack/detox/assets/js/tilt.jquery.js') ?>
+<?= $this->Html->script('list/jquery.js') ?>
 
+<?= $this->Html->script('list/popper.min.js') ?>
 
-<?= $this->Html->script('/detoxpack/detox/assets/js/script.js') ?>
+<?= $this->Html->script('list/bootstrap.min.js') ?>
+
+<?= $this->Html->script('list/wow.js') ?>
+
+<?= $this->Html->script('list/validation.js') ?>
+
+<?= $this->Html->script('list/jquery.fancybox.js') ?>
+
+<?= $this->Html->script('list/appear.js') ?>
+
+<?= $this->Html->script('list/scrollbar.js') ?>
+
+<?= $this->Html->script('list/tilt.jquery.js') ?>
+
+<?= $this->Html->script('list/script.js') ?>
 
 
 </body><!-- End of .page_wrapper -->
