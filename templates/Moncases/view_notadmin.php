@@ -147,7 +147,7 @@ $this->disableAutoLayout();
     <!--sticky Header-->
     <div class="sticky-header">
         <div class="container clearfix">
-            <figure class="logo-box"><a href="index.html"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
+            <figure class="logo-box"><a href="<?= $this->Url->build('/') ?>"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
             <div class="menu-area">
                 <nav class="main-menu clearfix">
                     <!--Keep This Empty / Menu will come through Javascript-->
@@ -164,7 +164,7 @@ $this->disableAutoLayout();
     <div class="close-btn"><i class="fas fa-times"></i></div>
 
     <nav class="menu-box">
-        <div class="nav-logo"><a href="index.html"><?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></div>
+        <div class="nav-logo"><a href="<?= $this->Url->build('/') ?>"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></div>
         <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
         <div class="contact-info">
             <h4>Contact Info</h4>
@@ -270,7 +270,7 @@ $this->disableAutoLayout();
                                                 <div class="table-footer">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <a href="index.html" class="theme-btn style-two">Edit</a>
+                                                            <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -328,7 +328,7 @@ $this->disableAutoLayout();
                                                 <div class="table-footer">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <a href="index.html" class="theme-btn style-two">Edit Details</a>
+                                                            <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -351,7 +351,7 @@ $this->disableAutoLayout();
                         <div class="row clearfix">
                             <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                                 <div class="footer-widget logo-widget">
-                                    <figure class="footer-logo"><a href="index.html"><?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
+                                    <figure class="footer-logo"><a href="<?= $this->Url->build('/') ?>"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
@@ -411,11 +411,11 @@ $this->disableAutoLayout();
                 </div>
                 <div class="footer-bottom clearfix">
                     <div class="copyright pull-left">
-                        <p><a href="index.html">Monash Health</a> &copy; 2023 All Right Reserved</p>
+                        <p><a href="<?= $this->Url->build('/') ?>"> Monash Health</a> &copy; 2023 All Right Reserved</p>
                     </div>
                     <ul class="footer-nav pull-right">
-                        <li><a href="blog-grid.html">Terms of Service</a></li>
-                        <li><a href="blog-grid.html">Privacy Policy</a></li>
+                        <li><a>Terms of Service</a></li>
+                        <li><a>Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
