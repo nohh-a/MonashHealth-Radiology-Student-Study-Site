@@ -139,7 +139,6 @@
                                             <?= $this->Form->control('date', [
                                                 'class' => 'form-control',
                                                 'type' => 'date',
-                                                'value' => date('d-m-Y'),
                                                 'required' => true
                                             ])
                                             ?>
