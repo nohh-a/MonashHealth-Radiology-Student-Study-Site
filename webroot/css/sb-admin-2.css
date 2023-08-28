@@ -252,6 +252,7 @@ textarea {
 button,
 input {
   overflow: visible;
+    padding: 0.6rem 1rem;
 }
 
 button,

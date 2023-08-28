@@ -122,8 +122,6 @@
                                         ])
                                         ?>
 
-
-
                                         <?= $this->Form->label('contributor', 'Contributor') ?>
                                         <?= $this->Form->select('contributor', [
                                             'TRAINEE' => 'TRAINEE',

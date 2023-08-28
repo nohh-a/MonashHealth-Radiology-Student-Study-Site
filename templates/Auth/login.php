@@ -53,6 +53,7 @@ $this->disableAutoLayout();
             border: 1px solid #e6e6e6;
             border-radius: 10px;
             margin-bottom: 10px;
+            padding: 0.6rem 1rem;
         }
 
         .message.error {
