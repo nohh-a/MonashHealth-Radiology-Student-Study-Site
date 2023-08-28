@@ -43,28 +43,20 @@ $this->disableAutoLayout();
 
     <!-- Stylesheets -->
     <?= $this->Html->css(['/detoxpack/detox/assets/css/font-awesome-all.css']) ?>
-
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/flaticon.css']) ?>
-
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/bootstrap.css']) ?>
-
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/jquery.fancybox.min.css']) ?>
-
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/animate.css']) ?>
-
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/imagebg.css']) ?>
-
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/color/theme-color.css']) ?>
-
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/style.css']) ?>
-
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/responsive.css']) ?>
 
@@ -193,11 +185,11 @@ $this->disableAutoLayout();
         </div>
         <div class="social-links">
             <ul class="clearfix">
-                <li><a href="blog-grid.html"><span class="fab fa-twitter"></span></a></li>
-                <li><a href="blog-grid.html"><span class="fab fa-facebook-square"></span></a></li>
-                <li><a href="blog-grid.html"><span class="fab fa-pinterest-p"></span></a></li>
-                <li><a href="blog-grid.html"><span class="fab fa-instagram"></span></a></li>
-                <li><a href="blog-grid.html"><span class="fab fa-youtube"></span></a></li>
+                <li><a href="<?= $this->Url->build('/') ?>"><span class="fab fa-twitter"></span></a></li>
+                <li><a href="<?= $this->Url->build('/') ?>"><span class="fab fa-facebook-square"></span></a></li>
+                <li><a href="<?= $this->Url->build('/') ?>"><span class="fab fa-pinterest-p"></span></a></li>
+                <li><a href="<?= $this->Url->build('/') ?>"><span class="fab fa-instagram"></span></a></li>
+                <li><a href="<?= $this->Url->build('/') ?>"><span class="fab fa-youtube"></span></a></li>
             </ul>
         </div>
     </nav>
@@ -414,11 +406,11 @@ $this->disableAutoLayout();
                             </div>
                             <div class="widget-content">
                                 <ul>
-                                    <li><a href="blog-grid.html">Company History</a></li>
-                                    <li><a href="blog-grid.html">About Us</a></li>
-                                    <li><a href="blog-grid.html">Contact Us</a></li>
-                                    <li><a href="blog-grid.html">Services</a></li>
-                                    <li><a href="blog-grid.html">Privacy Policy</a></li>
+                                    <li><a href="<?= $this->Url->build('/') ?>">Company History</a></li>
+                                    <li><a href="<?= $this->Url->build('/') ?>">About Us</a></li>
+                                    <li><a href="<?= $this->Url->build('/') ?>">Contact Us</a></li>
+                                    <li><a href="<?= $this->Url->build('/') ?>">Services</a></li>
+                                    <li><a href="<?= $this->Url->build('/') ?>">Privacy Policy</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -430,11 +422,11 @@ $this->disableAutoLayout();
                             </div>
                             <div class="widget-content">
                                 <ul>
-                                    <li><a href="blog-grid.html">Company History</a></li>
-                                    <li><a href="blog-grid.html">About Us</a></li>
-                                    <li><a href="blog-grid.html">Contact Us</a></li>
-                                    <li><a href="blog-grid.html">Services</a></li>
-                                    <li><a href="blog-grid.html">Privacy Policy</a></li>
+                                    <li><a href="<?= $this->Url->build('/') ?>">Company History</a></li>
+                                    <li><a href="<?= $this->Url->build('/') ?>">About Us</a></li>
+                                    <li><a href="<?= $this->Url->build('/') ?>">Contact Us</a></li>
+                                    <li><a href="<?= $this->Url->build('/') ?>">Services</a></li>
+                                    <li><a href="<?= $this->Url->build('/') ?>">Privacy Policy</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -452,10 +444,10 @@ $this->disableAutoLayout();
                                 </ul>
                             </div>
                             <ul class="social-links clearfix">
-                                <li><a href="blog-grid.html"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="blog-grid.html"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="blog-grid.html"><i class="fab fa-vimeo-v"></i></a></li>
-                                <li><a href="blog-grid.html"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-vimeo-v"></i></a></li>
+                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-linkedin-in"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -467,8 +459,8 @@ $this->disableAutoLayout();
                 <p><a href="<?= $this->Url->build('/') ?>"> Monash Health</a> &copy; 2023 All Right Reserved</p>
             </div>
             <ul class="footer-nav pull-right">
-                <li><a href="blog-grid.html">Terms of Service</a></li>
-                <li><a href="blog-grid.html">Privacy Policy</a></li>
+                <li><a href="<?= $this->Url->build('/') ?>">Terms of Service</a></li>
+                <li><a href="<?= $this->Url->build('/') ?>">Privacy Policy</a></li>
             </ul>
         </div>
     </div>
@@ -484,25 +476,25 @@ $this->disableAutoLayout();
 
 
 <!-- jequery plugins -->
-<?= $this->Html->script('list/jquery.js') ?>
+<?= $this->Html->script(['list/jquery.js']) ?>
 
-<?= $this->Html->script('list/popper.min.js') ?>
+<?= $this->Html->script(['list/popper.min.js']) ?>
 
-<?= $this->Html->script('list/bootstrap.min.js') ?>
+<?= $this->Html->script(['list/bootstrap.min.js']) ?>
 
-<?= $this->Html->script('list/wow.js') ?>
+<?= $this->Html->script(['list/wow.js']) ?>
 
-<?= $this->Html->script('list/validation.js') ?>
+<?= $this->Html->script(['list/validation.js']) ?>
 
-<?= $this->Html->script('list/jquery.fancybox.js') ?>
+<?= $this->Html->script(['list/jquery.fancybox.js']) ?>
 
-<?= $this->Html->script('list/appear.js') ?>
+<?= $this->Html->script(['list/appear.js']) ?>
 
-<?= $this->Html->script('list/scrollbar.js') ?>
+<?= $this->Html->script(['list/scrollbar.js']) ?>
 
-<?= $this->Html->script('list/tilt.jquery.js') ?>
+<?= $this->Html->script(['list/tilt.jquery.js']) ?>
 
-<?= $this->Html->script('list/script.js') ?>
+<?= $this->Html->script(['list/script.js']) ?>
 
 
 </body><!-- End of .page_wrapper -->
