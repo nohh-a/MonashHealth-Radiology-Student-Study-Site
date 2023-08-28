@@ -94,6 +94,10 @@ class MoncasesController extends AppController
      */
     public function add()
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+
+        $author = $firstName . ' ' . $lastName;
 
         $moncase = $this->Moncases->newEmptyEntity();
         if ($this->request->is('post')) {
@@ -126,7 +130,7 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncase', 'author'));
     }
 
     /**
@@ -346,6 +350,11 @@ class MoncasesController extends AppController
 
     public function addoscer(){
 
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+
+        $author = $firstName . ' ' . $lastName;
+
         $moncase = $this->Moncases->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
@@ -378,10 +387,14 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncase', 'author'));
     }
 
     public function addlong(){
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+
+        $author = $firstName . ' ' . $lastName;
 
         $moncase = $this->Moncases->newEmptyEntity();
         if ($this->request->is('post')) {
@@ -415,11 +428,16 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncase', 'author'));
     }
 
     public function addmedium(){
 
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+
+        $author = $firstName . ' ' . $lastName;
+
         $moncase = $this->Moncases->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
@@ -452,10 +470,14 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncase', 'author'));
     }
 
     public function addshort(){
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+
+        $author = $firstName . ' ' . $lastName;
 
         $moncase = $this->Moncases->newEmptyEntity();
         if ($this->request->is('post')) {
@@ -489,11 +511,16 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncase', 'author'));
     }
 
     public function addgeneral(){
 
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+
+        $author = $firstName . ' ' . $lastName;
+
         $moncase = $this->Moncases->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
@@ -526,7 +553,7 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncase', 'author'));
     }
 
 

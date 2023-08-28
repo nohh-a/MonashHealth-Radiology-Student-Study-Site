@@ -203,6 +203,14 @@
                                                 'label' => 'Image Upload'
                                         ]); ?>
 
+                                        <?=$this->Form->control('author',  [
+                                            'class' => 'form-control',
+                                            'required' => true,
+                                            'value' => $this->getRequest()->getData('author', $author),
+                                            'readonly' => true,
+                                        ])
+                                        ?>
+
                                     </div>
                                 </div>
                                 <div class="accordion-item">

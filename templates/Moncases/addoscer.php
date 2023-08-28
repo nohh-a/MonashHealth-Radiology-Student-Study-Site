@@ -124,8 +124,13 @@
                                         ])
                                         ?>
 
-                                        <?=$this->Form->control('author',  ['class' => 'form-control',
-                                            'required' => true]) ?>
+                                        <?=$this->Form->control('author',  [
+                                            'class' => 'form-control',
+                                            'required' => true,
+                                            'value' => $this->getRequest()->getData('author', $author),
+                                            'readonly' => true,
+                                        ])
+                                        ?>
 
                                     </div>
                                 </div>
