@@ -215,15 +215,22 @@ $this->disableAutoLayout();
 
 
 <!--            <figure class="image-box">-->
-<!--                <a href="assets/images/gallery/project-details-1.jpg" class="lightbox-image" data-fancybox="gallery"> -->
+<!--                <a href="https://monashimaging.monashhealth.org/portal/Login.aspx" class="lightbox-image" data-fancybox="gallery">-->
 <!--                    <img src="--><?php //= $this->Url->image($moncase -> image_url, ['height'=>100, 'width'=>100, 'alt'=>'photo']) ?><!--">-->
 <!--                </a>-->
 <!--            </figure>-->
-            <figure class="image_show">
-                <a href="https://monashimaging.monashhealth.org/portal/Login.aspx">
-                    <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>">
+
+            <figure class="image-box">
+                <a href="https://monashimaging.monashhealth.org/portal/Login.aspx" >
+                    <img src="<?= $this->Url->image($moncase -> image_url, ['height'=>100, 'width'=>100, 'alt'=>'photo']) ?>">
                 </a>
             </figure>
+
+<!--            <figure class="image_show">-->
+<!--                <a href="https://monashimaging.monashhealth.org/portal/Login.aspx">-->
+<!--                    <img src="--><?php //= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?><!--">-->
+<!--                </a>-->
+<!--            </figure>-->
 
 
             <section class="pricing-section bg-color-1 sec-pad">
