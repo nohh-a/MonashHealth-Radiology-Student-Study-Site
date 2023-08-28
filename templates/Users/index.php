@@ -51,6 +51,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
     </div>
     <div class="container-fluid">
         <div class="users index content">
+            <?= $this->Flash->render() ?>
             &nbsp;<?= $this->Html->link(__('Create New User'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
 
             <br>

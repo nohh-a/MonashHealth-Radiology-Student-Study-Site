@@ -23,6 +23,7 @@ $this->assign('title', 'Edit - Users');
 
             <div class="card">
                 <h5 class="card-header text-center"><?= __('Edit User') ?></h5>
+                <?= $this->Flash->render() ?>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 mx-auto">
@@ -65,18 +66,24 @@ $this->assign('title', 'Edit - Users');
                     ])
                     ?>
 
-                    <?=
-                    $this->Form->postLink(__('Delete'), [
-                        'action' => 'delete', $user->id
-                    ], [
-                        'class' => 'btn btn-danger',
-                            'confirm' => __(
-                                "Are you sure you want to delete this user?\n{0} {1} ({2})",
-                                $user->first_name, $user->last_name, $user->email
-                            )
-                        ]
-                    )
-                    ?>
+<!--                    It will have a error when first delete code delete,-->
+<!--                    so, I hidden it-->
+                    <?= $this->Form->postLink(__('Delete User'), [
+                        'action' => 'delete', $user->id], [
+                            'confirm' => __("Are you sure you want to delete this user? {0} {1} ({2})",
+                            $user->first_name, $user->last_name, $user->email),
+                            'class' => 'btn btn-danger',
+                            'hidden' => true
+                    ]) ?>
+
+<!--                    working -->
+                    <?= $this->Form->postLink(__('Delete User'), [
+                        'action' => 'delete', $user->id], [
+                            'confirm' => __("Are you sure you want to delete this user?\n{0} {1} ({2})",
+                                $user->first_name, $user->last_name, $user->email),
+                        'class' => 'btn btn-danger']) ?>
+
+
 
                 </div>
             </div>

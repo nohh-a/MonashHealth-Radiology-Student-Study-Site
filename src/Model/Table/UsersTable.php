@@ -70,6 +70,11 @@ class UsersTable extends Table
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
+        // Validate retyped password
+        $validator
+            ->requirePresence('password_confirm', 'create')
+            ->sameAs('password_confirm', 'password', 'Both passwords must match');
+
         $validator
             ->scalar('first_name')
             ->maxLength('first_name', 128)

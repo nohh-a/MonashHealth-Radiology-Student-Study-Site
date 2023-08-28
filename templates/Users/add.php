@@ -12,7 +12,7 @@ $this->assign('title', 'Add - Users');
         <div class="moncases form content">
 
             <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
-
+            <?= $this->Flash->render() ?>
             <div class="card">
                 <h5 class="card-header text-center"><?= __('Add New User') ?></h5>
                 <div class="card-body">
@@ -55,7 +55,9 @@ $this->assign('title', 'Add - Users');
                     </div>
                 </div>
                 <div class="card-footer text-right">
-                    <td><button class="btn btn-primary" onclick="goBack()">Go Back</button></td>
+                    <td>
+                        <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                    </td>
                     <script>
                         function goBack() {
                             window.history.back();
