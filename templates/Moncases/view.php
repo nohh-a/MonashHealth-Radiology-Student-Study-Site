@@ -78,8 +78,8 @@ $this->disableAutoLayout();
         }
 
         .page-title {
-            padding-bottom: 75px;
-            padding-top: 200px;
+            padding-top: 110px;
+            padding-bottom: 20px;
         }
 
         .message.error {
