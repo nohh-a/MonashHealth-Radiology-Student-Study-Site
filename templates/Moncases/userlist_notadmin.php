@@ -281,7 +281,7 @@ $this->disableAutoLayout();
                             <h3>Search</h3>
                         </div>
                         <div class="widget-content">
-                            <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                            <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlistNotadmin'], 'type' => 'get']) ?>
                             <div class="form-group">
                                 <?= $this->Form->input('search', ['type' => 'search', 'placeholder' => 'Search Diagnosis']) ?>
                                 <button type="submit" class="search-button">
@@ -303,7 +303,7 @@ $this->disableAutoLayout();
                                         <h4><span>-</span> Type</h4>
                                     </div>
                                     <div class="acc-content">
-                                        <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                        <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlistNotadmin'], 'type' => 'get']) ?>
                                         <div class="content">
                                             <?= $this->Form->select('case_type', [
                                                 'Oscer' => 'Oscer',

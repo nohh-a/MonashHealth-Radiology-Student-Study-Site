@@ -50,7 +50,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                        Case Details #1
+                                        Case Details #1 (Must Fill In)
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
@@ -133,6 +133,9 @@
                                             'required' => true
                                         ])
                                         ?>
+
+                                        <?=$this->Form->control('author',  ['class' => 'form-control',
+                                            'required' => true]) ?>
 
                                     </div>
                                 </div>

@@ -192,9 +192,9 @@ class MoncasesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $moncase = $this->Moncases->get($id);
         if ($this->Moncases->delete($moncase)) {
-            $this->Flash->success(__('The moncase has been deleted.'));
+            $this->Flash->success(__('The case has been deleted.'));
         } else {
-            $this->Flash->error(__('The moncase could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The case could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'userlist']);
