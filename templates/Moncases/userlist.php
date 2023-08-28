@@ -39,33 +39,34 @@ $this->disableAutoLayout();
 
     <!-- Google Fonts -->
     <?= $this->Html->css('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap'); ?>
+    <?= $this->Html->css('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap'); ?>
 
     <!-- Stylesheets -->
-    <?= $this->Html->css('list/font-awesome-all.css') ?>
+    <?= $this->Html->css(['/detoxpack/detox/assets/css/font-awesome-all.css']) ?>
 
     <!--===============================================================================================-->
-    <?= $this->Html->css('list/flaticon.css') ?>
+    <?= $this->Html->css(['list/flaticon.css']) ?>
 
     <!--===============================================================================================-->
-    <?= $this->Html->css('list/bootstrap.css') ?>
+    <?= $this->Html->css(['list/bootstrap.css']) ?>
 
     <!--===============================================================================================-->
-    <?= $this->Html->css('list/jquery.fancybox.min.css') ?>
+    <?= $this->Html->css(['list/jquery.fancybox.min.css']) ?>
 
     <!--===============================================================================================-->
-    <?= $this->Html->css('list/animate.css') ?>
+    <?= $this->Html->css(['list/animate.css']) ?>
 
     <!--===============================================================================================-->
-    <?= $this->Html->css('list/imagebg.css') ?>
+    <?= $this->Html->css(['list/imagebg.css']) ?>
 
     <!--===============================================================================================-->
-    <?= $this->Html->css('list/color/theme-color.css') ?>
+    <?= $this->Html->css(['list/color/theme-color.css']) ?>
 
     <!--===============================================================================================-->
-    <?= $this->Html->css('list/style.css') ?>
+    <?= $this->Html->css(['list/style.css']) ?>
 
     <!--===============================================================================================-->
-    <?= $this->Html->css('list/responsive.css') ?>
+    <?= $this->Html->css(['list/responsive.css']) ?>
 
     <style>
         .radio-filter {
