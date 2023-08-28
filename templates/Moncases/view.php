@@ -55,6 +55,9 @@ $this->disableAutoLayout();
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/responsive.css']) ?>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
     <style>
         .radio-filter {
             display: block; /* Make each label occupy a full line */
@@ -98,6 +101,10 @@ $this->disableAutoLayout();
             margin-bottom: 1rem;
         }
 
+        .image_show {
+            max-width: 100%;
+            height: auto;
+        }
 
 
     </style>
@@ -210,8 +217,19 @@ $this->disableAutoLayout();
 <section class="portfolio-details sec-pad">
     <div class="auto-container">
         <div class="inner-container">
-            <figure class="image-box"><a href="assets/images/gallery/project-details-1.jpg" class="lightbox-image" data-fancybox="gallery"> <img src="<?= $this->Url->image($moncase -> image_url, ['height'=>100, 'width'=>100, 'alt'=>'photo']) ?>">
-                </a></figure>
+
+            <!--            <figure class="image-box">-->
+            <!--                <a href="assets/images/gallery/project-details-1.jpg" class="lightbox-image" data-fancybox="gallery"> -->
+            <!--                    <img src="--><?php //= $this->Url->image($moncase -> image_url, ['height'=>100, 'width'=>100, 'alt'=>'photo']) ?><!--">-->
+            <!--                </a>-->
+            <!--            </figure>-->
+
+            <figure class="image_show">
+                <a href="https://monashimaging.monashhealth.org/portal/Login.aspx">
+                    <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>">
+                </a>
+            </figure>
+
             <section class="pricing-section bg-color-1 sec-pad">
                 <div class="auto-container">
                     <div class="sec-title">
@@ -252,7 +270,7 @@ $this->disableAutoLayout();
                                                                     <li><a><h5>Marks: </h5> <?= h($moncase->max_marks) ?></a></li>
                                                                     <li><a><h5>Contributor: </h5> <?= h($moncase->contributor) ?></a></li>
                                                                     <li><a><h5>Author: </h5> <?= h($moncase->author) ?></a></li>
-                                                                    <li><a><h5>Case Rating:</h5><?= h($moncase->rating) ?></a></li>
+                                                                    <li><a><h5>Case Rating: </h5><?= h($moncase->rating) ?></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -339,7 +357,7 @@ $this->disableAutoLayout();
                                                             <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['class' => 'btn btn-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $moncase->diagnosis)]) ?>
+                                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to delete # {0}?', $moncase->diagnosis)]) ?>
                                                         </div>
 
                                                     </div>

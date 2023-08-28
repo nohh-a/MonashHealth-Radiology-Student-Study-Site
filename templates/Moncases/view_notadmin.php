@@ -15,12 +15,7 @@
 
 /**
  * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Moncase> $moncases
- * @var int $oscerCount
- * @var int $longCount
- * @var int $mediumCount
- * @var int $shortCount
- * @var int $generalCount
+ * @var \App\Model\Entity\Moncase $moncase
  */
 $this->disableAutoLayout();
 
@@ -103,6 +98,10 @@ $this->disableAutoLayout();
             margin-bottom: 1rem;
         }
 
+        .image_show {
+            max-width: 100%;
+            height: auto;
+        }
 
 
     </style>
@@ -213,8 +212,20 @@ $this->disableAutoLayout();
 <section class="portfolio-details sec-pad">
     <div class="auto-container">
         <div class="inner-container">
-            <figure class="image-box"><a href="assets/images/gallery/project-details-1.jpg" class="lightbox-image" data-fancybox="gallery"> <img src="<?= $this->Url->image($moncase -> image_url, ['height'=>100, 'width'=>100, 'alt'=>'photo']) ?>">
-                </a></figure>
+
+
+<!--            <figure class="image-box">-->
+<!--                <a href="assets/images/gallery/project-details-1.jpg" class="lightbox-image" data-fancybox="gallery"> -->
+<!--                    <img src="--><?php //= $this->Url->image($moncase -> image_url, ['height'=>100, 'width'=>100, 'alt'=>'photo']) ?><!--">-->
+<!--                </a>-->
+<!--            </figure>-->
+            <figure class="image_show">
+                <a href="https://monashimaging.monashhealth.org/portal/Login.aspx">
+                    <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>">
+                </a>
+            </figure>
+
+
             <section class="pricing-section bg-color-1 sec-pad">
                 <div class="auto-container">
                     <div class="sec-title">
