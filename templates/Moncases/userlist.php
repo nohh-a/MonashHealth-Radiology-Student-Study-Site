@@ -255,7 +255,7 @@ $this->disableAutoLayout();
                                     <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"<a/>
                                     <div class="image-holder">
                                         <figure class="image-box">
-                                            <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>">
+                                            <img src="<?= $this->Url->image($moncase->image_url, ['alt' => 'photo']) ?>" style="width: 420px; height: 300px;">
                                         </figure>
                                         <div class="link"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><i class="fas fa-arrow-right"></i></a></div>
                                     </div>
