@@ -33,6 +33,13 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
     .actions {
         white-space: nowrap;
     }
+
+    .container-fluid {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+
 </style>
 
 <div class="container">

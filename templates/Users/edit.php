@@ -27,10 +27,10 @@ $this->assign('title', 'Edit - Users');
                     <div class="row">
                         <div class="col-md-6 mx-auto">
                             <?php
-                            echo $this->Form->control('username', ['style' => 'width: 500px']);
-                            echo $this->Form->control('email', ['style' => 'width: 500px']);
-                            echo $this->Form->control('first_name', ['style' => 'width: 500px']);
-                            echo $this->Form->control('last_name', ['style' => 'width: 500px']);
+                            echo $this->Form->control('username', ['style' => 'width: 100%;']);
+                            echo $this->Form->control('email', ['style' => 'width: 100%;']);
+                            echo $this->Form->control('first_name', ['style' => 'width: 100%;']);
+                            echo $this->Form->control('last_name', ['style' => 'width: 100%;']);
                             ?>
                             <?= $this->Form->label('access_role', 'Access Role') ?>
                             <?= $this->Form->select('access_role', [
@@ -38,7 +38,7 @@ $this->assign('title', 'Edit - Users');
                                 'CONSULTANT' => 'CONSULTANT',
                                 'TRAINEE' => 'TRAINEE'
                             ], [
-                                'style' => 'width: 500px',
+                                'style' => 'width: 100%;',
                                 'required' => true,
                                 'empty' => '- Select Access Role -',
                             ])
