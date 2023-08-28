@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>"> <?= $this->Html->link(__('Home'), ['action' => 'userlist'], ['class' => 'btn btn-primary']) ?></a>
+
                     </li>
 
                 </ul>
@@ -27,6 +27,8 @@
         </div>
     </nav>
     <div class = "col-md-4">
+        <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>"> <?= $this->Html->link(__('Home'), ['action' => 'userlist'], ['class' => 'btn btn-primary']) ?></a>
+        <br><br>
         <div class = "card">
             <h5 class="card-header text-center"><?= __('Select Case Type') ?></h5>
             <div class ="card-body row justify-content-center align-items-center">
