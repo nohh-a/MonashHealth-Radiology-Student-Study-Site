@@ -26,7 +26,7 @@
             </div>
         </div>
     </nav>
-    <div class = "col-md-8">
+    <div class = "col-md-4">
         <div class = "card">
             <h5 class="card-header text-center"><?= __('Select Case Type') ?></h5>
             <div class ="card-body row justify-content-center align-items-center">
