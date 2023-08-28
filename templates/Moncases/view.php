@@ -15,12 +15,7 @@
 
 /**
  * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Moncase> $moncases
- * @var int $oscerCount
- * @var int $longCount
- * @var int $mediumCount
- * @var int $shortCount
- * @var int $generalCount
+ * @var \App\Model\Entity\Moncase $moncase
  */
 $this->disableAutoLayout();
 
@@ -283,7 +278,7 @@ $this->disableAutoLayout();
                                                             <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                                            <?= $this->Html->link(__('Delete Case'), ['action' => 'delete', $moncase->id], ['class' => 'theme-btn style-one', 'confirm' => __('Are you sure you want to delete this case "{0}" ?', $moncase->diagnosis)]) ?>
+                                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to delete # {0}?', $moncase->diagnosis)]) ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -344,8 +339,9 @@ $this->disableAutoLayout();
                                                             <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                                            <?= $this->Form->postlink(__('Delete Case'), ['action' => 'delete', $moncase->id], ['class' => 'theme-btn style-one', 'confirm' => __('Are you sure you want to delete this case "{0}" ?', $moncase->diagnosis)]) ?>
+                                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['class' => 'btn btn-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $moncase->diagnosis)]) ?>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
