@@ -110,7 +110,7 @@ class MoncasesController extends AppController
 
                 $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
 
-                if (!empty($name)) {
+                if ($name) {
                     $image->moveTo($targetPath);
                     $moncase->image_url = 'uploads/' . $name;
                 } else {
