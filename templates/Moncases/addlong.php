@@ -46,6 +46,8 @@
                                 'required' => true,
                                 'value' => $this->getRequest()->getData('author', $author),
                                 'readonly' => true,
+                                'type' => 'text',
+                                'maxlength' => 50,
                             ])
                             ?>
                         </div>
