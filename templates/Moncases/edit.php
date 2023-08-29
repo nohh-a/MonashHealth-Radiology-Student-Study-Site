@@ -16,15 +16,23 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>">Home</a>
-                        </li>
 
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="col-md-8">
+
+            <div class="card-footer">
+                <td><button class="btn btn-secondary btn-lg nav-button active" onclick="goBack()">Back</button></td>
+                <br><br>
+                <script>
+                    function goBack() {
+                        window.history.back();
+                    }
+                </script>
+            </div>
+
             <div class="moncases form content">
 
                 <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
@@ -44,6 +52,17 @@
                                 ],
                             ])
                             ?>
+
+                            <?=$this->Form->control('author',  [
+                                'class' => 'form-control',
+                                'required' => true,
+                                'value' => $this->getRequest()->getData('author', $author),
+                                'readonly' => true,
+                                'type' => 'text',
+                                'maxlength' => 50,
+                            ])
+                            ?>
+
                         </div>
                         <br><br>
                         <div class="row">
@@ -142,13 +161,6 @@
                                                 'required' => true
                                             ])
                                             ?>
-
-                                            <?= $this->Form->control('author', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
-
 
                                             <?= $this->Form->label('contributor', 'Contributor') ?>
                                             <?= $this->Form->select('contributor', [

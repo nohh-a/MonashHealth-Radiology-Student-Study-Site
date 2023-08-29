@@ -143,6 +143,12 @@ class MoncasesController extends AppController
 
     public function edit($id = null)
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+
+        $author = $firstName . ' ' . $lastName;
+
+
         $moncase = $this->Moncases->get($id, [
             'contain' => [],
         ]);
@@ -182,7 +188,7 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The moncase could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncase', 'author'));
     }
     /**
      * Delete method
