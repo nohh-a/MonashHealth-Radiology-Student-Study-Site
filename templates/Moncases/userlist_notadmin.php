@@ -138,6 +138,7 @@ $this->disableAutoLayout();
                             <ul class="navigation clearfix">
                                 <li class="current"><a href="<?= $this->Url->build('/') ?>">Case List</a>
                                 </li>
+                                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'addnewcase'])?>">Create New Case</a>
                             </ul>
                         </div>
                     </nav>
@@ -173,21 +174,8 @@ $this->disableAutoLayout();
         <div class="nav-logo"><a href="<?= $this->Url->build('/') ?>"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></div>
         <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
         <div class="contact-info">
-            <h4>Contact Info</h4>
-            <ul>
-                <li>Chicago 12, Melborne City, USA</li>
-                <li><a href="tel:+8801682648101">+88 01682648101</a></li>
-                <li><a href="mailto:info@example.com">info@example.com</a></li>
-            </ul>
-        </div>
-        <div class="social-links">
-            <ul class="clearfix">
-                <li><a href="<?= $this->Url->build('/') ?>"><span class="fab fa-twitter"></span></a></li>
-                <li><a href="<?= $this->Url->build('/') ?>"><span class="fab fa-facebook-square"></span></a></li>
-                <li><a href="<?= $this->Url->build('/') ?>"><span class="fab fa-pinterest-p"></span></a></li>
-                <li><a href="<?= $this->Url->build('/') ?>"><span class="fab fa-instagram"></span></a></li>
-                <li><a href="<?= $this->Url->build('/') ?>"><span class="fab fa-youtube"></span></a></li>
-            </ul>
+                <h4> <?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'],
+                        ['confirm' => __("Are you sure you want to Logout?")]) ?></h4>
         </div>
     </nav>
 </div><!-- End Mobile Menu -->
@@ -206,6 +194,7 @@ $this->disableAutoLayout();
 </section>
 <!--End Page Title-->
 <?= $this->Flash->render() ?>
+
 
 <!-- blog-grid -->
 <section class="sidebar-page-container blog-grid">
@@ -234,14 +223,42 @@ $this->disableAutoLayout();
                 <?= $this->Form->end() ?>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 text-right">
-                <div class="btn">
-                    <?= $this->Html->link('Create Case', ['controller' => 'moncases', 'action' => 'addnewcase'], ['class' => 'theme-btn style-one']) ?>
-                </div>
             </div>
         </div>
-
         <div class="row clearfix">
-            <!--search function-->
+            <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+                <div class="blog-grid-content">
+                    <div class="row clearfix">
+                        <?php if ($moncases->count() > 0) : ?>
+                            <?php foreach ($moncases as $moncase) : ?>
+                                <div class="col-lg-6 col-md-6 col-sm-12 news-block">
+                                    <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                                        <div class="inner-box">
+                                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>"<a/>
+                                            <div class="image-holder">
+                                                <figure class="image-box">
+                                                    <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>"style="width: 420px; height: 300px;">
+                                                </figure>
+                                                <div class="link"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>"><i class="fas fa-arrow-right"></i></a></div>
+                                            </div>
+                                            <div class="lower-content">
+                                                <ul class="post-info">
+                                                    <li><?= h($moncase->case_type) ?></li>
+                                                    <li><span>by</span>&nbsp;<?= h($moncase->author) ?></li>
+                                                </ul>
+                                                <h3><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>"><?= h($moncase->diagnosis) ?></a></h3>
+                                                <p><?= h($moncase->differential_diagnosis) ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <p>No results found.</p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
                 <div class="sidebar">
                     <div class="sidebar-widget sidebar-search">
@@ -259,18 +276,17 @@ $this->disableAutoLayout();
                             <?= $this->Form->end() ?>
                         </div>
                     </div>
-
                     <div class="sidebar-widget sidebar-categories">
                         <div class="widget-title">
                             <h3>FILTERS</h3>
                         </div>
                         <div class="widget-content">
                             <ul class="accordion-box">
-                                <li class="accordion block">
-                                    <div class="acc-btn">
-                                        <h4><span>-</span> Type</h4>
+                                <li class="accordion block active-block">
+                                    <div class="acc-btn active">
+                                        <h4><span>+</span> Type</h4>
                                     </div>
-                                    <div class="acc-content">
+                                    <div class="acc-content current">
                                         <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlistNotadmin'], 'type' => 'get']) ?>
                                         <div class="content">
                                             <?= $this->Form->select('case_type', [
@@ -281,6 +297,7 @@ $this->disableAutoLayout();
                                                 'General' => 'General',
                                             ], [
                                                 'class' => 'select select_mod-a jelect',
+                                                'default' => $this->request->getQuery('case_type'),
                                                 'empty' => 'Choose Case Type',
                                             ]); ?>
                                         </div>
@@ -288,7 +305,7 @@ $this->disableAutoLayout();
                                 </li>
                                 <li class="accordion block">
                                     <div class="acc-btn">
-                                        <h4><span>-</span>Contributor</h4>
+                                        <h4><span>+</span>Contributor</h4>
                                     </div>
                                     <div class="acc-content">
                                         <div class="content">
@@ -298,6 +315,7 @@ $this->disableAutoLayout();
                                                 'Library' => 'Library',
                                             ], [
                                                 'class' => 'select select_mod-a jelect',
+                                                'default' => $this->request->getQuery('contributor'),
                                                 'empty' => 'Choose Contributor',
                                             ]); ?>
                                         </div>
@@ -305,7 +323,7 @@ $this->disableAutoLayout();
                                 </li>
                                 <li class="accordion block">
                                     <div class="acc-btn">
-                                        <h4><span>-</span>Rating</h4>
+                                        <h4><span>+</span>Rating</h4>
                                     </div>
                                     <div class="acc-content">
                                         <div class="content">
@@ -317,6 +335,7 @@ $this->disableAutoLayout();
                                                     '5' => '5',
                                                 ], [
                                                     'class' => 'form-select',
+                                                    'default' => $this->request->getQuery('rating'),
                                                     'empty' => 'Choose Rating',
                                                 ]); ?>
                                             </p>
@@ -330,53 +349,18 @@ $this->disableAutoLayout();
                         <div class="widget-title">
                             <div class="widget-content">
                                 <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style'=>'margin-left:40px']) ?>
-                                <?= $this->Form->button(__('Reset Filter'), ['class' => 'theme-btn style-two']) ?>
                                 <?= $this->Form->end() ?>
+                                <button class="theme-btn style-two"><a href="<?= $this->Url->build('/') ?>">Reset Filter</a></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!--case card-->
-            <div class="col-lg-8 col-md-12 col-sm-12 content-side">
-                <div class="blog-grid-content">
-                    <div class="row clearfix">
-                        <?php if ($moncases->count() > 0) : ?>
-                            <?php foreach ($moncases as $moncase) : ?>
-                                <div class="col-lg-6 col-md-6 col-sm-12 news-block">
-                                    <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                                        <div class="inner-box">
-                                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view_notadmin', $moncase->id])?>"<a/>
-                                            <div class="image-holder">
-                                                <figure class="image-box">
-                                                    <img src="<?= $this->Url->image($moncase->image_url, ['alt' => 'photo']) ?>" style="width: 420px; height: 300px;">
-                                                </figure>
-                                                <div class="link"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view_notadmin', $moncase->id])?>"><i class="fas fa-arrow-right"></i></a></div>
-                                            </div>
-                                            <div class="lower-content">
-                                                <ul class="post-info">
-                                                    <li><?= h($moncase->case_type) ?></li>
-                                                    <li><span>by</span>&nbsp;<?= h($moncase->author) ?></li>
-                                                </ul>
-                                                <h3><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view_notadmin', $moncase->id])?>"><?= h($moncase->diagnosis) ?></a></h3>
-                                                <p><?= h($moncase->differential_diagnosis) ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <p>No results found.</p>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
 <!-- blog-grid end -->
+
 
 
 <!-- cta-section -->
@@ -405,30 +389,12 @@ $this->disableAutoLayout();
                             <div class="widget-title">
                                 <h3>Quick Link</h3>
                             </div>
-                            <div class="widget-content">
-                                <ul>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Company History</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">About Us</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Contact Us</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Services</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Privacy Policy</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                         <div class="footer-widget links-widget">
                             <div class="widget-title">
                                 <h3>Services</h3>
-                            </div>
-                            <div class="widget-content">
-                                <ul>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Company History</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">About Us</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Contact Us</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Services</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Privacy Policy</a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -437,19 +403,6 @@ $this->disableAutoLayout();
                             <div class="widget-title">
                                 <h3>Contact Info</h3>
                             </div>
-                            <div class="widget-content">
-                                <ul>
-                                    <li>Flat 20, Reynolds Neck, North Hele naville, FV77 8WS</li>
-                                    <li><a href="tel:23055873407">+2(305) 587-3407</a></li>
-                                    <li><a href="mailto:info@example.com">info@example.com</a></li>
-                                </ul>
-                            </div>
-                            <ul class="social-links clearfix">
-                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-vimeo-v"></i></a></li>
-                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-linkedin-in"></i></a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>

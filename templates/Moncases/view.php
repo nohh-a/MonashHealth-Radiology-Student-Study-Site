@@ -143,6 +143,8 @@ $this->disableAutoLayout();
                                 </li>
                                 <li class=""><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a>
                                 </li>
+                                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'addnewcase'])?>">Create New Case</a>
+
 
                             </ul>
                         </div>
@@ -179,21 +181,8 @@ $this->disableAutoLayout();
         <div class="nav-logo"><a href="<?= $this->Url->build('/') ?>"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></div>
         <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
         <div class="contact-info">
-            <h4>Contact Info</h4>
-            <ul>
-                <li>Chicago 12, Melborne City, USA</li>
-                <li><a>+88 01682648101</a></li>
-                <li><a>info@example.com</a></li>
-            </ul>
-        </div>
-        <div class="social-links">
-            <ul class="clearfix">
-                <li><a><span class="fab fa-twitter"></span></a></li>
-                <li><a><span class="fab fa-facebook-square"></span></a></li>
-                <li><a><span class="fab fa-pinterest-p"></span></a></li>
-                <li><a><span class="fab fa-instagram"></span></a></li>
-                <li><a><span class="fab fa-youtube"></span></a></li>
-            </ul>
+            <h4> <?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'],
+                    ['confirm' => __("Are you sure you want to Logout?")]) ?></h4>
         </div>
     </nav>
 </div><!-- End Mobile Menu -->
@@ -381,82 +370,51 @@ $this->disableAutoLayout();
         </div>
 
 <!-- main-footer -->
-<footer class="main-footer">
-    <div class="auto-container">
-        <div class="footer-top">
-            <div class="widget-section wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                <div class="row clearfix">
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget logo-widget">
-                            <figure class="footer-logo"><a href="<?= $this->Url->build('/') ?>"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget links-widget">
-                            <div class="widget-title">
-                                <h3>Quick Link</h3>
+  <footer class="main-footer">
+            <div class="auto-container">
+                <div class="footer-top">
+                    <div class="widget-section wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="footer-widget logo-widget">
+                                    <figure class="footer-logo"><a href="<?= $this->Url->build('/') ?>"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
+                                </div>
                             </div>
-                            <div class="widget-content">
-                                <ul>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Company History</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">About Us</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Contact Us</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Services</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Privacy Policy</a></li>
-                                </ul>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="footer-widget links-widget">
+                                    <div class="widget-title">
+                                        <h3>Quick Link</h3>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget links-widget">
-                            <div class="widget-title">
-                                <h3>Services</h3>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="footer-widget links-widget">
+                                    <div class="widget-title">
+                                        <h3>Services</h3>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="widget-content">
-                                <ul>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Company History</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">About Us</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Contact Us</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Services</a></li>
-                                    <li><a href="<?= $this->Url->build('/') ?>">Privacy Policy</a></li>
-                                </ul>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="footer-widget contact-widget">
+                                    <div class="widget-title">
+                                        <h3>Contact Info</h3>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget contact-widget">
-                            <div class="widget-title">
-                                <h3>Contact Info</h3>
-                            </div>
-                            <div class="widget-content">
-                                <ul>
-                                    <li>Flat 20, Reynolds Neck, North Hele naville, FV77 8WS</li>
-                                    <li><a href="tel:23055873407">+2(305) 587-3407</a></li>
-                                    <li><a href="mailto:info@example.com">info@example.com</a></li>
-                                </ul>
-                            </div>
-                            <ul class="social-links clearfix">
-                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-vimeo-v"></i></a></li>
-                                <li><a href="<?= $this->Url->build('/') ?>"><i class="fab fa-linkedin-in"></i></a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
+                <div class="footer-bottom clearfix">
+                    <div class="copyright pull-left">
+                        <p><a href="<?= $this->Url->build('/') ?>">Monash Health</a> &copy; 2023 All Right Reserved</p>
+                    </div>
+                    <ul class="footer-nav pull-right">
+                        <li><a href="<?= $this->Url->build('/') ?>">Terms of Service</a></li>
+                        <li><a href="<?= $this->Url->build('/') ?>">Privacy Policy</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="footer-bottom clearfix">
-            <div class="copyright pull-left">
-                <p><a href="<?= $this->Url->build('/') ?>"> >Monash Health</a> &copy; 2023 All Right Reserved</p>
-            </div>
-            <ul class="footer-nav pull-right">
-                <li><a>Terms of Service</a></li>
-                <li><a>Privacy Policy</a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
+        </footer>
 <!-- main-footer end -->
 
 
