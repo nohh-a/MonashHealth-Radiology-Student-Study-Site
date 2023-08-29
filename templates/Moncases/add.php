@@ -166,7 +166,7 @@
                                             'label' => 'Maximum Marks',
                                             'min' => 0,
                                             'max' => 99,
-                                            'error' => ['value' => 'Maximum marks should be between -1 and 999'],
+                                            'error' => ['value' => 'Maximum marks should be between 0 and 99'],
                                             'required' => true
                                         ])
                                         ?>
