@@ -36,10 +36,20 @@
                 <h5 class="card-header text-center"><?= __('Add New Oscer Case') ?></h5>
                 <div class="card-body">
                     <div style="text-align: center;">
-                        <?=$this->Form->control('case_type',  ['class' => 'form-control',
+                        <?=$this->Form->control('case_type',  [
+                            'class' => 'form-control',
                             'default' => 'OSCER',
-                            'readonly' => true]) ?>
+                            'readonly' => true])
+                        ?>
+                        <?=$this->Form->control('author',  [
+                            'class' => 'form-control',
+                            'required' => true,
+                            'value' => $this->getRequest()->getData('author', $author),
+                            'readonly' => true,
+                        ])
+                        ?>
                     </div>
+
                     <br><br>
                     <div class="row">
                         <!--must enter in-->
@@ -124,13 +134,6 @@
                                         ])
                                         ?>
 
-                                        <?=$this->Form->control('author',  [
-                                            'class' => 'form-control',
-                                            'required' => true,
-                                            'value' => $this->getRequest()->getData('author', $author),
-                                            'readonly' => true,
-                                        ])
-                                        ?>
 
                                     </div>
                                 </div>

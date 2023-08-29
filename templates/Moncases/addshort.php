@@ -39,7 +39,15 @@
                         <div style="text-align: center;">
                             <?=$this->Form->control('case_type',  ['class' => 'form-control',
                                 'default' => 'SHORT',
-                                'readonly' => true]) ?>
+                                'readonly' => true])
+                            ?>
+                            <?=$this->Form->control('author',  [
+                                'class' => 'form-control',
+                                'required' => true,
+                                'value' => $this->getRequest()->getData('author', $author),
+                                'readonly' => true,
+                            ])
+                            ?>
                         </div>
                     </div>
                     <br><br>
@@ -128,13 +136,7 @@
                                         ])
                                         ?>
 
-                                        <?=$this->Form->control('author',  [
-                                            'class' => 'form-control',
-                                            'required' => true,
-                                            'value' => $this->getRequest()->getData('author', $author),
-                                            'readonly' => true,
-                                        ])
-                                        ?>
+
 
                                     </div>
                                 </div>
