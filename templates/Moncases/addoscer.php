@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <?= $this->Html->link(__('Back'), ['action' => 'addnewcase'], ['class' => 'btn btn-secondary btn-lg nav-button active']) ?>
+
                     </li>
 
                 </ul>
@@ -28,6 +28,12 @@
         </div>
     </nav>
     <div class="col-md-8">
+        <div class="card-footer">
+            <?= $this->Html->link(__('Back'), ['action' => 'addnewcase'], ['class' => 'btn btn-secondary btn-lg nav-button active']) ?>
+            <br><br>
+        </div>
+
+
         <div class="moncases form content">
 
             <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
