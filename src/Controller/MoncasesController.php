@@ -377,6 +377,8 @@ class MoncasesController extends AppController
                 if ($name) {
                     $image->moveTo($targetPath);
                     $moncase->image_url = 'uploads/' . $name;
+                }else {
+                    $moncase->image_url = 'uploads/' . 'noimage.jpg';
                 }
             }
 
