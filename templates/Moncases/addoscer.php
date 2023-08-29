@@ -71,11 +71,7 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body">
-                                        <?= $this->Form->control('image_url', [
-                                            'type' => 'file',
-                                            'label' => 'Image Upload',
-                                            'class' => 'form-control'
-                                        ]); ?>
+
 
                                         <?= $this->Form->control('accession_no', [
                                             'class' => 'form-control',
@@ -89,43 +85,6 @@
                                             'class' => 'form-control',
                                             'maxlength' => 236,
                                             'required' => true,
-                                        ])
-                                        ?>
-
-                                        <?= $this->Form->control('imaging', [
-                                            'class' => 'form-control',
-                                            'maxlength' => 236,
-                                            'required' => true
-                                        ]); ?>
-
-                                        <?= $this->Form->label('rating', 'Rating') ?>
-                                        <?= $this->Form->select('rating', [
-                                            '1' => 1,
-                                            '2' => 2,
-                                            '3' => 3,
-                                            '4' => 4,
-                                            '5' => 5,
-                                        ], [
-                                            'class' => 'form-control',
-                                            'empty' => '- Select Rating -',
-                                            'required' => true
-                                        ]) ?>
-
-                                        <?= $this->Form->control('max_marks', [
-                                            'class' => 'form-control',
-                                            'label' => 'Maximum Marks',
-                                            'min' => 0,
-                                            'max' => 99,
-                                            'error' => ['value' => 'Maximum marks should be between -1 and 999'],
-                                            'required' => true
-                                        ])
-                                        ?>
-
-                                        <?= $this->Form->control('date', [
-                                            'class' => 'form-control',
-                                            'type' => 'date',
-                                            'value' => date('d-m-Y'),
-                                            'required' => true
                                         ])
                                         ?>
 
@@ -153,6 +112,46 @@
                                     </h2>
                                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
+                                            <?= $this->Form->control('image_url', [
+                                                'type' => 'file',
+                                                'label' => 'Image Upload',
+                                                'class' => 'form-control'
+                                            ]); ?>
+
+                                            <?= $this->Form->control('imaging', [
+                                                'class' => 'form-control',
+                                                'maxlength' => 236,
+                                            ]); ?>
+
+                                            <?= $this->Form->label('rating', 'Rating') ?>
+                                            <?= $this->Form->select('rating', [
+                                                '1' => 1,
+                                                '2' => 2,
+                                                '3' => 3,
+                                                '4' => 4,
+                                                '5' => 5,
+                                            ], [
+                                                'class' => 'form-control',
+                                                'empty' => '- Select Rating -',
+
+                                            ]) ?>
+
+                                            <?= $this->Form->control('max_marks', [
+                                                'class' => 'form-control',
+                                                'label' => 'Maximum Marks',
+                                                'min' => 0,
+                                                'max' => 99,
+                                                'error' => ['value' => 'Maximum marks should be between -1 and 999'],
+                                            ])
+                                            ?>
+
+                                            <?= $this->Form->control('date', [
+                                                'class' => 'form-control',
+                                                'type' => 'date',
+                                                'value' => date('d-m-Y'),
+                                            ])
+                                            ?>
+
                                             <?= $this->Form->control('history', [
                                                 'class' => 'form-control',
                                                 'maxlength' => 236,
