@@ -103,6 +103,26 @@ $this->disableAutoLayout();
             margin-bottom: 1rem;
         }
 
+        @media (max-width:991px) {
+            .modal-hide {
+                display:block;
+            }
+
+            .sidebar-hide {
+                display: none;
+            }
+
+        }
+
+        @media (min-width: 992px) {
+            .modal-hide {
+                display: none;
+            }
+
+            .sidebar-hide {
+                display: block;
+            }
+        }
 
     </style>
 
@@ -202,8 +222,11 @@ $this->disableAutoLayout();
 <section class="sidebar-page-container blog-grid">
     <div class="auto-container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <h3> Sort by</h3>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class = "row">
+                <!-- Sort Feature -->
+                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <h3> Sort by</h3>
                 <?= $this->Form->create(null, ['type' => 'get']) ?>
                 <?= $this->Form->select(
                     'sort',
@@ -223,9 +246,127 @@ $this->disableAutoLayout();
                 ) ?>
                 <?= $this->Form->button(__('Apply'),['class'=>'btn btn-secondary', 'style'=>'margin-top: -20px;']) ?>
                 <?= $this->Form->end() ?>
+                </div>
+                    <div class = "col-lg-3 col-md-3 col-sm-3 col-3">
+                        <!-- Trigger the modal with a button -->
+                        <i class="fas fa-list fa-lg modal-hide" data-toggle="modal" data-target="#myModal"></i>
+
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+
+                                    <div class="modal-body">
+                                        <div class="sidebar">
+                                            <div class="sidebar-widget sidebar-search">
+                                                <div class="widget-title">
+                                                    <h3>Search</h3>
+                                                </div>
+                                                <div class="widget-content">
+                                                    <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                                    <div class="form-group">
+                                                        <?= $this->Form->input('search', ['type' => 'search', 'placeholder' => 'Search Diagnosis']) ?>
+                                                        <button type="submit" class="search-button">
+                                                            <?= $this->Html->tag('i', '', ['class' => 'fas fa-search']) ?>
+                                                        </button>
+                                                    </div>
+                                                    <?= $this->Form->end() ?>
+                                                </div>
+                                            </div>
+                                            <div class="sidebar-widget sidebar-categories">
+                                                <div class="widget-title">
+                                                    <h3>FILTERS</h3>
+                                                </div>
+                                                <div class="widget-content">
+                                                    <ul class="accordion-box">
+                                                        <li class="accordion block active-block">
+                                                            <div class="acc-btn active">
+                                                                <h4><span>+</span> Type</h4>
+                                                            </div>
+                                                            <div class="acc-content current">
+                                                                <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                                                <div class="content">
+                                                                    <?= $this->Form->select('case_type', [
+                                                                        'Oscer' => 'Oscer',
+                                                                        'Long' => 'Long',
+                                                                        'Medium' => 'Medium',
+                                                                        'Short' => 'Short',
+                                                                        'General' => 'General',
+                                                                    ], [
+                                                                        'class' => 'select select_mod-a jelect',
+                                                                        'default' => $this->request->getQuery('case_type'),
+                                                                        'empty' => 'Choose Case Type',
+                                                                    ]); ?>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="accordion block">
+                                                            <div class="acc-btn">
+                                                                <h4><span>+</span>Contributor</h4>
+                                                            </div>
+                                                            <div class="acc-content">
+                                                                <div class="content">
+                                                                    <?= $this->Form->select('contributor', [
+                                                                        'Trainee' => 'Trainee',
+                                                                        'Consultant' => 'Consultant',
+                                                                        'Library' => 'Library',
+                                                                    ], [
+                                                                        'class' => 'select select_mod-a jelect',
+                                                                        'default' => $this->request->getQuery('contributor'),
+                                                                        'empty' => 'Choose Contributor',
+                                                                    ]); ?>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="accordion block">
+                                                            <div class="acc-btn">
+                                                                <h4><span>+</span>Rating</h4>
+                                                            </div>
+                                                            <div class="acc-content">
+                                                                <div class="content">
+                                                                    <p> <?= $this->Form->select('rating', [
+                                                                            '1' => '1',
+                                                                            '2' => '2',
+                                                                            '3' => '3',
+                                                                            '4' => '4',
+                                                                            '5' => '5',
+                                                                        ], [
+                                                                            'class' => 'form-select',
+                                                                            'default' => $this->request->getQuery('rating'),
+                                                                            'empty' => 'Choose Rating',
+                                                                        ]); ?>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="sidebar-widget sidebar-tags">
+                                                <div class="widget-title">
+                                                    <div class="widget-content">
+                                                        <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style'=>'margin-left:40px']) ?>
+                                                        <?= $this->Form->end() ?>
+                                                        <button class="theme-btn style-two"><a href="<?= $this->Url->build('/') ?>">Reset Filter</a></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Modal Filters -->
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
-        </div>
         </div>
         <div class="row clearfix">
             <div class="col-lg-8 col-md-12 col-sm-12 content-side">
@@ -261,7 +402,7 @@ $this->disableAutoLayout();
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+            <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side sidebar-hide">
                 <div class="sidebar">
                     <div class="sidebar-widget sidebar-search">
                         <div class="widget-title">
@@ -430,7 +571,7 @@ $this->disableAutoLayout();
 </button>
 
 
-<!-- jequery plugins -->
+<!-- jquery plugins -->
 <?= $this->Html->script(['list/jquery.js']) ?>
 
 <?= $this->Html->script(['list/popper.min.js']) ?>
