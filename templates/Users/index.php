@@ -66,6 +66,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                         <th><?= h('Last Name') ?></th>
                         <th><?= h('Email') ?></th>
                         <th><?= h('Role') ?></th>
+                        <th><?= h('Contributor') ?></th>
                         <th><?= h('Action') ?></th>
 
                     </tr>
@@ -79,6 +80,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                             <td><?= h($user->last_name) ?></td>
                             <td><?= h($user->email) ?></td>
                             <td><?= h($user->access_role) ?></td>
+                            <td><?= h($user->contributor) ?></td>
 
 
 

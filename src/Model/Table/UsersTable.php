@@ -92,6 +92,10 @@ class UsersTable extends Table
             ->notEmptyString('access_role');
 
         $validator
+            ->scalar('contributor')
+            ->allowEmptyString('contributor');
+
+        $validator
             ->scalar('avatar')
             ->allowEmptyString('avatar');
 

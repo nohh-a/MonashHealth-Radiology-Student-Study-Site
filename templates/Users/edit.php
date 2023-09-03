@@ -39,9 +39,22 @@ $this->assign('title', 'Edit - Users');
                                 'CONSULTANT' => 'CONSULTANT',
                                 'TRAINEE' => 'TRAINEE'
                             ], [
+                                'class' => 'form-control',
                                 'style' => 'width: 100%;',
                                 'required' => true,
                                 'empty' => '- Select Access Role -',
+                            ])
+                            ?>
+                            <?= $this->Form->label('contributor', 'Contributor') ?>
+                            <?= $this->Form->select('contributor', [
+                                'TRAINEE' => 'TRAINEE',
+                                'CONSULTANT' => 'CONSULTANT',
+                                'LIBRARY' => 'LIBRARY'
+                            ], [
+                                'class' => 'form-control',
+                                'style' => 'width: 100%;',
+                                'empty' => '- Select Contributor -',
+                                'required' => true
                             ])
                             ?>
                         </div>
