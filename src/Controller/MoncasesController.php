@@ -360,6 +360,8 @@ class MoncasesController extends AppController
         $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
         $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
 
+        $contributor = $this->getRequest()->getSession()->read('Auth.contributor');
+
         $author = $firstName . ' ' . $lastName;
 
         $moncase = $this->Moncases->newEmptyEntity();
@@ -396,7 +398,7 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase', 'author'));
+        $this->set(compact('moncase', 'author', 'contributor'));
     }
 
     public function addlong()
@@ -404,6 +406,8 @@ class MoncasesController extends AppController
         $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
         $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
 
+        $contributor = $this->getRequest()->getSession()->read('Auth.contributor');
+
         $author = $firstName . ' ' . $lastName;
 
         $moncase = $this->Moncases->newEmptyEntity();
@@ -440,7 +444,7 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase', 'author'));
+        $this->set(compact('moncase', 'author', 'contributor'));
     }
 
     public function addmedium()
@@ -449,6 +453,8 @@ class MoncasesController extends AppController
         $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
         $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
 
+        $contributor = $this->getRequest()->getSession()->read('Auth.contributor');
+
         $author = $firstName . ' ' . $lastName;
 
         $moncase = $this->Moncases->newEmptyEntity();
@@ -485,7 +491,7 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase', 'author'));
+        $this->set(compact('moncase', 'author', 'contributor'));
     }
 
     public function addshort()
@@ -493,6 +499,8 @@ class MoncasesController extends AppController
         $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
         $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
 
+        $contributor = $this->getRequest()->getSession()->read('Auth.contributor');
+
         $author = $firstName . ' ' . $lastName;
 
         $moncase = $this->Moncases->newEmptyEntity();
@@ -529,7 +537,7 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase', 'author'));
+        $this->set(compact('moncase', 'author', 'contributor'));
     }
 
     public function addgeneral()
@@ -538,6 +546,8 @@ class MoncasesController extends AppController
         $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
         $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
 
+        $contributor = $this->getRequest()->getSession()->read('Auth.contributor');
+
         $author = $firstName . ' ' . $lastName;
 
         $moncase = $this->Moncases->newEmptyEntity();
@@ -574,6 +584,6 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase', 'author'));
+        $this->set(compact('moncase', 'author', 'contributor'));
     }
 }

@@ -88,10 +88,7 @@
                                         ?>
 
 
-
-
-
-                                        <?= $this->Form->label('contributor', 'Contributor') ?>
+                                        <?= $this->Form->label('contributor', 'Contributor *') ?>
                                         <?= $this->Form->select('contributor', [
                                             'TRAINEE' => 'TRAINEE',
                                             'CONSULTANT' => 'CONSULTANT',
@@ -99,6 +96,7 @@
                                         ], [
                                             'class' => 'form-control',
                                             'empty' => '- Select Contributor -',
+                                            'value' => $contributor,
                                             'required' => true
                                         ])
                                         ?>

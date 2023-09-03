@@ -77,6 +77,7 @@
                                             'class' => 'form-control',
                                             'type' => 'text',
                                             'maxlength' => 50,
+                                            'label' => 'Accession No *',
                                             'required' => true
                                         ]); ?>
 
@@ -84,13 +85,14 @@
                                         <?= $this->Form->control('diagnosis', [
                                             'class' => 'form-control',
                                             'maxlength' => 236,
+                                            'label' => 'Diagnosis *',
                                             'required' => true,
 
                                         ])
                                         ?>
 
 
-                                        <?= $this->Form->label('contributor', 'Contributor') ?>
+                                        <?= $this->Form->label('contributor', 'Contributor *') ?>
                                         <?= $this->Form->select('contributor', [
                                             'TRAINEE' => 'TRAINEE',
                                             'CONSULTANT' => 'CONSULTANT',
@@ -98,6 +100,7 @@
                                         ], [
                                             'class' => 'form-control',
                                             'empty' => '- Select Contributor -',
+                                            'value' => $contributor,
                                             'required' => true
                                         ])
                                         ?>
