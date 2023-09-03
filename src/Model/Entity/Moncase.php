@@ -34,6 +34,7 @@ use Cake\ORM\Entity;
  * @property string|null $contributor
  * @property int|null $rating
  * @property string|null $author
+ * @property string $archive_status
  */
 class Moncase extends Entity
 {
@@ -72,5 +73,6 @@ class Moncase extends Entity
         'contributor' => true,
         'rating' => true,
         'author' => true,
+        'archive_status' => true,
     ];
 }

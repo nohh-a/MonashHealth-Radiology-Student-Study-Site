@@ -586,4 +586,36 @@ class MoncasesController extends AppController
 
         $this->set(compact('moncase', 'author', 'contributor'));
     }
+
+    public function changecasestatus($id = null) {
+        $moncase = $this->Moncases->get($id, [
+            'contain' => [],
+        ]);
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+
+            // check status
+            if ($moncase->archive_status === 'no') {
+                $moncase->archive_status = 'yes';
+            } else {
+                $moncase->archive_status = 'no';
+            }
+
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('The case has been archived.'));
+
+                // Redirect logic based on access_role
+                $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
+                $redirectAction = $accessRole == 'ADMIN' ? 'userlist' : 'userlistNotadmin';
+
+                return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
+            }
+
+            $this->Flash->error(__('The case could not be archived. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+
+    }
 }

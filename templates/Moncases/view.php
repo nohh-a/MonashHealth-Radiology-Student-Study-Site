@@ -253,6 +253,7 @@ $this->disableAutoLayout();
                                                 <section class="sidebar-page-container" style="padding: 0px 0px 0px 0px;">
                                                 <div class="sidebar" style="margin-left: 0px;">
                                                 <div class="table-header">
+                                                <div class="table-header">
                                                     <div class="sidebar-widget sidebar-tags">
                                                         <div class="widget-title">
                                                             <h3>Case Data</h3>
@@ -292,7 +293,7 @@ $this->disableAutoLayout();
                                                             <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to delete # {0}?', $moncase->diagnosis)]) ?>
+                                                            <?= $this->Form->postLink(__('Archive'), ['action' => 'changecasestatus', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to delete # {0}?', $moncase->diagnosis)]) ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -353,7 +354,7 @@ $this->disableAutoLayout();
                                                             <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to delete # {0}?', $moncase->diagnosis)]) ?>
+                                                            <?= $this->Form->postLink(__('Archive'), ['action' => 'changecasestatus', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to delete # {0}?', $moncase->diagnosis)]) ?>
                                                         </div>
 
                                                     </div>

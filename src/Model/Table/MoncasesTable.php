@@ -164,6 +164,10 @@ class MoncasesTable extends Table
             ->scalar('author')
             ->allowEmptyString('author');
 
+        $validator
+            ->scalar('archive_status')
+            ->notEmptyString('archive_status');
+
         return $validator;
     }
 
