@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 03, 2023 at 04:19 PM
+-- Generation Time: Sep 03, 2023 at 04:27 PM
 -- Server version: 11.0.2-MariaDB
 -- PHP Version: 8.2.8
 
@@ -62,14 +62,7 @@ CREATE TABLE `moncases` (
 --
 
 INSERT INTO `moncases` (`id`, `image_url`, `accession_no`, `case_type`, `date`, `imaging`, `diagnosis`, `differential_diagnosis`, `findings`, `teaching_points`, `speciality`, `history`, `max_marks`, `observation`, `intepretation`, `safety`, `intrinsic_roles`, `management`, `anatomy`, `pathology`, `further_investigation`, `seen_by`, `tags`, `contributor`, `rating`, `author`, `archive_status`) VALUES
-(26, 'uploads/截屏2023-08-15 11.28.07.png', '123', 'LONG', '2023-08-21', 'q', 'q', 'q', '', '', 'CARDIOTHORACIC', '', 1, '', '', '', '', '', '', '', '', '', '', 'TRAINEE', 3, 'qq', 'yes'),
-(28, 'uploads/IMG_7858.JPG', '123456789', 'SHORT', '2023-08-25', 'q', 'q', 'q', '', '', 'HEAD AND NECK', '', 1, '', '', '', '', '', '', '', '', '', '', 'CONSULTANT', 1, 'q', 'no'),
-(29, 'uploads/7314a74055365f084dd0ef903e5592bf.jpg', '1234', 'GENERAL', '2023-08-25', 'q', 'q', 'q', '', '', 'CARDIOTHORACIC', '', NULL, '', '', '', '', '', '', '', '', '', '', 'TRAINEE', NULL, 'q', 'no'),
-(33, 'uploads/noimage.jpg', '234567876', 'OSCER', '2023-08-29', 'q', 'q', NULL, '', NULL, NULL, '', 1, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'CONSULTANT', 1, 'Roger Wang', 'no'),
-(34, 'noimg.png', '75736736474', 'OSCER', '2023-08-29', '', 'test', NULL, '', NULL, NULL, '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'CONSULTANT', NULL, 'Roger Wang', 'no'),
-(35, 'noimg.png', '5893457897386702375906', 'OSCER', '2023-08-29', '', 'qqqqqdwfefegieifoqegefgegegewojgoegopoewfgopegoeogopefopeopgegopopegoeopgoegqqqqqdwfefegieifoqegefgegegewojgoegopoewfgopegoeogopefopeopgegopopegoeopgoegqqqqqdwfefegieifoqegefgegegewojgoegopoewfgopegoeogopefopeopgegopopegoeopgoeg', NULL, '', NULL, NULL, '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'CONSULTANT', NULL, 'Roger Wang', 'no'),
-(36, 'noimg.png', '111', 'OSCER', '2023-08-29', '', 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', NULL, '', NULL, NULL, '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'CONSULTANT', NULL, 'Roger Wang', 'no'),
-(37, 'noimg.png', '5345362345656', 'OSCER', '2023-08-29', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'NEURO', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 99, 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'A 65 year old woman presents to your hospital with gradually increasing breathlessness over the preceding 2 days. It is about 10 days since her last chemotherapy (cisplatin).', 'CONSULTANT', 2, 'Roger Wang', 'no');
+(38, 'noimg.png', '45678311', 'OSCER', '2023-09-03', '', 'Pleural Effusion', NULL, '', NULL, NULL, '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'no');
 
 -- --------------------------------------------------------
 
@@ -126,7 +119,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `moncases`
 --
 ALTER TABLE `moncases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
