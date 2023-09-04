@@ -446,7 +446,7 @@
   }
 
   .sec-pad{
-    padding: 70px 0px !important;
+    padding: 20px 0px !important;
   }
 
   .service-section.service-page .service-block-one .inner-box{
@@ -637,7 +637,7 @@
 }
 
 @media only screen and (max-width: 599px){
-  
+
   .banner-section .content-box h1,
   .banner-style-two .content-box h1{
     font-size: 36px;

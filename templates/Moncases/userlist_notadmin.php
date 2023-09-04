@@ -77,10 +77,19 @@ $this->disableAutoLayout();
         }
         .blog-grid {
             padding-top: 15px;
+            padding-bottom: 30px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #e6eaf1;
+        }
+        .cta-section {
+            padding-top: 35px;
+            padding-bottom: 10px;
         }
 
         .page-title {
-            padding-top: 110px;
+            padding-top: 120px;
             padding-bottom: 20px;
         }
         .lower-box, .lower-content, .post-info{
@@ -124,7 +133,6 @@ $this->disableAutoLayout();
             }
         }
 
-
     </style>
 
 </head>
@@ -157,9 +165,14 @@ $this->disableAutoLayout();
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
-                                <li class="current"><a href="<?= $this->Url->build('/') ?>">Case List</a>
+                                <li class="current">
+                                    <a href="<?= $this->Url->build('/') ?>">Case List</a>
                                 </li>
-                                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'addnewcase'])?>">Create New Case</a>
+
+                                <li>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'addnewcase'])?>">Create New Case</a>
+
+
                             </ul>
                         </div>
                     </nav>
@@ -167,7 +180,8 @@ $this->disableAutoLayout();
             </div>
             <div class="menu-right-content pull-right">
                 <div class="btn-box"><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'],
-                        ['confirm' => __("Are you sure you want to Logout?")]) ?></div>
+                        ['confirm' => __("Are you sure you want to Logout?")]) ?>
+                </div>
             </div>
         </div>
     </div>
@@ -195,8 +209,8 @@ $this->disableAutoLayout();
         <div class="nav-logo"><a href="<?= $this->Url->build('/') ?>"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></div>
         <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
         <div class="contact-info">
-                <h4> <?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'],
-                        ['confirm' => __("Are you sure you want to Logout?")]) ?></h4>
+            <h4> <?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'],
+                    ['confirm' => __("Are you sure you want to Logout?")]) ?></h4>
         </div>
     </nav>
 </div><!-- End Mobile Menu -->
@@ -215,7 +229,6 @@ $this->disableAutoLayout();
 </section>
 <!--End Page Title-->
 <?= $this->Flash->render() ?>
-
 
 <!-- blog-grid -->
 <section class="sidebar-page-container blog-grid">
@@ -264,7 +277,7 @@ $this->disableAutoLayout();
                                                     <h3>Search</h3>
                                                 </div>
                                                 <div class="widget-content">
-                                                    <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                                    <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlistNotadmin'], 'type' => 'get']) ?>
                                                     <div class="form-group">
                                                         <?= $this->Form->input('search', ['type' => 'search', 'placeholder' => 'Search Diagnosis']) ?>
                                                         <button type="submit" class="search-button">
@@ -285,7 +298,7 @@ $this->disableAutoLayout();
                                                                 <h4><span>+</span> Type</h4>
                                                             </div>
                                                             <div class="acc-content current">
-                                                                <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                                                <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlistNotadmin'], 'type' => 'get']) ?>
                                                                 <div class="content">
                                                                     <?= $this->Form->select('case_type', [
                                                                         'Oscer' => 'Oscer',
@@ -401,7 +414,7 @@ $this->disableAutoLayout();
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+            <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side sidebar-hide">
                 <div class="sidebar">
                     <div class="sidebar-widget sidebar-search">
                         <div class="widget-title">
@@ -503,60 +516,24 @@ $this->disableAutoLayout();
 </section>
 <!-- blog-grid end -->
 
-
-
 <!-- cta-section -->
 <section class="cta-section bg-color-2">
     <div class="pattern-box">
         <div class="pattern-1" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/shape/pattern-7.png') ?> "></div>
-        <div class="pattern-2" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/shape/pattern-8.png') ?> "></div>
     </div>
 </section>
 <!-- cta-section end -->
 
-
 <!-- main-footer -->
 <footer class="main-footer">
     <div class="auto-container">
-        <div class="footer-top">
-            <div class="widget-section wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                <div class="row clearfix">
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget logo-widget">
-                            <figure class="footer-logo"><a href="<?= $this->Url->build('/') ?>"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget links-widget">
-                            <div class="widget-title">
-                                <h3>Quick Link</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget links-widget">
-                            <div class="widget-title">
-                                <h3>Services</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                        <div class="footer-widget contact-widget">
-                            <div class="widget-title">
-                                <h3>Contact Info</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="footer-bottom clearfix">
             <div class="copyright pull-left">
-                <p><a href="<?= $this->Url->build('/') ?>">Monash Health</a> &copy; 2023 All Right Reserved</p>
+                <p><a href="<?= $this->Url->build('/') ?>"> Monash Health</a> &copy; 2023 All Right Reserved</p>
             </div>
             <ul class="footer-nav pull-right">
-                <li><a href="<?= $this->Url->build('/') ?>">Terms of Service</a></li>
-                <li><a href="<?= $this->Url->build('/') ?>">Privacy Policy</a></li>
+                <li><a href="<?= $this->Url->build('/') ?>">Team 53</a></li>
+                <li><a href="<?= $this->Url->build('/') ?>">Monash IE</a></li>
             </ul>
         </div>
     </div>
@@ -571,7 +548,7 @@ $this->disableAutoLayout();
 </button>
 
 
-<!-- jequery plugins -->
+<!-- jquery plugins -->
 <?= $this->Html->script(['list/jquery.js']) ?>
 
 <?= $this->Html->script(['list/popper.min.js']) ?>

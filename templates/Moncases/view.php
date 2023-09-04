@@ -80,6 +80,15 @@ $this->disableAutoLayout();
             overflow-wrap: break-word;
         }
 
+        .footer-bottom {
+            border-top: 1px solid #e6eaf1;
+        }
+
+        .cta-section {
+            padding-top: 35px;
+            padding-bottom: 10px;
+        }
+
         .page-title {
             padding-top: 110px;
             padding-bottom: 20px;
@@ -369,60 +378,37 @@ $this->disableAutoLayout();
                 </div>
             </section>
         </div>
+    </div>
+</section>
+    <!-- cta-section -->
+    <section class="cta-section bg-color-2">
+        <div class="pattern-box">
+            <div class="pattern-1" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/shape/pattern-7.png') ?> "></div>
+        </div>
+    </section>
+    <!-- cta-section end -->
 
-<!-- main-footer -->
-  <footer class="main-footer">
-            <div class="auto-container">
-                <div class="footer-top">
-                    <div class="widget-section wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="row clearfix">
-                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                                <div class="footer-widget logo-widget">
-                                    <figure class="footer-logo"><a href="<?= $this->Url->build('/') ?>"> <?= $this->Html->image('/assets/img/logo.png', ['style' => 'width: 150px;']) ?></a></figure>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                                <div class="footer-widget links-widget">
-                                    <div class="widget-title">
-                                        <h3>Quick Link</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                                <div class="footer-widget links-widget">
-                                    <div class="widget-title">
-                                        <h3>Services</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                                <div class="footer-widget contact-widget">
-                                    <div class="widget-title">
-                                        <h3>Contact Info</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- main-footer -->
+    <footer class="main-footer">
+        <div class="auto-container">
+            <div class="footer-bottom clearfix">
+                <div class="copyright pull-left">
+                    <p><a href="<?= $this->Url->build('/') ?>"> Monash Health</a> &copy; 2023 All Right Reserved</p>
                 </div>
-                <div class="footer-bottom clearfix">
-                    <div class="copyright pull-left">
-                        <p><a href="<?= $this->Url->build('/') ?>">Monash Health</a> &copy; 2023 All Right Reserved</p>
-                    </div>
-                    <ul class="footer-nav pull-right">
-                        <li><a href="<?= $this->Url->build('/') ?>">Terms of Service</a></li>
-                        <li><a href="<?= $this->Url->build('/') ?>">Privacy Policy</a></li>
-                    </ul>
-                </div>
+                <ul class="footer-nav pull-right">
+                    <li><a href="<?= $this->Url->build('/') ?>">Team 53</a></li>
+                    <li><a href="<?= $this->Url->build('/') ?>">Monash IE</a></li>
+                </ul>
             </div>
-        </footer>
-<!-- main-footer end -->
+        </div>
+    </footer>
+    <!-- main-footer end -->
 
 
-<!--Scroll to top-->
-<button class="scroll-top scroll-to-target" data-target="html">
-    <span class="fa fa-arrow-up"></span>
-</button>
+    <!--Scroll to top-->
+    <button class="scroll-top scroll-to-target" data-target="html">
+        <span class="fa fa-arrow-up"></span>
+    </button>
 
 
         <!-- jequery plugins -->
