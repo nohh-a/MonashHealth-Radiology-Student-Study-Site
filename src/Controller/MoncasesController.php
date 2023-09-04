@@ -58,6 +58,12 @@ class MoncasesController extends AppController
      */
     public function view($id = null)
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if ($access_role !== 'ADMIN') {
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
@@ -67,7 +73,7 @@ class MoncasesController extends AppController
             'contain' => [],
         ]);
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncase', 'author', 'username'));
     }
 
     /**
@@ -79,12 +85,17 @@ class MoncasesController extends AppController
      */
     public function viewNotadmin($id = null)
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
 
         $moncase = $this->Moncases->get($id, [
             'contain' => [],
         ]);
 
-        $this->set(compact('moncase'));
+        $this->set(compact('moncase', 'author', 'username'));
     }
 
     /**
@@ -247,6 +258,13 @@ class MoncasesController extends AppController
      */
     public function userlist()
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if ($access_role !== 'ADMIN') {
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
@@ -311,7 +329,7 @@ class MoncasesController extends AppController
                 $moncases->order(['rating' => 'DESC']);
         }
 
-        $this->set(compact('moncases', 'search', 'filter', 'sort'));
+        $this->set(compact('moncases', 'search', 'filter', 'sort', 'author', 'username'));
     }
 
     /**
@@ -323,6 +341,12 @@ class MoncasesController extends AppController
      */
     public function userlistNotadmin()
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if ($access_role == 'ADMIN') {
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
@@ -387,7 +411,7 @@ class MoncasesController extends AppController
                 $moncases->order(['rating' => 'DESC']);
         }
 
-        $this->set(compact('moncases', 'search', 'filter', 'sort'));
+        $this->set(compact('moncases', 'search', 'filter', 'sort', 'author', 'username'));
     }
 
     /**
