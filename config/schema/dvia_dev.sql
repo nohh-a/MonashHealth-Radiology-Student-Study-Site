@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 03, 2023 at 04:27 PM
+-- Generation Time: Sep 04, 2023 at 07:12 AM
 -- Server version: 11.0.2-MariaDB
 -- PHP Version: 8.2.8
 
@@ -78,7 +78,7 @@ CREATE TABLE `users` (
   `first_name` varchar(128) NOT NULL,
   `last_name` varchar(128) NOT NULL,
   `access_role` enum('ADMIN','CONSULTANT','TRAINEE','') NOT NULL,
-  `contributor` enum('TRAINEE','CONSULTANT','LIBRARY') DEFAULT NULL,
+  `contributor` enum('TRAINEE','CONSULTANT','LIBRARY') NOT NULL,
   `avatar` text DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
