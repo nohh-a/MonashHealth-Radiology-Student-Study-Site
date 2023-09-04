@@ -142,7 +142,6 @@ class MoncasesController extends AppController
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-
     public function edit($id = null)
     {
         $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
@@ -197,7 +196,7 @@ class MoncasesController extends AppController
      * Delete method
      *
      * @param string|null $id Moncase id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
+     * @return \Cake\Http\Response|null|void Redirects to userlist.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
@@ -213,6 +212,39 @@ class MoncasesController extends AppController
         return $this->redirect(['action' => 'userlist']);
     }
 
+    /**
+     * Delete all archived cases method
+     *
+     * @param string|null $id Moncase id.
+     * @return \Cake\Http\Response|null|void Redirects to userlist.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function deleteall() {
+        $this->request->allowMethod(['post', 'delete']);
+
+        // Add a condition to delete all cases that meet certain criteria.
+        $conditions = [
+            // Define your criteria to delete cases here.
+            // For example, you can delete all cases with 'archive_status' equal to 'yes'.
+            'archive_status' => 'yes',
+        ];
+
+        if ($this->Moncases->deleteAll($conditions)) {
+            $this->Flash->success(__('All cases have been deleted.'));
+        } else {
+            $this->Flash->error(__('The cases could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'archivedcases']);
+    }
+
+    /**
+     * userlist page for admin users method
+     *
+     * @param string|null $id Moncase id.
+     * @return \Cake\Http\Response|null|void Redirects to userlist page.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
     public function userlist()
     {
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
@@ -282,6 +314,13 @@ class MoncasesController extends AppController
         $this->set(compact('moncases', 'search', 'filter', 'sort'));
     }
 
+    /**
+     * userlist page for Not admin users method
+     *
+     * @param string|null $id Moncase id.
+     * @return \Cake\Http\Response|null|void Redirects to userlistNotadmin page.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
     public function userlistNotadmin()
     {
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
@@ -349,6 +388,109 @@ class MoncasesController extends AppController
         }
 
         $this->set(compact('moncases', 'search', 'filter', 'sort'));
+    }
+
+    /**
+     * Archived cases page method
+     *
+     * @return \Cake\Http\Response|null|void Redirects to archivedcases page.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function archivedcases() {
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role !== 'ADMIN') {
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
+        // obtain cases list
+        $moncases = $this->Moncases->find()
+            // Add a condition to filter archive_status
+            ->where(['archive_status' => 'yes']);
+
+        $this->set(compact('moncases'));
+
+    }
+
+    /**
+     * Change case archive status method
+     *
+     * archive status from 'no' to 'yes'
+     *
+     * @param string|null $id Moncase id.
+     * @return \Cake\Http\Response|null|void Redirects to userlist.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function changecasestatus($id = null) {
+        $moncase = $this->Moncases->get($id, [
+            'contain' => [],
+        ]);
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+
+            // check status
+            if ($moncase->archive_status === 'no') {
+                $moncase->archive_status = 'yes';
+            } else {
+                $moncase->archive_status = 'no';
+            }
+
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('The case has been archived.'));
+
+                // Redirect logic based on access_role
+                $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
+                $redirectAction = $accessRole == 'ADMIN' ? 'userlist' : 'userlistNotadmin';
+
+                return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
+            }
+
+            $this->Flash->error(__('The case could not be archived. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+
+    }
+
+    /**
+     * restore case method
+     *
+     * archive status from 'yes' to 'no'
+     *
+     * @param string|null $id Moncase id.
+     * @return \Cake\Http\Response|null|void Redirects to userlist.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function restore($id = null) {
+        $moncase = $this->Moncases->get($id, [
+            'contain' => [],
+        ]);
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+
+            // check status
+            if ($moncase->archive_status === 'no') {
+                $moncase->archive_status = 'yes';
+            } else {
+                $moncase->archive_status = 'no';
+            }
+
+            if ($this->Moncases->save($moncase)) {
+                $this->Flash->success(__('The case has been archived.'));
+
+                // Redirect logic based on access_role
+                $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
+                $redirectAction = $accessRole == 'ADMIN' ? 'userlist' : 'userlistNotadmin';
+
+                return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
+            }
+
+            $this->Flash->error(__('The case could not be archived. Please, try again.'));
+        }
+
+        $this->set(compact('moncase'));
+
     }
 
     public function addnewcase()
@@ -591,35 +733,5 @@ class MoncasesController extends AppController
         $this->set(compact('moncase', 'author', 'contributor'));
     }
 
-    public function changecasestatus($id = null) {
-        $moncase = $this->Moncases->get($id, [
-            'contain' => [],
-        ]);
 
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
-
-            // check status
-            if ($moncase->archive_status === 'no') {
-                $moncase->archive_status = 'yes';
-            } else {
-                $moncase->archive_status = 'no';
-            }
-
-            if ($this->Moncases->save($moncase)) {
-                $this->Flash->success(__('The case has been archived.'));
-
-                // Redirect logic based on access_role
-                $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
-                $redirectAction = $accessRole == 'ADMIN' ? 'userlist' : 'userlistNotadmin';
-
-                return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
-            }
-
-            $this->Flash->error(__('The case could not be archived. Please, try again.'));
-        }
-
-        $this->set(compact('moncase'));
-
-    }
 }

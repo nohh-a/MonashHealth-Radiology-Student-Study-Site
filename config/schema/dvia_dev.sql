@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 04, 2023 at 07:12 AM
+-- Generation Time: Sep 04, 2023 at 11:01 AM
 -- Server version: 11.0.2-MariaDB
 -- PHP Version: 8.2.8
 
@@ -62,7 +62,7 @@ CREATE TABLE `moncases` (
 --
 
 INSERT INTO `moncases` (`id`, `image_url`, `accession_no`, `case_type`, `date`, `imaging`, `diagnosis`, `differential_diagnosis`, `findings`, `teaching_points`, `speciality`, `history`, `max_marks`, `observation`, `intepretation`, `safety`, `intrinsic_roles`, `management`, `anatomy`, `pathology`, `further_investigation`, `seen_by`, `tags`, `contributor`, `rating`, `author`, `archive_status`) VALUES
-(38, 'noimg.png', '45678311', 'OSCER', '2023-09-03', '', 'Pleural Effusion', NULL, '', NULL, NULL, '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'no');
+(41, 'noimg.png', '523454254', 'OSCER', '2023-09-04', '', 'Diagnosis', NULL, '', NULL, NULL, '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'no');
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `moncases`
 --
 ALTER TABLE `moncases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

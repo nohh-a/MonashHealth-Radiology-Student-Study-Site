@@ -45,65 +45,19 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 <div class="container">
     <div class="row align-items-center d-flex justify-content-center" data-animate="fadeInUp">
         <div class="heading-text heading-section text-center mt-5">
-            <h1 style="color: black; font-weight: bold;">Dashboard</h1>
+            <h1 style="color: black; font-weight: bold;">Archived Cases</h1>
             <p> </p>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col mb-3">
-            <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'oscer']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
-                <div class="text font-weight-bold text-success text-uppercase mb-1">oscer</div>
-                <div class="h3 font-weight-bold text-red mb-0 d-flex align-items-center">
-                    <span style="font-size: 65%;"><?= h($oscerCount) ?></span>
-                </div>
-            </a>
-        </div>
-
-        <div class="col mb-3">
-            <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'long']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
-                <div class="text font-weight-bold text-success text-uppercase mb-1">long</div>
-                <div class="h3 font-weight-bold text-orange mb-0 d-flex align-items-center">
-                    <span style="font-size: 65%;"><?= h($longCount) ?></span>
-                </div>
-            </a>
-        </div>
-
-        <div class="col mb-3">
-            <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'medium']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
-                <div class="text font-weight-bold text-success text-uppercase mb-1">medium</div>
-                <div class="h3 font-weight-bold text-pink mb-0 d-flex align-items-center">
-                    <span style="font-size: 65%;"><?= h($mediumCount) ?></span>
-                </div>
-            </a>
-        </div>
-
-        <div class="col mb-3">
-            <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'short']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
-                <div class="text font-weight-bold text-success text-uppercase mb-1">short</div>
-                <div class="h3 font-weight-bold text-blue mb-0 d-flex align-items-center">
-                    <span style="font-size: 65%;"><?= h($shortCount) ?></span>
-                </div>
-            </a>
-        </div>
-
-        <div class="col mb-3">
-            <a href="<?php echo $this->Url->build(['controller'=>'Moncases','action'=> 'general']) ?>" class="card border-left-success shadow h-100 d-flex flex-column justify-content-center align-items-center">
-                <div class="text font-weight-bold text-success text-uppercase mb-1">general</div>
-                <div class="h3 font-weight-bold text-blue mb-0 d-flex align-items-center">
-                    <span style="font-size: 65%;"><?= h($generalCount) ?></span>
-                </div>
-            </a>
-        </div>
-    </div>
 
     <br>
     <div class="container-fluid">
         <div class="moncases index content">
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">All Cases</h1>
-                <?= $this->Html->link(__('Add a New Case'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
+                <h1 class="h3 mb-0 text-gray-800"></h1>
+                <?= $this->Html->link(__('Add a New Case'), ['action' => 'add'], ['class' => 'btn btn-danger']) ?>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
