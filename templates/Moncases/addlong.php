@@ -55,6 +55,15 @@
                                 'maxlength' => 50,
                             ])
                             ?>
+                            <?=$this->Form->control('contributor',  [
+                                'class' => 'form-control',
+                                'required' => true,
+                                'value' => $this->getRequest()->getData('author', $contributor),
+                                'readonly' => true,
+                                'type' => 'text',
+                                'maxlength' => 50,
+                            ])
+                            ?>
                         </div>
                     </div>
                     <br><br>
@@ -71,8 +80,6 @@
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body">
 
-
-
                                         <?= $this->Form->control('accession_no', [
                                             'class' => 'form-control',
                                             'type' => 'text',
@@ -86,21 +93,6 @@
                                             'class' => 'form-control',
                                             'maxlength' => 236,
                                             'required' => true,
-                                        ])
-                                        ?>
-
-
-
-                                        <?= $this->Form->label('contributor', 'Contributor *') ?>
-                                        <?= $this->Form->select('contributor', [
-                                            'TRAINEE' => 'TRAINEE',
-                                            'CONSULTANT' => 'CONSULTANT',
-                                            'LIBRARY' => 'LIBRARY'
-                                        ], [
-                                            'class' => 'form-control',
-                                            'empty' => '- Select Contributor -',
-                                            'value' => $contributor,
-                                            'required' => true
                                         ])
                                         ?>
 
