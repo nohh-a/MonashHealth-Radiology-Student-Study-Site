@@ -93,7 +93,7 @@ class UsersTable extends Table
 
         $validator
             ->scalar('contributor')
-            ->allowEmptyString('contributor');
+            ->notEmptyString('contributor');
 
         $validator
             ->scalar('avatar')
