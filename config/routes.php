@@ -51,6 +51,8 @@ return static function (RouteBuilder $routes) {
          * to use (in this case, templates/Pages/home.php)...
          */
         $builder->connect('/', ['controller' => 'moncases', 'action' => 'userlist']);
+       //    $builder->connect('/filtered-cases', ['controller' => 'moncases', 'action' => 'userlist'])->setPass(['sort', 'search', 'case_type', 'contributor', 'rating'])->setName
+
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.

@@ -251,25 +251,24 @@ $this->disableAutoLayout();
                 <!-- Sort Feature -->
                 <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                     <h3> Sort by</h3>
-                <?= $this->Form->create(null, ['type' => 'get']) ?>
-                <?= $this->Form->select(
-                    'sort',
-                    [
-                        'newest' => ' Newest',
-                        'oldest' => 'Oldest',
-                        'az' => 'A-Z',
-                        'za' => 'Z-A',
-                        'rating_asc' => 'Rating ASC',
-                        'rating_desc' => 'Rating DESC'
-                    ],
-                    [
-                        'empty' => false,
-                        'default' => $this->request->getQuery('sort'),
-                        'class' => 'custom-select',
-                    ]
-                ) ?>
+                    <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                    <?= $this->Form->select(
+                        'sort',
+                        [
+                            'newest' => ' Newest',
+                            'oldest' => 'Oldest',
+                            'az' => 'A-Z',
+                            'za' => 'Z-A',
+                            'rating_asc' => 'Rating ASC',
+                            'rating_desc' => 'Rating DESC'
+                        ],
+                        [
+                            'empty' => false,
+                            'default' => $this->request->getQuery('sort'),
+                            'class' => 'custom-select',
+                        ]
+                    ) ?>
                 <?= $this->Form->button(__('Apply'),['class'=>'btn btn-secondary', 'style'=>'margin-top: -20px;']) ?>
-                <?= $this->Form->end() ?>
                 </div>
                     <div class = "col-lg-3 col-md-3 col-sm-3 col-3">
                         <!-- Trigger the modal with a button -->
@@ -289,14 +288,16 @@ $this->disableAutoLayout();
                                                     <h3>Search</h3>
                                                 </div>
                                                 <div class="widget-content">
-                                                    <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                                                     <div class="form-group">
-                                                        <?= $this->Form->input('search', ['type' => 'search', 'placeholder' => 'Search Diagnosis']) ?>
+                                                        <?= $this->Form->input('search', [
+                                                            'type' => 'search',
+                                                            'placeholder' => 'Search Diagnosis',
+                                                            'default' => $this->request->getQuery('search')
+                                                        ]) ?>
                                                         <button type="submit" class="search-button">
                                                             <?= $this->Html->tag('i', '', ['class' => 'fas fa-search']) ?>
                                                         </button>
                                                     </div>
-                                                    <?= $this->Form->end() ?>
                                                 </div>
                                             </div>
                                             <div class="sidebar-widget sidebar-categories">
@@ -310,7 +311,6 @@ $this->disableAutoLayout();
                                                                 <h4><span>+</span> Type</h4>
                                                             </div>
                                                             <div class="acc-content current">
-                                                                <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                                                                 <div class="content">
                                                                     <?= $this->Form->select('case_type', [
                                                                         'Oscer' => 'Oscer',
@@ -372,7 +372,6 @@ $this->disableAutoLayout();
                                                 <div class="widget-title">
                                                     <div class="widget-content">
                                                         <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style'=>'margin-left:40px']) ?>
-                                                        <?= $this->Form->end() ?>
                                                         <button class="theme-btn style-two"><a href="<?= $this->Url->build('/') ?>">Reset Filter</a></button>
                                                     </div>
                                                 </div>
@@ -433,14 +432,16 @@ $this->disableAutoLayout();
                             <h3>Search</h3>
                         </div>
                         <div class="widget-content">
-                            <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                             <div class="form-group">
-                                <?= $this->Form->input('search', ['type' => 'search', 'placeholder' => 'Search Diagnosis']) ?>
+                                <?= $this->Form->input('search', [
+                                    'type' => 'search',
+                                    'placeholder' => 'Search Diagnosis',
+                                    'default' => $this->request->getQuery('search')
+                                ]) ?>
                                 <button type="submit" class="search-button">
                                     <?= $this->Html->tag('i', '', ['class' => 'fas fa-search']) ?>
                                 </button>
                             </div>
-                            <?= $this->Form->end() ?>
                         </div>
                     </div>
                     <div class="sidebar-widget sidebar-categories">
@@ -454,7 +455,6 @@ $this->disableAutoLayout();
                                         <h4><span>+</span> Type</h4>
                                     </div>
                                     <div class="acc-content current">
-                                        <?= $this->Form->create(null, ['url' => ['controller' => 'moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                                         <div class="content">
                                             <?= $this->Form->select('case_type', [
                                                 'Oscer' => 'Oscer',
