@@ -35,8 +35,7 @@ $this->disableAutoLayout();
     <title>Case List</title>
 
     <!-- Fav Icon -->
-    <?= $this->Html->meta('icon', '/assets/img/favicon.ico', ['type' => 'image/x-icon']); ?>
-
+    <?= $this->Html->meta('icon') ?>
     <!-- Google Fonts -->
     <?= $this->Html->css('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap'); ?>
     <?= $this->Html->css('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap'); ?>
