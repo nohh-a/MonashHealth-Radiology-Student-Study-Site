@@ -49,11 +49,18 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             <p> </p>
         </div>
     </div>
+
     <div class="container-fluid">
         <div class="users index content">
-            <?= $this->Flash->render() ?>
-            &nbsp;<?= $this->Html->link(__('Create New User'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
-
+            <div class="row">
+                <div class="col-12">
+                    <?= $this->Flash->render() ?>
+                    <div class="d-flex justify-content-between">
+                        <?= $this->Html->link(__('Go back'), ['controller' => 'moncases', 'action' => 'userlist'], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Html->link(__('Create New User'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
+                    </div>
+                </div>
+            </div>
             <br>
             <br>
             <div class="table-responsive">
@@ -108,9 +115,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         </div>
     </div>
 
-    <td>
-        <?= $this->Html->link(__('Go back'), ['controller' => 'moncases', 'action' => 'userlist'], ['class' => 'btn btn-primary']) ?>
-    </td>
+    <br>
 
 </div>
 
