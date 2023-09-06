@@ -61,10 +61,6 @@ $this->disableAutoLayout();
     <?= $this->Html->css(['list/responsive.css']) ?>
 
     <style>
-        .radio-filter {
-            display: block; /* Make each label occupy a full line */
-            margin-bottom: 5px; /* Add some space between radio buttons */
-        }
         .theme-btn {
             padding: 5px 20px;
         }
@@ -89,7 +85,7 @@ $this->disableAutoLayout();
         }
 
         .page-title {
-            padding-top: 120px;
+            padding-top: 170px;
             padding-bottom: 20px;
         }
         .lower-box, .lower-content, .post-info{
@@ -232,6 +228,8 @@ $this->disableAutoLayout();
         <div class="content-box">
             <h1>Case List</h1>
             <ul class="bread-crumb clearfix">
+                <button class="toggle-view-button theme-btn style-two" data-view="grid">Grid</button>
+                <button class="toggle-view-button theme-btn style-two" data-view="list">List</button>
             </ul>
         </div>
     </div>
@@ -257,7 +255,7 @@ $this->disableAutoLayout();
                                 'az' => 'A-Z',
                                 'za' => 'Z-A',
                                 'rating_asc' => 'Rating ASC',
-                                'rating_desc' => 'Rating DESC'
+                                'rating_desc' => 'Rating DESC',
                             ],
                             [
                                 'empty' => false,
@@ -265,7 +263,7 @@ $this->disableAutoLayout();
                                 'class' => 'custom-select',
                             ]
                         ) ?>
-                        <?= $this->Form->button(__('Apply'),['class'=>'btn btn-secondary', 'style'=>'margin-top: -20px;']) ?>
+                        <?= $this->Form->button(__('Apply'), ['class' => 'btn btn-secondary', 'style' => 'margin-top: -20px;']) ?>
                     </div>
                     <div class = "col-lg-3 col-md-3 col-sm-3 col-3">
                         <!-- Trigger the modal with a button -->
@@ -289,7 +287,7 @@ $this->disableAutoLayout();
                                                         <?= $this->Form->input('search', [
                                                             'type' => 'search',
                                                             'placeholder' => 'Search Diagnosis',
-                                                            'default' => $this->request->getQuery('search')
+                                                            'default' => $this->request->getQuery('search'),
                                                         ]) ?>
                                                         <button type="submit" class="search-button">
                                                             <?= $this->Html->tag('i', '', ['class' => 'fas fa-search']) ?>
@@ -323,11 +321,11 @@ $this->disableAutoLayout();
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        <li class="accordion block">
-                                                            <div class="acc-btn">
+                                                        <li class="accordion block active-block">
+                                                            <div class="acc-btn active">
                                                                 <h4><span>+</span>Contributor</h4>
                                                             </div>
-                                                            <div class="acc-content">
+                                                            <div class="acc-content current">
                                                                 <div class="content">
                                                                     <?= $this->Form->select('contributor', [
                                                                         'Trainee' => 'Trainee',
@@ -341,11 +339,11 @@ $this->disableAutoLayout();
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        <li class="accordion block">
-                                                            <div class="acc-btn">
+                                                        <li class="accordion block active-block">
+                                                            <div class="acc-btn active">
                                                                 <h4><span>+</span>Rating</h4>
                                                             </div>
-                                                            <div class="acc-content">
+                                                            <div class="acc-content current">
                                                                 <div class="content">
                                                                     <p> <?= $this->Form->select('rating', [
                                                                             '1' => '1',
@@ -368,7 +366,7 @@ $this->disableAutoLayout();
                                             <div class="sidebar-widget sidebar-tags">
                                                 <div class="widget-title">
                                                     <div class="widget-content">
-                                                        <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style'=>'margin-left:40px']) ?>
+                                                        <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style' => 'margin-left:40px']) ?>
                                                         <button class="theme-btn style-two"><a href="<?= $this->Url->build('/') ?>">Reset Filter</a></button>
                                                     </div>
                                                 </div>
@@ -379,28 +377,26 @@ $this->disableAutoLayout();
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
-                    <!-- Modal Filters -->
                 </div>
             </div>
         </div>
         <div class="row clearfix">
-            <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+            <!-- default content-->
+            <div id="moncases-grid" class="col-lg-9 col-md-12 col-sm-12 content-side">
                 <div class="blog-grid-content">
                     <div class="row clearfix">
                         <?php if ($moncases->count() > 0) : ?>
                             <?php foreach ($moncases as $moncase) : ?>
-                                <div class="col-lg-6 col-md-6 col-sm-12 news-block">
+                                <div class="col-lg-4 col-md-6 col-sm-12 news-block">
                                     <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                                         <div class="inner-box">
                                             <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>"<a/>
                                             <div class="image-holder">
-                                                <figure class="image-box">
-                                                    <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>"style="width: 420px; height: 300px;">
+                                                <figure class="image-box" style="height: fit-content;">
+                                                    <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill;">
                                                 </figure>
                                                 <div class="link"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>"><i class="fas fa-arrow-right"></i></a></div>
                                             </div>
@@ -422,7 +418,58 @@ $this->disableAutoLayout();
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side sidebar-hide">
+
+            <div id ="moncases-list" class="col-lg-9 col-md-9 col-sm-12 content-side" style="display: none;">
+                <div class="row clearfix">
+                    <table class="table table-hover table-responsive wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Diagnosis</th>
+                            <th >Differential Diagnosis</th>
+                            <th>Type</th>
+                            <th>Rating</th>
+                            <th>Author</th>
+                            <th>Contributor</th>
+                            <th>Teachings</th>
+                            <th>Findings</th>
+                            <th>Imaging</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php if ($moncases->count() > 0) : ?>
+                            <?php foreach ($moncases as $moncase) : ?>
+                                <tr>
+                                    <td>
+                                        <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>" style=" height: 142px; max-width: fit-content;">
+                                    </td>
+                                    <td>
+                                        <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>">
+                                            <?= h($moncase->diagnosis) ?>
+                                        </a>
+                                    </td>
+                                    <td><?= h($moncase->differential_diagnosis) ?></td>
+                                    <td><?= h($moncase->case_type) ?></td>
+                                    <td><?= h($moncase->rating) ?></td>
+                                    <td><?= h($moncase->author) ?></td>
+                                    <td><?= h($moncase->contributor) ?></td>
+                                    <td><?= h($moncase->teaching_points) ?></td>
+                                    <td><?= h($moncase->findings) ?></td>
+                                    <td><?= h($moncase->imaging) ?></td>
+
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <p>No results found.</p>
+                        <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- sidebar of filters and search bar -->
+            <div class="col-lg-3 col-md-12 col-sm-12 sidebar-side sidebar-hide">
                 <div class="sidebar">
                     <div class="sidebar-widget sidebar-search">
                         <div class="widget-title">
@@ -433,7 +480,7 @@ $this->disableAutoLayout();
                                 <?= $this->Form->input('search', [
                                     'type' => 'search',
                                     'placeholder' => 'Search Diagnosis',
-                                    'default' => $this->request->getQuery('search')
+                                    'default' => $this->request->getQuery('search'),
                                 ]) ?>
                                 <button type="submit" class="search-button">
                                     <?= $this->Html->tag('i', '', ['class' => 'fas fa-search']) ?>
@@ -467,11 +514,11 @@ $this->disableAutoLayout();
                                         </div>
                                     </div>
                                 </li>
-                                <li class="accordion block">
-                                    <div class="acc-btn">
+                                <li class="accordion block active-block">
+                                    <div class="acc-btn active">
                                         <h4><span>+</span>Contributor</h4>
                                     </div>
-                                    <div class="acc-content">
+                                    <div class="acc-content current">
                                         <div class="content">
                                             <?= $this->Form->select('contributor', [
                                                 'Trainee' => 'Trainee',
@@ -485,11 +532,11 @@ $this->disableAutoLayout();
                                         </div>
                                     </div>
                                 </li>
-                                <li class="accordion block">
-                                    <div class="acc-btn">
+                                <li class="accordion block active-block">
+                                    <div class="acc-btn active">
                                         <h4><span>+</span>Rating</h4>
                                     </div>
-                                    <div class="acc-content">
+                                    <div class="acc-content current">
                                         <div class="content">
                                             <p> <?= $this->Form->select('rating', [
                                                     '1' => '1',
@@ -512,7 +559,7 @@ $this->disableAutoLayout();
                     <div class="sidebar-widget sidebar-tags">
                         <div class="widget-title">
                             <div class="widget-content">
-                                <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style'=>'margin-left:40px']) ?>
+                                <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one','style' => 'margin-left:30px']) ?>
                                 <?= $this->Form->end() ?>
                                 <button class="theme-btn style-two"><a href="<?= $this->Url->build('/') ?>">Reset Filter</a></button>
                             </div>

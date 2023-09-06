@@ -56,10 +56,6 @@ $this->disableAutoLayout();
     <?= $this->Html->css(['list/responsive.css']) ?>
 
     <style>
-        .radio-filter {
-            display: block; /* Make each label occupy a full line */
-            margin-bottom: 5px; /* Add some space between radio buttons */
-        }
         .theme-btn {
             padding: 5px 20px;
         }
@@ -78,7 +74,7 @@ $this->disableAutoLayout();
         }
 
         .page-title {
-            padding-top: 110px;
+            padding-top: 170px;
             padding-bottom: 20px;
         }
 

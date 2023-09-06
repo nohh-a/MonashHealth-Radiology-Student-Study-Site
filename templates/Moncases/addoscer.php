@@ -131,7 +131,7 @@
                                                 '5' => 5,
                                             ], [
                                                 'class' => 'form-control',
-                                                'empty' => '- Select Rating -',
+                                                'empty' => 'Select Rating',
 
                                             ]) ?>
 

@@ -531,6 +531,31 @@
 	  	};
 	}
 
+    function toggleView() {
+        function showGridView() {
+            $('#moncases-grid').show();
+            $('#moncases-list').hide();
+        }
+
+        function showListView() {
+            $('#moncases-grid').hide();
+            $('#moncases-list').show();
+        }
+
+        // Initial state (grid view)
+        showGridView();
+
+        // Event handler for the button/icon click
+        $('.toggle-view-button').on('click', function () {
+            const view = $(this).data('view');
+            if (view === 'grid') {
+                showGridView();
+            } else if (view === 'list') {
+                showListView();
+            }
+        });
+    }
+
 
 	/*	=========================================================================
 	When document is Scrollig, do
@@ -543,7 +568,9 @@
 			swithcerMenu();
 			bodylayout();
 			directionswitch();
-		})(jQuery);
+            toggleView();
+
+        })(jQuery);
 	});
 
 
