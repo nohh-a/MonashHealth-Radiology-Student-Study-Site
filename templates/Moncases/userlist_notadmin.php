@@ -370,7 +370,7 @@ $this->disableAutoLayout();
                                             <div class="sidebar-widget sidebar-tags">
                                                 <div class="widget-title">
                                                     <div class="widget-content">
-                                                        <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style' => 'margin-left:40px']) ?>
+                                                        <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one']) ?>
                                                         <button class="theme-btn style-two"><a href="<?= $this->Url->build('/') ?>">Reset Filter</a></button>
                                                     </div>
                                                 </div>
@@ -563,7 +563,7 @@ $this->disableAutoLayout();
                     <div class="sidebar-widget sidebar-tags">
                         <div class="widget-title">
                             <div class="widget-content">
-                                <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one','style' => 'margin-left:30px']) ?>
+                                <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one']) ?>
                                 <?= $this->Form->end() ?>
                                 <button class="theme-btn style-two"><a href="<?= $this->Url->build('/') ?>">Reset Filter</a></button>
                             </div>
