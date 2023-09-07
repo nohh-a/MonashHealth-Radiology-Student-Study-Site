@@ -144,12 +144,21 @@ $this->disableAutoLayout();
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
-                                <li><a href="<?= $this->Url->build('/') ?>">Case List</a>
+                                <li class="current">
+                                    <a href="<?= $this->Url->build('/') ?>">Case List</a>
                                 </li>
-                                <li class=""><a href="<?= $this->Url->build(['controller'=>'Users','action'=> 'index']) ?>">User Management</a>
+                                <li class="">
+                                    <a href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">User Management</a>
                                 </li>
-                                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'addnewcase'])?>">Create New Case</a>
+                                <li>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'addnewcase'])?>">Create New Case</a>
+                                <li>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'archivedcases'])?>">Archived Cases</a>
+                                </li>
 
+                                <li>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'archivedcases'])?>">Collects</a>
+                                </li>
 
                             </ul>
                         </div>

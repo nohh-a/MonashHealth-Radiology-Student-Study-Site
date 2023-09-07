@@ -172,6 +172,10 @@ $this->disableAutoLayout();
                                     <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'archivedcases'])?>">Archived Cases</a>
                                 </li>
 
+                                <li>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'archivedcases'])?>">Collects</a>
+                                </li>
+
                             </ul>
                         </div>
                     </nav>
