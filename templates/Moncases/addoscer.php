@@ -50,7 +50,7 @@
                         <?=$this->Form->control('author',  [
                             'class' => 'form-control',
                             'required' => true,
-                            'value' => $this->getRequest()->getData('author', $author),
+                            'value' => $author,
                             'readonly' => true,
                             'type' => 'text',
                             'maxlength' => 50,
@@ -59,7 +59,7 @@
                         <?=$this->Form->control('contributor',  [
                             'class' => 'form-control',
                             'required' => true,
-                            'value' => $this->getRequest()->getData('author', $contributor),
+                            'value' => $contributor,
                             'readonly' => true,
                             'type' => 'text',
                             'maxlength' => 50,
