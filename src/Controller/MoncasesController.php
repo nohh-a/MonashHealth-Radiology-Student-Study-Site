@@ -74,6 +74,8 @@ class MoncasesController extends AppController
         ]);
 
         $this->set(compact('moncase', 'author', 'username'));
+        $this->viewBuilder()->setLayout('admin');
+
     }
 
     /**
@@ -96,6 +98,8 @@ class MoncasesController extends AppController
         ]);
 
         $this->set(compact('moncase', 'author', 'username'));
+        $this->viewBuilder()->setLayout('notadmin');
+
     }
 
     /**
@@ -144,6 +148,7 @@ class MoncasesController extends AppController
         }
 
         $this->set(compact('moncase', 'author'));
+
     }
 
     /**
@@ -207,7 +212,7 @@ class MoncasesController extends AppController
      * Delete method
      *
      * @param string|null $id Moncase id.
-     * @return \Cake\Http\Response|null|void Redirects to userlist.
+     * @return \Cake\Http\Response|null|void Redirects to .
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
@@ -289,7 +294,6 @@ class MoncasesController extends AppController
         $caseTypeFilter = $this->request->getQuery('case_type');
         $contributorFilter = $this->request->getQuery('contributor');
         $ratingFilter = $this->request->getQuery('rating');
-        /* $imagingFilter = $this->request->getQuery('imaging'); */
 
         if ($caseTypeFilter !== '') {
             $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
@@ -330,6 +334,7 @@ class MoncasesController extends AppController
         }
 
         $this->set(compact('moncases', 'search', 'filter', 'sort', 'author', 'username'));
+        $this->viewBuilder()->setLayout('admin');
     }
 
     /**
@@ -371,7 +376,6 @@ class MoncasesController extends AppController
         $caseTypeFilter = $this->request->getQuery('case_type');
         $contributorFilter = $this->request->getQuery('contributor');
         $ratingFilter = $this->request->getQuery('rating');
-        /* $imagingFilter = $this->request->getQuery('imaging'); */
 
         if ($caseTypeFilter !== '') {
             $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
@@ -412,6 +416,8 @@ class MoncasesController extends AppController
         }
 
         $this->set(compact('moncases', 'search', 'filter', 'sort', 'author', 'username'));
+        $this->viewBuilder()->setLayout('notadmin');
+
     }
 
     /**
