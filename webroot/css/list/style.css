@@ -2248,7 +2248,7 @@ div#mCSB_1_container{
 
 .pricing-block-one .pricing-table .table-content{
   position: relative;
-  padding: 45px 0px;
+  padding: 0px 0px;
 }
 
 .pricing-block-one .pricing-table .table-content ul li{
@@ -4258,7 +4258,7 @@ div#mCSB_1_container{
   position: relative;
   display: block;
   border-radius: 10px;
-  margin-bottom: 120px;
+  margin-bottom: 30px;
   box-shadow: 0 10px 50px 0px rgba(99, 119, 238, 0.2);
 }
 

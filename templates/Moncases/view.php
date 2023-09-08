@@ -20,15 +20,28 @@
 
 ?>
 
+<head>
+<style>
+    li h6 {
+        color: #576ec2;
+    }
+    li {
+        padding: 12px;
+    }
+    body {
+        font-size: 15px;
+    }
+
+</style>
+</head>
 <!--Page Title-->
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
-        <div class="content-box">
-            <h1>Case Details</h1>
-            <ul class="bread-crumb clearfix">
-            </ul>
-        </div>
+        <div class="sec-title">
+        <p><?= h($moncase->case_type) ?></p>
+        <h2><?= h($moncase->diagnosis) ?></h2>
+    </div>
     </div>
 </section>
 <!--End Page Title-->
@@ -38,32 +51,45 @@
 <section class="portfolio-details sec-pad">
     <div class="auto-container">
         <div class="inner-container">
-
-<!--                        <figure class="image-box">-->
-<!--                            <a href="https://monashimaging.monashhealth.org/portal/Login.aspx" class="lightbox-image" data-fancybox="gallery">-->
-<!--                                <img src="--><?php //= $this->Url->image($moncase -> image_url, ['height'=>100, 'width'=>100, 'alt'=>'photo']) ?><!--">-->
-<!--                            </a>-->
-<!--                        </figure>   -->
-
+            <div class="row">
+                <div class="col-lg-8">
                         <figure class="image-box">
                             <a href="https://monashimaging.monashhealth.org/portal/Login.aspx" >
-                                <img src="<?= $this->Url->image($moncase -> image_url, ['height'=>100, 'width'=>100, 'alt'=>'photo']) ?>">
+                                <img src="<?= $this->Url->image($moncase -> image_url, ['style' => 'max-width:50%; max-height:50%;', 'alt' => 'photo']) ?>">
                             </a>
                         </figure>
+                 </div>
+                <div class="col-lg-4">
 
-<!--            <figure class="image_show">-->
-<!--                <a href="https://monashimaging.monashhealth.org/portal/Login.aspx">-->
-<!--                    <img src="--><?php //= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?><!--">-->
-<!--                </a>-->
-<!--            </figure>-->
+                <section class="accordion-box" style="padding: 0px 0px 0px 0px;">
+                    <div class="accordion block active-block">
+                        <div class="acc-btn active">
+                            <h4><span>+</span> Case Details</h4>
+                        </div>
+                        <div class="acc-content current">
+                        <ul class="content">
+                                <li><h6>Accession No: </h6> <?= h($moncase->accession_no) ?></li>
+                                <li><h6>Specialty: </h6> <?= h($moncase->speciality) ?></li>
+                                <li><h6>Seen By: </h6> <?= h($moncase->seen_by) ?></li>
+                                <li><h6>Tags: </h6> <?= h($moncase->tags) ?></li>
+                                <li><h6>Date: </h6> <?= h($moncase->date) ?></li>
+                                <li><h6>Marks: </h6> <?= h($moncase->max_marks) ?></li>
+                                <li><h6>Case Rating:</h6><?= h($moncase->rating) ?></li>
+                                <li><h6>Author: </h6> <?= h($moncase->author) ?></li>
+                                <li><h6>Contributor: </h6> <?= h($moncase->contributor) ?></li>
 
+                        </ul>
+                        </div>
+                   </div>
+
+                </section>
+
+                </div>
+
+            </div>
 
             <section class="pricing-section bg-color-1 sec-pad">
                 <div class="auto-container">
-                    <div class="sec-title">
-                        <p><?= h($moncase->case_type) ?></p>
-                        <h2><?= h($moncase->diagnosis) ?></h2>
-                    </div>
                     <div class="tabs-box">
                         <div class="upper-box clearfix">
                             <div class="text pull-left">
@@ -82,31 +108,6 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 pricing-block">
                                         <div class="pricing-block-one">
                                             <div class="pricing-table">
-                                                <section class="sidebar-page-container" style="padding: 0px 0px 0px 0px;">
-                                                <div class="sidebar" style="margin-left: 0px;">
-                                                <div class="table-header">
-                                                <div class="table-header">
-                                                    <div class="sidebar-widget sidebar-tags">
-                                                        <div class="widget-title">
-                                                            <h3>Case Data</h3>
-                                                            <div class="widget-content">
-                                                                <ul class="clearfix">
-                                                                    <li><a><h5>Accession No: </h5> <?= h($moncase->accession_no) ?></a></li>
-                                                                    <li><a><h5>Specialty: </h5> <?= h($moncase->speciality) ?></a></li>
-                                                                    <li><a><h5>Seen By: </h5> <?= h($moncase->seen_by) ?></a></li>
-                                                                    <li><a><h5>Tags: </h5> <?= h($moncase->tags) ?></a></li>
-                                                                    <li><a><h5>Date: </h5> <?= h($moncase->date) ?></a></li>
-                                                                    <li><a><h5>Marks: </h5> <?= h($moncase->max_marks) ?></a></li>
-                                                                    <li><a><h5>Contributor: </h5> <?= h($moncase->contributor) ?></a></li>
-                                                                    <li><a><h5>Author: </h5> <?= h($moncase->author) ?></a></li>
-                                                                    <li><a><h5>Case Rating: </h5><?= h($moncase->rating) ?></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                </section>
                                                 <div class="table-content">
                                                     <ul>
                                                         <h3>History </h3>
@@ -139,30 +140,6 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 pricing-block">
                                         <div class="pricing-block-one">
                                             <div class="pricing-table">
-                                                <section class="sidebar-page-container" style="padding: 0px 0px 0px 0px;">
-                                                    <div class="sidebar" style="margin-left: 0px;">
-                                                        <div class="table-header">
-                                                            <div class="sidebar-widget sidebar-tags">
-                                                                <div class="widget-title">
-                                                                    <h3>Case Data</h3>
-                                                                    <div class="widget-content">
-                                                                        <ul class="clearfix">
-                                                                            <li><a><h5>Accession No: </h5> <?= h($moncase->accession_no) ?></a></li>
-                                                                            <li><a><h5>Specialty: </h5> <?= h($moncase->speciality) ?></a></li>
-                                                                            <li><a><h5>Seen By: </h5> <?= h($moncase->seen_by) ?></a></li>
-                                                                            <li><a><h5>Tags: </h5> <?= h($moncase->tags) ?></a></li>
-                                                                            <li><a><h5>Date: </h5> <?= h($moncase->date) ?></a></li>
-                                                                            <li><a><h5>Marks: </h5> <?= h($moncase->max_marks) ?></a></li>
-                                                                            <li><a><h5>Contributor: </h5> <?= h($moncase->contributor) ?></a></li>
-                                                                            <li><a><h5>Author: </h5> <?= h($moncase->author) ?></a></li>
-                                                                            <li><a><h5>Case Rating:</h5><?= h($moncase->rating) ?></a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </section>
                                                 <div class="table-content">
                                                     <ul>
                                                         <h3>Further Investigation </h3>
