@@ -91,7 +91,7 @@
                                                     <div class="form-group">
                                                         <?= $this->Form->input('search', [
                                                             'type' => 'search',
-                                                            'placeholder' => 'Search Diagnosis',
+                                                            'placeholder' => 'Search Diagnosis or Author',
                                                             'default' => $this->request->getQuery('search'),
                                                         ]) ?>
                                                         <button type="submit" class="search-button">
@@ -231,7 +231,7 @@
                         <tr>
                             <th>Image</th>
                             <th>Diagnosis</th>
-                            <th >Differential Diagnosis</th>
+                            <th>Differential Diagnosis</th>
                             <th>Type</th>
                             <th>Rating</th>
                             <th>Author</th>
@@ -284,7 +284,7 @@
                             <div class="form-group">
                                 <?= $this->Form->input('search', [
                                     'type' => 'search',
-                                    'placeholder' => 'Search Diagnosis',
+                                    'placeholder' => 'Search Diagnosis or Author',
                                     'default' => $this->request->getQuery('search'),
                                 ]) ?>
                                 <button type="submit" class="search-button">

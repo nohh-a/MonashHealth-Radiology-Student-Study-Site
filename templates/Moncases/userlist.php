@@ -189,58 +189,66 @@
                 </div>
             </div>
         </div>
+
+        <!-- default content-->
         <div class="row clearfix">
-            <!-- default content-->
+            <!-- grid view-->
             <div id="moncases-grid" class="col-lg-9 col-md-12 col-sm-12 content-side">
-                <div class="blog-grid-content">
-                    <div class="row clearfix">
-                        <?php if ($moncases->count() > 0) : ?>
-                            <?php foreach ($moncases as $moncase) : ?>
-                                <div class="col-lg-4 col-md-6 col-sm-12 news-block">
-                                    <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                                        <div class="inner-box">
-                                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"<a/>
-                                            <div class="image-holder" >
-                                                <figure class="image-box" style="height: fit-content;">
-                                                    <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill;">
-                                                </figure>
-                                                <div class="link"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><i class="fas fa-arrow-right"></i></a></div>
-                                            </div>
-                                            <div class="lower-content">
-                                                <ul class="post-info">
-                                                    <li><?= h($moncase->case_type) ?></li>
-                                                    <li><span>by</span>&nbsp;<?= h($moncase->author) ?></li>
-                                                </ul>
-                                                <h3><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"><?= h($moncase->diagnosis) ?></a></h3>
-                                                <p><?= h($moncase->differential_diagnosis) ?></p>
+                <section class ="team-section text-center sec-pad">
+                <div class="auto-container">
+                    <div class="inner-content">
+                        <div class="row clearfix">
+                            <?php if ($moncases->count() > 0) : ?>
+                                <?php foreach ($moncases as $moncase) : ?>
+                                    <div class="col-lg-4 col-md-6 col-sm-12 team-block">
+                                        <div class="team-block-one mb-100 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                            <div class="inner-box">
+                                                <div class="image-holder" >
+                                                    <figure class="image-box" style="height: fit-content;">
+                                                        <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"<a/>
+                                                        <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill;">
+                                                        <ul class="social-links">
+                                                            <p><?= h($moncase->case_type) ?></p>
+                                                            <p><?= h($moncase->case_type) ?></p>
+                                                            <p><?= h($moncase->case_type) ?></p>
+                                                        </ul>
+                                                    </figure>
+                                                </div>
+                                                <div class="lower-content">
+                                                    <span class="designation"><?= h($moncase->case_type) ?>&nbsp;Case&nbsp;by&nbsp;<?= h($moncase->author) ?></span>
+                                                    <h3><?= h($moncase->diagnosis) ?></h3>
+                                                    <p><?= h($moncase->accession_no) ?></p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <p>No results found.</p>
-                        <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <p>No results found.</p>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
+                </section>
             </div>
 
+            <!-- list view-->
             <div id ="moncases-list" class="col-lg-9 col-md-9 col-sm-12 content-side" style="display: none;">
                 <div class="row clearfix">
                     <table class="table table-hover table-responsive wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <thead>
                         <tr>
                             <th>Image</th>
+                            <th>Accession No.</th>
                             <th>Diagnosis</th>
-                            <th >Differential Diagnosis</th>
+                            <th>Differential Diagnosis</th>
                             <th>Type</th>
+                            <th>Findings</th>
+                            <th>Imaging</th>
+                            <th>Teachings</th>
                             <th>Rating</th>
                             <th>Author</th>
                             <th>Contributor</th>
-                            <th>Teachings</th>
-                            <th>Findings</th>
-                            <th>Imaging</th>
-
                         </tr>
                         </thead>
                         <tbody>
@@ -250,20 +258,16 @@
                                     <td>
                                         <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>" style=" height: 142px; max-width: fit-content;">
                                     </td>
-                                    <td>
-                                        <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
-                                            <?= h($moncase->diagnosis) ?>
-                                        </a>
-                                    </td>
+                                    <td> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
+                                    <td><?= h($moncase->diagnosis) ?></td>
                                     <td><?= h($moncase->differential_diagnosis) ?></td>
                                     <td><?= h($moncase->case_type) ?></td>
+                                    <td><?= h($moncase->findings) ?></td>
+                                    <td><?= h($moncase->imaging) ?></td>
+                                    <td><?= h($moncase->teaching_points) ?></td>
                                     <td><?= h($moncase->rating) ?></td>
                                     <td><?= h($moncase->author) ?></td>
                                     <td><?= h($moncase->contributor) ?></td>
-                                    <td><?= h($moncase->teaching_points) ?></td>
-                                    <td><?= h($moncase->findings) ?></td>
-                                    <td><?= h($moncase->imaging) ?></td>
-
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
@@ -359,6 +363,28 @@
                                         </div>
                                     </div>
                                 </li>
+                                <li class="accordion block active-block">
+                                    <div class="acc-btn active">
+                                        <h4><span>+</span>Specialty</h4>
+                                    </div>
+                                    <div class="acc-content current">
+                                        <div class="content">
+                                            <p> <?= $this->Form->select('specialty', [
+                                                    '1' => '1',
+                                                    '2' => '2',
+                                                    '3' => '3',
+                                                    '4' => '4',
+                                                    '5' => '5',
+                                                ], [
+                                                    'class' => 'form-select',
+                                                    'default' => $this->request->getQuery('rating'),
+                                                    'empty' => 'Choose Rating',
+                                                ]); ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+
                             </ul>
                         </div>
                     </div>

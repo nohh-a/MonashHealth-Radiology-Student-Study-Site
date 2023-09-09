@@ -286,6 +286,11 @@ class MoncasesController extends AppController
             $moncases->where(['OR' => [
                 'differential_diagnosis LIKE' => "%$search%",
                 'diagnosis LIKE' => "%$search%",
+                'author LIKE' => "%$search%",
+                'seen_by LIKE' => "%$search%",
+                'teaching_points LIKE' => "%$search%",
+                'imaging LIKE' => "%$search%",
+                'accession_no LIKE' => "%$search%",
             ]]);
         }
 
