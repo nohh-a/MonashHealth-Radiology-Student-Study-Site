@@ -43,9 +43,9 @@
 <?= $this->Flash->render() ?>
 
 <!-- blog-grid -->
-<section class="sidebar-page-container blog-grid">
+<div class="sidebar-page-container blog-grid">
     <div class="auto-container">
-        <div class="row">
+        <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class = "row">
                 <!-- Sort Feature -->
@@ -194,10 +194,8 @@
         <div class="row clearfix">
             <!-- grid view-->
             <div id="moncases-grid" class="col-lg-9 col-md-12 col-sm-12 content-side">
-                <section class ="team-section text-center sec-pad">
-                <div class="auto-container">
-                    <div class="inner-content">
-                        <div class="row clearfix">
+                <div class="blog-grid-content">
+                    <div class="row clearfix">
                             <?php if ($moncases->count() > 0) : ?>
                                 <?php foreach ($moncases as $moncase) : ?>
                                     <div class="col-lg-4 col-md-6 col-sm-12 team-block">
@@ -205,7 +203,7 @@
                                             <div class="inner-box">
                                                 <div class="image-holder" >
                                                     <figure class="image-box" style="height: fit-content;">
-                                                        <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"<a/>
+                                                        <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"></a>
                                                         <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill;">
                                                         <ul class="social-links">
                                                             <p><?= h($moncase->case_type) ?></p>
@@ -227,13 +225,11 @@
                                 <p>No results found.</p>
                             <?php endif; ?>
                         </div>
-                    </div>
                 </div>
-                </section>
             </div>
 
             <!-- list view-->
-            <div id ="moncases-list" class="col-lg-9 col-md-9 col-sm-12 content-side" style="display: none;">
+            <div id ="moncases-list" class="col-lg-9 col-md-12 col-sm-12 content-side" style="display: none;">
                 <div class="row clearfix">
                     <table class="table table-hover table-responsive wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <thead>
@@ -384,7 +380,6 @@
                                         </div>
                                     </div>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
@@ -401,7 +396,7 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 <!-- blog-grid end -->
 
 
