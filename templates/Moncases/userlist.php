@@ -28,8 +28,20 @@
 <head>
     <style>
         .image-box p {
-            color: #f1f1f1;
-            font-weight: 600;
+            color: #ffffff;
+            font-weight: 530;
+            text-align: left;
+            padding: 5px;
+        }
+        .big-column {
+            width: 200px;
+
+        }
+        .designation {
+            font-weight: 550;
+        }
+        .team-block-one .inner-box .image-box .social-links {
+            background:#606db7f2;
         }
     </style>
 
@@ -175,6 +187,35 @@
                                                                 </div>
                                                             </div>
                                                         </li>
+
+                                                        <li class="accordion block active-block">
+                                                            <div class="acc-btn active">
+                                                                <h4><span>+</span>Specialty</h4>
+                                                            </div>
+                                                            <div class="acc-content current">
+                                                                <div class="content">
+                                                                    <p> <?= $this->Form->select('speciality', [
+                                                                            'ABDOMINAL' => 'ABDOMINAL',
+                                                                            'CARDIOTHORACIC' => 'CARDIOTHORACIC',
+                                                                            'NEURO' => 'NEURO',
+                                                                            'HEAD AND NECK' => 'HEAD AND NECK',
+                                                                            'MSK' => 'MSK',
+                                                                            'BREAST' => 'BREAST',
+                                                                            'GYN' => 'GYN',
+                                                                            'O+G' => 'O+G',
+                                                                            'PEADS' => 'PEADS',
+                                                                            'VASCULAR' => 'VASCULAR',
+                                                                            'INTERVENTION' => 'INTERVENTION',
+                                                                        ], [
+                                                                            'class' => 'form-select',
+                                                                            'default' => $this->request->getQuery('speciality'),
+                                                                            'empty' => 'Choose Specialty',
+                                                                        ]); ?>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
                                                     </ul>
                                                 </div>
                                             </div>
@@ -216,12 +257,12 @@
                                                         <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
                                                         <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill; width: 390px; height: 340px;">
                                                         <ul class="social-links">
-                                                            <h6>Accession NO. </h6>
-                                                            <p><?= h($moncase->accession_no) ?></p>
-                                                            <h6>Findings </h6>
-                                                            <p><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></p>
-                                                            <h6>Imaging </h6><p><?= h($moncase->imaging) ?></p>
-                                                            <h6>Teaching Points </h6><p><?= h($moncase->teaching_points) ?></p>
+                                                            <p><b>Accession NO: </b> <?= !empty($moncase->accession_no) ? h($moncase->accession_no) : 'N/A' ?></p>
+                                                            <p><b>Specialty: </b><?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></p>
+                                                            <p><b>Findings: </b><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></p>
+                                                            <p><b>Imaging: </b><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></p>
+                                                            <p><b>Teaching Points: </b><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></p>
+
                                                         </ul>
                                                         </a>
                                                     </figure>
@@ -233,7 +274,9 @@
 
                                                     </span>
                                                     <h3><?= h($moncase->diagnosis) ?></h3>
-                                                    <p></p>
+                                                    <ul>
+                                                    <li>Differential Diagnosis: <?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
@@ -255,7 +298,7 @@
                             <th>Image</th>
                             <th>Accession No.</th>
                             <th>Diagnosis</th>
-                            <th>Differential Diagnosis</th>
+                            <th class="big-column">Differential Diagnosis</th>
                             <th>Type</th>
                             <th>Findings</th>
                             <th>Imaging</th>
@@ -274,12 +317,12 @@
                                     </td>
                                     <td> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
                                     <td><?= h($moncase->diagnosis) ?></td>
-                                    <td><?= h($moncase->differential_diagnosis) ?></td>
+                                    <td><?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></td>
                                     <td><?= h($moncase->case_type) ?></td>
-                                    <td><?= h($moncase->findings) ?></td>
-                                    <td><?= h($moncase->imaging) ?></td>
-                                    <td><?= h($moncase->teaching_points) ?></td>
-                                    <td><?= h($moncase->rating) ?></td>
+                                    <td><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></td>
+                                    <td><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></td>
+                                    <td><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></td>
+                                    <td><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></td>
                                     <td><?= h($moncase->author) ?></td>
                                     <td><?= h($moncase->contributor) ?></td>
                                 </tr>
@@ -303,7 +346,7 @@
                             <div class="form-group">
                                 <?= $this->Form->input('search', [
                                     'type' => 'search',
-                                    'placeholder' => 'Search Diagnosis',
+                                    'placeholder' => 'Search',
                                     'default' => $this->request->getQuery('search'),
                                 ]) ?>
                                 <button type="submit" class="search-button">
@@ -383,16 +426,22 @@
                                     </div>
                                     <div class="acc-content current">
                                         <div class="content">
-                                            <p> <?= $this->Form->select('specialty', [
-                                                    '1' => '1',
-                                                    '2' => '2',
-                                                    '3' => '3',
-                                                    '4' => '4',
-                                                    '5' => '5',
+                                            <p> <?= $this->Form->select('speciality', [
+                                                    'ABDOMINAL' => 'ABDOMINAL',
+                                                    'CARDIOTHORACIC' => 'CARDIOTHORACIC',
+                                                    'NEURO' => 'NEURO',
+                                                    'HEAD AND NECK' => 'HEAD AND NECK',
+                                                    'MSK' => 'MSK',
+                                                    'BREAST' => 'BREAST',
+                                                    'GYN' => 'GYN',
+                                                    'O+G' => 'O+G',
+                                                    'PEADS' => 'PEADS',
+                                                    'VASCULAR' => 'VASCULAR',
+                                                    'INTERVENTION' => 'INTERVENTION',
                                                 ], [
                                                     'class' => 'form-select',
-                                                    'default' => $this->request->getQuery('rating'),
-                                                    'empty' => 'Choose Rating',
+                                                    'default' => $this->request->getQuery('speciality'),
+                                                    'empty' => 'Choose Specialty',
                                                 ]); ?>
                                             </p>
                                         </div>

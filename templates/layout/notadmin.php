@@ -175,7 +175,7 @@
             </div>
             <div class="menu-right-content pull-right">
                 <div class="btn-box"><?= $this->Form->postLink(__($username), ['controller'=>'Moncases','action'=> 'userlistNotadmin'],
-                        ['confirm' => __("The current username is {0}, \n and the full name is {1}", $username, $author)]) ?>
+                        ['confirm' => __("Username: {0}\nAuthor: {1}", $username, $author)]) ?>
                 </div>
 
                 <div class="btn-box"><?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'],

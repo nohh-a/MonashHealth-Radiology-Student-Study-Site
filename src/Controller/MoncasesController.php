@@ -310,6 +310,8 @@ class MoncasesController extends AppController
         $caseTypeFilter = $this->request->getQuery('case_type');
         $contributorFilter = $this->request->getQuery('contributor');
         $ratingFilter = $this->request->getQuery('rating');
+        $specialtyFilter = $this->request->getQuery('speciality');
+
 
         if ($caseTypeFilter !== '') {
             $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
@@ -322,6 +324,9 @@ class MoncasesController extends AppController
             if ($ratingFilter > 0 && $ratingFilter <= 5) {
                 $filter[] = ['rating' => $ratingFilter];
             }
+        }
+        if ($specialtyFilter !== '') {
+            $filter[] = ['speciality LIKE' => '%' . $specialtyFilter . '%'];
         }
         if ($filter) {
             $moncases->where(['AND' => $filter]);
@@ -384,6 +389,11 @@ class MoncasesController extends AppController
             $moncases->where(['OR' => [
                 'differential_diagnosis LIKE' => "%$search%",
                 'diagnosis LIKE' => "%$search%",
+                'author LIKE' => "%$search%",
+                'seen_by LIKE' => "%$search%",
+                'teaching_points LIKE' => "%$search%",
+                'imaging LIKE' => "%$search%",
+                'accession_no LIKE' => "%$search%",
             ]]);
         }
 
@@ -392,6 +402,8 @@ class MoncasesController extends AppController
         $caseTypeFilter = $this->request->getQuery('case_type');
         $contributorFilter = $this->request->getQuery('contributor');
         $ratingFilter = $this->request->getQuery('rating');
+        $specialtyFilter = $this->request->getQuery('speciality');
+
 
         if ($caseTypeFilter !== '') {
             $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
@@ -404,6 +416,9 @@ class MoncasesController extends AppController
             if ($ratingFilter > 0 && $ratingFilter <= 5) {
                 $filter[] = ['rating' => $ratingFilter];
             }
+        }
+        if ($specialtyFilter !== '') {
+            $filter[] = ['speciality LIKE' => '%' . $specialtyFilter . '%'];
         }
         if ($filter) {
             $moncases->where(['AND' => $filter]);

@@ -177,6 +177,12 @@
                                                 'maxlength' => 236,
                                             ]); ?>
 
+                                            <?= $this->Form->control('teaching_points', [
+                                                'class' => 'form-control',
+                                                'maxlength' => 236,
+                                            ]); ?>
+
+
                                             <?= $this->Form->control('max_marks', [
                                                 'class' => 'form-control',
                                                 'label' => 'Maximum Marks',

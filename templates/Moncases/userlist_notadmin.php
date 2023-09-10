@@ -25,6 +25,28 @@
 
 ?>
 
+<head>
+    <style>
+        .image-box p {
+            color: #ffffff;
+            font-weight: 530;
+            text-align: left;
+            padding: 5px;
+        }
+        .big-column {
+            width: 200px;
+
+        }
+        .designation {
+            font-weight: 550;
+        }
+        .team-block-one .inner-box .image-box .social-links {
+            background:#606db7f2;
+        }
+    </style>
+
+
+</head>
 
 <!--Page Title-->
 <section class="page-title bg-color-1 text-center">
@@ -91,7 +113,7 @@
                                                     <div class="form-group">
                                                         <?= $this->Form->input('search', [
                                                             'type' => 'search',
-                                                            'placeholder' => 'Search Diagnosis or Author',
+                                                            'placeholder' => 'Search Diagnosis',
                                                             'default' => $this->request->getQuery('search'),
                                                         ]) ?>
                                                         <button type="submit" class="search-button">
@@ -195,23 +217,35 @@
                     <div class="row clearfix">
                         <?php if ($moncases->count() > 0) : ?>
                             <?php foreach ($moncases as $moncase) : ?>
-                                <div class="col-lg-4 col-md-6 col-sm-12 news-block">
-                                    <div class="news-block-one wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                                <div class="col-lg-4 col-md-6 col-sm-12 team-block">
+                                    <div class="team-block-one mb-100 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                                         <div class="inner-box">
-                                            <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>"<a/>
                                             <div class="image-holder">
                                                 <figure class="image-box" style="height: fit-content;">
-                                                    <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill;">
+                                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>">
+                                                        <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill; width: 390px; height: 340px;">
+                                                        <ul class="social-links">
+                                                            <p><b>Accession NO: </b> <?= !empty($moncase->accession_no) ? h($moncase->accession_no) : 'N/A' ?></p>
+                                                            <p><b>Specialty: </b><?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></p>
+                                                            <p><b>Findings: </b><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></p>
+                                                            <p><b>Imaging: </b><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></p>
+                                                            <p><b>Teaching Points: </b><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></p>
+
+                                                        </ul>
+                                                    </a>
                                                 </figure>
-                                                <div class="link"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>"><i class="fas fa-arrow-right"></i></a></div>
                                             </div>
                                             <div class="lower-content">
-                                                <ul class="post-info">
-                                                    <li><?= h($moncase->case_type) ?></li>
-                                                    <li><span>by</span>&nbsp;<?= h($moncase->author) ?></li>
+                                                    <span class="designation"><?= h($moncase->case_type) ?>&nbsp;|&nbsp;
+                                                        <?= h($moncase->author) ?>&nbsp;|&nbsp;
+                                                        <?= h($moncase->date) ?>
+
+                                                    </span>
+                                                <h3><?= h($moncase->diagnosis) ?></h3>
+                                                <ul>
+                                                    <li>Differential Diagnosis: <?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></li>
+
                                                 </ul>
-                                                <h3><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>"><?= h($moncase->diagnosis) ?></a></h3>
-                                                <p><?= h($moncase->differential_diagnosis) ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -224,22 +258,23 @@
                 </div>
             </div>
 
-            <div id ="moncases-list" class="col-lg-9 col-md-9 col-sm-12 content-side" style="display: none;">
+            <!-- list view-->
+            <div id ="moncases-list" class="col-lg-9 col-md-12 col-sm-12 content-side" style="display: none;">
                 <div class="row clearfix">
                     <table class="table table-hover table-responsive wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <thead>
                         <tr>
                             <th>Image</th>
+                            <th>Accession No.</th>
                             <th>Diagnosis</th>
-                            <th>Differential Diagnosis</th>
+                            <th class="big-column">Differential Diagnosis</th>
                             <th>Type</th>
+                            <th>Findings</th>
+                            <th>Imaging</th>
+                            <th>Teachings</th>
                             <th>Rating</th>
                             <th>Author</th>
                             <th>Contributor</th>
-                            <th>Teachings</th>
-                            <th>Findings</th>
-                            <th>Imaging</th>
-
                         </tr>
                         </thead>
                         <tbody>
@@ -249,20 +284,16 @@
                                     <td>
                                         <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>" style=" height: 142px; max-width: fit-content;">
                                     </td>
-                                    <td>
-                                        <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>">
-                                            <?= h($moncase->diagnosis) ?>
-                                        </a>
-                                    </td>
-                                    <td><?= h($moncase->differential_diagnosis) ?></td>
+                                    <td> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
+                                    <td><?= h($moncase->diagnosis) ?></td>
+                                    <td><?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></td>
                                     <td><?= h($moncase->case_type) ?></td>
-                                    <td><?= h($moncase->rating) ?></td>
+                                    <td><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></td>
+                                    <td><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></td>
+                                    <td><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></td>
+                                    <td><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></td>
                                     <td><?= h($moncase->author) ?></td>
                                     <td><?= h($moncase->contributor) ?></td>
-                                    <td><?= h($moncase->teaching_points) ?></td>
-                                    <td><?= h($moncase->findings) ?></td>
-                                    <td><?= h($moncase->imaging) ?></td>
-
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
@@ -284,7 +315,7 @@
                             <div class="form-group">
                                 <?= $this->Form->input('search', [
                                     'type' => 'search',
-                                    'placeholder' => 'Search Diagnosis or Author',
+                                    'placeholder' => 'Search',
                                     'default' => $this->request->getQuery('search'),
                                 ]) ?>
                                 <button type="submit" class="search-button">
@@ -358,6 +389,34 @@
                                         </div>
                                     </div>
                                 </li>
+                                <li class="accordion block active-block">
+                                    <div class="acc-btn active">
+                                        <h4><span>+</span>Specialty</h4>
+                                    </div>
+                                    <div class="acc-content current">
+                                        <div class="content">
+                                            <p> <?= $this->Form->select('speciality', [
+                                                    'ABDOMINAL' => 'ABDOMINAL',
+                                                    'CARDIOTHORACIC' => 'CARDIOTHORACIC',
+                                                    'NEURO' => 'NEURO',
+                                                    'HEAD AND NECK' => 'HEAD AND NECK',
+                                                    'MSK' => 'MSK',
+                                                    'BREAST' => 'BREAST',
+                                                    'GYN' => 'GYN',
+                                                    'O+G' => 'O+G',
+                                                    'PEADS' => 'PEADS',
+                                                    'VASCULAR' => 'VASCULAR',
+                                                    'INTERVENTION' => 'INTERVENTION',
+                                                ], [
+                                                    'class' => 'form-select',
+                                                    'default' => $this->request->getQuery('speciality'),
+                                                    'empty' => 'Choose Specialty',
+                                                ]); ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
