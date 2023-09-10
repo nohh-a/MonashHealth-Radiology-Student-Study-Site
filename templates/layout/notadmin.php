@@ -143,7 +143,7 @@
 
 
 <!-- main header -->
-<header class="main-header">
+ <header class="main-header">
     <div class="outer-container">
         <div class="header-upper clearfix">
             <div class="outer-box pull-left">
@@ -165,7 +165,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['collections' => 'moncases', 'action' => 'index'])?>">Collection</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">Collection</a>
                                 </li>
 
                             </ul>
