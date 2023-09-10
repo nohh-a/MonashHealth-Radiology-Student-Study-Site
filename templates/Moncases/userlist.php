@@ -25,6 +25,16 @@
 
 ?>
 
+<head>
+    <style>
+        .image-box p {
+            color: #f1f1f1;
+            font-weight: 600;
+        }
+    </style>
+
+
+</head>
 
 <!--Page Title-->
 <section class="page-title bg-color-1 text-center">
@@ -201,21 +211,29 @@
                                     <div class="col-lg-4 col-md-6 col-sm-12 team-block">
                                         <div class="team-block-one mb-100 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                                             <div class="inner-box">
-                                                <div class="image-holder" >
+                                                <div class="image-holder">
                                                     <figure class="image-box" style="height: fit-content;">
-                                                        <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"></a>
-                                                        <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill;">
+                                                        <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
+                                                        <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill; width: 390px; height: 340px;">
                                                         <ul class="social-links">
-                                                            <p><?= h($moncase->case_type) ?></p>
-                                                            <p><?= h($moncase->case_type) ?></p>
-                                                            <p><?= h($moncase->case_type) ?></p>
+                                                            <h6>Accession NO. </h6>
+                                                            <p><?= h($moncase->accession_no) ?></p>
+                                                            <h6>Findings </h6>
+                                                            <p><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></p>
+                                                            <h6>Imaging </h6><p><?= h($moncase->imaging) ?></p>
+                                                            <h6>Teaching Points </h6><p><?= h($moncase->teaching_points) ?></p>
                                                         </ul>
+                                                        </a>
                                                     </figure>
                                                 </div>
                                                 <div class="lower-content">
-                                                    <span class="designation"><?= h($moncase->case_type) ?>&nbsp;Case&nbsp;by&nbsp;<?= h($moncase->author) ?></span>
+                                                    <span class="designation"><?= h($moncase->case_type) ?>&nbsp;|&nbsp;
+                                                        <?= h($moncase->author) ?>&nbsp;|&nbsp;
+                                                        <?= h($moncase->date) ?>
+
+                                                    </span>
                                                     <h3><?= h($moncase->diagnosis) ?></h3>
-                                                    <p><?= h($moncase->accession_no) ?></p>
+                                                    <p></p>
                                                 </div>
                                             </div>
                                         </div>
