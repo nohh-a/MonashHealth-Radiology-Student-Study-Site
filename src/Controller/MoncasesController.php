@@ -97,7 +97,9 @@ class MoncasesController extends AppController
             'contain' => [],
         ]);
 
-        $this->set(compact('moncase', 'author', 'username'));
+        $caseAuthor = $moncase->author; // get the author of the case
+
+        $this->set(compact('moncase', 'author', 'username', 'caseAuthor'));
         $this->viewBuilder()->setLayout('notadmin');
 
     }
@@ -169,6 +171,16 @@ class MoncasesController extends AppController
             'contain' => [],
         ]);
 
+        $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
+        $caseAuthor = $moncase->author; // get the author of the case
+
+        // redirect when a user want edit others cases.
+        // admin can edit anyone
+        if ($caseAuthor != $author && $accessRole != 'ADMIN') {
+            $this->Flash->error(__('You do not have permission to edit cases from other people'));
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         $originalImageUrl = $moncase->image_url; // Store the original image URL
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -196,7 +208,6 @@ class MoncasesController extends AppController
                 $this->Flash->success(__('The moncase has been saved.'));
 
                 // Redirect logic based on access_role
-                $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
                 $redirectAction = $accessRole == 'ADMIN' ? 'userlist' : 'userlistNotadmin';
 
                 return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);

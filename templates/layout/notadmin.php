@@ -168,6 +168,10 @@
                                     <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'addnewcase'])?>">Create New Case</a>
                                 </li>
 
+                                <li>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => ''])?>">Collects</a>
+                                </li>
+
                             </ul>
                         </div>
                     </nav>

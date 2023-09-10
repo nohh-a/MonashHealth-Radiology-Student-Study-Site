@@ -45,7 +45,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 <div class="container">
     <div class="row align-items-center d-flex justify-content-center" data-animate="fadeInUp">
         <div class="heading-text heading-section text-center mt-5">
-            <h1 style="color: black; font-weight: bold;">Archived Cases</h1>
+            <h1 style="color: black; font-weight: bold;">All Cases</h1>
             <p> </p>
         </div>
     </div>
@@ -57,7 +57,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800"></h1>
-                <?= $this->Html->link(__('Add a New Case'), ['action' => 'add'], ['class' => 'btn btn-danger']) ?>
+                <?= $this->Html->link(__('Add a New Case'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

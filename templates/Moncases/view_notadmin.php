@@ -132,7 +132,11 @@
                                                 <div class="table-footer">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
+                                                            <?php if ($author != $caseAuthor): ?>
+                                                                <!-- Don't show button when $author is not equal to $caseAuthor -->
+                                                            <?php else: ?>
+                                                                <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
+                                                            <?php endif; ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,7 +170,11 @@
                                                 <div class="table-footer">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
+                                                            <?php if ($author != $caseAuthor): ?>
+                                                                <!-- Don't show button when $author is not equal to $caseAuthor -->
+                                                            <?php else: ?>
+                                                                <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
+                                                            <?php endif; ?>
                                                         </div>
                                                     </div>
                                                 </div>
