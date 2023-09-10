@@ -68,15 +68,15 @@
                         </div>
                         <div class="acc-content current">
                         <ul class="content">
-                                <li><h6>Accession No: </h6> <?= h($moncase->accession_no) ?></li>
-                                <li><h6>Specialty: </h6> <?= h($moncase->speciality) ?></li>
-                                <li><h6>Seen By: </h6> <?= h($moncase->seen_by) ?></li>
-                                <li><h6>Tags: </h6> <?= h($moncase->tags) ?></li>
-                                <li><h6>Date: </h6> <?= h($moncase->date) ?></li>
-                                <li><h6>Marks: </h6> <?= h($moncase->max_marks) ?></li>
-                                <li><h6>Case Rating:</h6><?= h($moncase->rating) ?></li>
-                                <li><h6>Author: </h6> <?= h($moncase->author) ?></li>
-                                <li><h6>Contributor: </h6> <?= h($moncase->contributor) ?></li>
+                                <li><h6>Accession No: </h6> <?= !empty($moncase->accession_no) ? h($moncase->accession_no) : 'N/A' ?></li>
+                                <li><h6>Specialty: </h6> <?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></li>
+                                <li><h6>Seen By: </h6> <?= !empty($moncase->seen_by) ? h($moncase->seen_by) : 'N/A' ?></li>
+                                <li><h6>Tags: </h6> <?= !empty($moncase->tags) ? h($moncase->tags) : 'N/A' ?></li>
+                                <li><h6>Date: </h6> <?= !empty($moncase->date) ? h($moncase->date) : 'N/A' ?></li>
+                                <li><h6>Marks: </h6> <?= !empty($moncase->max_marks) ? h($moncase->max_marks) : 'N/A' ?></li>
+                                <li><h6>Case Rating:</h6><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></li>
+                                <li><h6>Author: </h6> <?= !empty($moncase->author) ? h($moncase->author) : 'N/A' ?></li>
+                                <li><h6>Contributor: </h6> <?= !empty($moncase->contributor) ? h($moncase->contributor) : 'N/A' ?></li>
 
                         </ul>
                         </div>
@@ -92,9 +92,6 @@
                 <div class="auto-container">
                     <div class="tabs-box">
                         <div class="upper-box clearfix">
-                            <div class="text pull-left">
-                                <p><?= h($moncase->differential_diagnosis) ?></p>
-                            </div>
                             <div class="tab-btn-box pull-right">
                                 <ul class="tab-btns tab-buttons clearfix">
                                     <li class="tab-btn active-btn" data-tab="#tab-1">General</li>
@@ -110,14 +107,16 @@
                                             <div class="pricing-table">
                                                 <div class="table-content">
                                                     <ul>
+                                                        <h3>Differential Diagnosis </h3>
+                                                        <li><?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></li>
                                                         <h3>History </h3>
-                                                        <li><?= h($moncase->history) ?></li>
+                                                        <li><?= !empty($moncase->history) ? h($moncase->history) : 'N/A' ?></li>
                                                         <h3>Findings </h3>
-                                                        <li><?= h($moncase->findings) ?></li>
+                                                        <li><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></li>
                                                         <h3>Imaging</h3>
-                                                        <li><?= h($moncase->imaging) ?></li>
+                                                        <li><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></li>
                                                         <h3>Teaching Points</h3>
-                                                        <li><?= h($moncase->teaching_points) ?></li>
+                                                        <li><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></li>
                                                     </ul>
                                                 </div>
                                                 <div class="table-footer">
@@ -143,17 +142,17 @@
                                                 <div class="table-content">
                                                     <ul>
                                                         <h3>Further Investigation </h3>
-                                                        <li><?= h($moncase->further_investigation)?></li>
+                                                        <li><?= !empty($moncase->further_investigation) ? h($moncase->further_investigation) : 'N/A' ?></li>
                                                         <h3>Management</h3>
-                                                        <li><?= h($moncase->management) ?></li>
+                                                        <li><?= !empty($moncase->management) ? h($moncase->management) : 'N/A' ?></li>
                                                         <h3>Anatomy</h3>
-                                                        <li><?= h($moncase->anatomy) ?></li>
+                                                        <li><?= !empty($moncase->anatomy) ? h($moncase->anatomy) : 'N/A' ?></li>
                                                         <h3>Pathology</h3>
-                                                        <li><?= h($moncase->pathology) ?></li>
+                                                        <li><?= !empty($moncase->pathology) ? h($moncase->pathology) : 'N/A' ?></li>
                                                         <h3>Safety</h3>
-                                                        <li><?= h($moncase->safety) ?></li>
+                                                        <li><?= !empty($moncase->safety) ? h($moncase->safety) : 'N/A' ?></li>
                                                         <h3>Intrinsic Roles</h3>
-                                                        <li><?= h($moncase->intrisic_roles) ?></li>
+                                                        <li><?= !empty($moncase->intrinsic_roles) ? h($moncase->intrinsic_roles) : 'N/A' ?></li>
 
                                                     </ul>
                                                 </div>

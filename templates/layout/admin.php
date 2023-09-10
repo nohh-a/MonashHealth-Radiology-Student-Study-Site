@@ -169,7 +169,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">Collects</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">Collection</a>
                                 </li>
 
                             </ul>
@@ -182,7 +182,6 @@
                         __($username),
                         ['controller' => 'Moncases','action' => 'userlistNotadmin'],
                         ['confirm' => __("Username: {0}\nAuthor: {1}", $username, $author)]) ?>
-                    ) ?>
                 </div>
 
                 <div class="btn-box"><?= $this->Form->postLink(
