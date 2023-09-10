@@ -124,8 +124,7 @@
                                             // Abdominal, Cardiothoracic, Neuro, Head and Neck, MSK, Breast, Gyn, O+G, Paeds, Vascular, Intervention.
                                         ], [
                                             'class' => 'form-control',
-                                            'required' => true,
-                                            'empty' => '- Select Speciality -',
+                                            'empty' => 'Select Specialty ',
                                         ]) ?>
 
                                         <?= $this->Form->control('diagnosis', [

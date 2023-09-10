@@ -64,6 +64,15 @@
                                 'maxlength' => 50,
                             ])
                             ?>
+
+                            <?= $this->Form->control('date', [
+                                'class' => 'form-control',
+                                'type' => 'date',
+                                'value' => date('d-m-Y'),
+                                'required' => true,
+                                'readonly' => true,
+                            ])
+                            ?>
                         </div>
                     </div>
                     <br><br>
@@ -79,8 +88,6 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body">
-
-
 
                                         <?= $this->Form->control('accession_no', [
                                             'class' => 'form-control',
@@ -114,17 +121,6 @@
                                                 'class' => 'form-control'
                                             ]); ?>
 
-                                            <?= $this->Form->control('differential_diagnosis', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
-
-                                            <?= $this->Form->control('imaging', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ]); ?>
-
                                             <?= $this->Form->label('rating', 'Rating') ?>
                                             <?= $this->Form->select('rating', [
                                                 '1' => 1,
@@ -137,19 +133,28 @@
                                                 'empty' => 'Select Rating',
                                             ]) ?>
 
-                                            <?= $this->Form->control('max_marks', [
+                                            <?= $this->Form->label('speciality', 'Speciality') ?>
+                                            <?= $this->Form->select('speciality', [
+                                                'ABDOMINAL' => 'ABDOMINAL',
+                                                'CARDIOTHORACIC' => 'CARDIOTHORACIC',
+                                                'NEURO' => 'NEURO',
+                                                'HEAD AND NECK' => 'HEAD AND NECK',
+                                                'MSK' => 'MSK',
+                                                'BREAST' => 'BREAST',
+                                                'GYN' => 'GYN',
+                                                'O+G' => 'O+G',
+                                                'PEADS' => 'PEADS',
+                                                'VASCULAR' => 'VASCULAR',
+                                                'INTERVENTION' => 'INTERVENTION',
+                                                // Abdominal, Cardiothoracic, Neuro, Head and Neck, MSK, Breast, Gyn, O+G, Paeds, Vascular, Intervention.
+                                            ], [
                                                 'class' => 'form-control',
-                                                'label' => 'Maximum Marks',
-                                                'min' => 0,
-                                                'max' => 99,
-                                                'error' => ['value' => 'Maximum marks should be between 0 and 99'],
-                                            ])
-                                            ?>
+                                                'empty' => 'Select Specialty',
+                                            ]) ?>
 
-                                            <?= $this->Form->control('date', [
+                                            <?= $this->Form->control('differential_diagnosis', [
                                                 'class' => 'form-control',
-                                                'type' => 'date',
-                                                'value' => date('d-m-Y'),
+                                                'maxlength' => 236,
                                             ])
                                             ?>
 
@@ -164,6 +169,20 @@
                                                 'class' => 'form-control',
                                                 'maxlength' => 236,
 
+                                            ])
+                                            ?>
+
+                                            <?= $this->Form->control('imaging', [
+                                                'class' => 'form-control',
+                                                'maxlength' => 236,
+                                            ]); ?>
+
+                                            <?= $this->Form->control('max_marks', [
+                                                'class' => 'form-control',
+                                                'label' => 'Maximum Marks',
+                                                'min' => 0,
+                                                'max' => 99,
+                                                'error' => ['value' => 'Maximum marks should be between 0 and 99'],
                                             ])
                                             ?>
 

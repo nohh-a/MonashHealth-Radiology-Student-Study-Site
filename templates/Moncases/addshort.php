@@ -66,6 +66,15 @@
                             ])
                             ?>
 
+                            <?= $this->Form->control('date', [
+                                'class' => 'form-control',
+                                'type' => 'date',
+                                'value' => date('d-m-Y'),
+                                'required' => true,
+                                'readonly' => true,
+                            ])
+                            ?>
+
 
                         </div>
                     </div>
@@ -118,11 +127,6 @@
                                                 'class' => 'form-control'
                                             ]); ?>
 
-                                            <?= $this->Form->control('imaging', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ]); ?>
-
                                             <?= $this->Form->label('rating', 'Rating') ?>
                                             <?= $this->Form->select('rating', [
                                                 '1' => 1,
@@ -135,25 +139,42 @@
                                                 'empty' => 'Select Rating',
                                             ]) ?>
 
+                                            <?= $this->Form->label('speciality', 'Speciality') ?>
+                                            <?= $this->Form->select('speciality', [
+                                                'ABDOMINAL' => 'ABDOMINAL',
+                                                'CARDIOTHORACIC' => 'CARDIOTHORACIC',
+                                                'NEURO' => 'NEURO',
+                                                'HEAD AND NECK' => 'HEAD AND NECK',
+                                                'MSK' => 'MSK',
+                                                'BREAST' => 'BREAST',
+                                                'GYN' => 'GYN',
+                                                'O+G' => 'O+G',
+                                                'PEADS' => 'PEADS',
+                                                'VASCULAR' => 'VASCULAR',
+                                                'INTERVENTION' => 'INTERVENTION',
+                                                // Abdominal, Cardiothoracic, Neuro, Head and Neck, MSK, Breast, Gyn, O+G, Paeds, Vascular, Intervention.
+                                            ], [
+                                                'class' => 'form-control',
+                                                'empty' => 'Select Specialty',
+                                            ]) ?>
+
+                                            <?= $this->Form->control('imaging', [
+                                                'class' => 'form-control',
+                                                'maxlength' => 236,
+                                            ]); ?>
+
+                                            <?= $this->Form->control('history', [
+                                                'class' => 'form-control',
+                                                'maxlength' => 236,
+                                            ])
+                                            ?>
+
                                             <?= $this->Form->control('max_marks', [
                                                 'class' => 'form-control',
                                                 'label' => 'Maximum Marks',
                                                 'min' => 0,
                                                 'max' => 99,
                                                 'error' => ['value' => 'Maximum marks should be between 0 and 99'],
-                                            ])
-                                            ?>
-
-                                            <?= $this->Form->control('date', [
-                                                'class' => 'form-control',
-                                                'type' => 'date',
-                                                'value' => date('d-m-Y'),
-                                            ])
-                                            ?>
-
-                                            <?= $this->Form->control('history', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
                                             ])
                                             ?>
 
