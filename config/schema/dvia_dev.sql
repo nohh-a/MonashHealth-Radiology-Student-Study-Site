@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 04, 2023 at 11:01 AM
--- Server version: 11.0.2-MariaDB
--- PHP Version: 8.2.8
+-- Generation Time: Sep 10, 2023 at 06:19 AM
+-- Server version: 11.1.2-MariaDB
+-- PHP Version: 8.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,44 @@ SET time_zone = "+00:00";
 --
 -- Database: `dvia_dev`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `collections`
+--
+
+CREATE TABLE `collections` (
+  `id` int(11) NOT NULL,
+  `name` varchar(65) NOT NULL,
+  `user_id` char(36) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `collections`
+--
+
+INSERT INTO `collections` (`id`, `name`, `user_id`) VALUES
+(2, 'collection 1', '25d2e98e-ffd2-4649-bd1c-3fb05ac9a217');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `collections_moncases`
+--
+
+CREATE TABLE `collections_moncases` (
+  `collection_id` int(11) NOT NULL,
+  `moncase_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `collections_moncases`
+--
+
+INSERT INTO `collections_moncases` (`collection_id`, `moncase_id`) VALUES
+(2, 2),
+(2, 3);
 
 -- --------------------------------------------------------
 
@@ -62,7 +100,9 @@ CREATE TABLE `moncases` (
 --
 
 INSERT INTO `moncases` (`id`, `image_url`, `accession_no`, `case_type`, `date`, `imaging`, `diagnosis`, `differential_diagnosis`, `findings`, `teaching_points`, `speciality`, `history`, `max_marks`, `observation`, `intepretation`, `safety`, `intrinsic_roles`, `management`, `anatomy`, `pathology`, `further_investigation`, `seen_by`, `tags`, `contributor`, `rating`, `author`, `archive_status`) VALUES
-(41, 'noimg.png', '523454254', 'OSCER', '2023-09-04', '', 'Diagnosis', NULL, '', NULL, NULL, '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'no');
+(2, 'noimg.png', '123', 'OSCER', '2023-09-10', '', '123', NULL, '', NULL, NULL, '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'yes'),
+(3, 'noimg.png', '1234', 'LONG', '2023-09-10', '', '1234', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '', NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'no'),
+(4, 'noimg.png', '12345', 'MEDIUM', '2023-09-10', '', '12345', NULL, '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'no');
 
 -- --------------------------------------------------------
 
@@ -100,6 +140,20 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `last_
 --
 
 --
+-- Indexes for table `collections`
+--
+ALTER TABLE `collections`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_key` (`user_id`);
+
+--
+-- Indexes for table `collections_moncases`
+--
+ALTER TABLE `collections_moncases`
+  ADD PRIMARY KEY (`collection_id`,`moncase_id`),
+  ADD KEY `moncase_key` (`moncase_id`);
+
+--
 -- Indexes for table `moncases`
 --
 ALTER TABLE `moncases`
@@ -116,10 +170,33 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `collections`
+--
+ALTER TABLE `collections`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `moncases`
 --
 ALTER TABLE `moncases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `collections`
+--
+ALTER TABLE `collections`
+  ADD CONSTRAINT `user_key` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `collections_moncases`
+--
+ALTER TABLE `collections_moncases`
+  ADD CONSTRAINT `collection_key` FOREIGN KEY (`collection_id`) REFERENCES `collections` (`id`),
+  ADD CONSTRAINT `moncase_key` FOREIGN KEY (`moncase_id`) REFERENCES `moncases` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
