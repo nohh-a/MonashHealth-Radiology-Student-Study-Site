@@ -77,7 +77,6 @@
                                 <li><h6>Case Rating:</h6><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></li>
                                 <li><h6>Author: </h6> <?= !empty($moncase->author) ? h($moncase->author) : 'N/A' ?></li>
                                 <li><h6>Contributor: </h6> <?= !empty($moncase->contributor) ? h($moncase->contributor) : 'N/A' ?></li>
-
                         </ul>
                         </div>
                    </div>
