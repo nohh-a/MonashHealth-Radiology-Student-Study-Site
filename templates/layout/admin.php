@@ -220,7 +220,7 @@
             <h4> <?= $this->Form->postLink(
                     __($username),
                     ['controller' => 'Moncases','action' => 'userlistNotadmin'],
-                    ['confirm' => __("The current username is {0}, \n and the full name is {1}.", $username, $author)]
+                    ['confirm' => __("Username: {0}\nAuthor: {1}", $username, $author)]) ?>
                 ) ?>
             </h4>
 
