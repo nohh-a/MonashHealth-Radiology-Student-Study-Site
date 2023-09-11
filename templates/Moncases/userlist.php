@@ -72,7 +72,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class = "row">
                 <!-- Sort Feature -->
-                <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                     <h3> Sort by</h3>
                     <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                     <?= $this->Form->select(
