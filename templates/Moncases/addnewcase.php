@@ -36,7 +36,7 @@
                     </div>
                     <br><br>
                     <?= $this->Html->link(__('Back'), ['action' => 'userlist'], ['class' => 'btn btn-secondary']) ?>
-                    <button type="button" class="btn btn-primary float-right" onClick = "selectionpick()">Submit</button>
+                    <button type="button" class="btn btn-primary float-right" onClick = "selectionpick()">Next</button>
                 </div>
             </div>
         </div>
