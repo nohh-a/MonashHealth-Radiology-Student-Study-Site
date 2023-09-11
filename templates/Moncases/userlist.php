@@ -453,8 +453,8 @@
                     </div>
                     <div class="sidebar-widget sidebar-tags">
                         <div class="widget-title">
-                            <div class="widget-content">
-                                <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one']) ?>
+                            <div class="widget-content" style="display: flex; justify-content: space-between; align-items: center;">
+                                <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style' => 'flex: 1;']) ?>
                                 <?= $this->Form->end() ?>
                                 <button class="theme-btn style-two"><a href="<?= $this->Url->build('/') ?>">Reset Filter</a></button>
                             </div>
