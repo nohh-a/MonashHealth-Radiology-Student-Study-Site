@@ -39,6 +39,7 @@
         }
         .designation {
             font-weight: 550;
+            color: #576ec2;
         }
         .team-block-one .inner-box .image-box .social-links {
             background:#606db7f2;

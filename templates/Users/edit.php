@@ -86,15 +86,21 @@ $this->assign('title', 'Edit - Users');
                             'confirm' => __("Are you sure you want to delete this user? {0} {1} ({2})",
                             $user->first_name, $user->last_name, $user->email),
                             'class' => 'btn btn-danger',
-                            'hidden' => true
+                            'hidden' => true //here
                     ]) ?>
 
-<!--                    working -->
-                    <?= $this->Form->postLink(__('Delete User'), [
-                        'action' => 'delete', $user->id], [
+<!--                    working one-->
+
+                    <?php
+                    if ($user->id !== '25d2e98e-ffd2-4649-bd1c-3fb05ac9a217') {
+                        echo $this->Form->postLink(__('Delete User'), [
+                            'action' => 'delete', $user->id], [
                             'confirm' => __("Are you sure you want to delete this user?\n{0} {1} ({2})",
                                 $user->first_name, $user->last_name, $user->email),
-                        'class' => 'btn btn-danger']) ?>
+                            'class' => 'btn btn-danger'
+                        ]);
+                    }
+                    ?>
 
 
 

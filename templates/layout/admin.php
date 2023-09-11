@@ -169,7 +169,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">Collection</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'maintance'])?>">Collection</a>
                                 </li>
 
                             </ul>
@@ -180,15 +180,8 @@
             <div class="menu-right-content pull-right">
                 <div class="btn-box"><?= $this->Form->postLink(
                         __($username),
-                        ['controller' => 'Moncases','action' => 'userlistNotadmin'],
-                        ['confirm' => __("Username: {0}\nAuthor: {1}", $username, $author)]) ?>
-                </div>
-
-                <div class="btn-box"><?= $this->Form->postLink(
-                        __('Logout'),
                         ['controller' => 'Auth','action' => 'logout'],
-                        ['confirm' => __('Are you sure you want to Logout?')]
-                    ) ?>
+                        ['confirm' => __("Username: {0}\nAuthor: {1}\n Are you sure you want to Logout?", $username, $author)]) ?>
                 </div>
             </div>
         </div>
@@ -219,16 +212,9 @@
         <div class="contact-info">
             <h4> <?= $this->Form->postLink(
                     __($username),
-                    ['controller' => 'Moncases','action' => 'userlistNotadmin'],
-                    ['confirm' => __("The current username is {0}, \n and the full name is {1}.", $username, $author)]
-                ) ?>
-            </h4>
-
-            <h4> <?= $this->Form->postLink(
-                    __('Logout'),
                     ['controller' => 'Auth','action' => 'logout'],
-                    ['confirm' => __('Are you sure you want to Logout?')]
-                ) ?>
+                    ['confirm' => __("Username: {0}\nAuthor: {1}\nAre you sure you want to Logout?", $username, $author)])
+                ?>
             </h4>
         </div>
     </nav>

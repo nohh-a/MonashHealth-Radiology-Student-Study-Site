@@ -12,7 +12,6 @@
 <?= $this->Html->css('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css', ['integrity' => 'sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9', 'crossorigin' => 'anonymous']) ?>
 
 
-
 <div class = "row justify-content-center align-items-center">
 
 
@@ -44,7 +43,6 @@
     </div>
 
 </div>
-
 <script type="text/javascript">
     function selectionpick(){
         var selectElement = document.querySelector('.form-select'); // select the select element
