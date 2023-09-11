@@ -29,6 +29,7 @@
     </nav>
     <div class="col-md-8">
         <div class="card-footer">
+            <?= $this->Flash->render() ?>
             <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>"> <?= $this->Html->link(__('Home'), ['action' => 'userlist'], ['class' => 'btn btn-primary btn-lg nav-button active']) ?></a>
             <?= $this->Html->link(__('Back'), ['action' => 'addnewcase'], ['class' => 'btn btn-secondary btn-lg nav-button active']) ?>
             <br><br>
@@ -94,14 +95,17 @@
                                         <?= $this->Form->control('accession_no', [
                                             'class' => 'form-control',
                                             'type' => 'text',
-                                            'maxlength' => 50,
-                                            'required' => true
-                                        ]); ?>
+                                            'maxlength' => 30,
+                                            'label' => 'Accession No *',
+                                            'required' => true,
+                                        ])
+                                        ?>
 
 
                                         <?= $this->Form->control('diagnosis', [
                                             'class' => 'form-control',
                                             'maxlength' => 236,
+                                            'label' => 'Diagnosis *',
                                             'required' => true,
                                         ])
                                         ?>

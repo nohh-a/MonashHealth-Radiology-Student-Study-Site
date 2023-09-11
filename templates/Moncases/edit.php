@@ -24,6 +24,7 @@
         <div class="col-md-8">
 
             <div class="card-footer">
+                <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>"> <?= $this->Html->link(__('Home'), ['action' => 'userlist'], ['class' => 'btn btn-primary btn-lg nav-button active']) ?></a>
                 <td><button class="btn btn-secondary btn-lg nav-button active" onclick="goBack()">Back</button></td>
                 <br><br>
                 <script>
@@ -63,6 +64,23 @@
                             ])
                             ?>
 
+                            <?=$this->Form->control('contributor',  [
+                                'class' => 'form-control',
+                                'required' => true,
+                                'value' => $contributor,
+                                'readonly' => true,
+                                'type' => 'text',
+                                'maxlength' => 50,
+                            ])
+                            ?>
+
+                            <?= $this->Form->control('date', [
+                                'class' => 'form-control',
+                                'type' => 'date',
+                                'required' => true
+                            ])
+                            ?>
+
                         </div>
                         <br><br>
                         <div class="row">
@@ -80,17 +98,19 @@
                                             <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
                                             <div class="row">
                                                 <?= $this->Html->image('/img/' . $moncase->image_url, ['width' => '100px']); ?>
+
                                                 <?= $this->Form->control('image_url', [
                                                     'type' => 'file',
-                                                    'class' => 'form-control',
+                                                    'label' => 'Image Upload',
+                                                    'class' => 'form-control'
                                                 ]); ?>
                                             </div>
 
                                             <?= $this->Form->control('accession_no', [
                                                 'class' => 'form-control',
                                                 'type' => 'text',
-                                                'maxlength' => 50,
-                                                'required' => true
+                                                'maxlength' => 30,
+                                                'required' => true,
                                             ]); ?>
 
 
@@ -153,26 +173,6 @@
                                                 'error' => ['value' => 'Maximum marks should be between 0 and 99']
                                             ])
                                             ?>
-
-                                            <?= $this->Form->control('date', [
-                                                'class' => 'form-control',
-                                                'type' => 'date',
-                                                'required' => true
-                                            ])
-                                            ?>
-
-                                            <?= $this->Form->label('contributor', 'Contributor') ?>
-                                            <?= $this->Form->select('contributor', [
-                                                'TRAINEE' => 'TRAINEE',
-                                                'CONSULTANT' => 'CONSULTANT',
-                                                'LIBRARY' => 'LIBRARY'
-                                            ], [
-                                                'class' => 'form-control',
-                                                'empty' => '- Select Contributor -',
-                                            ])
-                                            ?>
-
-
 
                                         </div>
                                     </div>

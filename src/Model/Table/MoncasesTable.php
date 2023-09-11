@@ -53,9 +53,9 @@ class MoncasesTable extends Table
         $validator
             ->allowEmptyFile('image_url')
             ->add('image_url', [
-                'mimeType' => [
-                    'rule' => ['mimeType', ['image/jpg', 'image/png','image/jpeg']],
-                    'message' => 'Please upload only JPG,PNG,JPEG images',
+                'extension' => [
+                    'rule' => ['extension', ['jpg', 'jpeg', 'png']],
+                    'message' => 'Please upload only JPG, PNG, or JPEG images',
                 ],
                 'fileSize' => [
                     'rule' => ['fileSize','<=','1MB'],
@@ -66,6 +66,10 @@ class MoncasesTable extends Table
         $validator
             ->scalar('accession_no')
             ->allowEmptyString('accession_no')
+            ->add('accession_no', 'numeric', [
+                'rule' => ['custom', '/^\d+$/'],
+                'message' => 'Accession no must be a number!'
+            ])
             ->add('accession_no', 'unique', [
                 'rule' => 'validateUnique',
                 'provider' => 'table',
