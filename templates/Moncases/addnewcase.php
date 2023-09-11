@@ -14,37 +14,33 @@
 
 
 <div class = "row justify-content-center align-items-center">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
 
-                    </li>
 
-                </ul>
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-6">
+                    <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>"> <?= $this->Html->link(__('Home'), ['action' => 'userlist'], ['class' => 'btn btn-primary']) ?></a>
+                    <br><br>
+                    <div class = "card">
+                        <h5 class="card-header text-center"><?= __('Select Case Type') ?></h5>
+                        <div class ="card-body row justify-content-center align-items-center">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style= "height: 50px;">
+                                <!--<option selected>Choose a case</option>-->
+                                <option value="1">Oscer</option>
+                                <option value="2">Long Case</option>
+                                <option value="3">Medium Case</option>
+                                <option value="4">Short Case</option>
+                                <option value="5">General Case</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br><br>
+                    <?= $this->Html->link(__('Back'), ['action' => 'userlist'], ['class' => 'btn btn-secondary']) ?>
+                    <button type="button" class="btn btn-primary float-right" onClick = "selectionpick()">Submit</button>
+                </div>
             </div>
         </div>
-    </nav>
-    <div class = "col-md-4">
-        <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>"> <?= $this->Html->link(__('Home'), ['action' => 'userlist'], ['class' => 'btn btn-primary']) ?></a>
-        <br><br>
-        <div class = "card">
-            <h5 class="card-header text-center"><?= __('Select Case Type') ?></h5>
-            <div class ="card-body row justify-content-center align-items-center">
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style= "height: 50px;">
-                    <!--<option selected>Choose a case</option>-->
-                    <option value="1">Oscer</option>
-                    <option value="2">Long Case</option>
-                    <option value="3">Medium Case</option>
-                    <option value="4">Short Case</option>
-                    <option value="5">General Case</option>
-                </select>
-            </div>
-        </div>
-        <br><br>
-        <?= $this->Html->link(__('Back'), ['action' => 'userlist'], ['class' => 'btn btn-secondary']) ?>
-        <button type="button" class="btn btn-primary float-right" onClick = "selectionpick()">Submit</button>
     </div>
 
 </div>
