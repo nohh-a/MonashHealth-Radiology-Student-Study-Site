@@ -120,12 +120,19 @@
                                                 </div>
                                                 <div class="table-footer">
                                                     <div class="row">
+
                                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                                             <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                         </div>
+
                                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                                             <?= $this->Form->postLink(__('Archive'), ['action' => 'changecasestatus', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to archive # {0}?', $moncase->diagnosis)]) ?>
                                                         </div>
+
+                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+<!--                                                           ?\ --><?php //= $this->Html->link(__('Collect'), ['controller' => 'collections', 'action' => 'add', $moncase->id], ['class' => 'theme-btn style-two']) ?>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
