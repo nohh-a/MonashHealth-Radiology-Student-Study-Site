@@ -125,12 +125,16 @@
                                                             <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                         </div>
 
-                                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                                            <?= $this->Form->postLink(__('Archive'), ['action' => 'changecasestatus', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to archive # {0}?', $moncase->diagnosis)]) ?>
-                                                        </div>
+                                                        <br><br>
 
                                                         <div class="col-lg-6 col-md-6 col-sm-12">
-<!--                                                           ?\ --><?php //= $this->Html->link(__('Collect'), ['controller' => 'collections', 'action' => 'add', $moncase->id], ['class' => 'theme-btn style-two']) ?>
+                                                            <?= $this->Form->postLink(__('Save'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
+                                                        </div>
+
+                                                        <br><br>
+
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <?= $this->Form->postLink(__('Archive'), ['action' => 'changecasestatus', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to archive # {0}?', $moncase->diagnosis)]) ?>
                                                         </div>
 
                                                     </div>
@@ -167,7 +171,16 @@
                                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                                             <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                         </div>
+
+                                                        <br><br>
+
                                                         <div class="col-lg-6 col-md-6 col-sm-12">
+                                                            <?= $this->Form->postLink(__('Save'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
+                                                        </div>
+
+                                                        <br><br>
+
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
                                                             <?= $this->Form->postLink(__('Archive'), ['action' => 'changecasestatus', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to archive # {0}?', $moncase->diagnosis)]) ?>
                                                         </div>
 

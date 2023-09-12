@@ -165,8 +165,12 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'maintance'])?>">Collection</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">Collection</a>
                                 </li>
+
+<!--                                <li>-->
+<!--                                    <a href="--><?php //= $this->Url->build(['controller' => 'pages', 'action' => 'maintance'])?><!--">Collection</a>-->
+<!--                                </li>-->
 
                             </ul>
                         </div>

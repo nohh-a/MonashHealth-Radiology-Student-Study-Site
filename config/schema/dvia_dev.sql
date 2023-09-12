@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 10, 2023 at 06:19 AM
+-- Generation Time: Sep 12, 2023 at 09:46 PM
 -- Server version: 11.1.2-MariaDB
 -- PHP Version: 8.2.10
 
@@ -33,13 +33,6 @@ CREATE TABLE `collections` (
   `user_id` char(36) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `collections`
---
-
-INSERT INTO `collections` (`id`, `name`, `user_id`) VALUES
-(2, 'collection 1', '25d2e98e-ffd2-4649-bd1c-3fb05ac9a217');
-
 -- --------------------------------------------------------
 
 --
@@ -50,14 +43,6 @@ CREATE TABLE `collections_moncases` (
   `collection_id` int(11) NOT NULL,
   `moncase_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `collections_moncases`
---
-
-INSERT INTO `collections_moncases` (`collection_id`, `moncase_id`) VALUES
-(2, 2),
-(2, 3);
 
 -- --------------------------------------------------------
 
@@ -92,17 +77,39 @@ CREATE TABLE `moncases` (
   `contributor` enum('TRAINEE','CONSULTANT','LIBRARY') DEFAULT NULL,
   `rating` int(1) DEFAULT NULL,
   `author` text DEFAULT NULL,
-  `archive_status` enum('yes','no') NOT NULL DEFAULT 'no'
+  `archive_status` enum('yes','no') NOT NULL DEFAULT 'no',
+  `saved_status` enum('yes','no') NOT NULL DEFAULT 'no',
+  `saved_author` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `moncases`
 --
 
-INSERT INTO `moncases` (`id`, `image_url`, `accession_no`, `case_type`, `date`, `imaging`, `diagnosis`, `differential_diagnosis`, `findings`, `teaching_points`, `speciality`, `history`, `max_marks`, `observation`, `intepretation`, `safety`, `intrinsic_roles`, `management`, `anatomy`, `pathology`, `further_investigation`, `seen_by`, `tags`, `contributor`, `rating`, `author`, `archive_status`) VALUES
-(2, 'noimg.png', '123', 'OSCER', '2023-09-10', '', '123', NULL, '', NULL, NULL, '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'yes'),
-(3, 'noimg.png', '1234', 'LONG', '2023-09-10', '', '1234', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '', NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'no'),
-(4, 'noimg.png', '12345', 'MEDIUM', '2023-09-10', '', '12345', NULL, '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'no');
+INSERT INTO `moncases` (`id`, `image_url`, `accession_no`, `case_type`, `date`, `imaging`, `diagnosis`, `differential_diagnosis`, `findings`, `teaching_points`, `speciality`, `history`, `max_marks`, `observation`, `intepretation`, `safety`, `intrinsic_roles`, `management`, `anatomy`, `pathology`, `further_investigation`, `seen_by`, `tags`, `contributor`, `rating`, `author`, `archive_status`, `saved_status`, `saved_author`) VALUES
+(5, 'noimg.png', '12345', 'OSCER', '2023-09-12', '', 'test 1', NULL, '', '', '', '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'no', 'no', NULL),
+(6, 'noimg.png', '11', 'LONG', '2023-09-12', '', 'test 2', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '', NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'no', 'no', NULL),
+(7, 'noimg.png', '123456', 'MEDIUM', '2023-09-12', '', 'test 3\r\n', NULL, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'LIBRARY', NULL, 'Beng Tan', 'no', 'no', NULL),
+(8, 'noimg.png', '54321', 'OSCER', '2023-09-12', '', 'test 4\r\n', NULL, '', '', '', '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'TRAINEE', NULL, 'Ethan Jiang', 'no', 'no', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `saves`
+--
+
+CREATE TABLE `saves` (
+  `id` int(11) NOT NULL,
+  `user_id` text NOT NULL,
+  `case_id` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `saves`
+--
+
+INSERT INTO `saves` (`id`, `user_id`, `case_id`) VALUES
+(13, '25d2e98e-ffd2-4649-bd1c-3fb05ac9a217', '5');
 
 -- --------------------------------------------------------
 
@@ -160,6 +167,12 @@ ALTER TABLE `moncases`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `saves`
+--
+ALTER TABLE `saves`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -173,13 +186,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `moncases`
 --
 ALTER TABLE `moncases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `saves`
+--
+ALTER TABLE `saves`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

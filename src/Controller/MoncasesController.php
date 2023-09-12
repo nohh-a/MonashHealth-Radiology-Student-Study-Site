@@ -573,6 +573,109 @@ class MoncasesController extends AppController
 
     }
 
+    /**
+     * Saved cases page method
+     *
+     * @return \Cake\Http\Response|null|void Redirects to archivedcases page.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function savedcases() {
+        // Get the current user's ID
+        $authorId = $this->getRequest()->getSession()->read('Auth.id');
+
+        // Get the model instance of the Saves table
+        $saveTable = $this->fetchTable('Saves');
+
+        // Find the case ID of all saved records matching the user ID from the Saves table
+        $saves = $saveTable->find()
+            ->where([
+                'user_id' => $authorId
+            ])
+            ->toArray();
+
+        // Extract case ID from saved record and store in an array
+        $caseIds = [];
+        foreach ($saves as $save) {
+            $caseIds[] = $save->case_id;
+        }
+
+        // Initialize Moncases query
+        $moncasesQuery = $this->Moncases->find();
+
+        // Execute query only if case ID array is not empty
+        if (!empty($caseIds)) {
+            // Retrieve the corresponding cases from
+            // the Moncases table using an array of case IDs
+            $moncasesQuery->where([
+                'id IN' => $caseIds
+            ]);
+        }
+
+        // Get query results
+        $moncases = $moncasesQuery->toArray();
+
+        // Set view variables
+        $this->set(compact('moncases', 'saves'));
+    }
+
+    /**
+     * save case action method
+     *
+     *
+     * @param string|null $id Moncase id.
+     * @return \Cake\Http\Response|null|void Redirects to userlist.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function savecaseaction($id = null)
+    {
+        $authorId = $this->getRequest()->getSession()->read('Auth.id');
+
+        $moncase = $this->Moncases->get($id, [
+            'contain' => [],
+        ]);
+        $caseId = $moncase->id;
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            // Check if the user has already saved this case
+            $saveTable = $this->fetchTable('Saves');
+            $existingSave = $saveTable->find()
+                ->where(['user_id' => $authorId, 'case_id' => $caseId])
+                ->first();
+
+//            debug($existingSave);
+            if ($existingSave != null) {
+                $this->Flash->error(__('You have already saved this case.'));
+
+                return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
+            } else {
+                $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
+
+                $save = $saveTable->newEmptyEntity();
+
+                $saveData = [
+                    'user_id' => $authorId,
+                    'case_id' => $caseId,
+                ];
+                $save = $saveTable->patchEntity($save, $saveData);
+
+                if ($saveTable->save($save)) {
+                    $this->Flash->success(__('The case has been saved. Check it in the Collection tab.'));
+
+                    // Redirect logic based on access_role
+                    $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
+                    $redirectAction = $accessRole == 'ADMIN' ? 'userlist' : 'userlistNotadmin';
+
+                    return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
+                }
+
+                $this->Flash->error(__('The case could not be saved. Please, try again.'));
+            }
+        }
+
+        $this->set(compact('moncase', 'save'));
+    }
+
+
     public function addnewcase()
     {
         $moncases = $this->paginate($this->Moncases);
