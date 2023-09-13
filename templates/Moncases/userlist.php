@@ -34,16 +34,17 @@
             padding: 5px;
         }
         .big-column {
-            width: 200px;
 
         }
         .designation {
-            font-weight: 550;
             color: #576ec2;
         }
-        .team-block-one .inner-box .image-box .social-links {
-            background:#606db7f2;
+
+        .project-block-one .inner-box .image-box {
+            background: #ffffff;
         }
+
+
     </style>
 
 
@@ -250,32 +251,23 @@
                     <div class="row clearfix">
                             <?php if ($moncases->count() > 0) : ?>
                                 <?php foreach ($moncases as $moncase) : ?>
-                                    <div class="col-lg-4 col-md-6 col-sm-12 team-block">
-                                        <div class="team-block-one mb-100 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                    <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all photography design development">
+                                        <div class="project-block-one mb-100 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                                             <div class="inner-box">
                                                 <div class="image-holder">
                                                     <figure class="image-box" style="height: fit-content;">
                                                         <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
                                                         <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill; width: 390px; height: 340px;">
-                                                        <ul class="social-links">
-                                                            <p><b>Accession NO: </b> <?= !empty($moncase->accession_no) ? h($moncase->accession_no) : 'N/A' ?></p>
-                                                            <p><b>Specialty: </b><?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></p>
-                                                            <p><b>Findings: </b><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></p>
-                                                            <p><b>Imaging: </b><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></p>
-                                                            <p><b>Teaching Points: </b><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></p>
-
-                                                        </ul>
                                                         </a>
                                                     </figure>
                                                 </div>
-                                                <div class="lower-content">
+                                                <div class="lower-content" style="overflow-y: scroll;">
                                                     <span class="designation"><?= h($moncase->case_type) ?>&nbsp;|&nbsp;
                                                         <?= h($moncase->author) ?>&nbsp;|&nbsp;
                                                         <?= h($moncase->date) ?>
-
                                                     </span>
                                                     <h3><?= h($moncase->diagnosis) ?></h3>
-                                                    <ul>
+                                                    <p>Test</p>
                                                     <li>Differential Diagnosis: <?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></li>
                                                     </ul>
                                                 </div>
@@ -284,7 +276,7 @@
                                     </div>
                                 <?php endforeach; ?>
                             <?php else : ?>
-                                <p>No results found.</p>
+                                <p>  No results found.</p>
                             <?php endif; ?>
                         </div>
                 </div>
