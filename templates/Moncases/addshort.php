@@ -7,6 +7,7 @@
 
 ?>
 
+<?= $this->Html->css('/webroot/css/star.css') ?>
 <?= $this->Html->css('/webroot/css/animate.min.css') ?>
 <?= $this->Html->css('/webroot/css/bootstrap.min.css') ?>
 <?= $this->Html->css('/webroot/css/bootstrap-datepicker.css') ?>
@@ -100,8 +101,8 @@
                                             'class' => 'form-control',
                                             'type' => 'text',
                                             'maxlength' => 30,
-                                            'label' => 'Accession No *',
                                             'required' => true,
+                                            'label' => ['class' => 'required-label', 'text' => 'Accession No'],
                                         ])
                                         ?>
 
@@ -109,8 +110,8 @@
                                         <?= $this->Form->control('diagnosis', [
                                             'class' => 'form-control',
                                             'maxlength' => 236,
-                                            'label' => 'Diagnosis *',
                                             'required' => true,
+                                            'label' => ['class' => 'required-label', 'text' => 'Diagnosis'],
                                         ])
                                         ?>
 
