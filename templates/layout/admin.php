@@ -58,6 +58,8 @@
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/responsive.css']) ?>
 
+
+
     <style>
         .theme-btn {
             padding: 5px 20px;
@@ -172,10 +174,6 @@
                                     <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">Collection</a>
                                 </li>
 
-<!--                                <li>-->
-<!--                                    <a href="--><?php //= $this->Url->build(['controller' => 'pages', 'action' => 'maintance'])?><!--">Collection</a>-->
-<!--                                </li>-->
-
                             </ul>
                         </div>
                     </nav>
@@ -183,9 +181,9 @@
             </div>
             <div class="menu-right-content pull-right">
                 <div class="btn-box"><?= $this->Form->postLink(
-                        __($username),
+                        __('Logout'),
                         ['controller' => 'Auth','action' => 'logout'],
-                        ['confirm' => __("Username: {0}\nAuthor: {1}\n Are you sure you want to Logout?", $username, $author)]) ?>
+                        ['confirm' => __("Username: {0}\nAuthor: {1}\nAre you sure you want to Logout?", $username, $author)]) ?>
                 </div>
             </div>
         </div>
@@ -215,7 +213,7 @@
         <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
         <div class="contact-info">
             <h4> <?= $this->Form->postLink(
-                    __($username),
+                    __('Logout'),
                     ['controller' => 'Auth','action' => 'logout'],
                     ['confirm' => __("Username: {0}\nAuthor: {1}\nAre you sure you want to Logout?", $username, $author)])
                 ?>
@@ -282,7 +280,6 @@
 <?= $this->Html->script(['list/tilt.jquery.js']) ?>
 
 <?= $this->Html->script(['list/script.js']) ?>
-
 
 
 </body><!-- End of .page_wrapper -->

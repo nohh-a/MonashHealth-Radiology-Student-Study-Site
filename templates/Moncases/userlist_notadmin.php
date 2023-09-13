@@ -33,15 +33,26 @@
             text-align: left;
             padding: 5px;
         }
-        .big-column {
-            width: 200px;
+
+        .designation {
+            color: #576ec2;
+        }
+
+        .project-block-one .inner-box .image-box {
+            background: #576ec2;
 
         }
-        .designation {
-            font-weight: 550;
+
+        .carousel-text h5 {
+            padding-top: 20px;
+            padding-bottom: 5px;
+            color: #576ec2;
+            font-weight: 600;
+            font-size: 18px;
         }
-        .team-block-one .inner-box .image-box .social-links {
-            background:#606db7f2;
+
+        .carousel-text p {
+            padding-bottom: 30px;
         }
     </style>
 
@@ -71,7 +82,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class = "row">
                     <!-- Sort Feature -->
-                    <div class="col-lg-7 col-md-7 col-sm-7 col-7">
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-10">
                         <h3> Sort by</h3>
                         <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlistNotadmin'], 'type' => 'get']) ?>
                         <?= $this->Form->select(
@@ -92,7 +103,7 @@
                         ) ?>
                         <?= $this->Form->button(__('Apply'), ['class' => 'btn btn-secondary', 'style' => 'margin-top: -20px;']) ?>
                     </div>
-                    <div class = "col-lg-3 col-md-3 col-sm-3 col-3">
+                    <div class = "col-lg-2 col-md-2 col-sm-2 col-2">
                         <!-- Trigger the modal with a button -->
                         <i class="fas fa-list fa-lg modal-hide" data-toggle="modal" data-target="#myModal"></i>
 
@@ -187,6 +198,34 @@
                                                                 </div>
                                                             </div>
                                                         </li>
+                                                        <li class="accordion block active-block">
+                                                            <div class="acc-btn active">
+                                                                <h4><span>+</span>Specialty</h4>
+                                                            </div>
+                                                            <div class="acc-content current">
+                                                                <div class="content">
+                                                                    <p> <?= $this->Form->select('speciality', [
+                                                                            'ABDOMINAL' => 'ABDOMINAL',
+                                                                            'CARDIOTHORACIC' => 'CARDIOTHORACIC',
+                                                                            'NEURO' => 'NEURO',
+                                                                            'HEAD AND NECK' => 'HEAD AND NECK',
+                                                                            'MSK' => 'MSK',
+                                                                            'BREAST' => 'BREAST',
+                                                                            'GYN' => 'GYN',
+                                                                            'O+G' => 'O+G',
+                                                                            'PEADS' => 'PEADS',
+                                                                            'VASCULAR' => 'VASCULAR',
+                                                                            'INTERVENTION' => 'INTERVENTION',
+                                                                        ], [
+                                                                            'class' => 'form-select',
+                                                                            'default' => $this->request->getQuery('speciality'),
+                                                                            'empty' => 'Choose Specialty',
+                                                                        ]); ?>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
                                                     </ul>
                                                 </div>
                                             </div>
@@ -216,43 +255,70 @@
                 <div class="blog-grid-content">
                     <div class="row clearfix">
                         <?php if ($moncases->count() > 0) : ?>
-                            <?php foreach ($moncases as $moncase) : ?>
-                                <div class="col-lg-4 col-md-6 col-sm-12 team-block">
-                                    <div class="team-block-one mb-100 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                                        <div class="inner-box">
+                            <?php foreach ($moncases as $index => $moncase) : ?>
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="project-block-one mb-100 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                        <div class="inner-box" style="text-align: center;">
                                             <div class="image-holder">
                                                 <figure class="image-box" style="height: fit-content;">
                                                     <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>">
                                                         <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill; width: 390px; height: 340px;">
-                                                        <ul class="social-links">
-                                                            <p><b>Accession NO: </b> <?= !empty($moncase->accession_no) ? h($moncase->accession_no) : 'N/A' ?></p>
-                                                            <p><b>Specialty: </b><?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></p>
-                                                            <p><b>Findings: </b><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></p>
-                                                            <p><b>Imaging: </b><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></p>
-                                                            <p><b>Teaching Points: </b><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></p>
-
-                                                        </ul>
                                                     </a>
                                                 </figure>
                                             </div>
-                                            <div class="lower-content">
+                                            <div class="lower-content" style="height: fit-content;">
                                                     <span class="designation"><?= h($moncase->case_type) ?>&nbsp;|&nbsp;
                                                         <?= h($moncase->author) ?>&nbsp;|&nbsp;
                                                         <?= h($moncase->date) ?>
-
                                                     </span>
                                                 <h3><?= h($moncase->diagnosis) ?></h3>
-                                                <ul>
-                                                    <li>Differential Diagnosis: <?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></li>
+                                                <div class="container">
+                                                    <div id="textCarousel<?= $index ?>" class="carousel slide" data-ride="carousel" data-touch="true" data-interval="false">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active">
+                                                                <div class="carousel-text">
+                                                                    <h5>Specialty</h5>
+                                                                    <p><?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="carousel-text">
+                                                                    <h5>Teaching Points</h5>
+                                                                    <p><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="carousel-text">
+                                                                    <h5>Imaging</h5>
+                                                                    <p><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <a class="carousel-control-prev" style="margin-right: 19px;" href="#textCarousel<?= $index ?>" role="button" data-slide="prev">
+                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                        <a class="carousel-control-next" href="#textCarousel<?= $index ?>" role="button" data-slide="next">
+                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="row" style="display: flex; justify-content: center; flex-wrap: nowrap;">
 
-                                                </ul>
+                                                       <!-- <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <?= $this->Html->postLink(__('Save'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two','style'=>'padding: 0px 45px; font-size: 15px;', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
+                                                        </div> -->
+
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
                         <?php else : ?>
-                            <p>No results found.</p>
+                            <p>  No results found.</p>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -284,7 +350,7 @@
                                     <td>
                                         <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>" style=" height: 142px; max-width: fit-content;">
                                     </td>
-                                    <td> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
+                                    <td> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
                                     <td><?= h($moncase->diagnosis) ?></td>
                                     <td><?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></td>
                                     <td><?= h($moncase->case_type) ?></td>
@@ -416,7 +482,6 @@
                                         </div>
                                     </div>
                                 </li>
-
                             </ul>
                         </div>
                     </div>

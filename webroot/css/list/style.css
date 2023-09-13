@@ -2015,7 +2015,7 @@ div#mCSB_1_container{
   transition-duration: .6s;
   transition-timing-function: cubic-bezier(.4,0,.2,1);
 }
-
+/* case list hover
 .project-block-one .inner-box:hover .image-box{
   -webkit-transform: rotate3d(0,1,0,180deg);
   transform: rotate3d(0,1,0,180deg);
@@ -2023,14 +2023,17 @@ div#mCSB_1_container{
   transform: rotate3d(-1,0,0,180deg)
 }
 
+
 .project-block-one .inner-box .image-box img{
   width: 100%;
   transition: all 500ms ease;
 }
-
+*/
 .project-block-one:hover .inner-box .image-box img{
-  opacity: 0;
+  opacity: 50%;
 }
+
+
 
 .project-block-one .inner-box .image-holder{
   position: relative;

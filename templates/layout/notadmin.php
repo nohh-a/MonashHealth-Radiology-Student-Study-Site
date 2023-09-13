@@ -179,7 +179,9 @@
             </div>
             <div class="menu-right-content pull-right">
 
-                <div class="btn-box"><?= $this->Form->postLink(__($username), ['controller'=>'Auth','action'=> 'logout'],
+                <div class="btn-box"><?= $this->Form->postLink(
+                        __('Logout'),
+                        ['controller' => 'Auth','action' => 'logout'],
                         ['confirm' => __("Username: {0}\nAuthor: {1}\nAre you sure you want to Logout?", $username, $author)]) ?>
                 </div>
 
@@ -212,7 +214,7 @@
         <div class="contact-info">
 
             <h4>
-                <?= $this->Form->postLink(__($username), ['controller'=>'Auth','action'=> 'logout'],
+                <?= $this->Form->postLink(__('Logout'), ['controller'=>'Auth','action'=> 'logout'],
                     ['confirm' => __("Username: {0}\nAuthor: {1}\nAre you sure you want to Logout?", $username, $author)]) ?>
             </h4>
 

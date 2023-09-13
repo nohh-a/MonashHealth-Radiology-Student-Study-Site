@@ -33,15 +33,26 @@
             text-align: left;
             padding: 5px;
         }
-        .big-column {
 
-        }
         .designation {
             color: #576ec2;
         }
 
         .project-block-one .inner-box .image-box {
-            background: #ffffff;
+            background: #576ec2;
+
+        }
+
+        .carousel-text h5 {
+            padding-top: 20px;
+            padding-bottom: 5px;
+            color: #576ec2;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .carousel-text p {
+            padding-bottom: 30px;
         }
 
 
@@ -67,13 +78,13 @@
 <?= $this->Flash->render() ?>
 
 <!-- blog-grid -->
-<div class="sidebar-page-container blog-grid">
+<section class="sidebar-page-container blog-grid">
     <div class="auto-container">
-        <div class="row clearfix">
+        <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class = "row">
                 <!-- Sort Feature -->
-                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-10">
                     <h3> Sort by</h3>
                     <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                     <?= $this->Form->select(
@@ -249,36 +260,74 @@
             <div id="moncases-grid" class="col-lg-9 col-md-12 col-sm-12 content-side">
                 <div class="blog-grid-content">
                     <div class="row clearfix">
-                            <?php if ($moncases->count() > 0) : ?>
-                                <?php foreach ($moncases as $moncase) : ?>
-                                    <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all photography design development">
-                                        <div class="project-block-one mb-100 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                                            <div class="inner-box">
-                                                <div class="image-holder">
-                                                    <figure class="image-box" style="height: fit-content;">
-                                                        <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
+                        <?php if ($moncases->count() > 0) : ?>
+                            <?php foreach ($moncases as $index => $moncase) : ?>
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="project-block-one mb-100 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                        <div class="inner-box" style="text-align: center;">
+                                            <div class="image-holder">
+                                                <figure class="image-box" style="height: fit-content;">
+                                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
                                                         <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill; width: 390px; height: 340px;">
-                                                        </a>
-                                                    </figure>
-                                                </div>
-                                                <div class="lower-content" style="overflow-y: scroll;">
+                                                    </a>
+                                                </figure>
+                                            </div>
+                                            <div class="lower-content" style="height: fit-content;">
                                                     <span class="designation"><?= h($moncase->case_type) ?>&nbsp;|&nbsp;
                                                         <?= h($moncase->author) ?>&nbsp;|&nbsp;
                                                         <?= h($moncase->date) ?>
                                                     </span>
-                                                    <h3><?= h($moncase->diagnosis) ?></h3>
-                                                    <p>Test</p>
-                                                    <li>Differential Diagnosis: <?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></li>
-                                                    </ul>
+                                                <h3><?= h($moncase->diagnosis) ?></h3>
+                                                <div class="container">
+                                                    <div id="textCarousel<?= $index ?>" class="carousel slide" data-ride="carousel" data-touch="true" data-interval="false">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active">
+                                                                <div class="carousel-text">
+                                                                    <h5>Specialty</h5>
+                                                                    <p><?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="carousel-text">
+                                                                    <h5>Teaching Points</h5>
+                                                                    <p><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="carousel-text">
+                                                                    <h5>Imaging</h5>
+                                                                    <p><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <a class="carousel-control-prev" style="margin-right: 19px;" href="#textCarousel<?= $index ?>" role="button" data-slide="prev">
+                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                        <a class="carousel-control-next" href="#textCarousel<?= $index ?>" role="button" data-slide="next">
+                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="row" style="display: flex; justify-content: center; flex-wrap: nowrap;">
+        <!--
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <?= $this->Html->link(__('Save'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two','style'=>'padding: 0px 45px; font-size: 15px;', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
+                                                        </div>
+                                                        -->
+
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                <?php endforeach; ?>
-                            <?php else : ?>
-                                <p>  No results found.</p>
-                            <?php endif; ?>
-                        </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <p>  No results found.</p>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
 
@@ -291,14 +340,14 @@
                             <th>Image</th>
                             <th>Accession No.</th>
                             <th>Diagnosis</th>
-                            <th class="big-column">Differential Diagnosis</th>
+                            <th class="big-column">Specialty</th>
                             <th>Type</th>
-                            <th>Findings</th>
                             <th>Imaging</th>
                             <th>Teachings</th>
                             <th>Rating</th>
                             <th>Author</th>
                             <th>Contributor</th>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -310,14 +359,14 @@
                                     </td>
                                     <td> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
                                     <td><?= h($moncase->diagnosis) ?></td>
-                                    <td><?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></td>
+                                    <td><?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></td>
                                     <td><?= h($moncase->case_type) ?></td>
-                                    <td><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></td>
                                     <td><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></td>
                                     <td><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></td>
                                     <td><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></td>
                                     <td><?= h($moncase->author) ?></td>
                                     <td><?= h($moncase->contributor) ?></td>
+
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
@@ -456,7 +505,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 <!-- blog-grid end -->
 
 

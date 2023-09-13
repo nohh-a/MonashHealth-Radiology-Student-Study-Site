@@ -40,10 +40,9 @@
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
-        <div class="content-box">
-            <h1>Case Details</h1>
-            <ul class="bread-crumb clearfix">
-            </ul>
+        <div class="sec-title">
+            <p><?= h($moncase->case_type) ?></p>
+            <h2><?= h($moncase->diagnosis) ?></h2>
         </div>
     </div>
 </section>
@@ -95,15 +94,8 @@
 
             <section class="pricing-section bg-color-1 sec-pad">
                 <div class="auto-container">
-                    <div class="sec-title">
-                        <p><?= h($moncase->case_type) ?></p>
-                        <h2><?= h($moncase->diagnosis) ?></h2>
-                    </div>
                     <div class="tabs-box">
                         <div class="upper-box clearfix">
-                            <div class="text pull-left">
-                                <p><?= h($moncase->differential_diagnosis) ?></p>
-                            </div>
                             <div class="tab-btn-box pull-right">
                                 <ul class="tab-btns tab-buttons clearfix">
                                     <li class="tab-btn active-btn" data-tab="#tab-1">General</li>
