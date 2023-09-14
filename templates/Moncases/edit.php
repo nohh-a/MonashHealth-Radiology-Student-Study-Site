@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Moncase $moncase
  */
 ?>
+    <?= $this->Html->css('/webroot/css/star.css') ?>
     <?= $this->Html->css('/webroot/css/animate.min.css') ?>
     <?= $this->Html->css('/webroot/css/bootstrap.min.css') ?>
     <?= $this->Html->css('/webroot/css/bootstrap-datepicker.css') ?>
@@ -101,7 +102,7 @@
 
                                                 <?= $this->Form->control('image_url', [
                                                     'type' => 'file',
-                                                    'label' => 'Image Upload',
+                                                    'label' => 'Image Upload (PNG, JPEG, JPG)',
                                                     'class' => 'form-control'
                                                 ]); ?>
                                             </div>
@@ -111,7 +112,17 @@
                                                 'type' => 'text',
                                                 'maxlength' => 30,
                                                 'required' => true,
+                                                'label' => ['class' => 'required-label', 'text' => 'Accession No'],
                                             ]); ?>
+
+                                            <?= $this->Form->control('diagnosis', [
+                                                'class' => 'form-control',
+                                                'maxlength' => 100,
+                                                'type' => 'text',
+                                                'required' => true,
+                                                'label' => ['class' => 'required-label', 'text' => 'Diagnosis'],
+                                            ])
+                                            ?>
 
 
                                             <?= $this->Form->label('speciality', 'Speciality') ?>
@@ -132,13 +143,6 @@
                                                 'class' => 'form-control',
                                                 'empty' => 'Select Speciality',
                                             ]) ?>
-
-                                            <?= $this->Form->control('diagnosis', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-
-                                            ])
-                                            ?>
 
                                             <?= $this->Form->control('differential_diagnosis', [
                                                 'class' => 'form-control',

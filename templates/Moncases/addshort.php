@@ -56,6 +56,7 @@
                                 'readonly' => true,
                                 'type' => 'text',
                                 'maxlength' => 50,
+
                             ])
                             ?>
 
@@ -109,7 +110,8 @@
 
                                         <?= $this->Form->control('diagnosis', [
                                             'class' => 'form-control',
-                                            'maxlength' => 236,
+                                            'maxlength' => 100,
+                                            'type' => 'text',
                                             'required' => true,
                                             'label' => ['class' => 'required-label', 'text' => 'Diagnosis'],
                                         ])
@@ -129,7 +131,7 @@
                                         <div class="accordion-body">
                                             <?= $this->Form->control('image_url', [
                                                 'type' => 'file',
-                                                'label' => 'Image Upload',
+                                                'label' => 'Image Upload (PNG, JPEG, JPG)',
                                                 'class' => 'form-control'
                                             ]); ?>
 

@@ -310,11 +310,19 @@
                                                         </a>
                                                     </div>
                                                     <div class="row" style="display: flex; justify-content: center; flex-wrap: nowrap;">
-        <!--
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <?= $this->Html->link(__('Save'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two','style'=>'padding: 0px 45px; font-size: 15px;', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
-                                                        </div>
-                                                        -->
+
+<!--                                                        <div class="col-lg-12 col-md-12 col-sm-12">-->
+<!--                                                            --><?php //= $this->Form->postLink(__('Save'),
+//                                                                [
+//                                                                    'action' => 'savecaseaction', $moncase->id
+//                                                                ],
+//                                                                [
+//                                                                    'class' => 'theme-btn style-two',
+//                                                                    'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)
+//                                                                ])
+//                                                            ?>
+<!--                                                        </div>-->
+
 
                                                     </div>
 
