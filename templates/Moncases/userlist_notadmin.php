@@ -325,22 +325,20 @@
             </div>
 
             <!-- list view-->
-            <div id ="moncases-list" class="col-lg-9 col-md-12 col-sm-12 content-side" style="display: none;">
+            <div id ="moncases-list" class="col-lg-9 col-md-12 col-sm-12 content-side" style="display: none">
                 <div class="row clearfix">
-                    <table class="table table-hover table-responsive wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <table class="table table-hover table-responsive wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms" style="margin-left: 18px;">
                         <thead>
                         <tr>
                             <th>Image</th>
                             <th>Accession No.</th>
-                            <th>Diagnosis</th>
-                            <th class="big-column">Differential Diagnosis</th>
                             <th>Type</th>
-                            <th>Findings</th>
-                            <th>Imaging</th>
-                            <th>Teachings</th>
+                            <th>Diagnosis</th>
+                            <th>Specialty</th>
                             <th>Rating</th>
                             <th>Author</th>
                             <th>Contributor</th>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -351,12 +349,9 @@
                                         <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>" style=" height: 142px; max-width: fit-content;">
                                     </td>
                                     <td> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
-                                    <td><?= h($moncase->diagnosis) ?></td>
-                                    <td><?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></td>
                                     <td><?= h($moncase->case_type) ?></td>
-                                    <td><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></td>
-                                    <td><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></td>
-                                    <td><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></td>
+                                    <td><?= h($moncase->diagnosis) ?></td>
+                                    <td><?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></td>
                                     <td><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></td>
                                     <td><?= h($moncase->author) ?></td>
                                     <td><?= h($moncase->contributor) ?></td>
