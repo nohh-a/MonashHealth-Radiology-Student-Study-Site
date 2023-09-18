@@ -82,7 +82,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class = "row">
                     <!-- Sort Feature -->
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
                         <h3> Sort by</h3>
                         <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlistNotadmin'], 'type' => 'get']) ?>
                         <?= $this->Form->select(
@@ -102,6 +102,11 @@
                             ]
                         ) ?>
                         <?= $this->Form->button(__('Apply'), ['class' => 'btn btn-secondary', 'style' => 'margin-top: -20px;']) ?>
+                    </div>
+
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                        <h3><br></h3>
+                        <button class="theme-btn style-two"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'addnewcase']) ?>">New</a></button>
                     </div>
                     <div class = "col-lg-2 col-md-2 col-sm-2 col-2">
                         <!-- Trigger the modal with a button -->
