@@ -165,7 +165,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">Collection</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">My Collection</a>
                                 </li>
 
 <!--                                <li>-->
@@ -178,7 +178,6 @@
                 </div>
             </div>
             <div class="menu-right-content pull-right">
-
                 <div class="btn-box"><?= $this->Form->postLink(
                         __('Logout'),
                         ['controller' => 'Auth','action' => 'logout'],

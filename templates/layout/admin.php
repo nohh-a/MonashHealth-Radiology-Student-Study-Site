@@ -164,14 +164,14 @@
                                 </li>
 
                                 <li class="">
-                                    <a href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">User Management</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">User</a>
                                 </li>
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'archivedcases'])?>">Archived Cases</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'archivedcases'])?>">Archive</a>
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">Collection</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">My Collection</a>
                                 </li>
 
                             </ul>
