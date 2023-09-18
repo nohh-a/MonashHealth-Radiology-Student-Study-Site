@@ -44,37 +44,47 @@
                 <div class="card-body">
                     <div style="text-align: center;">
                         <div style="text-align: center;">
-                            <?=$this->Form->control('case_type',  ['class' => 'form-control',
-                                'default' => 'MEDIUM',
-                                'readonly' => true])
-                            ?>
-                            <?=$this->Form->control('author',  [
-                                'class' => 'form-control',
-                                'required' => true,
-                                'value' => $author,
-                                'readonly' => true,
-                                'type' => 'text',
-                                'maxlength' => 50,
-                            ])
-                            ?>
-                            <?=$this->Form->control('contributor',  [
-                                'class' => 'form-control',
-                                'required' => true,
-                                'value' => $contributor,
-                                'readonly' => true,
-                                'type' => 'text',
-                                'maxlength' => 50,
-                            ])
-                            ?>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <?=$this->Form->control('case_type', [
+                                        'class' => 'form-control',
+                                        'default' => 'MEDIUM',
+                                        'readonly' => true,
+                                    ])?>
+                                </div>
+                                <div class="col-md-6">
+                                    <?=$this->Form->control('author', [
+                                        'class' => 'form-control',
+                                        'required' => true,
+                                        'value' => $author,
+                                        'readonly' => true,
+                                        'type' => 'text',
+                                        'maxlength' => 50,
+                                    ])?>
+                                </div>
+                            </div>
 
-                            <?= $this->Form->control('date', [
-                                'class' => 'form-control',
-                                'type' => 'date',
-                                'value' => date('d-m-Y'),
-                                'required' => true,
-                                'readonly' => true,
-                            ])
-                            ?>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <?=$this->Form->control('contributor', [
+                                        'class' => 'form-control',
+                                        'required' => true,
+                                        'value' => $contributor,
+                                        'readonly' => true,
+                                        'type' => 'text',
+                                        'maxlength' => 50,
+                                    ])?>
+                                </div>
+                                <div class="col-md-6">
+                                    <?= $this->Form->control('date', [
+                                        'class' => 'form-control',
+                                        'type' => 'date',
+                                        'value' => date('d-m-Y'),
+                                        'required' => true,
+                                        'readonly' => true,
+                                    ]) ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <br><br>
