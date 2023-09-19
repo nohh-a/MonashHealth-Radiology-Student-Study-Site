@@ -49,6 +49,7 @@
                                         'label' => 'Case Type',
                                         'class' => 'form-control',
                                         'readonly' => true,
+                                        'disabled' => true,
                                     ])?>
                                 </div>
                                 <div class="col-md-6">
@@ -57,6 +58,7 @@
                                         'required' => true,
                                         'value' => $this->getRequest()->getData('author', $author),
                                         'readonly' => true,
+                                        'disabled' => true,
                                         'type' => 'text',
                                         'maxlength' => 50,
                                     ])?>
@@ -70,6 +72,7 @@
                                         'required' => true,
                                         'value' => $contributor,
                                         'readonly' => true,
+                                        'disabled' => true,
                                         'type' => 'text',
                                         'maxlength' => 50,
                                     ])?>
@@ -81,6 +84,7 @@
                                         'value' => date('d-m-Y'),
                                         'required' => true,
                                         'readonly' => true,
+                                        'disabled' => true,
                                     ]) ?>
                                 </div>
                             </div>
