@@ -45,6 +45,11 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
@@ -54,7 +59,7 @@ class UsersController extends AppController
             'contain' => [],
         ]);
 
-        $this->set(compact('user'));
+        $this->set(compact('user', 'author', 'username'));
     }
 
     /**
@@ -64,6 +69,11 @@ class UsersController extends AppController
      */
     public function add()
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
@@ -79,7 +89,7 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+        $this->set(compact('user', 'author', 'username'));
     }
 
     /**
@@ -91,6 +101,11 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
@@ -108,7 +123,7 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+        $this->set(compact('user', 'author', 'username'));
     }
 
     /**
