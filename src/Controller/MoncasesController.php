@@ -671,7 +671,7 @@ class MoncasesController extends AppController
                 $save = $saveTable->patchEntity($save, $saveData);
 
                 if ($saveTable->save($save)) {
-                    $this->Flash->success(__('The case has been saved. Check it in the Collection tab.'));
+                    $this->Flash->success(__('The case has been saved. Check it in the My Favorites tab.'));
 
                     // Redirect logic based on access_role
                     $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');

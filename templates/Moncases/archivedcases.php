@@ -40,7 +40,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 <div class="container">
     <div class="row align-items-center d-flex justify-content-center" data-animate="fadeInUp">
         <div class="heading-text heading-section text-center mt-5">
-            <h2 style="color: black; font-weight: bold;">Archived Cases</h2>
+            <h2 style="color: black; font-weight: bold;">My Archived</h2>
             <p> </p>
         </div>
     </div>

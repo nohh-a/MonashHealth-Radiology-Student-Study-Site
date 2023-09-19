@@ -59,7 +59,7 @@
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
         <div class="content-box">
-            <h1>Users</h1>
+            <h1>My Users</h1>
             <ul class="bread-crumb clearfix">
                 <li>Case List</li>
                 <li>User Management</li>

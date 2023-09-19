@@ -147,29 +147,36 @@
                                             <div class="pricing-table">
                                                 <div class="table-content">
                                                     <ul>
-                                                        <h3>Differential Diagnosis </h3>
-                                                        <li><?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></li>
-                                                        <h3>History </h3>
-                                                        <li><?= !empty($moncase->history) ? h($moncase->history) : 'N/A' ?></li>
-                                                        <h3>Findings </h3>
-                                                        <li><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></li>
-                                                        <h3>Imaging</h3>
-                                                        <li><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></li>
-                                                        <h3>Teaching Points</h3>
-                                                        <li><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></li>
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                <h3>Differential Diagnosis </h3>
+                                                                <li><?= !empty($moncase->differential_diagnosis) ? h($moncase->differential_diagnosis) : 'N/A' ?></li>
+                                                                <h3>History </h3>
+                                                                <li><?= !empty($moncase->history) ? h($moncase->history) : 'N/A' ?></li>
+                                                                <h3>Findings </h3>
+                                                                <li><?= !empty($moncase->findings) ? h($moncase->findings) : 'N/A' ?></li>
+                                                            </div>
+
+                                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                <h3>Imaging</h3>
+                                                                <li><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></li>
+                                                                <h3>Teaching Points</h3>
+                                                                <li><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></li>
+                                                            </div>
+                                                        </div>
                                                     </ul>
                                                 </div>
                                                 <div class="table-footer">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <?= $this->Form->postLink(__('Save'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
+                                                            <?= $this->Form->postLink(__('Favorite'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
                                                         </div>
                                                         <br><br>
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                                             <?php if ($author != $caseAuthor): ?>
                                                                 <!-- Don't show button when $author is not equal to $caseAuthor -->
                                                             <?php else: ?>
-                                                                <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
+                                                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                             <?php endif; ?>
                                                         </div>
 
@@ -187,32 +194,39 @@
                                             <div class="pricing-table">
                                                 <div class="table-content">
                                                     <ul>
-                                                        <h3>Further Investigation </h3>
-                                                        <li><?= !empty($moncase->further_investigation) ? h($moncase->further_investigation) : 'N/A' ?></li>
-                                                        <h3>Management</h3>
-                                                        <li><?= !empty($moncase->management) ? h($moncase->management) : 'N/A' ?></li>
-                                                        <h3>Anatomy</h3>
-                                                        <li><?= !empty($moncase->anatomy) ? h($moncase->anatomy) : 'N/A' ?></li>
-                                                        <h3>Pathology</h3>
-                                                        <li><?= !empty($moncase->pathology) ? h($moncase->pathology) : 'N/A' ?></li>
-                                                        <h3>Safety</h3>
-                                                        <li><?= !empty($moncase->safety) ? h($moncase->safety) : 'N/A' ?></li>
-                                                        <h3>Intrinsic Roles</h3>
-                                                        <li><?= !empty($moncase->intrinsic_roles) ? h($moncase->intrinsic_roles) : 'N/A' ?></li>
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                <h3>Further Investigation </h3>
+                                                                <li><?= !empty($moncase->further_investigation) ? h($moncase->further_investigation) : 'N/A' ?></li>
+                                                                <h3>Management</h3>
+                                                                <li><?= !empty($moncase->management) ? h($moncase->management) : 'N/A' ?></li>
+                                                                <h3>Anatomy</h3>
+                                                                <li><?= !empty($moncase->anatomy) ? h($moncase->anatomy) : 'N/A' ?></li>
+                                                            </div>
+
+                                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                <h3>Pathology</h3>
+                                                                <li><?= !empty($moncase->pathology) ? h($moncase->pathology) : 'N/A' ?></li>
+                                                                <h3>Safety</h3>
+                                                                <li><?= !empty($moncase->safety) ? h($moncase->safety) : 'N/A' ?></li>
+                                                                <h3>Intrinsic Roles</h3>
+                                                                <li><?= !empty($moncase->intrinsic_roles) ? h($moncase->intrinsic_roles) : 'N/A' ?></li>
+                                                            </div>
+                                                        </div>
 
                                                     </ul>
                                                 </div>
                                                 <div class="table-footer">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <?= $this->Form->postLink(__('Save'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
+                                                            <?= $this->Form->postLink(__('Favorite'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
                                                         </div>
                                                         <br><br>
                                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                                             <?php if ($author != $caseAuthor): ?>
                                                                 <!-- Don't show button when $author is not equal to $caseAuthor -->
                                                             <?php else: ?>
-                                                                <?= $this->Html->link(__('Edit Details'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
+                                                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                             <?php endif; ?>
                                                         </div>
                                                     </div>
