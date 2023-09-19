@@ -4,17 +4,15 @@
  * @var iterable<\App\Model\Entity\User> $users
  */
 
-echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['block' => true]);
-echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
-echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 
 ?>
 <style>
     /* Style the table header */
     table th {
-        background-color: #466bd7;
+        background-color: #576ec2;
         font-weight: bold;
         text-align: center;
+        color: #ececf8;
     }
 
     /* Style the table rows */
@@ -34,6 +32,10 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         white-space: nowrap;
     }
 
+    .body {
+        font-family: 'Poppins', sans-serif;
+    }
+
     /* mobile */
     @media (max-width: 768px) {
 
@@ -49,26 +51,33 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
     }
 
 
+
 </style>
 
-<div class="container">
-    <div class="row align-items-center justify-content-center" data-animate="fadeInUp">
-        <div class="col-md-12">
-            <div class="heading-text heading-section text-center mt-5">
-                <h1 style="color: black; font-weight: bold;">Users</h1>
-                <p> </p>
-            </div>
+<!--Page Title-->
+<section class="page-title bg-color-1 text-center">
+    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
+    <div class="auto-container">
+        <div class="content-box">
+            <h1>Users</h1>
+            <ul class="bread-crumb clearfix">
+                <li>Case List</li>
+                <li>User Management</li>
+            </ul>
         </div>
     </div>
+</section>
+<!--End Page Title-->
+<?= $this->Flash->render() ?>
 
+<div class="container">
     <div class="container-fluid">
         <div class="users index content">
             <div class="row">
                 <div class="col-12">
                     <?= $this->Flash->render() ?>
-                    <div class="d-flex justify-content-between">
-                        <?= $this->Html->link(__('Go back'), ['controller' => 'moncases', 'action' => 'userlist'], ['class' => 'btn btn-primary']) ?>
-                        <?= $this->Html->link(__('Create New User'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
+                    <div class="d-flex" style="justify-content: flex-end;">
+                        <?= $this->Html->link(__('Create New User'), ['action' => 'add'], ['class' => 'theme-btn style-one']) ?>
                     </div>
                 </div>
             </div>
@@ -97,11 +106,11 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                             <td><?= h($user->access_role) ?></td>
                             <td><?= h($user->contributor) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class' => 'btn btn-info']) ?>
-                                <?= $this->Html->link(__('Change Password'), ['controller' => 'Auth', 'action' => 'change-password', $user->id], ['class' => 'btn btn-warning']) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class' => 'btn btn-outline-primary']) ?>
+                                <?= $this->Html->link(__('Change Password'), ['controller' => 'Auth', 'action' => 'change-password', $user->id], ['class' => 'btn btn-outline-warning']) ?>
                                 <?php if ($user->access_role !== 'ADMIN') : ?>
                                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], [
-                                        'class' => 'btn btn-danger',
+                                        'class' => 'btn btn-outline-danger',
                                         'confirm' => __("Are you sure you want to delete this user?\n{0} {1} ({2})", $user->first_name, $user->last_name, $user->email)]) ?>
                                 <?php endif; ?>
                             </td>

@@ -161,10 +161,6 @@
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'addnewcase'])?>">Create New Case</a>
-                                </li>
-
-                                <li>
                                     <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">My Collection</a>
                                 </li>
 

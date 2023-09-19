@@ -477,6 +477,12 @@ class MoncasesController extends AppController
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function archivedcases() {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if ($access_role !== 'ADMIN') {
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
@@ -487,7 +493,7 @@ class MoncasesController extends AppController
             // Add a condition to filter archive_status
             ->where(['archive_status' => 'yes']);
 
-        $this->set(compact('moncases'));
+        $this->set(compact('moncases','author','username'));
 
     }
 
@@ -580,6 +586,12 @@ class MoncasesController extends AppController
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function savedcases() {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
         // Get the current user's ID
         $authorId = $this->getRequest()->getSession()->read('Auth.id');
 
@@ -615,7 +627,7 @@ class MoncasesController extends AppController
         $moncases = $moncasesQuery->toArray();
 
         // Set view variables
-        $this->set(compact('moncases', 'saves'));
+        $this->set(compact('moncases', 'saves','author','username'));
     }
 
     /**

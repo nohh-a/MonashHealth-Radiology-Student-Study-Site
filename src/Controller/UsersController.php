@@ -18,6 +18,12 @@ class UsersController extends AppController
      */
     public function index()
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== 'ADMIN' ){
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
@@ -25,7 +31,9 @@ class UsersController extends AppController
 
         $users = $this->paginate($this->Users);
 
-        $this->set(compact('users'));
+        $this->set(compact('users', 'author', 'username'));
+        $this->viewBuilder()->setLayout('admin');
+
     }
 
     /**
