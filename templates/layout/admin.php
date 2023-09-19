@@ -160,14 +160,14 @@
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
                                 <li class="">
-                                    <a href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">User Management</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">My Users</a>
                                 </li>
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'archivedcases'])?>">Archived Cases</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'archivedcases'])?>">My Archived</a>
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">My Collection</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">My Favorites</a>
                                 </li>
 
                             </ul>

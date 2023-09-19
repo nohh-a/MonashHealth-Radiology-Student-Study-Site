@@ -32,6 +32,12 @@
             font-size: 15px;
         }
 
+        .side-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
     </style>
 </head>
 
@@ -64,6 +70,28 @@
                     </figure>
                 </div>
                 <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 side-btn">
+                            <?=
+                            $this->Form->postLink(__('Favorite'),
+                                ['action' => 'savecaseaction', $moncase->id],
+                                ['class' => 'theme-btn style-two',
+                                    'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)])
+                            ?>
+                        </div>
+
+                        <br><br>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 side-btn">
+                            <?php if ($author != $caseAuthor): ?>
+                                <!-- Don't show button when $author is not equal to $caseAuthor -->
+                            <?php else: ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
+                            <?php endif; ?>
+
+                        </div>
+                    </div>
+
 
                     <section class="accordion-box" style="padding: 0px 0px 0px 0px;">
                         <div class="accordion block active-block">
@@ -72,15 +100,23 @@
                             </div>
                             <div class="acc-content current">
                                 <ul class="content">
-                                    <li><h6>Accession No: </h6> <?= !empty($moncase->accession_no) ? h($moncase->accession_no) : 'N/A' ?></li>
-                                    <li><h6>Specialty: </h6> <?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></li>
-                                    <li><h6>Seen By: </h6> <?= !empty($moncase->seen_by) ? h($moncase->seen_by) : 'N/A' ?></li>
-                                    <li><h6>Tags: </h6> <?= !empty($moncase->tags) ? h($moncase->tags) : 'N/A' ?></li>
-                                    <li><h6>Date: </h6> <?= !empty($moncase->date) ? h($moncase->date) : 'N/A' ?></li>
-                                    <li><h6>Marks: </h6> <?= !empty($moncase->max_marks) ? h($moncase->max_marks) : 'N/A' ?></li>
-                                    <li><h6>Case Rating:</h6><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></li>
-                                    <li><h6>Author: </h6> <?= !empty($moncase->author) ? h($moncase->author) : 'N/A' ?></li>
-                                    <li><h6>Contributor: </h6> <?= !empty($moncase->contributor) ? h($moncase->contributor) : 'N/A' ?></li>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <li><h6>Accession No: </h6> <?= !empty($moncase->accession_no) ? h($moncase->accession_no) : 'N/A' ?></li>
+                                            <li><h6>Specialty: </h6> <?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></li>
+                                            <li><h6>Seen By: </h6> <?= !empty($moncase->seen_by) ? h($moncase->seen_by) : 'N/A' ?></li>
+                                            <li><h6>Tags: </h6> <?= !empty($moncase->tags) ? h($moncase->tags) : 'N/A' ?></li>
+                                            <li><h6>Date: </h6> <?= !empty($moncase->date) ? h($moncase->date) : 'N/A' ?></li>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <li><h6>Marks: </h6> <?= !empty($moncase->max_marks) ? h($moncase->max_marks) : 'N/A' ?></li>
+                                            <li><h6>Case Rating:</h6><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></li>
+                                            <li><h6>Author: </h6> <?= !empty($moncase->author) ? h($moncase->author) : 'N/A' ?></li>
+                                            <li><h6>Contributor: </h6> <?= !empty($moncase->contributor) ? h($moncase->contributor) : 'N/A' ?></li>
+                                        </div>
+                                    </div>
+
 
                                 </ul>
                             </div>
