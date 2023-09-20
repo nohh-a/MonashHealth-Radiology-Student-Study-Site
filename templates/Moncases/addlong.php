@@ -85,7 +85,7 @@
                             </div>
                         </div>
                     </div>
-                    <br><br>
+                    <br>
                     <div class="row">
                         <!--must enter in-->
                         <div class="accordion" id="accordionPanelsStayOpenExample">
