@@ -45,14 +45,14 @@
                     <div style="text-align: center;">
                         <div style="text-align: center;">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <?=$this->Form->control('case_type', [
                                         'class' => 'form-control',
-                                        'default' => 'MEDIUM',
+                                        'default' => 'OSCER',
                                         'readonly' => true,
                                     ])?>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <?=$this->Form->control('author', [
                                         'class' => 'form-control',
                                         'required' => true,
@@ -62,10 +62,7 @@
                                         'maxlength' => 50,
                                     ])?>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <?=$this->Form->control('contributor', [
                                         'class' => 'form-control',
                                         'required' => true,
@@ -75,7 +72,7 @@
                                         'maxlength' => 50,
                                     ])?>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <?= $this->Form->control('date', [
                                         'class' => 'form-control',
                                         'type' => 'date',
@@ -101,27 +98,28 @@
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body">
 
-
-
-                                        <?= $this->Form->control('accession_no', [
-                                            'class' => 'form-control',
-                                            'type' => 'text',
-                                            'maxlength' => 30,
-                                            'required' => true,
-                                            'label' => ['class' => 'required-label', 'text' => 'Accession No'],
-                                        ])
-                                        ?>
-
-
-                                        <?= $this->Form->control('diagnosis', [
-                                            'class' => 'form-control',
-                                            'maxlength' => 100,
-                                            'type' => 'text',
-                                            'required' => true,
-                                            'label' => ['class' => 'required-label', 'text' => 'Diagnosis'],
-                                        ])
-                                        ?>
-
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <?= $this->Form->control('accession_no', [
+                                                    'class' => 'form-control',
+                                                    'type' => 'text',
+                                                    'maxlength' => 30,
+                                                    'required' => true,
+                                                    'label' => ['class' => 'required-label', 'text' => 'Accession No'],
+                                                ])
+                                                ?>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <?= $this->Form->control('diagnosis', [
+                                                    'class' => 'form-control',
+                                                    'maxlength' => 100,
+                                                    'type' => 'text',
+                                                    'required' => true,
+                                                    'label' => ['class' => 'required-label', 'text' => 'Diagnosis'],
+                                                ])
+                                                ?>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -133,74 +131,97 @@
                                     </h2>
                                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            <?= $this->Form->control('image_url', [
-                                                'type' => 'file',
-                                                'label' => 'Image Upload (PNG, JPEG, JPG)',
-                                                'class' => 'form-control'
-                                            ]); ?>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <?= $this->Form->control('image_url', [
+                                                        'type' => 'file',
+                                                        'label' => 'Image Upload (PNG, JPEG, JPG)',
+                                                        'class' => 'form-control'
+                                                    ]); ?>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <?= $this->Form->label('imaging', 'Imaging') ?>
+                                                    <?= $this->Form->select('imaging', [
+                                                        'X-ray' => 'X-ray',
+                                                        'Ultrasound' => 'Ultrasound',
+                                                        'CT' => 'CT',
+                                                        'MRI' => 'MRI',
+                                                        'Nuclear Medicine' => 'Nuclear Medicine',
+                                                        'Fluoroscopy' => 'Fluoroscopy',
+                                                        'Mammography' => 'Mammography',
+                                                        'Other' => 'Other',
+                                                    ], [
+                                                        'class' => 'form-control',
+                                                        'empty' => 'Select Imaging',
+                                                    ]) ?>
+                                                </div>
+                                            </div>
 
-                                            <?= $this->Form->label('rating', 'Rating') ?>
-                                            <?= $this->Form->select('rating', [
-                                                '1' => 1,
-                                                '2' => 2,
-                                                '3' => 3,
-                                                '4' => 4,
-                                                '5' => 5,
-                                            ], [
-                                                'class' => 'form-control',
-                                                'empty' => 'Select Rating',
-                                            ]) ?>
 
-                                            <?= $this->Form->label('speciality', 'Speciality') ?>
-                                            <?= $this->Form->select('speciality', [
-                                                'ABDOMINAL' => 'ABDOMINAL',
-                                                'CARDIOTHORACIC' => 'CARDIOTHORACIC',
-                                                'NEURO' => 'NEURO',
-                                                'HEAD AND NECK' => 'HEAD AND NECK',
-                                                'MSK' => 'MSK',
-                                                'BREAST' => 'BREAST',
-                                                'GYN' => 'GYN',
-                                                'O+G' => 'O+G',
-                                                'PEADS' => 'PEADS',
-                                                'VASCULAR' => 'VASCULAR',
-                                                'INTERVENTION' => 'INTERVENTION',
-                                                // Abdominal, Cardiothoracic, Neuro, Head and Neck, MSK, Breast, Gyn, O+G, Paeds, Vascular, Intervention.
-                                            ], [
-                                                'class' => 'form-control',
-                                                'empty' => 'Select Specialty',
-                                            ]) ?>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <?= $this->Form->label('speciality', 'Speciality') ?>
+                                                    <?= $this->Form->select('speciality', [
+                                                        'ABDOMINAL' => 'ABDOMINAL',
+                                                        'CARDIOTHORACIC' => 'CARDIOTHORACIC',
+                                                        'NEURO' => 'NEURO',
+                                                        'HEAD AND NECK' => 'HEAD AND NECK',
+                                                        'MSK' => 'MSK',
+                                                        'BREAST' => 'BREAST',
+                                                        'GYN' => 'GYN',
+                                                        'O+G' => 'O+G',
+                                                        'PEADS' => 'PEADS',
+                                                        'VASCULAR' => 'VASCULAR',
+                                                        'INTERVENTION' => 'INTERVENTION',
+                                                        // Abdominal, Cardiothoracic, Neuro, Head and Neck, MSK, Breast, Gyn, O+G, Paeds, Vascular, Intervention.
+                                                    ], [
+                                                        'class' => 'form-control',
+                                                        'empty' => 'Select Specialty',
+                                                    ]) ?>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <?= $this->Form->label('rating', 'Rating') ?>
+                                                    <?= $this->Form->select('rating', [
+                                                        '1' => 1,
+                                                        '2' => 2,
+                                                        '3' => 3,
+                                                        '4' => 4,
+                                                        '5' => 5,
+                                                    ], [
+                                                        'class' => 'form-control',
+                                                        'empty' => 'Select Rating',
+                                                    ]) ?>
+                                                </div>
+                                            </div>
 
-                                            <?= $this->Form->label('imaging', 'Imaging') ?>
-                                            <?= $this->Form->select('imaging', [
-                                                'X-ray' => 'X-ray',
-                                                'Ultrasound' => 'Ultrasound',
-                                                'CT' => 'CT',
-                                                'MRI' => 'MRI',
-                                                'Nuclear Medicine' => 'Nuclear Medicine',
-                                                'Fluoroscopy' => 'Fluoroscopy',
-                                                'Mammography' => 'Mammography',
-                                                'Other' => 'Other',
-                                            ], [
-                                                'class' => 'form-control',
-                                                'empty' => 'Select Imaging',
-                                            ]) ?>
 
-                                            <?= $this->Form->control('history', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <?= $this->Form->control('history', [
+                                                        'class' => 'form-control',
+                                                        'maxlength' => 236,
+                                                    ])
+                                                    ?>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <?= $this->Form->control('findings', [
+                                                        'class' => 'form-control',
+                                                        'maxlength' => 236,
+                                                    ])
+                                                    ?>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <?= $this->Form->control('teaching_points', [
+                                                        'class' => 'form-control',
+                                                        'maxlength' => 236,
+                                                    ]); ?>
+                                                </div>
+                                            </div>
 
-                                            <?= $this->Form->control('findings', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ])
-                                            ?>
 
-                                            <?= $this->Form->control('teaching_points', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-                                            ]); ?>
+
+
+
 
                                             <?= $this->Form->control('max_marks', [
                                                 'class' => 'form-control',
