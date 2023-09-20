@@ -171,9 +171,19 @@
                                                 'empty' => 'Select Specialty',
                                             ]) ?>
 
-                                            <?= $this->Form->control('imaging', [
+                                            <?= $this->Form->label('imaging', 'Imaging') ?>
+                                            <?= $this->Form->select('imaging', [
+                                                'X-ray' => 'X-ray',
+                                                'Ultrasound' => 'Ultrasound',
+                                                'CT' => 'CT',
+                                                'MRI' => 'MRI',
+                                                'Nuclear Medicine' => 'Nuclear Medicine',
+                                                'Fluoroscopy' => 'Fluoroscopy',
+                                                'Mammography' => 'Mammography',
+                                                'Other' => 'Other',
+                                            ], [
                                                 'class' => 'form-control',
-                                                'maxlength' => 236,
+                                                'empty' => 'Select Imaging',
                                             ]) ?>
 
                                             <?= $this->Form->control('history', [
