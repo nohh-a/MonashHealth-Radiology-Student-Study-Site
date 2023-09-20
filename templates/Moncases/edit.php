@@ -44,7 +44,7 @@
                     <div class="card-body">
                         <div style="text-align: center;">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <?=$this->Form->control('case_type', [
                                         'label' => 'Case Type',
                                         'class' => 'form-control',
@@ -52,7 +52,7 @@
                                         'disabled' => true,
                                     ])?>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <?=$this->Form->control('author', [
                                         'class' => 'form-control',
                                         'required' => true,
@@ -63,10 +63,8 @@
                                         'maxlength' => 50,
                                     ])?>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <?=$this->Form->control('contributor', [
                                         'class' => 'form-control',
                                         'required' => true,
@@ -77,7 +75,7 @@
                                         'maxlength' => 50,
                                     ])?>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <?= $this->Form->control('date', [
                                         'class' => 'form-control',
                                         'type' => 'date',
@@ -90,7 +88,7 @@
                             </div>
 
                         </div>
-                        <br><br>
+                        <br>
                         <div class="row">
                             <!--must enter in-->
                             <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -104,52 +102,98 @@
                                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                         <div class="accordion-body">
                                             <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
-                                            <div class="row">
-                                                <?= $this->Html->image('/img/' . $moncase->image_url, ['width' => '100px']); ?>
 
-                                                <?= $this->Form->control('image_url', [
-                                                    'type' => 'file',
-                                                    'label' => 'Image Upload (PNG, JPEG, JPG)',
-                                                    'class' => 'form-control'
-                                                ]); ?>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <?= $this->Form->control('accession_no', [
+                                                        'class' => 'form-control',
+                                                        'type' => 'text',
+                                                        'maxlength' => 30,
+                                                        'required' => true,
+                                                        'label' => ['class' => 'required-label', 'text' => 'Accession No'],
+                                                    ])
+                                                    ?>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <?= $this->Form->control('diagnosis', [
+                                                        'class' => 'form-control',
+                                                        'maxlength' => 100,
+                                                        'type' => 'text',
+                                                        'required' => true,
+                                                        'label' => ['class' => 'required-label', 'text' => 'Diagnosis'],
+                                                    ])
+                                                    ?>
+                                                </div>
                                             </div>
 
-                                            <?= $this->Form->control('accession_no', [
-                                                'class' => 'form-control',
-                                                'type' => 'text',
-                                                'maxlength' => 30,
-                                                'required' => true,
-                                                'label' => ['class' => 'required-label', 'text' => 'Accession No'],
-                                            ]); ?>
+                                            <div class="row">
+                                                <?= $this->Html->image('/img/' . $moncase->image_url, ['width' => '100px']); ?>
+                                            </div>
 
-                                            <?= $this->Form->control('diagnosis', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 100,
-                                                'type' => 'text',
-                                                'required' => true,
-                                                'label' => ['class' => 'required-label', 'text' => 'Diagnosis'],
-                                            ])
-                                            ?>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <?= $this->Form->control('image_url', [
+                                                        'type' => 'file',
+                                                        'label' => 'Image Upload (PNG, JPEG, JPG)',
+                                                        'class' => 'form-control'
+                                                    ]); ?>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <?= $this->Form->label('imaging', 'Imaging') ?>
+                                                    <?= $this->Form->select('imaging', [
+                                                        'X-ray' => 'X-ray',
+                                                        'Ultrasound' => 'Ultrasound',
+                                                        'CT' => 'CT',
+                                                        'MRI' => 'MRI',
+                                                        'Nuclear Medicine' => 'Nuclear Medicine',
+                                                        'Fluoroscopy' => 'Fluoroscopy',
+                                                        'Mammography' => 'Mammography',
+                                                        'Other' => 'Other',
+                                                    ], [
+                                                        'class' => 'form-control',
+                                                        'empty' => 'Select Imaging',
+                                                    ]) ?>
+                                                </div>
+                                            </div>
 
 
-                                            <?= $this->Form->label('speciality', 'Speciality') ?>
-                                            <?= $this->Form->select('speciality', [
-                                                'ABDOMINAL' => 'ABDOMINAL',
-                                                'CARDIOTHORACIC' => 'CARDIOTHORACIC',
-                                                'NEURO' => 'NEURO',
-                                                'HEAD AND NECK' => 'HEAD AND NECK',
-                                                'MSK' => 'MSK',
-                                                'BREAST' => 'BREAST',
-                                                'GYN' => 'GYN',
-                                                'O+G' => 'O+G',
-                                                'PEADS' => 'PEADS',
-                                                'VASCULAR' => 'VASCULAR',
-                                                'INTERVENTION' => 'INTERVENTION',
-                                                // Abdominal, Cardiothoracic, Neuro, Head and Neck, MSK, Breast, Gyn, O+G, Paeds, Vascular, Intervention.
-                                            ], [
-                                                'class' => 'form-control',
-                                                'empty' => 'Select Speciality',
-                                            ]) ?>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <?= $this->Form->label('speciality', 'Speciality') ?>
+                                                    <?= $this->Form->select('speciality', [
+                                                        'ABDOMINAL' => 'ABDOMINAL',
+                                                        'CARDIOTHORACIC' => 'CARDIOTHORACIC',
+                                                        'NEURO' => 'NEURO',
+                                                        'HEAD AND NECK' => 'HEAD AND NECK',
+                                                        'MSK' => 'MSK',
+                                                        'BREAST' => 'BREAST',
+                                                        'GYN' => 'GYN',
+                                                        'O+G' => 'O+G',
+                                                        'PEADS' => 'PEADS',
+                                                        'VASCULAR' => 'VASCULAR',
+                                                        'INTERVENTION' => 'INTERVENTION',
+                                                        // Abdominal, Cardiothoracic, Neuro, Head and Neck, MSK, Breast, Gyn, O+G, Paeds, Vascular, Intervention.
+                                                    ], [
+                                                        'class' => 'form-control',
+                                                        'empty' => 'Select Specialty',
+                                                    ]) ?>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <?= $this->Form->label('rating', 'Rating') ?>
+                                                    <?= $this->Form->select('rating', [
+                                                        '1' => 1,
+                                                        '2' => 2,
+                                                        '3' => 3,
+                                                        '4' => 4,
+                                                        '5' => 5,
+                                                    ], [
+                                                        'class' => 'form-control',
+                                                        'empty' => 'Select Rating',
+                                                    ]) ?>
+                                                </div>
+                                            </div>
+
+
 
                                             <?= $this->Form->control('differential_diagnosis', [
                                                 'class' => 'form-control',
@@ -158,23 +202,6 @@
                                             ])
                                             ?>
 
-                                            <?= $this->Form->control('imaging', [
-                                                'class' => 'form-control',
-                                                'maxlength' => 236,
-
-                                            ]); ?>
-
-                                            <?= $this->Form->label('rating', 'Rating') ?>
-                                            <?= $this->Form->select('rating', [
-                                                '1' => 1,
-                                                '2' => 2,
-                                                '3' => 3,
-                                                '4' => 4,
-                                                '5' => 5,
-                                            ], [
-                                                'class' => 'form-control',
-                                                'empty' => 'Select Rating',
-                                            ]) ?>
 
                                             <?= $this->Form->control('max_marks', [
                                                 'class' => 'form-control',
@@ -195,26 +222,30 @@
                                         </h2>
                                         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                                <?= $this->Form->control('history', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-                                                ])
-                                                ?>
 
-                                                <?= $this->Form->control('findings', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <?= $this->Form->control('history', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <?= $this->Form->control('findings', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <?= $this->Form->control('teaching_points', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ]); ?>
+                                                    </div>
+                                                </div>
 
-                                                ])
-                                                ?>
-
-
-                                                <?= $this->Form->control('teaching_points', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-
-                                                ])
-                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -227,67 +258,100 @@
                                         </h2>
                                         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                                <?= $this->Form->control('further_investigation', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-                                                ])
-                                                ?>
 
-                                                <?= $this->Form->control('management', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-                                                ])
-                                                ?>
-
-                                                <?= $this->Form->control('anatomy', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-                                                ])
-                                                ?>
-
-                                                <?= $this->Form->control('pathology', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-                                                ])
-                                                ?>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <?= $this->Form->control('further_investigation', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <?= $this->Form->control('management', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                </div>
 
 
-                                                <?= $this->Form->control('intepretation', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-                                                ])
-                                                ?>
 
-                                                <?= $this->Form->control('tags', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-                                                ])
-                                                ?>
-
-                                                <?= $this->Form->control('observation', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-                                                ])
-                                                ?>
-
-                                                <?= $this->Form->control('safety', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-                                                ])
-                                                ?>
-
-                                                <?= $this->Form->control('intrinsic_roles', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-                                                ])
-                                                ?>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <?= $this->Form->control('anatomy', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <?= $this->Form->control('pathology', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                </div>
 
 
-                                                <?= $this->Form->control('seen_by', [
-                                                    'class' => 'form-control',
-                                                    'maxlength' => 236,
-                                                ])
-                                                ?>
+
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <?= $this->Form->control('intepretation', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <?= $this->Form->control('tags', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <?= $this->Form->control('observation', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <?= $this->Form->control('safety', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <?= $this->Form->control('intrinsic_roles', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <?= $this->Form->control('seen_by', [
+                                                            'class' => 'form-control',
+                                                            'maxlength' => 236,
+                                                        ])
+                                                        ?>
+                                                    </div>
+                                                </div>
+
+
 
                                             </div>
                                         </div>
