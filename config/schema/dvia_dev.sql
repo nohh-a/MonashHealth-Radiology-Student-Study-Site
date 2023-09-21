@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 21, 2023 at 06:30 AM
+-- Generation Time: Sep 21, 2023 at 11:18 AM
 -- Server version: 11.1.2-MariaDB
 -- PHP Version: 8.2.10
 
@@ -56,12 +56,12 @@ CREATE TABLE `moncases` (
   `accession_no` text DEFAULT NULL,
   `case_type` enum('OSCER','LONG','MEDIUM','SHORT','GENERAL') DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `imaging` enum('X-ray','Ultrasound','CT','MRI','Nuclear Medicine','Fluoroscopy','Mammography','Other') DEFAULT NULL,
+  `imaging` enum('X-ray','Ultrasound','CT','MRI','Nuclear Medicine','Fluoroscopy','Mammography','Other','') DEFAULT NULL,
   `diagnosis` text DEFAULT NULL,
   `differential_diagnosis` text DEFAULT NULL,
   `findings` text DEFAULT NULL,
   `teaching_points` text DEFAULT NULL,
-  `specialty` enum('ABDOMINAL','CARDIOTHORACIC','NEURO','HEAD AND NECK','MSK','BREAST','GYN','O+G','PEADS','VASCULAR','INTERVENTION') DEFAULT NULL,
+  `specialty` enum('ABDOMINAL','CARDIOTHORACIC','NEURO','HEAD AND NECK','MSK','BREAST','GYN','O+G','PEADS','VASCULAR','INTERVENTION','') DEFAULT NULL,
   `history` text DEFAULT NULL,
   `max_marks` int(2) DEFAULT NULL,
   `observation` text DEFAULT NULL,
@@ -175,7 +175,7 @@ ALTER TABLE `collections`
 -- AUTO_INCREMENT for table `moncases`
 --
 ALTER TABLE `moncases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `saves`

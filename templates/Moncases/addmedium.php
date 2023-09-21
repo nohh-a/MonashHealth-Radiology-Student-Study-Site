@@ -50,6 +50,7 @@
                                         'class' => 'form-control',
                                         'default' => 'OSCER',
                                         'readonly' => true,
+                                        'disabled' => true,
                                     ])?>
                                 </div>
                                 <div class="col-md-3">
@@ -60,6 +61,7 @@
                                         'readonly' => true,
                                         'type' => 'text',
                                         'maxlength' => 50,
+                                        'disabled' => true,
                                     ])?>
                                 </div>
                                 <div class="col-md-3">
@@ -70,6 +72,7 @@
                                         'readonly' => true,
                                         'type' => 'text',
                                         'maxlength' => 50,
+                                        'disabled' => true,
                                     ])?>
                                 </div>
                                 <div class="col-md-3">
@@ -79,6 +82,7 @@
                                         'value' => date('d-m-Y'),
                                         'required' => true,
                                         'readonly' => true,
+                                        'disabled' => true,
                                     ]) ?>
                                 </div>
                             </div>

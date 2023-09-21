@@ -81,8 +81,7 @@
                                         'type' => 'date',
                                         'value' => date('d-m-Y'),
                                         'required' => true,
-                                        'readonly' => true,
-                                        'disabled' => true,
+
                                     ]) ?>
                                 </div>
                             </div>
