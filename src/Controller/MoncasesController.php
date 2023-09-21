@@ -493,7 +493,10 @@ class MoncasesController extends AppController
             // Add a condition to filter archive_status
             ->where(['archive_status' => 'yes']);
 
+
         $this->set(compact('moncases','author','username'));
+        $this->viewBuilder()->setLayout('admin');
+
 
     }
 
@@ -628,6 +631,8 @@ class MoncasesController extends AppController
 
         // Set view variables
         $this->set(compact('moncases', 'saves','author','username'));
+        $this->viewBuilder()->setLayout('admin');
+
     }
 
     /**

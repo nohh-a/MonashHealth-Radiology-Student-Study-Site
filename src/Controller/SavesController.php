@@ -24,6 +24,7 @@ class SavesController extends AppController
         $saves = $this->paginate($this->Saves);
 
         $this->set(compact('saves'));
+
     }
 
     /**
@@ -40,6 +41,7 @@ class SavesController extends AppController
         ]);
 
         $this->set(compact('save'));
+
     }
 
     /**

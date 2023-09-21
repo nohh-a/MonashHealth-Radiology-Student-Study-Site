@@ -133,7 +133,6 @@
 
 </head>
 
-
 <!-- page wrapper -->
 <body class="boxed_wrapper ltr">
 
@@ -163,7 +162,7 @@
                                     <a href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">My Users</a>
                                 </li>
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'archivedcases'])?>">My Archived</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'archivedcases'])?>">Archived Cases</a>
                                 </li>
 
                                 <li>
@@ -224,17 +223,15 @@
 
 
 
-
-<!-- cta-section -->
-<section class="cta-section bg-color-2">
-    <div class="pattern-box">
-        <div class="pattern-1" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/shape/pattern-7.png') ?> "></div>
-    </div>
-</section>
-<!-- cta-section end -->
-
 <!-- main-footer -->
 <footer class="main-footer">
+    <!-- cta-section -->
+    <section class="cta-section bg-color-2">
+        <div class="pattern-box">
+            <div class="pattern-1" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/shape/pattern-7.png') ?> "></div>
+        </div>
+    </section>
+    <!-- cta-section end -->
     <div class="auto-container">
         <div class="footer-bottom clearfix">
             <div class="copyright pull-left">
@@ -248,7 +245,6 @@
     </div>
 </footer>
 <!-- main-footer end -->
-
 
 
 <!--Scroll to top-->
@@ -276,7 +272,6 @@
 <?= $this->Html->script(['list/tilt.jquery.js']) ?>
 
 <?= $this->Html->script(['list/script.js']) ?>
-
 
 </body><!-- End of .page_wrapper -->
 </html>

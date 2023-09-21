@@ -111,11 +111,14 @@ body {
 }
 
 .boxed_wrapper{
-  position: relative;
-  overflow-x: hidden;
-  margin: 0 auto;
-  width: 100%;
-  min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+    margin: 0 auto;
+    width: 100%;
+    min-width: 300px;
 }
 
 
@@ -2513,8 +2516,9 @@ div#mCSB_1_container{
 /** main-footer **/
 
 .main-footer{
-  position: relative;
-  background: #fff;
+    position: relative;
+    background: #fff;
+    margin-top:auto;
 }
 
 .main-footer .footer-top{

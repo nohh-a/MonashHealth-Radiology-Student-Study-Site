@@ -55,6 +55,11 @@
             padding-bottom: 30px;
         }
 
+        .button a {
+            color: #6377ee !important;
+
+        }
+
 
     </style>
 

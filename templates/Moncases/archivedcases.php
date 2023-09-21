@@ -14,9 +14,10 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 <style>
     /* Style the table header */
     table th {
-        background-color: #466bd7;
+        background-color: #576ec2;
         font-weight: bold;
         text-align: center;
+        color: #ececf8;
     }
 
     /* Style the table rows */
@@ -35,26 +36,48 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
     .actions {
         white-space: nowrap;
     }
+
+    .body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* mobile */
+    @media (max-width: 768px) {
+
+        table th, table td {
+            font-size: 14px;
+
+        }
+    }
+
+    .container-fluid {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+
+
 </style>
 
-<div class="container">
-    <div class="row align-items-center d-flex justify-content-center" data-animate="fadeInUp">
-        <div class="heading-text heading-section text-center mt-5">
-            <h2 style="color: black; font-weight: bold;">My Archived</h2>
-            <p> </p>
+<section class="page-title bg-color-1 text-center">
+    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
+    <div class="auto-container">
+        <div class="content-box">
+            <h1>Archived Cases</h1>
+            <ul class="bread-crumb clearfix">
+                <li>Case List</li>
+                <li>Archived Cases</li>
+            </ul>
         </div>
     </div>
-    <br>
-    <?= $this->Flash->render() ?>
+</section>
+
+<?= $this->Flash->render() ?>
+
+<div class="container">
     <div class="container-fluid">
         <div class="moncases index content">
-
-            <!-- Page Heading -->
             <div>
-                <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>">
-                    <?= $this->Html->link(__('Home'), ['action' => 'userlist'], ['class' => 'btn btn-primary']) ?>
-                </a>
-
                 <?=
                 $this->Form->postLink(__('Delete All'), [
                     'action' => 'deleteall'], [
@@ -99,7 +122,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                                         'action' => 'view', $moncases->id
                                     ],
                                     [
-                                        'class' => 'btn btn-primary'
+                                        'class' => 'btn btn-outline-primary'
                                     ]
                                 )
                                 ?>
@@ -110,7 +133,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                                         'action' => 'restore', $moncases->id
                                     ],
                                     [
-                                        'class' => 'btn btn-warning',
+                                        'class' => 'btn btn-outline-warning',
                                         'confirm' => __(
                                             'Are you sure you want to restore # {0}?', $moncases->diagnosis
                                         )
@@ -124,7 +147,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                                         'action' => 'delete', $moncases->id
                                     ],
                                     [
-                                        'class' => 'btn btn-danger',
+                                        'class' => 'btn btn-outline-danger',
                                         'confirm' => __(
                                             'Are you sure you want to delete # {0}?', $moncases->diagnosis
                                         )
@@ -137,15 +160,16 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                     </tbody>
                 </table>
             </div>
-            <script>
-                $(document).ready(function() {
-                    $('#dataTable').DataTable();
-                });
-
-            </script>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+
+</script>
 
 
 
