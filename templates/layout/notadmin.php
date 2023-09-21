@@ -225,7 +225,7 @@
 <!-- main-footer -->
 <footer class="main-footer">
     <!-- cta-section -->
-    <section class="cta-section bg-color-2">
+    <section class="cta-section bg-color-2" style="margin-top:40px;">
         <div class="pattern-box">
             <div class="pattern-1" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/shape/pattern-7.png') ?> "></div>
         </div>
