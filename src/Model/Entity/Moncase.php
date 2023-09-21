@@ -18,7 +18,7 @@ use Cake\ORM\Entity;
  * @property string|null $differential_diagnosis
  * @property string|null $findings
  * @property string|null $teaching_points
- * @property string|null $speciality
+ * @property string|null $specialty
  * @property string|null $history
  * @property int|null $max_marks
  * @property string|null $observation
@@ -59,7 +59,7 @@ class Moncase extends Entity
         'differential_diagnosis' => true,
         'findings' => true,
         'teaching_points' => true,
-        'speciality' => true,
+        'specialty' => true,
         'history' => true,
         'max_marks' => true,
         'observation' => true,

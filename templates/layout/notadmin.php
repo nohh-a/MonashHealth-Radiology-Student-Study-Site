@@ -161,7 +161,7 @@
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">My Favorites</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcasesNotadmin'])?>">My Favorites</a>
                                 </li>
 
 <!--                                <li>-->

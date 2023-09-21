@@ -163,8 +163,8 @@
 
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <?= $this->Form->label('speciality', 'Speciality') ?>
-                                                    <?= $this->Form->select('speciality', [
+                                                    <?= $this->Form->label('specialty', 'Specialty') ?>
+                                                    <?= $this->Form->select('specialty', [
                                                         'ABDOMINAL' => 'ABDOMINAL',
                                                         'CARDIOTHORACIC' => 'CARDIOTHORACIC',
                                                         'NEURO' => 'NEURO',

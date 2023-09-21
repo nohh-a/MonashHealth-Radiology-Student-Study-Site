@@ -329,7 +329,7 @@ class MoncasesController extends AppController
         $caseTypeFilter = $this->request->getQuery('case_type');
         $contributorFilter = $this->request->getQuery('contributor');
         $ratingFilter = $this->request->getQuery('rating');
-        $specialtyFilter = $this->request->getQuery('speciality');
+        $specialtyFilter = $this->request->getQuery('specialty');
 
 
         if ($caseTypeFilter !== '') {
@@ -345,7 +345,7 @@ class MoncasesController extends AppController
             }
         }
         if ($specialtyFilter !== '') {
-            $filter[] = ['speciality LIKE' => '%' . $specialtyFilter . '%'];
+            $filter[] = ['specialty LIKE' => '%' . $specialtyFilter . '%'];
         }
         if ($filter) {
             $moncases->where(['AND' => $filter]);
@@ -421,7 +421,7 @@ class MoncasesController extends AppController
         $caseTypeFilter = $this->request->getQuery('case_type');
         $contributorFilter = $this->request->getQuery('contributor');
         $ratingFilter = $this->request->getQuery('rating');
-        $specialtyFilter = $this->request->getQuery('speciality');
+        $specialtyFilter = $this->request->getQuery('specialty');
 
 
         if ($caseTypeFilter !== '') {
@@ -437,7 +437,7 @@ class MoncasesController extends AppController
             }
         }
         if ($specialtyFilter !== '') {
-            $filter[] = ['speciality LIKE' => '%' . $specialtyFilter . '%'];
+            $filter[] = ['specialty LIKE' => '%' . $specialtyFilter . '%'];
         }
         if ($filter) {
             $moncases->where(['AND' => $filter]);
@@ -583,7 +583,7 @@ class MoncasesController extends AppController
     }
 
     /**
-     * Saved cases page method
+     * Saved cases page method for admin users
      *
      * @return \Cake\Http\Response|null|void Redirects to archivedcases page.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -597,6 +597,12 @@ class MoncasesController extends AppController
 
         // Get the current user's ID
         $authorId = $this->getRequest()->getSession()->read('Auth.id');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role !== 'ADMIN') {
+            return $this->redirect(['controller' => 'moncases', 'action' => 'savedcasesNotadmin']);
+        }
+
 
         // Get the model instance of the Saves table
         $saveTable = $this->fetchTable('Saves');
@@ -632,6 +638,63 @@ class MoncasesController extends AppController
         // Set view variables
         $this->set(compact('moncases', 'saves','author','username'));
         $this->viewBuilder()->setLayout('admin');
+
+    }
+
+    /**
+     * Saved cases page method for admin users
+     *
+     * @return \Cake\Http\Response|null|void Redirects to archivedcases page.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function savedcasesNotadmin() {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        // Get the current user's ID
+        $authorId = $this->getRequest()->getSession()->read('Auth.id');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            return $this->redirect(['controller' => 'moncases', 'action' => 'savedcases']);
+        }
+
+        // Get the model instance of the Saves table
+        $saveTable = $this->fetchTable('Saves');
+
+        // Find the case ID of all saved records matching the user ID from the Saves table
+        $saves = $saveTable->find()
+            ->where([
+                'user_id' => $authorId
+            ])
+            ->toArray();
+
+        // Extract case ID from saved record and store in an array
+        $caseIds = [];
+        foreach ($saves as $save) {
+            $caseIds[] = $save->case_id;
+        }
+
+        // Initialize Moncases query
+        $moncasesQuery = $this->Moncases->find();
+
+        // Execute query only if case ID array is not empty
+        if (!empty($caseIds)) {
+            // Retrieve the corresponding cases from
+            // the Moncases table using an array of case IDs
+            $moncasesQuery->where([
+                'id IN' => $caseIds
+            ]);
+        }
+
+        // Get query results
+        $moncases = $moncasesQuery->toArray();
+
+        // Set view variables
+        $this->set(compact('moncases', 'saves','author','username'));
 
     }
 

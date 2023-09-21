@@ -47,7 +47,7 @@
                             <th><?= __('Differential Diagnosis') ?></th>
                             <th><?= __('Findings') ?></th>
                             <th><?= __('Teaching Points') ?></th>
-                            <th><?= __('Speciality') ?></th>
+                            <th><?= __('specialty') ?></th>
                             <th><?= __('History') ?></th>
                             <th><?= __('Max Marks') ?></th>
                             <th><?= __('Observation') ?></th>
@@ -78,7 +78,7 @@
                             <td><?= h($moncases->differential_diagnosis) ?></td>
                             <td><?= h($moncases->findings) ?></td>
                             <td><?= h($moncases->teaching_points) ?></td>
-                            <td><?= h($moncases->speciality) ?></td>
+                            <td><?= h($moncases->specialty) ?></td>
                             <td><?= h($moncases->history) ?></td>
                             <td><?= h($moncases->max_marks) ?></td>
                             <td><?= h($moncases->observation) ?></td>

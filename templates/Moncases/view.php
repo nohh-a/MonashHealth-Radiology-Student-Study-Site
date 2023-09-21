@@ -101,7 +101,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <li><h6>Accession No: </h6> <?= !empty($moncase->accession_no) ? h($moncase->accession_no) : 'N/A' ?></li>
-                                    <li><h6>Specialty: </h6> <?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></li>
+                                    <li><h6>Specialty: </h6> <?= !empty($moncase->specialty) ? h($moncase->specialty) : 'N/A' ?></li>
                                     <li><h6>Seen By: </h6> <?= !empty($moncase->seen_by) ? h($moncase->seen_by) : 'N/A' ?></li>
                                     <li><h6>Tags: </h6> <?= !empty($moncase->tags) ? h($moncase->tags) : 'N/A' ?></li>
                                     <li><h6>Date: </h6> <?= !empty($moncase->date) ? h($moncase->date) : 'N/A' ?></li>

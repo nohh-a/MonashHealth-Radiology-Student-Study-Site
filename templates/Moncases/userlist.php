@@ -115,6 +115,7 @@
                 <div class="col-lg-1 col-md-1 col-sm-1 col-1">
                     <h3><br></h3>
                     <button class="theme-btn style-two"><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'addnewcase']) ?>">New</a></button>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'moncases', 'action' => 'addnewcase'], ['class' => 'theme-btn style-two']) ?>
                 </div>
 
                 <div class = "col-lg-2 col-md-2 col-sm-2 col-2">
@@ -219,7 +220,7 @@
                                                             </div>
                                                             <div class="acc-content current">
                                                                 <div class="content">
-                                                                    <p> <?= $this->Form->select('speciality', [
+                                                                    <p> <?= $this->Form->select('specialty', [
                                                                             'ABDOMINAL' => 'ABDOMINAL',
                                                                             'CARDIOTHORACIC' => 'CARDIOTHORACIC',
                                                                             'NEURO' => 'NEURO',
@@ -233,7 +234,7 @@
                                                                             'INTERVENTION' => 'INTERVENTION',
                                                                         ], [
                                                                             'class' => 'form-select',
-                                                                            'default' => $this->request->getQuery('speciality'),
+                                                                            'default' => $this->request->getQuery('specialty'),
                                                                             'empty' => 'Choose Specialty',
                                                                         ]); ?>
                                                                     </p>
@@ -296,7 +297,7 @@
                                                             <div class="carousel-item active">
                                                                 <div class="carousel-text">
                                                                     <h5>Specialty</h5>
-                                                                    <p><?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></p>
+                                                                    <p><?= !empty($moncase->specialty) ? h($moncase->specialty) : 'N/A' ?></p>
                                                                 </div>
                                                             </div>
                                                             <div class="carousel-item">
@@ -378,7 +379,7 @@
                                     <td> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
                                     <td><?= h($moncase->case_type) ?></td>
                                     <td><?= h($moncase->diagnosis) ?></td>
-                                    <td><?= !empty($moncase->speciality) ? h($moncase->speciality) : 'N/A' ?></td>
+                                    <td><?= !empty($moncase->specialty) ? h($moncase->specialty) : 'N/A' ?></td>
                                     <td><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></td>
                                     <td><?= h($moncase->author) ?></td>
                                     <td><?= h($moncase->contributor) ?></td>
@@ -483,7 +484,7 @@
                                     </div>
                                     <div class="acc-content current">
                                         <div class="content">
-                                            <p> <?= $this->Form->select('speciality', [
+                                            <p> <?= $this->Form->select('specialty', [
                                                     'ABDOMINAL' => 'ABDOMINAL',
                                                     'CARDIOTHORACIC' => 'CARDIOTHORACIC',
                                                     'NEURO' => 'NEURO',
@@ -497,7 +498,7 @@
                                                     'INTERVENTION' => 'INTERVENTION',
                                                 ], [
                                                     'class' => 'form-select',
-                                                    'default' => $this->request->getQuery('speciality'),
+                                                    'default' => $this->request->getQuery('specialty'),
                                                     'empty' => 'Choose Specialty',
                                                 ]); ?>
                                             </p>

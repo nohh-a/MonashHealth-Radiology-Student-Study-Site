@@ -105,8 +105,8 @@ class MoncasesTable extends Table
             ->allowEmptyString('teaching_points');
 
         $validator
-            ->scalar('speciality')
-            ->allowEmptyString('speciality');
+            ->scalar('specialty')
+            ->allowEmptyString('specialty');
 
         $validator
             ->scalar('history')
