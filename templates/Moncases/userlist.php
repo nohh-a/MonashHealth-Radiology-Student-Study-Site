@@ -60,6 +60,10 @@
 
         }
 
+        .row p {
+            margin-left: 25px;
+        }
+
 
     </style>
 

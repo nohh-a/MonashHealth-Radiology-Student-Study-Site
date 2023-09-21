@@ -54,6 +54,10 @@
         .carousel-text p {
             padding-bottom: 30px;
         }
+
+        .row p {
+            margin-left: 25px;
+        }
     </style>
 
 
@@ -323,7 +327,7 @@
                                 </div>
                             <?php endforeach; ?>
                         <?php else : ?>
-                            <p>  No results found.</p>
+                            <p>No results found.</p>
                         <?php endif; ?>
                     </div>
                 </div>

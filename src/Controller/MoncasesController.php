@@ -695,6 +695,8 @@ class MoncasesController extends AppController
 
         // Set view variables
         $this->set(compact('moncases', 'saves','author','username'));
+        $this->viewBuilder()->setLayout('notadmin');
+
 
     }
 
