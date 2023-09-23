@@ -319,7 +319,6 @@ class MoncasesController extends AppController
                 'author LIKE' => "%$search%",
                 'seen_by LIKE' => "%$search%",
                 'teaching_points LIKE' => "%$search%",
-                'imaging LIKE' => "%$search%",
                 'accession_no LIKE' => "%$search%",
             ]]);
         }
@@ -330,6 +329,8 @@ class MoncasesController extends AppController
         $contributorFilter = $this->request->getQuery('contributor');
         $ratingFilter = $this->request->getQuery('rating');
         $specialtyFilter = $this->request->getQuery('specialty');
+        $imagingFilter = $this->request->getQuery('imaging');
+
 
 
         if ($caseTypeFilter !== '') {
@@ -347,6 +348,10 @@ class MoncasesController extends AppController
         if ($specialtyFilter !== '') {
             $filter[] = ['specialty LIKE' => '%' . $specialtyFilter . '%'];
         }
+        if ($imagingFilter !== '') {
+            $filter[] = ['imaging LIKE' => '%' . $imagingFilter . '%'];
+        }
+
         if ($filter) {
             $moncases->where(['AND' => $filter]);
         }
@@ -422,6 +427,9 @@ class MoncasesController extends AppController
         $contributorFilter = $this->request->getQuery('contributor');
         $ratingFilter = $this->request->getQuery('rating');
         $specialtyFilter = $this->request->getQuery('specialty');
+        $imagingFilter = $this->request->getQuery('imaging');
+
+
 
 
         if ($caseTypeFilter !== '') {
@@ -438,6 +446,9 @@ class MoncasesController extends AppController
         }
         if ($specialtyFilter !== '') {
             $filter[] = ['specialty LIKE' => '%' . $specialtyFilter . '%'];
+        }
+        if ($imagingFilter !== '') {
+            $filter[] = ['imaging LIKE' => '%' . $imagingFilter . '%'];
         }
         if ($filter) {
             $moncases->where(['AND' => $filter]);

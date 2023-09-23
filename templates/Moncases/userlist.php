@@ -60,10 +60,9 @@
 
         }
 
-        .row p {
+        .content p {
             margin-left: 25px;
         }
-
 
     </style>
 
@@ -99,8 +98,8 @@
                     <?= $this->Form->select(
                         'sort',
                         [
-                            'newest' => ' Newest',
-                            'oldest' => 'Oldest',
+                            'newest' => ' Newest - Oldest',
+                            'oldest' => 'Oldest - Newest',
                             'az' => 'A-Z',
                             'za' => 'Z-A',
                             'rating_asc' => 'Rating ASC',
@@ -163,6 +162,7 @@
                                                             </div>
                                                             <div class="acc-content current">
                                                                 <div class="content">
+                                                                    <p>
                                                                     <?= $this->Form->select('case_type', [
                                                                         'Oscer' => 'Oscer',
                                                                         'Long' => 'Long',
@@ -174,6 +174,7 @@
                                                                         'default' => $this->request->getQuery('case_type'),
                                                                         'empty' => 'Choose Case Type',
                                                                     ]); ?>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -183,6 +184,7 @@
                                                             </div>
                                                             <div class="acc-content current">
                                                                 <div class="content">
+                                                                    <p>
                                                                     <?= $this->Form->select('contributor', [
                                                                         'Trainee' => 'Trainee',
                                                                         'Consultant' => 'Consultant',
@@ -192,6 +194,7 @@
                                                                         'default' => $this->request->getQuery('contributor'),
                                                                         'empty' => 'Choose Contributor',
                                                                     ]); ?>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -241,6 +244,29 @@
                                                                             'empty' => 'Choose Specialty',
                                                                         ]); ?>
                                                                     </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="accordion block active-block">
+                                                            <div class="acc-btn active">
+                                                                <h4><span>+</span>Imaging</h4>
+                                                            </div>
+                                                            <div class="acc-content current">
+                                                                <div class="content">
+                                                                    <p>
+                                                                        <?= $this->Form->select('imaging', [
+                                                                            'X-ray' => 'X-ray',
+                                                                            'Ultrasound' => 'Ultrasound',
+                                                                            'CT' => 'CT',
+                                                                            'MRI' => 'MRI',
+                                                                            'Nuclear Medicine' => 'Nuclear Medicine',
+                                                                            'Fluoroscopy' => 'Fluoroscopy',
+                                                                            'Mammography' => 'Mammography',
+                                                                            'Other' => 'Other',
+                                                                        ], [
+                                                                            'class' => 'form-control',
+                                                                            'empty' => 'Select Imaging',
+                                                                        ]) ?>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -428,6 +454,7 @@
                                     </div>
                                     <div class="acc-content current">
                                         <div class="content">
+                                            <p>
                                             <?= $this->Form->select('case_type', [
                                                 'Oscer' => 'Oscer',
                                                 'Long' => 'Long',
@@ -439,6 +466,7 @@
                                                 'default' => $this->request->getQuery('case_type'),
                                                 'empty' => 'Choose Case Type',
                                             ]); ?>
+                                            </p>
                                         </div>
                                     </div>
                                 </li>
@@ -448,6 +476,7 @@
                                     </div>
                                     <div class="acc-content current">
                                         <div class="content">
+                                            <p>
                                             <?= $this->Form->select('contributor', [
                                                 'Trainee' => 'Trainee',
                                                 'Consultant' => 'Consultant',
@@ -457,6 +486,7 @@
                                                 'default' => $this->request->getQuery('contributor'),
                                                 'empty' => 'Choose Contributor',
                                             ]); ?>
+                                            </p>
                                         </div>
                                     </div>
                                 </li>
@@ -508,6 +538,30 @@
                                         </div>
                                     </div>
                                 </li>
+                                <li class="accordion block active-block">
+                                    <div class="acc-btn active">
+                                        <h4><span>+</span>Imaging</h4>
+                                    </div>
+                                    <div class="acc-content current">
+                                        <div class="content">
+                                            <p>
+                                                <?= $this->Form->select('imaging', [
+                                                    'X-ray' => 'X-ray',
+                                                    'Ultrasound' => 'Ultrasound',
+                                                    'CT' => 'CT',
+                                                    'MRI' => 'MRI',
+                                                    'Nuclear Medicine' => 'Nuclear Medicine',
+                                                    'Fluoroscopy' => 'Fluoroscopy',
+                                                    'Mammography' => 'Mammography',
+                                                    'Other' => 'Other',
+                                                ], [
+                                                    'class' => 'form-control',
+                                                    'empty' => 'Select Imaging',
+                                                ]) ?>
+                                        </div>
+                                    </div>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -515,7 +569,7 @@
                         <div class="widget-title">
                             <div class="widget-content" style="display: flex; justify-content: space-between; align-items: center;">
                                 <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style' => 'flex: 1; margin-right: 10px;']) ?>
-                                <button class="theme-btn style-two" style="flex: 1;"><a href="<?= $this->Url->build('/') ?>">Reset Filter</a></button>
+                                <a href="<?= $this->Url->build('/') ?>"><button class="theme-btn style-two" style="flex: 1;">Reset Filter</button></a>
                             </div>
                         </div>
                     </div>
