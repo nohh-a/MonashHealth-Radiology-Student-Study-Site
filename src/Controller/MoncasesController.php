@@ -760,9 +760,17 @@ class MoncasesController extends AppController
 
     public function addnewcase()
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
         $moncases = $this->paginate($this->Moncases);
 
-        $this->set(compact('moncases'));
+        $this->set(compact('moncases','author','username'));
+        $this->viewBuilder()->setLayout('moncase');
+
     }
 
     public function addoscer()
@@ -772,6 +780,8 @@ class MoncasesController extends AppController
         $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
 
         $contributor = $this->getRequest()->getSession()->read('Auth.contributor');
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
 
         $author = $firstName . ' ' . $lastName;
 
@@ -811,7 +821,9 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase', 'author', 'contributor'));
+        $this->set(compact('moncase', 'author', 'contributor','username'));
+        $this->viewBuilder()->setLayout('moncase');
+
     }
 
     public function addlong()

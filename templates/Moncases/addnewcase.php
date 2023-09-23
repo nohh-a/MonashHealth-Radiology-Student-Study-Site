@@ -12,20 +12,25 @@
 <?= $this->Html->css('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css', ['integrity' => 'sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9', 'crossorigin' => 'anonymous']) ?>
 
 
+<!-- Page Heading -->
+<section class="page-title bg-color-1 text-center">
+    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
+    <div class="auto-container">
+        <div class="content-box">
+            <h1>Select Case Type</h1>
+            <ul class="bread-crumb clearfix">
+                <li>Case List</li>
+                <li>New Case</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
 <div class = "row justify-content-center align-items-center">
-
-
-    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="d-flex justify-content-center align-items-center">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-6">
-                    <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>"> <?= $this->Html->link(__('Home'), ['action' => 'userlist'], ['class' => 'btn btn-primary']) ?></a>
-                    <br><br>
-
-                        <h5 class="card-header text-center"><?= __('Select Case Type') ?></h5>
-
-                    <br><br>
-
                         <div class ="card-body row justify-content-center align-items-center">
                             <div class="col-lg-6">
                                 <div class="card mb-2 py-1 border-bottom-primary">
@@ -66,6 +71,7 @@
         </div>
     </div>
 </div>
+
 
 
 
