@@ -299,7 +299,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <?= $this->Form->button(__('Submit'), ['class' => 'btn theme-btn style-one']) ?>
+                                    <?= $this->Form->button(__('Submit'), ['class' => 'theme-btn style-two']) ?>
                                 </div>
                             </div>
                             <?= $this->Form->end() ?>

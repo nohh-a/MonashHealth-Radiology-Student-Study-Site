@@ -14,6 +14,18 @@
 <?= $this->Html->css('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css', ['integrity' => 'sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9', 'crossorigin' => 'anonymous']) ?>
 
 
+<section class="page-title bg-color-1 text-center">
+    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
+    <div class="auto-container">
+        <div class="content-box">
+            <h1>Add New Medium Case</h1>
+            <ul class="bread-crumb clearfix">
+                <li>New Case</li>
+                <li>MEDIUM</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
 <div class="row justify-content-center align-items-center">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -31,16 +43,13 @@
     <div class="col-md-8">
         <div class="card-footer">
             <?= $this->Flash->render() ?>
-            <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>"> <?= $this->Html->link(__('Home'), ['action' => 'userlist'], ['class' => 'btn btn-primary btn-lg nav-button active']) ?></a>
-            <?= $this->Html->link(__('Back'), ['action' => 'addnewcase'], ['class' => 'btn btn-secondary btn-lg nav-button active']) ?>
-            <br><br>
         </div>
         <div class="moncases form content">
 
             <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
 
             <div class="card">
-                <h5 class="card-header text-center"><?= __('Add New Medium Case') ?></h5>
+                <h5 class="card-header text-center" style="padding-top: 20px;"></h5>
                 <div class="card-body">
                     <div style="text-align: center;">
                         <div style="text-align: center;">
@@ -161,7 +170,6 @@
                                                 </div>
                                             </div>
 
-
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <?= $this->Form->label('specialty', 'Specialty') ?>
@@ -241,7 +249,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary btn-lg']) ?>
+                                    <?= $this->Form->button(__('Submit'), ['class' => 'theme-btn style-two']) ?>
                                 </div>
                             </div>
                             <?= $this->Form->end() ?>
@@ -253,5 +261,10 @@
                     'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js',
                     ['integrity' => 'sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm', 'crossorigin' => 'anonymous']
                 ) ?>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
 
 
