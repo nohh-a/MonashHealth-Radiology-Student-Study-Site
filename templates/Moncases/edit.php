@@ -11,6 +11,18 @@
     <?= $this->Html->css('/webroot/css/fontawesome-all.css') ?>
     <?= $this->Html->css('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css', ['integrity' => 'sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9', 'crossorigin' => 'anonymous']) ?>
 
+<section class="page-title bg-color-1 text-center">
+    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
+    <div class="auto-container">
+        <div class="content-box">
+            <h1>Edit case</h1>
+            <ul class="bread-crumb clearfix">
+                <li>View Case</li>
+                <li>Edit Case</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
     <div class="row justify-content-center align-items-center">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -25,14 +37,7 @@
         <div class="col-md-8">
 
             <div class="card-footer">
-                <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>"> <?= $this->Html->link(__('Home'), ['action' => 'userlist'], ['class' => 'btn btn-primary btn-lg nav-button active']) ?></a>
-                <td><button class="btn btn-secondary btn-lg nav-button active" onclick="goBack()">Back</button></td>
-                <br><br>
-                <script>
-                    function goBack() {
-                        window.history.back();
-                    }
-                </script>
+
             </div>
 
             <div class="moncases form content">
@@ -40,7 +45,7 @@
                 <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
                 <?= $this->Flash->render() ?>
                 <div class="card">
-                    <h5 class="card-header text-center"><?= __('Edit Case') ?></h5>
+                    <h5 class="card-header text-center"style="padding: 15px;"></h5>
                     <div class="card-body">
                         <div style="text-align: center;">
                             <div class="row">
@@ -85,7 +90,6 @@
                                     ]) ?>
                                 </div>
                             </div>
-
                         </div>
                         <br>
                         <div class="row">
@@ -248,7 +252,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -356,13 +359,17 @@
                                         </div>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary btn-lg']) ?>
+                                        <?= $this->Form->button(__('Submit'), ['class' => 'theme-btn style-one']) ?>
                                     </div>
                                 </div>
                                 <?= $this->Form->end() ?>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
                     <?= $this->Html->script(
                         'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js',

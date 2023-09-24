@@ -159,6 +159,17 @@ class AuthController extends AppController {
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function changePassword($id = null) {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if($access_role !== "ADMIN" ){
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        }
+
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
@@ -172,7 +183,9 @@ class AuthController extends AppController {
             }
             $this->Flash->error('The user could not be saved. Please, try again.');
         }
-        $this->set(compact('user'));
+        $this->set(compact('user','author','username'));
+        $this->viewBuilder()->setLayout('moncase');
+
     }
 
     /**

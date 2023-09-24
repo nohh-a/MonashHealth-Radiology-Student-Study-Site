@@ -47,7 +47,7 @@
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
         <div class="sec-title">
-            <p><?= h($moncase->case_type) ?></p>
+            <p><?= h($moncase->case_type) ?> CASE </p>
             <h2><?= h($moncase->diagnosis) ?></h2>
         </div>
     </div>

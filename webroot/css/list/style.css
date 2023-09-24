@@ -137,7 +137,7 @@ a:hover{
 }
 
 input,button,select,textarea{
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 16px;
 }
@@ -302,7 +302,7 @@ img {
   left: 0px;
   right: -70px;
   z-index: -1;
-  border-bottom: 60px solid #222;
+  border-bottom: 60px solid #ffffff;
   border-right: 60px solid transparent;
   -webkit-transition: all 600ms ease;
   -moz-transition: all 600ms ease;
@@ -321,7 +321,7 @@ img {
   bottom: 0px;
   left: -70px;
   z-index: -1;
-  border-bottom: 60px solid #222;
+  border-bottom: 60px solid #ffffff;
   border-left: 60px solid transparent;
   -webkit-transition: all 600ms ease;
   -moz-transition: all 600ms ease;
@@ -346,6 +346,10 @@ img {
 
 }
 
+.theme-btn.style-one:hover{
+    color: #6377ee !important;
+}
+
 .theme-btn.style-one:after{
 
 }
@@ -359,11 +363,11 @@ img {
 }
 
 .theme-btn.style-three:before{
-  background: #222;
+  background: #ffffff;
 }
 
 .theme-btn.style-three:after{
-  background: #222;
+  background: #ffffff;
 }
 
 

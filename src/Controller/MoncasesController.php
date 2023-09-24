@@ -163,6 +163,8 @@ class MoncasesController extends AppController
     {
         $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
         $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
 
         $author = $firstName . ' ' . $lastName;
 
@@ -235,7 +237,9 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The moncase could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('moncase', 'author', 'contributor'));
+        $this->set(compact('moncase', 'author', 'contributor','username'));
+        $this->viewBuilder()->setLayout('moncase');
+
     }
 
     /**

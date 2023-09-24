@@ -117,7 +117,7 @@
 
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1">
                         <h3><br></h3>
-                        <?= $this->Html->link(__('New'), ['controller' => 'moncases', 'action' => 'addnewcase'], ['class' => 'theme-btn style-two']) ?>
+                        <?= $this->Html->link(__('New'), ['controller' => 'moncases', 'action' => 'addnewcase'], ['class' => 'theme-btn style-one']) ?>
                     </div>
                     <div class = "col-lg-2 col-md-2 col-sm-2 col-2">
                         <!-- Trigger the modal with a button -->
@@ -262,7 +262,7 @@
                                                                             'Mammography' => 'Mammography',
                                                                             'Other' => 'Other',
                                                                         ], [
-                                                                            'class' => 'form-control',
+                                                                            'class' => 'form-select',
                                                                             'empty' => 'Select Imaging',
                                                                         ]) ?>
                                                                 </div>
@@ -542,7 +542,7 @@
                                                     'Mammography' => 'Mammography',
                                                     'Other' => 'Other',
                                                 ], [
-                                                    'class' => 'form-control',
+                                                    'class' => 'form-select',
                                                     'empty' => 'Select Imaging',
                                                 ]) ?>
                                         </div>
