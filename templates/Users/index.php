@@ -19,7 +19,7 @@
     table td {
         border: 1px solid #ddd;
         padding: 8px;
-        text-align: center;
+        text-align: left;
     }
 
     /* Add a hover effect to the table rows */
