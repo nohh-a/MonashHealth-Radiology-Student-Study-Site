@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 21, 2023 at 11:18 AM
+-- Generation Time: Sep 24, 2023 at 11:42 AM
 -- Server version: 11.1.2-MariaDB
 -- PHP Version: 8.2.10
 
@@ -121,9 +121,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `access_role`, `contributor`, `avatar`, `created`, `modified`, `nonce`, `nonce_expiry`) VALUES
-('25d2e98e-ffd2-4649-bd1c-3fb05ac9a217', 'Admin', 'zwan0237@student.monash.edu', '$2y$10$U4EKLjmBzp5mirg5g4m6SueV/52uOOtSh8FDvxUF1tCm50amgcifG', 'Beng', 'Tan', 'ADMIN', 'LIBRARY', '', '2023-08-15 09:09:04', '2023-09-21 05:54:13', '190c98c0dc91bcc182466c3a590e5344151331c4abfbcb5c4c0ded04cc78604113651352463312894828605f9de426b4da17b803405d3cc76ae45df5c940ef4c', '2023-09-28 05:54:13'),
-('b3cd8091-0007-4138-9ef0-0673a3d92902', 'Student', 'yjia0139@student.monash.edu', '$2y$10$StkebyIFejM9WV1gzlmh6.b08MXJ/UnW1xuwn9gmeJC/IlUgRyz96', 'Ethan', 'Jiang', 'TRAINEE', 'TRAINEE', NULL, '2023-08-20 13:20:27', '2023-09-03 15:26:05', NULL, NULL),
-('cfd738c2-e2ea-4c0c-ac8f-f51c87204a99', 'Test', 'nrod0008@student.monash.edu', '$2y$10$oDuaedRkqaF/cWNUgy4YPepVDFRwj4WrMK99X3ymxnDqkQzwwpg/.', 'Test', 'Wang', 'CONSULTANT', 'CONSULTANT', NULL, '2023-08-25 21:35:51', '2023-09-03 15:25:48', NULL, NULL);
+('0364452d-ee81-475b-9cbc-8f7e143590f8', 'admin', 'test@test.com', '$2y$10$t1CryUDgSmgjN2exvTE7v.7Ah0IeVKdmCZyL3Yioxjjs.cy5r8PwK', 'Beng', 'Tan', 'ADMIN', 'LIBRARY', NULL, '2023-09-21 05:30:42', '2023-09-21 05:33:58', NULL, NULL),
+('1952dcaf-7dc4-4db2-aba9-57a548ede19c', 'trainee', 'lriz0001@student.monash.edu', '$2y$10$lCz7gY0.ErTmZ4kiV/vvoubnPygjxjvYKEe2S2SkaboWj7v1JVBVu', 'Lucinda', 'Rizzo', 'TRAINEE', 'TRAINEE', NULL, '2023-09-21 05:33:36', '2023-09-21 05:34:21', NULL, NULL),
+('25d2e98e-ffd2-4649-bd1c-3fb05ac9a217', 'roger', 'zwan0237@student.monash.edu', '$2y$10$agY7ewWL61t7DX7FS2DcUOurVrPkuRF8NuBX2xOUvR5RON1YdT6Ni', 'Roger', 'Wang', 'ADMIN', 'LIBRARY', '', '2023-08-15 09:09:04', '2023-09-24 11:18:35', '66da44aecbde99ee3e9d9fe001fa596d8bcad042affdc1d402ebde00a58ca64c6a0ffb552a2a9d0d681770b5d8401c97f58061c5f294735c2c7b0083e586838f', '2023-09-28 05:57:01'),
+('56713758-fb49-41f4-b3e1-0c2b5d09039b', 'consultant', 'vhar0008@student.monash.edu', '$2y$10$Zg14Dxq2DtpJ71NEyeltxewU9bSQX3MhDSdyBe1g4OavlMdxf9FfC', 'Victoria ', 'Harrison', 'CONSULTANT', 'CONSULTANT', NULL, '2023-09-21 05:36:22', '2023-09-21 06:39:36', NULL, NULL),
+('b3cd8091-0007-4138-9ef0-0673a3d92902', 'ethan', 'yjia0139@student.monash.edu', '$2y$10$StkebyIFejM9WV1gzlmh6.b08MXJ/UnW1xuwn9gmeJC/IlUgRyz96', 'Ethan', 'Jiang', 'TRAINEE', 'TRAINEE', NULL, '2023-08-20 13:20:27', '2023-09-21 05:58:30', 'fea9dd95263baf68d085d5c18146130155940430ec6fe23be9a8107c4059fd1d00659339d9b47d4d2f29445366db0861048ee16eee1415aa314fc3f42f8b608b', '2023-09-28 05:58:30'),
+('cfd738c2-e2ea-4c0c-ac8f-f51c87204a99', 'Test', 'nrod0008@student.monash.edu', '$2y$10$fyWzKVo1w3kCc99DH6q7vebfDySFoiOnTEnSS1IgnDrtJvmdMzv4G', 'Test', 'Wang', 'CONSULTANT', 'CONSULTANT', NULL, '2023-08-25 21:35:51', '2023-09-24 11:42:25', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -175,7 +178,7 @@ ALTER TABLE `collections`
 -- AUTO_INCREMENT for table `moncases`
 --
 ALTER TABLE `moncases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `saves`
