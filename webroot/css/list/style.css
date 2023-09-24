@@ -149,7 +149,10 @@ ul,li{
 }
 
 input{
-  transition: all 500ms ease;
+
+    transition: all 500ms ease;
+    padding: 0.6rem 1rem;
+    border: 1px solid #0a0a0a;
 }
 
 button:focus,
