@@ -91,6 +91,7 @@ $this->assign('title', 'Add - Users');
                             window.history.back();
                         }
                     </script>
+
                     <?= $this->Form->button(__('Create'), ['class' => 'btn btn-primary']) ?>
                 </div>
             </div>

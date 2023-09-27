@@ -22,31 +22,29 @@ $this->assign('title', 'Change User Password - Users');
     </div>
 </section>
 
-<div class="row justify-content-center align-items-center">
+
+<div class="row justify-content-center align-items-center" style="padding-left: 30px; padding-right: 30px;">
+
     <div class="col-md-8">
 
-
         <div class="moncases form content">
+
             <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
             <?= $this->Flash->render() ?>
+
             <div class="row">
                 <div class="col-md-6 mx-auto">
-                    <?=$this->Form->control('password', [
+                    <?php
+                    echo $this->Form->control('password', [
+                        'style' => 'width: 100%;',
                         'label' => 'New Password',
-                        'value' => '',
-                        // Ensure password is not sending back to the client side
-                        'templateVars' => ['container_class' => 'column'],
-                        'style' => 'width: 100%;'
-                    ])?>
+                        'value' => '', // Ensure password is not sending back to the client side
+                    ]);
 
-                    <?=$this->Form->control('password_confirm', [
-                        'type' => 'password',
-                        'value' => '',
-                        // Ensure password is not sending back to the client side
-                        'label' => 'Retype New Password',
-                        'templateVars' => ['container_class' => 'column'],
+                    echo $this->Form->control('password_confirm', [
                         'style' => 'width: 100%;'
-                    ])?>
+                    ]);
+                    ?>
 
                 </div>
 
@@ -54,12 +52,21 @@ $this->assign('title', 'Change User Password - Users');
 
             <div class="row" style="padding-bottom: 20px; padding-top: 20px;">
                 <div class="col-md-6 mx-auto text-center">
+                    <td>
+                        <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                    </td>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+
+
                     <?=
                     $this->Form->button(__('Save'), [
                         'class' => 'btn btn-outline-primary',
                     ])
                     ?>
-
 
                 </div>
             </div>
@@ -69,4 +76,5 @@ $this->assign('title', 'Change User Password - Users');
         </div>
 
     </div>
+
 </div>
