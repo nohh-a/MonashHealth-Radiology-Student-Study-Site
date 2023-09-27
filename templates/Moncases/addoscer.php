@@ -55,13 +55,15 @@
                 <div class="card-body">
                     <div style="text-align: center;">
 
+                        <!-- for front view-->
                         <div class="row">
                             <div class="col-md-3">
                                 <?=$this->Form->control('case_type', [
                                     'class' => 'form-control',
                                     'default' => 'OSCER',
                                     'readonly' => true,
-
+                                    'disabled' => true,
+                                    'style' => 'text-align: center;',
                                 ])?>
                             </div>
                             <div class="col-md-3">
@@ -72,7 +74,8 @@
                                     'readonly' => true,
                                     'type' => 'text',
                                     'maxlength' => 50,
-
+                                    'disabled' => true,
+                                    'style' => 'text-align: center;',
                                 ])?>
                             </div>
                             <div class="col-md-3">
@@ -83,7 +86,8 @@
                                     'readonly' => true,
                                     'type' => 'text',
                                     'maxlength' => 50,
-
+                                    'disabled' => true,
+                                    'style' => 'text-align: center;',
                                 ])?>
                             </div>
                             <div class="col-md-3">
@@ -93,52 +97,56 @@
                                     'value' => date('d-m-Y'),
                                     'required' => true,
                                     'readonly' => true,
-
+                                    'disabled' => true,
+                                    'style' => 'text-align: center;',
                                 ]) ?>
                             </div>
                         </div>
 
+                        <!-- for background upload data-->
                         <div class="row">
-                            <div class="col-md-3">
-                                <?=$this->Form->control('case_type', [
-                                    'class' => 'form-control',
-                                    'default' => 'OSCER',
-                                    'readonly' => true,
+                            <dev class="hidden-element">
+                                <div class="col-md-3">
+                                    <?=$this->Form->control('case_type', [
+                                        'class' => 'form-control',
+                                        'default' => 'OSCER',
+                                        'readonly' => true,
+                                    ])?>
+                                </div>
+                                <div class="col-md-3">
+                                    <?=$this->Form->control('author', [
+                                        'class' => 'form-control',
+                                        'required' => true,
+                                        'value' => $author,
+                                        'readonly' => true,
+                                        'type' => 'text',
+                                        'maxlength' => 50,
 
-                                ])?>
-                            </div>
-                            <div class="col-md-3">
-                                <?=$this->Form->control('author', [
-                                    'class' => 'form-control',
-                                    'required' => true,
-                                    'value' => $author,
-                                    'readonly' => true,
-                                    'type' => 'text',
-                                    'maxlength' => 50,
+                                    ])?>
+                                </div>
+                                <div class="col-md-3">
+                                    <?=$this->Form->control('contributor', [
+                                        'class' => 'form-control',
+                                        'required' => true,
+                                        'value' => $contributor,
+                                        'readonly' => true,
+                                        'type' => 'text',
+                                        'maxlength' => 50,
 
-                                ])?>
-                            </div>
-                            <div class="col-md-3">
-                                <?=$this->Form->control('contributor', [
-                                    'class' => 'form-control',
-                                    'required' => true,
-                                    'value' => $contributor,
-                                    'readonly' => true,
-                                    'type' => 'text',
-                                    'maxlength' => 50,
+                                    ])?>
+                                </div>
+                                <div class="col-md-3">
+                                    <?= $this->Form->control('date', [
+                                        'class' => 'form-control',
+                                        'type' => 'date',
+                                        'value' => date('d-m-Y'),
+                                        'required' => true,
+                                        'readonly' => true,
 
-                                ])?>
-                            </div>
-                            <div class="col-md-3">
-                                <?= $this->Form->control('date', [
-                                    'class' => 'form-control',
-                                    'type' => 'date',
-                                    'value' => date('d-m-Y'),
-                                    'required' => true,
-                                    'readonly' => true,
+                                    ]) ?>
+                                </div>
+                            </dev>
 
-                                ]) ?>
-                            </div>
                         </div>
                     </div>
 
@@ -253,6 +261,20 @@
                                                         'empty' => 'Select Rating',
                                                     ]) ?>
                                                 </div>
+
+                                                <div class="col-md-6">
+                                                    <?= $this->Form->control('max_marks', [
+                                                        'class' => 'form-control',
+                                                        'label' => 'Maximum Marks',
+                                                        'min' => 0,
+                                                        'max' => 99,
+                                                        'error' => ['value' => 'Maximum marks should be between 0 and 99'],
+                                                        'placeholder' => 'Enter a number between 0 and 99',
+                                                    ])
+                                                    ?>
+                                                </div>
+
+
                                             </div>
 
 
@@ -279,14 +301,7 @@
                                                 </div>
                                             </div>
 
-                                            <?= $this->Form->control('max_marks', [
-                                                'class' => 'form-control',
-                                                'label' => 'Maximum Marks',
-                                                'min' => 0,
-                                                'max' => 99,
-                                                'error' => ['value' => 'Maximum marks should be between 0 and 99'],
-                                            ])
-                                            ?>
+
 
                                         </div>
                                     </div>
