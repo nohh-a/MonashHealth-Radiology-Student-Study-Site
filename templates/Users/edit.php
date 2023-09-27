@@ -61,12 +61,12 @@ $this->assign('title', 'Edit - Users');
                     ?>
 
             </div>
-            <?= $this->Form->end() ?>
+
             </div>
             <div class="row" style="padding-bottom: 20px; padding-top: 20px;">
             <div class="col-md-6 mx-auto text-center">
                 <?=
-                $this->Form->button(__('Submit'), [
+                $this->Form->button(__('Save'), [
                     'class' => 'btn btn-outline-primary'
                 ])
                 ?>
@@ -107,7 +107,7 @@ $this->assign('title', 'Edit - Users');
 
             </div>
             </div>
-
+            <?= $this->Form->end() ?>
         </div>
     </div>
 </div>
