@@ -64,6 +64,10 @@
             margin-left: 25px;
         }
 
+        .noresults {
+            padding-left: 30px;
+        }
+
     </style>
 
 
@@ -375,7 +379,9 @@
                                 </div>
                             <?php endforeach; ?>
                         <?php else : ?>
-                            <p>  No results found.</p>
+                            <dev class="noresults">
+                                <p>No results found.</p>
+                            </dev>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -415,7 +421,9 @@
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
-                            <p>No results found.</p>
+                            <dev class="noresults">
+                                <p>No results found.</p>
+                            </dev>
                         <?php endif; ?>
                         </tbody>
                     </table>
