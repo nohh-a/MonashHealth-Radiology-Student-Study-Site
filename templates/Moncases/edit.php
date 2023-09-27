@@ -4,6 +4,9 @@
  * @var \App\Model\Entity\Moncase $moncase
  */
 ?>
+
+    <?= $this->Html->css('/webroot/css/valid-msg.css') ?>
+
     <?= $this->Html->css('/webroot/css/star.css') ?>
     <?= $this->Html->css('/webroot/css/animate.min.css') ?>
     <?= $this->Html->css('/webroot/css/bootstrap.min.css') ?>

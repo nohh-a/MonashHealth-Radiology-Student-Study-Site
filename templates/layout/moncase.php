@@ -59,6 +59,9 @@
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/responsive.css']) ?>
 
+    <?= $this->Html->css('/webroot/css/valid-msg.css') ?>
+
+
     <style>
         .theme-btn {
             padding: 5px 20px;

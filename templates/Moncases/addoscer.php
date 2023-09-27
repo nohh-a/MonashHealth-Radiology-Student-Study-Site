@@ -6,6 +6,8 @@
 
 ?>
 
+<?= $this->Html->css('/webroot/css/valid-msg.css') ?>
+
 <?= $this->Html->css('/webroot/css/star.css') ?>
 <?= $this->Html->css('/webroot/css/animate.min.css') ?>
 <?= $this->Html->css('/webroot/css/bootstrap.min.css') ?>
@@ -52,6 +54,49 @@
                 <div class="card-header"></div>
                 <div class="card-body">
                     <div style="text-align: center;">
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <?=$this->Form->control('case_type', [
+                                    'class' => 'form-control',
+                                    'default' => 'OSCER',
+                                    'readonly' => true,
+
+                                ])?>
+                            </div>
+                            <div class="col-md-3">
+                                <?=$this->Form->control('author', [
+                                    'class' => 'form-control',
+                                    'required' => true,
+                                    'value' => $author,
+                                    'readonly' => true,
+                                    'type' => 'text',
+                                    'maxlength' => 50,
+
+                                ])?>
+                            </div>
+                            <div class="col-md-3">
+                                <?=$this->Form->control('contributor', [
+                                    'class' => 'form-control',
+                                    'required' => true,
+                                    'value' => $contributor,
+                                    'readonly' => true,
+                                    'type' => 'text',
+                                    'maxlength' => 50,
+
+                                ])?>
+                            </div>
+                            <div class="col-md-3">
+                                <?= $this->Form->control('date', [
+                                    'class' => 'form-control',
+                                    'type' => 'date',
+                                    'value' => date('d-m-Y'),
+                                    'required' => true,
+                                    'readonly' => true,
+
+                                ]) ?>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-3">

@@ -17,6 +17,7 @@ $this->assign('title', 'Change User Password - Users');
                 <li>User Management</li>
                 <li>Change Password</li>
             </ul>
+
         </div>
     </div>
 </section>
@@ -26,7 +27,7 @@ $this->assign('title', 'Change User Password - Users');
 
 
         <div class="moncases form content">
-
+            <?= $this->Flash->render() ?>
             <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
             <div class="row">
                 <div class="col-md-6 mx-auto">
