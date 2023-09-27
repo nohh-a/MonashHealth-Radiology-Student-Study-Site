@@ -384,10 +384,10 @@
                             <th>Accession No.</th>
                             <th>Type</th>
                             <th>Diagnosis</th>
-                            <th>Specialty</th>
-                            <th>Rating</th>
-                            <th>Author</th>
+                            <th>Imaging</th>
                             <th>Contributor</th>
+                            <th>Date</th>
+                            <th>Rating</th>
 
                         </tr>
                         </thead>
@@ -398,13 +398,13 @@
                                     <td>
                                         <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>" style=" height: 142px; max-width: fit-content;">
                                     </td>
-                                    <td> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'viewNotadmin', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
+                                    <td> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
                                     <td><?= h($moncase->case_type) ?></td>
                                     <td><?= h($moncase->diagnosis) ?></td>
-                                    <td><?= !empty($moncase->specialty) ? h($moncase->specialty) : 'N/A' ?></td>
-                                    <td><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></td>
-                                    <td><?= h($moncase->author) ?></td>
+                                    <td><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></td>
                                     <td><?= h($moncase->contributor) ?></td>
+                                    <td><?= h($moncase->date) ?></td>
+                                    <td><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
