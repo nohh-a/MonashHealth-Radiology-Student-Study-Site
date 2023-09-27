@@ -103,7 +103,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                        Case Details #1 (Must Fill In)
+                                        Case Details #1 (For Quick Creation)
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
@@ -130,6 +130,16 @@
                                                 ])
                                                 ?>
                                             </div>
+
+                                            <div class="col-md-4">
+                                                <?= $this->Form->control('image_url', [
+                                                    'type' => 'file',
+                                                    'label' => 'Image Upload  (PNG, JPEG, JPG)',
+                                                    'class' => 'form-control'
+                                                ])
+                                                ?>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -143,13 +153,7 @@
                                         <div class="accordion-body">
 
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <?= $this->Form->control('image_url', [
-                                                        'type' => 'file',
-                                                        'label' => 'Image Upload (PNG, JPEG, JPG)',
-                                                        'class' => 'form-control'
-                                                    ]); ?>
-                                                </div>
+
                                                 <div class="col-md-6">
                                                     <?= $this->Form->label('imaging', 'Imaging') ?>
                                                     <?= $this->Form->select('imaging', [
@@ -166,10 +170,7 @@
                                                         'empty' => 'Select Imaging',
                                                     ]) ?>
                                                 </div>
-                                            </div>
 
-
-                                            <div class="row">
                                                 <div class="col-md-6">
                                                     <?= $this->Form->label('specialty', 'Specialty') ?>
                                                     <?= $this->Form->select('specialty', [
@@ -190,6 +191,12 @@
                                                         'empty' => 'Select Specialty',
                                                     ]) ?>
                                                 </div>
+                                            </div>
+
+
+                                            <div class="row">
+
+
                                                 <div class="col-md-6">
                                                     <?= $this->Form->label('rating', 'Rating') ?>
                                                     <?= $this->Form->select('rating', [
