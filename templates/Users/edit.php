@@ -65,6 +65,15 @@ $this->assign('title', 'Edit - Users');
             </div>
             <div class="row" style="padding-bottom: 20px; padding-top: 20px;">
             <div class="col-md-6 mx-auto text-center">
+                <td>
+                    <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                </td>
+                <script>
+                    function goBack() {
+                        window.history.back();
+                    }
+                </script>
+
                 <?=
                 $this->Form->button(__('Save'), [
                     'class' => 'btn btn-outline-primary'
