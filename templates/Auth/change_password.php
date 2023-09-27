@@ -27,37 +27,46 @@ $this->assign('title', 'Change User Password - Users');
 
 
         <div class="moncases form content">
-            <?= $this->Flash->render() ?>
             <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
+            <?= $this->Flash->render() ?>
             <div class="row">
                 <div class="col-md-6 mx-auto">
-                    <?php
-                    echo $this->Form->control('password', [
+                    <?=$this->Form->control('password', [
                         'label' => 'New Password',
-                        'value' => '',  // Ensure password is not sending back to the client side
+                        'value' => '',
+                        // Ensure password is not sending back to the client side
                         'templateVars' => ['container_class' => 'column'],
-                        'style' => 'width: 500px'
-                    ]);
-                    // Validate password by repeating it
-                    echo $this->Form->control('password_confirm', [
+                        'style' => 'width: 100%;'
+                    ])?>
+
+                    <?=$this->Form->control('password_confirm', [
                         'type' => 'password',
-                        'value' => '',  // Ensure password is not sending back to the client side
+                        'value' => '',
+                        // Ensure password is not sending back to the client side
                         'label' => 'Retype New Password',
                         'templateVars' => ['container_class' => 'column'],
-                        'style' => 'width: 500px'
-                    ]);
-                    ?>
-                    <div class="col-md-6 mx-auto text-center" style="justify-content: center;">
+                        'style' => 'width: 100%;'
+                    ])?>
+
+                </div>
+
+            </div>
+
+            <div class="row" style="padding-bottom: 20px; padding-top: 20px;">
+                <div class="col-md-6 mx-auto text-center">
                     <?=
-                    $this->Form->button(__('Submit'), [
+                    $this->Form->button(__('Save'), [
                         'class' => 'btn btn-outline-primary',
                     ])
                     ?>
-                        </div>
+
 
                 </div>
             </div>
+
             <?= $this->Form->end() ?>
+
         </div>
+
     </div>
 </div>
