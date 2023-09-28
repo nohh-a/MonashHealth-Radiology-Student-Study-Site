@@ -125,31 +125,36 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 <!--                            if the user do not have any folder, collect button going to crete a folder-->
 <!--                            -->
 <!--                            else, going to add the case into a folder.-->
-                            <?=
-                            $this->Html->link(__('Collect (create a folder. and add the case into folder)'),
-                                [
-                                    'controller' => 'collections',
-                                    'action' => 'create_collection',
-                                    $moncases->id
-                                ],
-                                [
-                                    'class' => 'btn btn-outline-success'
-                                ]
-                            )
-                            ?>
+                            <?php if ($collectionCount == 0): ?>
+                                <?=
+                                $this->Html->link(__('Collect (create a folder. and add the case into folder)'),
+                                    [
+                                        'controller' => 'collections',
+                                        'action' => 'create_collection',
+                                        $moncases->id
+                                    ],
+                                    [
+                                        'class' => 'btn btn-outline-success'
+                                    ]
+                                )
+                                ?>
 
-                            <?=
-                            $this->Html->link(__('Collect (not work) (select a collection folder)'),
-                                [
-                                    'controller' => 'collections',
-                                    'action' => 'create_collection',
-                                    $moncases->id
-                                ],
-                                [
-                                    'class' => 'btn btn-outline-success'
-                                ]
-                            )
-                            ?>
+                            <?php else: ?>
+                                <?=
+                                $this->Html->link(__('Collect (not work) (select a collection folder)'),
+                                    [
+                                        'controller' => 'collections',
+                                        'action' => 'create_collection',
+                                        $moncases->id
+                                    ],
+                                    [
+                                        'class' => 'btn btn-outline-success'
+                                    ]
+                                )
+                                ?>
+
+                            <?php endif; ?>
+
 
                             <?=
                             $this->Form->postLink(__('Unsave'),
