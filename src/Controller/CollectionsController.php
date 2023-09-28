@@ -110,8 +110,55 @@ class CollectionsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function collect($id = null)
+
+    /**
+     * create collection method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful collection, renders view otherwise.
+     */
+    public function createCollection($id = null)
     {
+        $userId = $this->getRequest()->getSession()->read('Auth.id');
+
+        $collection = $this->Collections->newEmptyEntity();
+
+        if ($this->request->is('post')) {
+
+            $collectionData = [
+                'name' => $this->request->getData('name'),
+                'user_id' => $userId,
+            ];
+
+            $collection = $this->Collections->patchEntity($collection, $collectionData);
+
+            $this->Collections->save($collection);
+
+            $collectionsMoncasesTable = $this->fetchTable('CollectionsMoncases');
+            $collectionsMoncases = $collectionsMoncasesTable->newEmptyEntity();
+
+            $collectionId = $collection->id;
+            $moncaseId = $id;
+
+            $collectionsMoncasesData = [
+                'collection_id' => $collectionId,
+                'moncase_id' => $moncaseId
+            ];
+
+            $collectionsMoncases = $collectionsMoncasesTable->patchEntity($collectionsMoncases, $collectionsMoncasesData);
+
+            if ($collectionsMoncasesTable->save($collectionsMoncases)) {
+
+                $this->Flash->success(__('The collection has been saved.'));
+
+                return $this->redirect(['controller' => 'moncases', 'action' => 'savedcases']);
+            }
+            $this->Flash->error(__('The collection could not be saved. Please, try again.'));
+        }
+
+        $users = $this->Collections->Users->find('list', ['limit' => 200])->all();
+        $moncases = $this->Collections->Moncases->find('list', ['limit' => 200])->all();
+        $this->set(compact('collection', 'users', 'moncases'));
 
     }
+
 }

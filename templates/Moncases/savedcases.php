@@ -57,18 +57,19 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
     }
 
 
-
 </style>
+
+
 
 <!--Page Title-->
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
         <div class="content-box">
-            <h1>My Collection</h1>
+            <h1>My Favorites</h1>
             <ul class="bread-crumb clearfix">
                 <li>Case List</li>
-                <li>My Collection</li>
+                <li>My Favorites</li>
             </ul>
         </div>
     </div>
@@ -121,6 +122,34 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                             )
                             ?>
 
+<!--                            if the user do not have any folder, collect button going to crete a folder-->
+<!--                            -->
+<!--                            else, going to add the case into a folder.-->
+                            <?=
+                            $this->Html->link(__('Collect (create a folder. and add the case into folder)'),
+                                [
+                                    'controller' => 'collections',
+                                    'action' => 'create_collection',
+                                    $moncases->id
+                                ],
+                                [
+                                    'class' => 'btn btn-outline-success'
+                                ]
+                            )
+                            ?>
+
+                            <?=
+                            $this->Html->link(__('Collect (not work) (select a collection folder)'),
+                                [
+                                    'controller' => 'collections',
+                                    'action' => 'create_collection',
+                                    $moncases->id
+                                ],
+                                [
+                                    'class' => 'btn btn-outline-success'
+                                ]
+                            )
+                            ?>
 
                             <?=
                             $this->Form->postLink(__('Unsave'),
@@ -150,6 +179,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
         </div>
     </div>
 </div>
+
 
 
 

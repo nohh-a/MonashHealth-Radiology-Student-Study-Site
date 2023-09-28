@@ -120,7 +120,7 @@ class SavesController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
 
-        // 删除所有记录
+        // delete all of saves table
         if ($this->Saves->deleteAll([])) {
             $this->Flash->success(__('All cases have been unsaved.'));
         } else {

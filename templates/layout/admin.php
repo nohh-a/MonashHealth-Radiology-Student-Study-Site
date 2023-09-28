@@ -169,6 +169,10 @@
                                     <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">My Favorites</a>
                                 </li>
 
+                                <li>
+                                    <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Collections</a>
+                                </li>
+
                             </ul>
                         </div>
                     </nav>

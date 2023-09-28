@@ -53,12 +53,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                     <?= $this->Html->link(__('Home'), ['controller' => 'Moncases', 'action' => 'userlist'], ['class' => 'btn btn-primary']) ?>
                 </a>
 
-                <?=
-                $this->Form->postLink(__('Delete All Collection'), [
-                    'action' => 'deleteall'], [
-                    'class' => 'btn btn-danger float-right',
-                    'confirm' => __('Are you sure you want to delete all of collections?')])
-                ?>
+
 
                 <?= $this->Html->link(__('New Collection'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
             </div>
