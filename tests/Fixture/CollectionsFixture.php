@@ -21,7 +21,7 @@ class CollectionsFixture extends TestFixture
             [
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'user_id' => '24e8c6b6-2c1b-44f5-a9ca-1efd8b8d248e',
+                'user_id' => '0dd7a636-a2a2-4777-9382-fd2d65d2ce68',
             ],
         ];
         parent::init();

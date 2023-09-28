@@ -632,7 +632,7 @@ class MoncasesController extends AppController
         // Extract case ID from saved record and store in an array
         $caseIds = [];
         foreach ($saves as $save) {
-            $caseIds[] = $save->case_id;
+            $caseIds[] = $save->moncase_id;
         }
 
         // Initialize Moncases query
@@ -690,7 +690,7 @@ class MoncasesController extends AppController
         // Extract case ID from saved record and store in an array
         $caseIds = [];
         foreach ($saves as $save) {
-            $caseIds[] = $save->case_id;
+            $caseIds[] = $save->moncase_id;
         }
 
         // Initialize Moncases query
@@ -736,7 +736,7 @@ class MoncasesController extends AppController
             // Check if the user has already saved this case
             $saveTable = $this->fetchTable('Saves');
             $existingSave = $saveTable->find()
-                ->where(['user_id' => $authorId, 'case_id' => $caseId])
+                ->where(['user_id' => $authorId, 'moncase_id' => $caseId])
                 ->first();
 
 //            debug($existingSave);
@@ -751,7 +751,7 @@ class MoncasesController extends AppController
 
                 $saveData = [
                     'user_id' => $authorId,
-                    'case_id' => $caseId,
+                    'moncase_id' => $caseId,
                 ];
                 $save = $saveTable->patchEntity($save, $saveData);
 

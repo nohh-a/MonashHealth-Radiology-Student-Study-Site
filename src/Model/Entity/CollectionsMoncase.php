@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
 /**
  * CollectionsMoncase Entity
  *
+ * @property int $id
  * @property int $collection_id
  * @property int $moncase_id
  *
@@ -26,6 +27,8 @@ class CollectionsMoncase extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
+        'collection_id' => true,
+        'moncase_id' => true,
         'collection' => true,
         'moncase' => true,
     ];

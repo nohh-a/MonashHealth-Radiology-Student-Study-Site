@@ -47,6 +47,10 @@ class SavesTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER',
         ]);
+        $this->belongsTo('Moncases', [
+            'foreignKey' => 'moncase_id',
+            'joinType' => 'INNER',
+        ]);
     }
 
     /**
@@ -58,13 +62,13 @@ class SavesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('user_id')
+            ->uuid('user_id')
             ->notEmptyString('user_id');
 
         $validator
-            ->scalar('case_id')
-            ->requirePresence('case_id', 'create')
-            ->notEmptyString('case_id');
+            ->integer('moncase_id')
+            ->notEmptyString('moncase_id')
+            ->add('moncase_id', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         return $validator;
     }
@@ -78,6 +82,7 @@ class SavesTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
+        $rules->add($rules->existsIn('moncase_id', 'Moncases'), ['errorField' => 'moncase_id']);
         $rules->add($rules->existsIn('user_id', 'Users'), ['errorField' => 'user_id']);
 
         return $rules;

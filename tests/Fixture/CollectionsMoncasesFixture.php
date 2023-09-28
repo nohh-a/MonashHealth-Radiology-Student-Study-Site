@@ -19,6 +19,7 @@ class CollectionsMoncasesFixture extends TestFixture
     {
         $this->records = [
             [
+                'id' => 1,
                 'collection_id' => 1,
                 'moncase_id' => 1,
             ],

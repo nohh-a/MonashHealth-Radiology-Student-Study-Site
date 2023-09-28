@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $user_id
- * @property string $case_id
+ * @property int $moncase_id
  *
  * @property \App\Model\Entity\User $user
  */
@@ -27,7 +27,7 @@ class Save extends Entity
      */
     protected $_accessible = [
         'user_id' => true,
-        'case_id' => true,
+        'moncase_id' => true,
         'user' => true,
     ];
 }
