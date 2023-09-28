@@ -24,9 +24,22 @@
             <fieldset>
                 <legend><?= __('Edit Collection') ?></legend>
                 <?php
-                    echo $this->Form->control('name');
-                    echo $this->Form->control('user_id', ['options' => $users]);
-                    echo $this->Form->control('moncases._ids', ['options' => $moncases]);
+                $combinedOptions = [];
+
+                foreach ($moncases as $id => $case) {
+                    $accessionNo = isset($accession_no[$id]) ? $accession_no[$id] : '';
+                    $diagnosisText = isset($diagnosis[$id]) ? $diagnosis[$id] : '';
+                    $combinedOptions[$id] = $accessionNo . ' - ' . $diagnosisText;
+                }
+
+                echo $this->Form->control('name');
+//                echo $this->Form->control('user_id', ['options' => $users]);
+                echo $this->Form->select(
+                    'moncases._ids',
+                    $combinedOptions,
+                    ['multiple' => 'checkbox']
+                );
+
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

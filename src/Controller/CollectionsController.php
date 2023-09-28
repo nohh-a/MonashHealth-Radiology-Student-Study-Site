@@ -18,8 +18,12 @@ class CollectionsController extends AppController
      */
     public function index()
     {
+        // Get the current user's ID
+        $userId = $this->getRequest()->getSession()->read('Auth.id');
+
         $this->paginate = [
             'contain' => ['Users'],
+            'conditions' => ['Collections.user_id' => $userId], // Add criteria to filter users
         ];
         $collections = $this->paginate($this->Collections);
 
@@ -61,7 +65,20 @@ class CollectionsController extends AppController
         }
         $users = $this->Collections->Users->find('list', ['limit' => 200])->all();
         $moncases = $this->Collections->Moncases->find('list', ['limit' => 200])->all();
-        $this->set(compact('collection', 'users', 'moncases'));
+
+        $diagnosis = $this->Collections->Moncases->find('list', [
+            'keyField' => 'id', // Set case ID as key
+            'valueField' => 'diagnosis', // Set the diagnosis attribute of the case as the display text
+            'limit' => 200
+        ])->toArray();
+
+        $accession_no = $this->Collections->Moncases->find('list', [
+            'keyField' => 'id', // Set case ID as key
+            'valueField' => 'accession_no', // Set the accession_no attribute of the case as the display text
+            'limit' => 200
+        ])->toArray();
+
+        $this->set(compact('collection', 'users', 'moncases', 'diagnosis', 'accession_no'));
     }
 
     /**
@@ -87,7 +104,20 @@ class CollectionsController extends AppController
         }
         $users = $this->Collections->Users->find('list', ['limit' => 200])->all();
         $moncases = $this->Collections->Moncases->find('list', ['limit' => 200])->all();
-        $this->set(compact('collection', 'users', 'moncases'));
+
+        $diagnosis = $this->Collections->Moncases->find('list', [
+            'keyField' => 'id', // Set case ID as key
+            'valueField' => 'diagnosis', // Set the diagnosis attribute of the case as the display text
+            'limit' => 200
+        ])->toArray();
+
+        $accession_no = $this->Collections->Moncases->find('list', [
+            'keyField' => 'id', // Set case ID as key
+            'valueField' => 'accession_no', // Set the accession_no attribute of the case as the display text
+            'limit' => 200
+        ])->toArray();
+
+        $this->set(compact('collection', 'users', 'moncases', 'diagnosis', 'accession_no'));
     }
 
     /**
