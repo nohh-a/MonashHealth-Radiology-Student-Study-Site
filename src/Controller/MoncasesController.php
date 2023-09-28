@@ -618,7 +618,6 @@ class MoncasesController extends AppController
             return $this->redirect(['controller' => 'moncases', 'action' => 'savedcasesNotadmin']);
         }
 
-
         // Get the model instance of the Saves table
         $saveTable = $this->fetchTable('Saves');
 
@@ -650,8 +649,16 @@ class MoncasesController extends AppController
         // Get query results
         $moncases = $moncasesQuery->toArray();
 
+
+        // Get the model instance of the Saves table
+        $collectionsTable = $this->fetchTable('Collections');
+
+        $collectionCount = $collectionsTable->find()
+            ->where(['user_id' => $authorId])
+            ->count();
+
         // Set view variables
-        $this->set(compact('moncases', 'saves','author','username'));
+        $this->set(compact('moncases', 'saves','author','username', 'collectionCount'));
         $this->viewBuilder()->setLayout('admin');
 
     }
