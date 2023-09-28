@@ -71,18 +71,50 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 side-btn">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <?=
                             $this->Form->postLink(__('Favorite'),
                                 ['action' => 'savecaseaction', $moncase->id],
-                                ['class' => 'theme-btn style-two',
+                                ['class' => 'theme-btn style-one',
                                     'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)])
                             ?>
+
+<!--                            if the user do not have any folder, collect button going to crete a folder-->
+<!--                            -->
+<!--                            else, going to add the case into a folder.-->
+                            <?php if ($collectionCount == 0): ?>
+                                <?=
+                                $this->Html->link(__('Collect Create'),
+                                    [
+                                        'controller' => 'collections',
+                                        'action' => 'create_collection',
+                                        $moncase->id
+                                    ],
+                                    [
+                                        'class' => 'theme-btn style-one'
+                                    ]
+                                )
+                                ?>
+
+                            <?php else: ?>
+                                <?=
+                                $this->Html->link(__('Collect Select'),
+                                    [
+                                        'controller' => 'collections',
+                                        'action' => 'select_folder',
+                                        $moncase->id
+                                    ],
+                                    [
+                                        'class' => 'theme-btn style-one'
+                                    ]
+                                )
+                                ?>
+
+                            <?php endif; ?>
+
                         </div>
 
-                        <br><br>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12 side-btn">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <?php if ($author != $caseAuthor): ?>
                                 <!-- Don't show button when $author is not equal to $caseAuthor -->
                             <?php else: ?>
@@ -90,6 +122,10 @@
                             <?php endif; ?>
 
                         </div>
+
+
+
+
                     </div>
 
 

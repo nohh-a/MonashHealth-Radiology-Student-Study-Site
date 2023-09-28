@@ -63,6 +63,7 @@ class MoncasesController extends AppController
         $author = $firstName . ' ' . $lastName;
 
         $username = $this->getRequest()->getSession()->read('Auth.username');
+        $userId = $this->getRequest()->getSession()->read('Auth.id');
 
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if ($access_role !== 'ADMIN') {
@@ -73,7 +74,14 @@ class MoncasesController extends AppController
             'contain' => [],
         ]);
 
-        $this->set(compact('moncase', 'author', 'username'));
+        // Get the model instance of the Saves table
+        $collectionsTable = $this->fetchTable('Collections');
+
+        $collectionCount = $collectionsTable->find()
+            ->where(['user_id' => $userId])
+            ->count();
+
+        $this->set(compact('moncase', 'author', 'username', 'collectionCount'));
         $this->viewBuilder()->setLayout('admin');
 
     }
@@ -92,6 +100,7 @@ class MoncasesController extends AppController
         $author = $firstName . ' ' . $lastName;
 
         $username = $this->getRequest()->getSession()->read('Auth.username');
+        $userId = $this->getRequest()->getSession()->read('Auth.id');
 
         $moncase = $this->Moncases->get($id, [
             'contain' => [],
@@ -99,7 +108,14 @@ class MoncasesController extends AppController
 
         $caseAuthor = $moncase->author; // get the author of the case
 
-        $this->set(compact('moncase', 'author', 'username', 'caseAuthor'));
+        // Get the model instance of the Saves table
+        $collectionsTable = $this->fetchTable('Collections');
+
+        $collectionCount = $collectionsTable->find()
+            ->where(['user_id' => $userId])
+            ->count();
+
+        $this->set(compact('moncase', 'author', 'username', 'caseAuthor', 'collectionCount'));
         $this->viewBuilder()->setLayout('notadmin');
 
     }
