@@ -53,10 +53,16 @@ class CollectionsController extends AppController
      */
     public function add()
     {
+        $userId = $this->getRequest()->getSession()->read('Auth.id');
+
         $collection = $this->Collections->newEmptyEntity();
+
         if ($this->request->is('post')) {
+
             $collection = $this->Collections->patchEntity($collection, $this->request->getData());
+
             if ($this->Collections->save($collection)) {
+
                 $this->Flash->success(__('The collection has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -78,7 +84,7 @@ class CollectionsController extends AppController
             'limit' => 200
         ])->toArray();
 
-        $this->set(compact('collection', 'users', 'moncases', 'diagnosis', 'accession_no'));
+        $this->set(compact('collection', 'users', 'moncases', 'diagnosis', 'accession_no', 'userId'));
     }
 
     /**
@@ -95,6 +101,7 @@ class CollectionsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $collection = $this->Collections->patchEntity($collection, $this->request->getData());
+
             if ($this->Collections->save($collection)) {
                 $this->Flash->success(__('The collection has been saved.'));
 
@@ -177,11 +184,11 @@ class CollectionsController extends AppController
 
                 $collectionsMoncasesTable->save($collectionsMoncases);
 
-                $this->Flash->success(__('The collection has been saved.'));
+                $this->Flash->success(__('The collection folder has been created and the current case has been automatically added to the folder. Check it in My Collections!'));
 
                 return $this->redirect(['controller' => 'moncases', 'action' => 'savedcases']);
             }
-            $this->Flash->error(__('The collection could not be saved. Please, try again.'));
+            $this->Flash->error(__('The collection could not be created. Please, try again.'));
         }
 
         $users = $this->Collections->Users->find('list', ['limit' => 200])->all();
@@ -189,5 +196,58 @@ class CollectionsController extends AppController
         $this->set(compact('collection', 'users', 'moncases'));
 
     }
+
+    /**
+     * select collection Folder method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful collection, renders view otherwise.
+     */
+    public function selectFolder($id = null) {
+
+        // Get the current user's ID
+        $userId = $this->getRequest()->getSession()->read('Auth.id');
+
+        // for page checkbox, showing collection name
+        $collections = $this->Collections->find()
+            ->select(['name'])
+            ->where(['user_id' => $userId])
+            ->toList();
+
+        $name = $this->Collections->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'name',
+            'limit' => 200,
+        ])->where(['user_id' => $userId])->toArray();
+
+        //submit form
+        if ($this->request->is('post')) {
+            $collectionId = $this->request->getData('collection_name');
+
+            $collectionsMoncasesTable = $this->fetchTable('CollectionsMoncases');
+            $collectionsMoncases = $collectionsMoncasesTable->newEmptyEntity();
+
+            $moncaseId = $id;
+
+            $collectionsMoncasesData = [
+                'collection_id' => $collectionId,
+                'moncase_id' => $moncaseId
+            ];
+
+            $collectionsMoncases = $collectionsMoncasesTable->patchEntity($collectionsMoncases, $collectionsMoncasesData);
+
+            if ($collectionsMoncasesTable->save($collectionsMoncases)) {
+                $this->Flash->success(__('The case has been added to the collection folder. Check it in My Collections!'));
+
+                return $this->redirect(['controller' => 'moncases', 'action' => 'savedcases']);
+            }
+            $this->Flash->error(__('The collection could not be added to the collection folder. Please, try again.'));
+
+        }
+
+        $this->set(compact('collections', 'name'));
+
+    }
+
+
 
 }

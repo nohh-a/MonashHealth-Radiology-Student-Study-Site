@@ -34,13 +34,19 @@
 
                 echo $this->Form->control('name');
 //                echo $this->Form->control('user_id', ['options' => $users]);
-                echo $this->Form->select(
-                    'moncases._ids',
-                    $combinedOptions,
-                    ['multiple' => 'checkbox']
-                );
 
                 ?>
+                <dev>
+                    <label>Select Moncases:</label>
+                    <?= $this->Form->select('moncases._ids',
+                        $combinedOptions,
+                        [
+                            'multiple' => 'checkbox',
+                        ]
+                    )?>
+                </dev>
+
+
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>

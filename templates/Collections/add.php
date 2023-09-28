@@ -6,6 +6,8 @@
  * @var \Cake\Collection\CollectionInterface|string[] $moncases
  */
 ?>
+<?= $this->Html->css('/webroot/css/valid-msg.css') ?>
+
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -28,14 +30,26 @@
                 }
 
                 echo $this->Form->control('name');
-                //                echo $this->Form->control('user_id', ['options' => $users]);
-                echo $this->Form->select(
-                    'moncases._ids',
-                    $combinedOptions,
-                    ['multiple' => 'checkbox']
-                );
 
                 ?>
+                <dev>
+                    <label>Select Moncases:</label>
+                    <?= $this->Form->select('moncases._ids',
+                        $combinedOptions,
+                        [
+                            'multiple' => 'checkbox',
+                        ]
+                    )?>
+                </dev>
+
+                <dev class="hidden-element">
+
+                    <?= $this->Form->control('user_id', [
+                    'value' => $userId,
+                    'readonly' => true,
+                    ])?>
+                </dev>
+
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>

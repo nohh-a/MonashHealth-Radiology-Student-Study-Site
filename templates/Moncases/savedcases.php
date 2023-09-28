@@ -127,7 +127,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 <!--                            else, going to add the case into a folder.-->
                             <?php if ($collectionCount == 0): ?>
                                 <?=
-                                $this->Html->link(__('Collect (create a folder. and add the case into folder)'),
+                                $this->Html->link(__('Collect Create'),
                                     [
                                         'controller' => 'collections',
                                         'action' => 'create_collection',
@@ -141,10 +141,10 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 
                             <?php else: ?>
                                 <?=
-                                $this->Html->link(__('Collect (not work) (select a collection folder)'),
+                                $this->Html->link(__('Collect Select'),
                                     [
                                         'controller' => 'collections',
-                                        'action' => 'create_collection',
+                                        'action' => 'select_folder',
                                         $moncases->id
                                     ],
                                     [
