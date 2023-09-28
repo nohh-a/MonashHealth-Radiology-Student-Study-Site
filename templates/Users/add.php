@@ -6,16 +6,27 @@
 
 $this->assign('title', 'Add - Users');
 ?>
-<div class="row justify-content-center align-items-center">
-    <div class="col-md-6">
 
+<section class="page-title bg-color-1 text-center">
+    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
+    <div class="auto-container">
+        <div class="content-box">
+            <h1>Create New User</h1>
+            <ul class="bread-crumb clearfix">
+                <li>User Management</li>
+                <li>New User</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<div class="row justify-content-center align-items-center" style="padding: 25px;">
+    <div class="col-md-6">
         <div class="moncases form content">
 
             <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
             <?= $this->Flash->render() ?>
-            <div class="card">
-                <h5 class="card-header text-center"><?= __('Add New User') ?></h5>
-                <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 mx-auto">
                             <?php
@@ -47,7 +58,7 @@ $this->assign('title', 'Add - Users');
                                 'style' => 'width: 100%;', // Make select width 100%
                                 'class' => 'form-control',
                                 'required' => true,
-                                'empty' => '- Select Access Role -',
+                                'empty' => 'Select Access Role',
                             ])
                             ?>
 
@@ -60,7 +71,7 @@ $this->assign('title', 'Add - Users');
                                 'label' => 'Contributor *',
                                 'class' => 'form-control',
                                 'style' => 'width: 100%;',
-                                'empty' => '- Select Contributor -',
+                                'empty' => 'Select Contributor',
                                 'required' => true
                             ])
                             ?>
@@ -81,20 +92,10 @@ $this->assign('title', 'Add - Users');
                             ?>
                         </div>
                     </div>
-                </div>
-                <div class="card-footer text-right">
-                    <td>
-                        <button class="btn btn-info" onclick="goBack()">Go Back</button>
-                    </td>
-                    <script>
-                        function goBack() {
-                            window.history.back();
-                        }
-                    </script>
-
-                    <?= $this->Form->button(__('Create'), ['class' => 'btn btn-primary']) ?>
-                </div>
+            <div class="row justify-content-center align-items-center" style="padding-top: 20px;">
+                <?= $this->Form->button(__('Create'), ['class' => 'theme-btn style-one']) ?>
             </div>
+        </div>
             <?= $this->Form->end() ?>
         </div>
     </div>
