@@ -131,22 +131,21 @@ class CollectionsController extends AppController
 
             $collection = $this->Collections->patchEntity($collection, $collectionData);
 
-            $this->Collections->save($collection);
+            if ($this->Collections->save($collection)) {
+                $collectionsMoncasesTable = $this->fetchTable('CollectionsMoncases');
+                $collectionsMoncases = $collectionsMoncasesTable->newEmptyEntity();
 
-            $collectionsMoncasesTable = $this->fetchTable('CollectionsMoncases');
-            $collectionsMoncases = $collectionsMoncasesTable->newEmptyEntity();
+                $collectionId = $collection->id;
+                $moncaseId = $id;
 
-            $collectionId = $collection->id;
-            $moncaseId = $id;
+                $collectionsMoncasesData = [
+                    'collection_id' => $collectionId,
+                    'moncase_id' => $moncaseId
+                ];
 
-            $collectionsMoncasesData = [
-                'collection_id' => $collectionId,
-                'moncase_id' => $moncaseId
-            ];
+                $collectionsMoncases = $collectionsMoncasesTable->patchEntity($collectionsMoncases, $collectionsMoncasesData);
 
-            $collectionsMoncases = $collectionsMoncasesTable->patchEntity($collectionsMoncases, $collectionsMoncasesData);
-
-            if ($collectionsMoncasesTable->save($collectionsMoncases)) {
+                $collectionsMoncasesTable->save($collectionsMoncases);
 
                 $this->Flash->success(__('The collection has been saved.'));
 
