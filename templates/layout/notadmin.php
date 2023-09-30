@@ -128,6 +128,12 @@
             }
         }
 
+        .btn-box a {
+            text-decoration: dashed;
+        }
+
+
+
     </style>
 
 </head>
@@ -161,16 +167,8 @@
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcasesNotadmin'])?>">My Favorites</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Collection</a>
                                 </li>
-
-                                <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Collections</a>
-                                </li>
-
-<!--                                <li>-->
-<!--                                    <a href="--><?php //= $this->Url->build(['controller' => 'pages', 'action' => 'maintance'])?><!--">Collection</a>-->
-<!--                                </li>-->
 
                             </ul>
                         </div>

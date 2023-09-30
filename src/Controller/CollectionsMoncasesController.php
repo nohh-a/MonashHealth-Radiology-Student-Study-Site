@@ -24,6 +24,7 @@ class CollectionsMoncasesController extends AppController
         $collectionsMoncases = $this->paginate($this->CollectionsMoncases);
 
         $this->set(compact('collectionsMoncases'));
+
     }
 
     /**

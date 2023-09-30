@@ -12,16 +12,17 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 <style>
     /* Style the table header */
     table th {
-        background-color: #466bd7;
+        background-color: #576ec2;
         font-weight: bold;
         text-align: center;
+        color: #ececf8;
     }
 
     /* Style the table rows */
     table td {
         border: 1px solid #ddd;
         padding: 8px;
-        text-align: center;
+        text-align: left;
     }
 
     /* Add a hover effect to the table rows */
@@ -33,33 +34,59 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
     .actions {
         white-space: nowrap;
     }
+
+    .body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* mobile */
+    @media (max-width: 768px) {
+
+        table th, table td {
+            font-size: 14px;
+
+        }
+    }
+
+    .container-fluid {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .table-responsive {
+        width: 75%;
+    }
+
 </style>
+
+<section class="page-title bg-color-1 text-center">
+    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
+    <div class="auto-container">
+        <div class="content-box">
+            <h1>My Collection</h1>
+            <ul class="bread-crumb clearfix">
+                <li>My Collection</li>
+                <li>View Collection</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
 <div class="container">
     <div class="row align-items-center d-flex justify-content-center" data-animate="fadeInUp">
         <div class="heading-text heading-section text-center mt-5">
-            <h2 style="color: black; font-weight: bold;">Collection</h2>
-            <p> </p>
         </div>
     </div>
     <br>
     <?= $this->Flash->render() ?>
-    <div class="container-fluid">
+    <div class="container-fluid" data-animate="fadeInUp">
         <div class="moncases index content">
-
             <!-- Page Heading -->
-            <div>
-                <a class="nav-button active" href="<?= $this->Url->build(['controller'=>'Moncases','action'=> 'userlist']) ?>">
-                    <?= $this->Html->link(__('Home'), ['controller' => 'Moncases', 'action' => 'userlist'], ['class' => 'btn btn-primary']) ?>
-                </a>
-
-
-
-                <?= $this->Html->link(__('New Collection'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
+            <div class="d-flex" style="justify-content: flex-end; width: 88%">
+                <?= $this->Html->link(__('New Collection'), ['action' => 'add'], ['class' => 'theme-btn style-one']) ?>
             </div>
-
-            <br><br>
-
+            <br>
+            <div class="row d-flex justify-content-center">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -84,7 +111,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                                     'action' => 'view', $collection->id
                                 ],
                                 [
-                                    'class' => 'btn btn-primary'
+                                    'class' => 'btn btn-outline-primary'
                                 ]
                             )
                             ?>
@@ -93,7 +120,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                                 ['action' => 'edit', $collection->id
                                 ],
                                 [
-                                    'class' => 'btn btn-primary'
+                                    'class' => 'btn btn-outline-warning'
                                 ]) ?>
 
                             <?=
@@ -102,7 +129,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                                     'action' => 'delete', $collection->id
                                 ],
                                 [
-                                    'class' => 'btn btn-danger',
+                                    'class' => 'btn btn-outline-danger',
                                     'confirm' => __(
                                         'Are you sure you want to delete # {0}?', $collection->name
                                     )
@@ -114,6 +141,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                     <?php endforeach; ?>
                     </tbody>
                 </table>
+            </div>
             </div>
             <script>
                 $(document).ready(function() {

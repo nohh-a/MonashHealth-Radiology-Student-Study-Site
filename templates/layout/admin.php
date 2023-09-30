@@ -61,37 +61,51 @@
 
 
     <style>
+        /* ALL: add padding to the button */
         .theme-btn {
             padding: 5px 20px;
         }
+
+        /* User list: adjust size of dropdown lists*/
         .custom-select {
             width: 40%;
             margin-bottom: 20px;
         }
+
+        /* USER LIST: add padding to sides of pages*/
         .sidebar-page-container {
             padding-top: 15px;
         }
+
+        /* USER LIST: add padding to main content page*/
         .blog-grid {
             padding-top: 15px;
             padding-bottom: 30px;
         }
 
+        /* ALL: adjust footer*/
         .footer-bottom {
             border-top: 1px solid #e6eaf1;
         }
+
+        /* ALL: adjust size of blue bar above footer*/
         .cta-section {
             padding-top: 35px;
             padding-bottom: 10px;
         }
 
+        /* ALL: add padding to page title*/
         .page-title {
             padding-top: 170px;
             padding-bottom: 20px;
         }
+
+        /* USER LIST: adjust how text views in grid view */
         .lower-box, .lower-content, .post-info{
             overflow-wrap: break-word;
         }
 
+        /* ALL: style error message */
         .message.error {
             color: red;
             background-color: #edd4d4;
@@ -100,6 +114,7 @@
             margin-bottom: 1rem;
         }
 
+        /* ALL: style success message */
         .message.success {
             background: #e3fcec;
             color: #1f9d55;
@@ -108,6 +123,7 @@
             margin-bottom: 1rem;
         }
 
+        /* USER LIST: hide side bar and show filter button in mobile view */
         @media (max-width:991px) {
             .modal-hide {
                 display:block;
@@ -119,6 +135,7 @@
 
         }
 
+        /* USER LIST: hide filter button in desktop view and show sidebar */
         @media (min-width: 992px) {
             .modal-hide {
                 display: none;
@@ -159,18 +176,14 @@
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
                                 <li class="">
-                                    <a href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">My Users</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">User Management</a>
                                 </li>
                                 <li>
                                     <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'archivedcases'])?>">Archived Cases</a>
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'savedcases'])?>">My Favorites</a>
-                                </li>
-
-                                <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Collections</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Collection</a>
                                 </li>
 
                             </ul>

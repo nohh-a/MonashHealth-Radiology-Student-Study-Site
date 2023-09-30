@@ -18,8 +18,21 @@ class CollectionsController extends AppController
      */
     public function index()
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
         // Get the current user's ID
         $userId = $this->getRequest()->getSession()->read('Auth.id');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
 
         $this->paginate = [
             'contain' => ['Users'],
@@ -27,7 +40,8 @@ class CollectionsController extends AppController
         ];
         $collections = $this->paginate($this->Collections);
 
-        $this->set(compact('collections'));
+        $this->set(compact('collections','author','username'));
+
     }
 
     /**
