@@ -71,7 +71,8 @@ $this->assign('title', 'Add - Users');
                                 'label' => 'Contributor *',
                                 'class' => 'form-control',
                                 'style' => 'width: 100%;',
-                                'empty' => 'Select Contributor',
+                                'empty' => 'Select Contributor
+                                0.526894+',
                                 'required' => true
                             ])
                             ?>
