@@ -59,6 +59,15 @@
                 </div>
 
             </fieldset>
+            <td>
+                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+            </td>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+
             <?= $this->Form->button(__('Submit'),['class'=>'btn btn-outline-po']) ?>
             <?= $this->Form->end() ?>
         </div>

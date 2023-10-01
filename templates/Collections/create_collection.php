@@ -21,6 +21,14 @@
 //                echo $this->Form->control('moncases._ids', ['options' => $moncases]);
                 ?>
             </fieldset>
+            <td>
+                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+            </td>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>

@@ -30,7 +30,7 @@
                 <?= $this->Form->create($collection) ?>
                 <fieldset>
                     <legend><?= __('Edit Collection') ?>  <?= $this->Form->postLink(
-                            __('Delete'),
+                            __('Delete Collection'),
                             ['action' => 'delete', $collection->id],
                             ['confirm' => __('Are you sure you want to delete # {0}?', $collection->id), 'class' => 'btn btn-outline-danger ']
                         ) ?> </legend>
@@ -59,7 +59,17 @@
 
 
                 </fieldset>
-                <?= $this->Form->button(__('Submit'),['class' => 'btn btn-outline-primary ']) ?>
+
+                <td>
+                    <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                </td>
+                <script>
+                    function goBack() {
+                        window.history.back();
+                    }
+                </script>
+
+                <?= $this->Form->button(__('Save'),['class' => 'btn btn-outline-primary ']) ?>
                 <?= $this->Form->end() ?>
             </div>
         </div>
