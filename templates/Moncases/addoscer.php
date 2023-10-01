@@ -51,7 +51,7 @@
 
             <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
             <div class="card">
-                <div class="card-header"></div>
+                <div class="card-header" style="padding-top: 20px;"></div>
                 <div class="card-body">
                     <div style="text-align: center;">
 

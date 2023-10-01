@@ -8,13 +8,21 @@
 ?>
 <?= $this->Html->css('/webroot/css/valid-msg.css') ?>
 
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Collections'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+<section class="page-title bg-color-1 text-center">
+    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
+    <div class="auto-container">
+        <div class="content-box">
+            <h1>My Collection</h1>
+            <ul class="bread-crumb clearfix">
+                <li>My Collection</li>
+                <li>View Collection</li>
+            </ul>
         </div>
-    </aside>
+    </div>
+</section>
+
+<div class="container">
+<div class="row">
     <div class="column-responsive column-80">
         <div class="collections form content">
             <?= $this->Form->create($collection) ?>
@@ -32,7 +40,7 @@
                 echo $this->Form->control('name');
 
                 ?>
-                <dev>
+                <div>
                     <label>Select Moncases:</label>
                     <?= $this->Form->select('moncases._ids',
                         $combinedOptions,
@@ -40,19 +48,20 @@
                             'multiple' => 'checkbox',
                         ]
                     )?>
-                </dev>
+                </div>
 
-                <dev class="hidden-element">
+                <div class="hidden-element">
 
                     <?= $this->Form->control('user_id', [
                     'value' => $userId,
                     'readonly' => true,
                     ])?>
-                </dev>
+                </div>
 
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
+</div>
 </div>

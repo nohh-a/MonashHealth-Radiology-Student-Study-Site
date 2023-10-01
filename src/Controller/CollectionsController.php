@@ -53,11 +53,25 @@ class CollectionsController extends AppController
      */
     public function view($id = null)
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
+
         $collection = $this->Collections->get($id, [
             'contain' => ['Users', 'Moncases'],
         ]);
 
-        $this->set(compact('collection'));
+        $this->set(compact('collection','author','username'));
     }
 
     /**
@@ -67,6 +81,21 @@ class CollectionsController extends AppController
      */
     public function add()
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
+
+        // Get the current user's ID
         $userId = $this->getRequest()->getSession()->read('Auth.id');
 
         $collection = $this->Collections->newEmptyEntity();
@@ -98,7 +127,7 @@ class CollectionsController extends AppController
             'limit' => 200
         ])->toArray();
 
-        $this->set(compact('collection', 'users', 'moncases', 'diagnosis', 'accession_no', 'userId'));
+        $this->set(compact('collection', 'users', 'moncases', 'diagnosis', 'accession_no', 'userId','author','username'));
     }
 
     /**
@@ -110,6 +139,20 @@ class CollectionsController extends AppController
      */
     public function edit($id = null)
     {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
         $collection = $this->Collections->get($id, [
             'contain' => ['Moncases'],
         ]);
@@ -138,7 +181,7 @@ class CollectionsController extends AppController
             'limit' => 200
         ])->toArray();
 
-        $this->set(compact('collection', 'users', 'moncases', 'diagnosis', 'accession_no'));
+        $this->set(compact('collection', 'users', 'moncases', 'diagnosis', 'accession_no','author','username'));
     }
 
     /**
