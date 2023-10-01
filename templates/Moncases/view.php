@@ -69,6 +69,7 @@
 
                 <div class="col-lg-4">
                     <div class="row">
+
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
 <!--                            --><?php //=
 //                            $this->Form->postLink(__('Favorite'),
@@ -119,6 +120,15 @@
 
                         </div>
 
+
+                        <td>
+                            <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                        </td>
+                        <script>
+                            function goBack() {
+                                window.history.back();
+                            }
+                        </script>
 
                     </div>
 

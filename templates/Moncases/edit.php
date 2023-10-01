@@ -39,9 +39,14 @@
         </nav>
         <div class="col-md-8">
 
-            <div class="card-footer">
-
-            </div>
+            <td>
+                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+            </td>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
 
             <div class="moncases form content">
 
