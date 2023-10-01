@@ -411,7 +411,7 @@
                                     <td>
                                         <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>" style=" height: 142px; max-width: fit-content;">
                                     </td>
-                                    <td> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
+                                    <td style="text-align: center;"> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
                                     <td><?= h($moncase->case_type) ?></td>
                                     <td><?= h($moncase->diagnosis) ?></td>
                                     <td><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></td>
