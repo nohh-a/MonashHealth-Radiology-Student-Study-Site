@@ -59,6 +59,19 @@ class CollectionsController extends AppController
 
         $username = $this->getRequest()->getSession()->read('Auth.username');
 
+        $collection = $this->Collections->get($id, [
+            'contain' => ['Users', 'Moncases'],
+        ]);
+
+        // Get the current user's ID
+        $userId = $this->getRequest()->getSession()->read('Auth.id');
+        $collectionUserId = $collection->user_id;
+
+        if ($collectionUserId != $userId) {
+            return $this->redirect(['action' => 'index']);
+        }
+
+
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if ($access_role == 'ADMIN') {
             $this->viewBuilder()->setLayout('admin');
@@ -67,9 +80,9 @@ class CollectionsController extends AppController
 
         }
 
-        $collection = $this->Collections->get($id, [
-            'contain' => ['Users', 'Moncases'],
-        ]);
+
+
+
 
         $this->set(compact('collection','author','username'));
     }
@@ -146,6 +159,18 @@ class CollectionsController extends AppController
 
         $username = $this->getRequest()->getSession()->read('Auth.username');
 
+        $collection = $this->Collections->get($id, [
+            'contain' => ['Moncases'],
+        ]);
+
+        // Get the current user's ID
+        $userId = $this->getRequest()->getSession()->read('Auth.id');
+        $collectionUserId = $collection->user_id;
+
+        if ($collectionUserId != $userId) {
+            return $this->redirect(['action' => 'index']);
+        }
+
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if ($access_role == 'ADMIN') {
             $this->viewBuilder()->setLayout('admin');
@@ -153,9 +178,7 @@ class CollectionsController extends AppController
             $this->viewBuilder()->setLayout('notadmin');
 
         }
-        $collection = $this->Collections->get($id, [
-            'contain' => ['Moncases'],
-        ]);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $collection = $this->Collections->patchEntity($collection, $this->request->getData());
 
