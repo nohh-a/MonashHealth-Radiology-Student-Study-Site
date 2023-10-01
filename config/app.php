@@ -260,7 +260,7 @@ return [
     'Email' => [
         'default' => [
             'transport' => 'default',
-            'from' => 'DVIA@localhost',
+            'from' => 'DVIA@team53.monash',
             /*
              * Will by default be set to config value of App.encoding, if that exists otherwise to UTF-8.
              */
