@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 28, 2023 at 06:38 PM
+-- Generation Time: Oct 01, 2023 at 02:34 PM
 -- Server version: 11.1.2-MariaDB
 -- PHP Version: 8.2.10
 
@@ -82,16 +82,6 @@ CREATE TABLE `moncases` (
   `saved_status` enum('yes','no') NOT NULL DEFAULT 'no',
   `saved_author` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `moncases`
---
-
-INSERT INTO `moncases` (`id`, `image_url`, `accession_no`, `case_type`, `date`, `imaging`, `diagnosis`, `differential_diagnosis`, `findings`, `teaching_points`, `specialty`, `history`, `max_marks`, `observation`, `intepretation`, `safety`, `intrinsic_roles`, `management`, `anatomy`, `pathology`, `further_investigation`, `seen_by`, `tags`, `contributor`, `rating`, `author`, `archive_status`, `saved_status`, `saved_author`) VALUES
-(20, 'noimg.png', '1', 'OSCER', '2023-09-27', '', 'OSCER', NULL, '', '', '', '', NULL, NULL, NULL, '', '', '', '', '', NULL, NULL, NULL, 'LIBRARY', NULL, 'Roger Wang', 'yes', 'no', NULL),
-(22, 'noimg.png', '3', 'MEDIUM', '2023-09-27', '', 'Medium', NULL, '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'LIBRARY', NULL, 'Roger Wang', 'no', 'no', NULL),
-(23, 'noimg.png', '4', 'SHORT', '2023-09-27', '', 'Short', NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'LIBRARY', NULL, 'Roger Wang', 'no', 'no', NULL),
-(24, 'noimg.png', '5', 'GENERAL', '2023-09-27', '', 'General', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '', NULL, NULL, 'LIBRARY', NULL, 'Roger Wang', 'no', 'no', NULL);
 
 -- --------------------------------------------------------
 
@@ -187,25 +177,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `collections_moncases`
 --
 ALTER TABLE `collections_moncases`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `moncases`
 --
 ALTER TABLE `moncases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `saves`
 --
 ALTER TABLE `saves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
