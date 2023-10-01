@@ -30,10 +30,22 @@ $this->assign('title', 'Edit - Users');
             <div class="row">
                 <div class="col-md-6 mx-auto">
                     <?php
-                    echo $this->Form->control('username', ['style' => 'width: 100%;']);
-                    echo $this->Form->control('email', ['style' => 'width: 100%;']);
-                    echo $this->Form->control('first_name', ['style' => 'width: 100%;']);
-                    echo $this->Form->control('last_name', ['style' => 'width: 100%;']);
+                    echo $this->Form->control('username', [
+                        'style' => 'width: 100%;',
+                        'maxlength' => 20
+                    ]);
+                    echo $this->Form->control('email', [
+                        'style' => 'width: 100%;',
+                        'maxlength' => 20
+                    ]);
+                    echo $this->Form->control('first_name', [
+                        'style' => 'width: 100%;',
+                        'maxlength' => 20
+                    ]);
+                    echo $this->Form->control('last_name', [
+                        'style' => 'width: 100%;',
+                        'maxlength' => 20
+                    ]);
                     ?>
                     <?= $this->Form->label('access_role', 'Access Role') ?>
                     <?= $this->Form->select('access_role', [

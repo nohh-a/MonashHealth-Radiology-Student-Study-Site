@@ -61,6 +61,8 @@
 
     <?= $this->Html->css('/webroot/css/valid-msg.css') ?>
 
+    <?= $this->Html->css('/webroot/css/star.css') ?>
+
 
     <style>
         .theme-btn {

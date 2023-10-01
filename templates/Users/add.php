@@ -31,25 +31,29 @@ $this->assign('title', 'Add - Users');
                         <div class="col-md-6 mx-auto">
                             <?php
                             echo $this->Form->control('username', [
-                                'label' => 'Username * (For Login)',
+                                'label' => ['class' => 'required-label', 'text' => 'Username (For Login)'],
                                 'style' => 'width: 100%;', // Make input width 100%
                                 'maxlength' => 20
                             ]);
                             echo $this->Form->control('email', [
-                                'label' => 'Email *',
+                                'label' => ['class' => 'required-label', 'text' => 'Email'],
                                 'style' => 'width: 100%;' // Make input width 100%
                             ]);
                             echo $this->Form->control('first_name', [
-                                'label' => 'First Name *',
-                                'style' => 'width: 100%;' // Make input width 100%
+                                'label' => ['class' => 'required-label', 'text' => 'First Name'],
+                                'style' => 'width: 100%;', // Make input width 100%
+                                'maxlength' => 20
                             ]);
                             echo $this->Form->control('last_name', [
-                                'label' => 'Last Name *',
-                                'style' => 'width: 100%;' // Make input width 100%
+                                'label' => ['class' => 'required-label', 'text' => 'Last Name'],
+                                'style' => 'width: 100%;', // Make input width 100%
+                                'maxlength' => 20
                             ]);
                             ?>
 
-                            <?= $this->Form->label('access_role', 'Access Role *') ?>
+                            <?= $this->Form->label('access_role', 'Access Role', [
+                                'class' => 'required-label',
+                            ]) ?>
                             <?= $this->Form->select('access_role', [
                                 'ADMIN' => 'ADMIN',
                                 'CONSULTANT' => 'CONSULTANT',
@@ -59,27 +63,30 @@ $this->assign('title', 'Add - Users');
                                 'class' => 'form-control',
                                 'required' => true,
                                 'empty' => 'Select Access Role',
+
                             ])
                             ?>
 
-                            <?= $this->Form->label('contributor', 'Contributor *') ?>
+                            <?= $this->Form->label('contributor', 'Contributor', [
+                                'class' => 'required-label',
+                            ]) ?>
                             <?= $this->Form->select('contributor', [
-                                'TRAINEE' => 'TRAINEE',
+                                'LIBRARY' => 'LIBRARY',
                                 'CONSULTANT' => 'CONSULTANT',
-                                'LIBRARY' => 'LIBRARY'
+                                'TRAINEE' => 'TRAINEE',
+
                             ], [
-                                'label' => 'Contributor *',
+                                'label' => ['class' => 'required-label', 'text' => 'Contributor'],
                                 'class' => 'form-control',
                                 'style' => 'width: 100%;',
-                                'empty' => 'Select Contributor
-                                0.526894+',
+                                'empty' => 'Select Contributor',
                                 'required' => true
                             ])
                             ?>
 
                             <?php
                             echo $this->Form->control('password', [
-                                'label' => 'Password *',
+                                'label' => ['class' => 'required-label', 'text' => 'Password'],
                                 'style' => 'width: 100%;'
                             ]); // Make input width 100%
                             // Validate password by repeating it
@@ -87,7 +94,7 @@ $this->assign('title', 'Add - Users');
                                 'style' => 'width: 100%;', // Make input width 100%
                                 'type' => 'password',
                                 'value' => '',  // Ensure password is not sending back to the client side
-                                'label' => 'Retype Password *',
+                                'label' => ['class' => 'required-label', 'text' => 'Retype Password'],
                                 'templateVars' => ['container_class' => 'column']
                             ]);
                             ?>
