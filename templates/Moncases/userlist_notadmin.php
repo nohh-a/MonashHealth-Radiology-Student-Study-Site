@@ -125,7 +125,9 @@
                     </div>
                     <div class = "col-lg-2 col-md-2 col-sm-2 col-2">
                         <!-- Trigger the modal with a button -->
-                        <i class="fas fa-list fa-lg modal-hide" data-toggle="modal" data-target="#myModal"></i>
+                        <i class="fas fa-filter fa-lg modal-hide" data-toggle="modal" data-target="#myModal">
+                            Filter
+                        </i>
 
                         <!-- Modal -->
                         <div id="myModal" class="modal fade" role="dialog">
