@@ -79,7 +79,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
         <div class="moncases index content">
             <div>
                 <?=
-                $this->Form->postLink(__('Delete All'), [
+                $this->Form->postLink(__('Delete All forever'), [
                     'action' => 'deleteall'], [
                     'class' => 'btn btn-danger float-right',
                     'confirm' => __('Are you sure you want to delete all of cases?')])
@@ -142,7 +142,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                                 ?>
 
                                 <?=
-                                $this->Form->postLink(__('Delete'),
+                                $this->Form->postLink(__('Delete forever'),
                                     [
                                         'action' => 'delete', $moncases->id
                                     ],

@@ -15,7 +15,7 @@
             <h1>My Collection</h1>
             <ul class="bread-crumb clearfix">
                 <li>My Collection</li>
-                <li>View Collection</li>
+                <li>Create Collection</li>
             </ul>
         </div>
     </div>

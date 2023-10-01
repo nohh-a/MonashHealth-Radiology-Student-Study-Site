@@ -235,6 +235,20 @@ class CollectionsController extends AppController
      */
     public function createCollection($id = null)
     {
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
+
         $userId = $this->getRequest()->getSession()->read('Auth.id');
 
         $collection = $this->Collections->newEmptyEntity();
@@ -273,7 +287,8 @@ class CollectionsController extends AppController
 
         $users = $this->Collections->Users->find('list', ['limit' => 200])->all();
         $moncases = $this->Collections->Moncases->find('list', ['limit' => 200])->all();
-        $this->set(compact('collection', 'users', 'moncases'));
+
+        $this->set(compact('collection', 'users', 'moncases', 'author', 'username'));
 
     }
 
