@@ -166,6 +166,10 @@
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
+                                <li class="current">
+                                    <a href="<?= $this->Url->build('/') ?>">Case List</a>
+                                </li>
+
                                 <li>
                                     <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Collection</a>
                                 </li>

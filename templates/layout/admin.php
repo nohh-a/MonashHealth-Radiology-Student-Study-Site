@@ -175,6 +175,10 @@
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
+                                <li class="current">
+                                    <a href="<?= $this->Url->build('/') ?>">Case List</a>
+                                </li>
+
                                 <li class="">
                                     <a href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">User Management</a>
                                 </li>
