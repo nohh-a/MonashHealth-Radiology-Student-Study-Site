@@ -556,7 +556,7 @@ class MoncasesController extends AppController
             }
 
             if ($this->Moncases->save($moncase)) {
-                $this->Flash->success(__('The case has been archived.'));
+                $this->Flash->success(__('The case has been archived. Check it in Archived Case!'));
 
                 // Redirect logic based on access_role
                 $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');

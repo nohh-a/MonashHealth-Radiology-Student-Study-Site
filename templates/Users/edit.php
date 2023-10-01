@@ -25,10 +25,21 @@ $this->assign('title', 'Edit - Users');
 
         <div class="moncases form content">
 
-            <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
             <?= $this->Flash->render() ?>
             <div class="row">
+
                 <div class="col-md-6 mx-auto">
+                    <td>
+                        <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                    </td>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+
+
+                    <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
                     <?php
                     echo $this->Form->control('username', [
                         'style' => 'width: 100%;',
@@ -61,9 +72,10 @@ $this->assign('title', 'Edit - Users');
                     ?>
                     <?= $this->Form->label('contributor', 'Contributor') ?>
                     <?= $this->Form->select('contributor', [
-                        'TRAINEE' => 'TRAINEE',
+                        'LIBRARY' => 'LIBRARY',
                         'CONSULTANT' => 'CONSULTANT',
-                        'LIBRARY' => 'LIBRARY'
+                        'TRAINEE' => 'TRAINEE',
+
                     ], [
                         'class' => 'form-control',
                         'style' => 'width: 100%;',
@@ -77,14 +89,6 @@ $this->assign('title', 'Edit - Users');
             </div>
             <div class="row" style="padding-bottom: 20px; padding-top: 20px;">
             <div class="col-md-6 mx-auto text-center">
-                <td>
-                    <button class="btn btn-info" onclick="goBack()">Go Back</button>
-                </td>
-                <script>
-                    function goBack() {
-                        window.history.back();
-                    }
-                </script>
 
                 <?=
                 $this->Form->button(__('Save'), [
@@ -129,6 +133,7 @@ $this->assign('title', 'Edit - Users');
             </div>
             </div>
             <?= $this->Form->end() ?>
+
         </div>
     </div>
 </div>
