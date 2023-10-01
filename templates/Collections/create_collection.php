@@ -7,16 +7,14 @@
  */
 ?>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
 
-        </div>
-    </aside>
     <div class="column-responsive column-80">
         <div class="collections form content">
             <?= $this->Form->create($collection) ?>
+            <?= $this->Flash->render() ?>
             <fieldset>
                 <legend><?= __('Add Collection') ?></legend>
+                <p>Current case will added the collection automatically.</p>
                 <?php
                 echo $this->Form->control('name');
 //                echo $this->Form->control('user_id', ['options' => $users]);

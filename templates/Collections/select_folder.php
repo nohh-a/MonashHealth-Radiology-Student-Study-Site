@@ -11,6 +11,7 @@
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
         <div class="content-box">
+            <?= $this->Flash->render() ?>
             <h1>Select Collection Folder</h1>
             <ul class="bread-crumb clearfix">
                 <li>Case List</li>
@@ -24,7 +25,7 @@
 <div class="row">
     <div class="col-12 d-flex justify-content-center">
         <div class="collections form content">
-            <?= $this->Html->link(__('Create a New Collection'), ['action' => 'add'], ['class' => 'theme-btn style-one']) ?>
+            <?= $this->Html->link(__('Create a New Collection'), ['action' => 'create_collection'], ['class' => 'theme-btn style-one']) ?>
             <?= $this->Form->create() ?>
             <fieldset>
                 <legend style="display:flex; justify-content:center; padding-top: 10px; padding-bottom: 10px;"><?= __('Or') ?></legend>

@@ -264,9 +264,9 @@ class CollectionsController extends AppController
 
                 $collectionsMoncasesTable->save($collectionsMoncases);
 
-                $this->Flash->success(__('The collection folder has been created and the current case has been automatically added to the folder. Check it in My Collections!'));
+                $this->Flash->success(__('The collection folder has been created and the current case has been automatically added to the folder.'));
 
-                return $this->redirect(['controller' => 'moncases', 'action' => 'savedcases']);
+                return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The collection could not be created. Please, try again.'));
         }
@@ -330,9 +330,9 @@ class CollectionsController extends AppController
             $collectionsMoncases = $collectionsMoncasesTable->patchEntity($collectionsMoncases, $collectionsMoncasesData);
 
             if ($collectionsMoncasesTable->save($collectionsMoncases)) {
-                $this->Flash->success(__('The case has been added to the collection folder. Check it in My Collections!'));
+                $this->Flash->success(__('The case has been added to the collection folder.'));
 
-                return $this->redirect(['controller' => 'moncases', 'action' => 'savedcases']);
+                return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The collection could not be added to the collection folder. Please, try again.'));
 
