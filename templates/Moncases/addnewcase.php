@@ -33,6 +33,16 @@
                 <div class="col-md-6">
                         <div class ="card-body row justify-content-center align-items-center">
                             <div class="col-lg-6">
+                                <td>
+                                    <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                                </td>
+                                <script>
+                                    function goBack() {
+                                        window.history.back();
+                                    }
+                                </script>
+
+
                                 <div class="card mb-2 py-1 border-bottom-primary">
                                     <div class="card-body">
                                         <a href="<?= $this->Url->build(['controller' => 'Moncases', 'action' => 'addoscer']) ?>" class="btn btn-block">Oscer Case</a>
@@ -40,6 +50,7 @@
                                 </div>
 
                                 <div class="card mb-2 py-1 border-bottom-secondary">
+
                                     <div class="card-body">
                                         <a href="<?= $this->Url->build(['controller' => 'Moncases', 'action' => 'addlong']) ?>" class="btn btn-block">Long Case</a>
                                     </div>

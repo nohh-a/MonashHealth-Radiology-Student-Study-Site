@@ -29,6 +29,15 @@ $this->assign('title', 'Add - Users');
             <?= $this->Flash->render() ?>
                     <div class="row">
                         <div class="col-md-6 mx-auto">
+                            <td>
+                                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                            </td>
+                            <script>
+                                function goBack() {
+                                    window.history.back();
+                                }
+                            </script>
+
                             <?php
                             echo $this->Form->control('username', [
                                 'label' => ['class' => 'required-label', 'text' => 'Username (For Login)'],

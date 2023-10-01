@@ -45,8 +45,16 @@
     <div class="col-md-8">
         <div class="card-footer">
             <?= $this->Flash->render() ?>
-            <br><br>
         </div>
+        <td>
+            <button class="btn btn-info" onclick="goBack()">Go Back</button>
+        </td>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+
         <div class="moncases form content">
 
             <?= $this->Form->create($moncase, ['enctype' => 'multipart/form-data']) ?>
@@ -164,7 +172,7 @@
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-5">
                                                 <?= $this->Form->control('accession_no', [
                                                     'class' => 'form-control',
                                                     'type' => 'text',
@@ -174,10 +182,10 @@
                                                 ])
                                                 ?>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <?= $this->Form->control('diagnosis', [
                                                     'class' => 'form-control',
-                                                    'maxlength' => 100,
+                                                    'maxlength' => 48,
                                                     'type' => 'text',
                                                     'required' => true,
                                                     'label' => ['class' => 'required-label', 'text' => 'Diagnosis'],
@@ -185,10 +193,10 @@
                                                 ?>
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-5">
                                                 <?= $this->Form->control('image_url', [
                                                     'type' => 'file',
-                                                    'label' => 'Image Upload  (PNG, JPEG, JPG)',
+                                                    'label' => 'Image Upload (Optional) (PNG, JPEG, JPG) ',
                                                     'class' => 'form-control'
                                                 ])
                                                 ?>
@@ -200,7 +208,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Case Details #2
+                                            Case Details #2 (Optional)
                                         </button>
                                     </h2>
                                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -302,7 +310,6 @@
                                             </div>
 
 
-
                                         </div>
                                     </div>
                                 </div>
@@ -310,7 +317,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Case Details #3
+                                            Case Details #3 (Optional)
                                         </button>
                                     </h2>
                                     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
