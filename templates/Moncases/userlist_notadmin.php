@@ -564,6 +564,7 @@
                         <div class="widget-title">
                             <div class="widget-content" style="display: flex; justify-content: space-between; align-items: center;">
                                 <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style' => 'flex: 1; margin-right: 10px;']) ?>
+                                <?= $this->Form->end() ?>
                                 <a href="<?= $this->Url->build('/') ?>"><button class="theme-btn style-two" style="flex: 1;">Reset Filter</button></a>
                             </div>
                         </div>
