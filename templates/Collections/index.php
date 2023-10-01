@@ -74,10 +74,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 
 <div class="container">
     <div class="row align-items-center d-flex justify-content-center" data-animate="fadeInUp">
-        <div class="heading-text heading-section text-center mt-5">
-        </div>
     </div>
-    <br>
     <?= $this->Flash->render() ?>
     <div class="container-fluid" data-animate="fadeInUp">
         <div class="moncases index content">

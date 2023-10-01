@@ -23,7 +23,7 @@
 
 <div class="container">
 <div class="row">
-    <div class="column-responsive column-80">
+    <div class="col-12 d-flex justify-content-center">
         <div class="collections form content">
             <?= $this->Form->create($collection) ?>
             <fieldset>
@@ -59,7 +59,7 @@
                 </div>
 
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Submit'),['class'=>'btn btn-outline-po']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

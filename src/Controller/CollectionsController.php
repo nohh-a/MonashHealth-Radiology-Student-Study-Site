@@ -261,6 +261,20 @@ class CollectionsController extends AppController
      */
     public function selectFolder($id = null) {
 
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
+
         // Get the current user's ID
         $userId = $this->getRequest()->getSession()->read('Auth.id');
 
@@ -301,7 +315,7 @@ class CollectionsController extends AppController
 
         }
 
-        $this->set(compact('collections', 'name'));
+        $this->set(compact('collections', 'name','username','author'));
 
     }
 
