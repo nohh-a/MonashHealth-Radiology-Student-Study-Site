@@ -81,10 +81,7 @@ class CollectionsController extends AppController
         }
 
 
-
-
-
-        $this->set(compact('collection','author','username'));
+        $this->set(compact('collection','author','username', 'access_role'));
     }
 
     /**

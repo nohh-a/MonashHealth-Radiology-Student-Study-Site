@@ -98,15 +98,33 @@
                         <?php foreach ($collection->moncases as $moncases) : ?>
                             <tr>
                                 <td> <img src="<?= $this->Url->image($moncases -> image_url, ['alt'=>'photo']) ?>" style=" height: 142px; max-width: fit-content;"></td>
-                                <td><?= h($moncases->accession_no) ?></td>
-                                <td><?= h($moncases->case_type) ?></td>
-                                <td><?= h($moncases->date) ?></td>
-                                <td><?= h($moncases->diagnosis) ?></td>
-                                <td><?= h($moncases->author) ?></td>
-                                <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['controller' => 'Moncases', 'action' => 'view', $moncases->id],['class'=>'btn btn-outline-primary']) ?>
-                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Moncases', 'action' => 'edit', $moncases->id], ['class'=>'btn btn-outline-warning']) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Moncases', 'action' => 'delete', $moncases->id], ['confirm' => __('Are you sure you want to delete # {0}?', $moncases->id), 'class'=>'btn btn-outline-danger']) ?>
+                                <td style="text-align: center;"><?= h($moncases->accession_no) ?></td>
+                                <td style="text-align: center;"><?= h($moncases->case_type) ?></td>
+                                <td style="text-align: center;"><?= h($moncases->date) ?></td>
+                                <td style="text-align: center;"><?= h($moncases->diagnosis) ?></td>
+                                <td style="text-align: center;"><?= h($moncases->author) ?></td>
+                                <td class="actions" style="text-align: center;">
+                                    <!--going different view page based access role-->
+                                    <?php if ($access_role == 'ADMIN'): ?>
+                                        <?= $this->Html->link(__('View'), ['controller' => 'Moncases', 'action' => 'view', $moncases->id],['class'=>'btn btn-outline-primary']) ?>
+                                    <?php else: ?>
+                                        <?= $this->Html->link(__('View'), ['controller' => 'Moncases', 'action' => 'view_notadmin', $moncases->id],['class'=>'btn btn-outline-primary']) ?>
+                                    <?php endif; ?>
+
+                                    <!--user just can edit their own cases, admin can edit anyone-->
+                                    <?php if ($access_role == 'ADMIN'): ?>
+                                        <?= $this->Html->link(__('Edit'), ['controller' => 'Moncases', 'action' => 'edit', $moncases->id], ['class'=>'btn btn-outline-warning']) ?>
+                                    <?php else: ?>
+                                        <?php if ($author == $moncases->author): ?>
+                                            <?= $this->Html->link(__('Edit'), ['controller' => 'Moncases', 'action' => 'edit', $moncases->id], ['class'=>'btn btn-outline-warning']) ?>
+                                        <?php else: ?>
+
+                                        <?php endif; ?>
+
+                                    <?php endif; ?>
+
+<!--                                    --><?php //= $this->Form->postLink(__('Delete'), ['controller' => 'Moncases', 'action' => 'delete', $moncases->id], ['confirm' => __('Are you sure you want to delete # {0}?', $moncases->id), 'class'=>'btn btn-outline-danger']) ?>
+
                                 </td>
                             </tr>
                         <?php endforeach; ?>
