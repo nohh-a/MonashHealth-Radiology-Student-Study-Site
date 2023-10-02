@@ -47,7 +47,7 @@
                     }
                 </script>
 
-                <?= $this->Form->button(__('Create'),['class'=>'btn btn-outline-po']) ?>
+                <?= $this->Form->button(__('Create'),['class'=>'btn btn-outline-primary']) ?>
                 <?= $this->Form->end() ?>
             </div>
         </div>

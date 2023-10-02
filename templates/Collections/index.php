@@ -89,7 +89,6 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                     <thead>
                     <tr>
                         <th><?= h('Collection Name') ?></th>
-                        <th><?= h('Username') ?></th>
                         <th class="actions"><?= __('Actions') ?></th>
                     </tr>
                     </thead>
@@ -97,11 +96,9 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
 
                     <tr>
                         <?php foreach ($collections as $collection): ?>
-                        <td><?= h($collection->name) ?></td>
-                        <td><?= $collection->has('user') ? $this->Html->link($collection->user->username, ['controller' => 'Users', 'action' => 'view', $collection->user->username]) : '' ?></td>
+                        <td style="text-align: center;"><?= h($collection->name) ?></td>
 
-
-                        <td class="actions">
+                        <td class="actions" style="text-align: center;">
                             <?=
                             $this->Html->link(__('View'),
                                 [
@@ -141,9 +138,9 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             </div>
             </div>
             <script>
-                $(document).ready(function() {
-                    $('#dataTable').DataTable();
-                });
+                // $(document).ready(function() {
+                //     $('#dataTable').DataTable();
+                // });
 
             </script>
         </div>

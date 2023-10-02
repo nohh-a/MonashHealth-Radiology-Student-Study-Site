@@ -69,7 +69,7 @@
                     }
                 </script>
 
-                <?= $this->Form->button(__('Save'),['class' => 'btn btn-outline-primary ']) ?>
+                <?= $this->Form->button(__('Save'),['class' => 'btn btn-outline-primary']) ?>
                 <?= $this->Form->end() ?>
             </div>
         </div>

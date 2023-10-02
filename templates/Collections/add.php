@@ -68,7 +68,7 @@
                 }
             </script>
 
-            <?= $this->Form->button(__('Submit'),['class'=>'btn btn-outline-po']) ?>
+            <?= $this->Form->button(__('Submit'),['class'=>'btn btn-outline-primary']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
