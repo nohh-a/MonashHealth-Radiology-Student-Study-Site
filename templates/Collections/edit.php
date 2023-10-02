@@ -25,41 +25,9 @@
         </div>
     </div>
     <div class="row">
+
         <div class="col-12 d-flex justify-content-center">
             <div class="collections form content">
-                <?= $this->Form->create($collection) ?>
-                <fieldset>
-                    <legend><?= __('Edit Collection') ?>  <?= $this->Form->postLink(
-                            __('Delete Collection'),
-                            ['action' => 'delete', $collection->id],
-                            ['confirm' => __('Are you sure you want to delete # {0}?', $collection->id), 'class' => 'btn btn-outline-danger ']
-                        ) ?> </legend>
-                    <?php
-                    $combinedOptions = [];
-
-                    foreach ($moncases as $id => $case) {
-                        $accessionNo = isset($accession_no[$id]) ? $accession_no[$id] : '';
-                        $diagnosisText = isset($diagnosis[$id]) ? $diagnosis[$id] : '';
-                        $combinedOptions[$id] = $accessionNo . ' - ' . $diagnosisText;
-                    }
-
-                    echo $this->Form->control('name');
-                    //                echo $this->Form->control('user_id', ['options' => $users]);
-
-                    ?>
-                    <dev>
-                        <label>Select Moncases:</label>
-                        <?= $this->Form->select('moncases._ids',
-                            $combinedOptions,
-                            [
-                                'multiple' => 'checkbox',
-                            ]
-                        )?>
-                    </dev>
-
-
-                </fieldset>
-
                 <td>
                     <button class="btn btn-info" onclick="goBack()">Go Back</button>
                 </td>
@@ -69,8 +37,55 @@
                     }
                 </script>
 
-                <?= $this->Form->button(__('Save'),['class' => 'btn btn-outline-primary']) ?>
-                <?= $this->Form->end() ?>
+                <?= $this->Form->create($collection) ?>
+                <fieldset>
+
+                    <?php
+                    $combinedOptions = [];
+
+                    foreach ($moncases as $id => $case) {
+                        $accessionNo = isset($accession_no[$id]) ? $accession_no[$id] : '';
+                        $diagnosisText = isset($diagnosis[$id]) ? $diagnosis[$id] : '';
+                        $combinedOptions[$id] = $accessionNo . ' - ' . $diagnosisText;
+                    }
+
+                    echo $this->Form->control('name', [
+                        'class' => 'form-control',
+                        'required' => true,
+                        'maxlength' => 50,
+                        'placeholder' => 'Enter the name',
+                        'label' => ['class' => 'required-label', 'text' => 'Collection Name'],
+                    ]);
+                    //                echo $this->Form->control('user_id', ['options' => $users]);
+
+                    ?>
+                    <dev>
+                        <label>Select Moncases:</label>
+                        <?= $this->Form->select('moncases._ids',
+                            $combinedOptions,
+                            [
+                                'multiple' => 'checkbox',
+                                'class' => 'text-center',
+                            ]
+                        )?>
+                    </dev>
+
+
+                </fieldset>
+
+                <div class="row">
+                    <?= $this->Form->button(__('Save'),['class' => 'btn btn-outline-primary']) ?>
+                    <?= $this->Form->end() ?>
+
+                    <?= $this->Form->postLink(
+                        __('Delete'),
+                        ['action' => 'delete', $collection->id],
+                        ['confirm' => __('Are you sure you want to delete # {0}?', $collection->id), 'class' => 'btn btn-outline-danger ']
+                    ) ?>
+                </div>
+
+
+
             </div>
         </div>
     </div>

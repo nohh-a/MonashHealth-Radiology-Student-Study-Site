@@ -28,13 +28,20 @@
                 <?= $this->Form->create($collection) ?>
                 <?= $this->Flash->render() ?>
                 <fieldset>
-                    <legend><?= __('Add Collection') ?></legend>
-                    <p>Current case will added the collection automatically.</p>
+
                     <?php
-                    echo $this->Form->control('name');
+                    echo $this->Form->control('name', [
+                        'class' => 'form-control',
+                        'required' => true,
+                        'maxlength' => 50,
+                        'placeholder' => 'Enter the name',
+                        'label' => ['class' => 'required-label', 'text' => 'Collection Name'],
+                    ]);
                     //                echo $this->Form->control('user_id', ['options' => $users]);
                     //                echo $this->Form->control('moncases._ids', ['options' => $moncases]);
                     ?>
+
+                    <p>Current case will added the collection automatically.</p>
 
 
                 </fieldset>

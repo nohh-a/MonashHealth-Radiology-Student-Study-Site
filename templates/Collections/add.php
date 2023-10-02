@@ -6,7 +6,7 @@
  * @var \Cake\Collection\CollectionInterface|string[] $moncases
  */
 ?>
-<?= $this->Html->css('/webroot/css/valid-msg.css') ?>
+
 
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
@@ -27,31 +27,36 @@
         <div class="collections form content">
             <?= $this->Form->create($collection) ?>
             <fieldset>
-                <legend><?= __('Add Collection') ?></legend>
+
                 <?php
                 $combinedOptions = [];
-
                 foreach ($moncases as $id => $case) {
                     $accessionNo = isset($accession_no[$id]) ? $accession_no[$id] : '';
                     $diagnosisText = isset($diagnosis[$id]) ? $diagnosis[$id] : '';
                     $combinedOptions[$id] = $accessionNo . ' - ' . $diagnosisText;
                 }
 
-                echo $this->Form->control('name');
-
+                echo $this->Form->control('name', [
+                    'class' => 'form-control',
+                    'required' => true,
+                    'maxlength' => 50,
+                    'placeholder' => 'Enter the name',
+                    'label' => ['class' => 'required-label', 'text' => 'Collection Name'],
+                ]);
                 ?>
-                <div>
+                <div class="text-center">
                     <label>Select Moncases:</label>
                     <?= $this->Form->select('moncases._ids',
                         $combinedOptions,
                         [
                             'multiple' => 'checkbox',
+                            'class' => 'text-center',
                         ]
                     )?>
                 </div>
 
+                <!--must be here, cannot delete-->
                 <div class="hidden-element">
-
                     <?= $this->Form->control('user_id', [
                     'value' => $userId,
                     'readonly' => true,

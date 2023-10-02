@@ -58,6 +58,10 @@
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/responsive.css']) ?>
 
+    <?= $this->Html->css('/webroot/css/valid-msg.css') ?>
+    <?= $this->Html->css('/webroot/css/collection.css') ?>
+    <?= $this->Html->css('/webroot/css/star.css') ?>
+
 
 
     <style>
