@@ -46,6 +46,7 @@
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
+
         <div class="sec-title">
             <p><?= h($moncase->case_type) ?> CASE </p>
             <h2><?= h($moncase->diagnosis) ?></h2>
@@ -62,6 +63,18 @@
         <div class="inner-container">
 
             <div class="row">
+                <div class="col-md-8">
+                    <td>
+                        <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                    </td>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+                </div>
+                <br><br>
+
                 <div class="col-lg-8">
                     <figure class="image-box">
                         <a href="https://monashimaging.monashhealth.org/portal/Login.aspx" >
@@ -70,19 +83,19 @@
                     </figure>
                 </div>
                 <div class="col-lg-4">
-                    <div class="row">
+                    <div class="widget-content" style="display: flex; justify-content: space-between; align-items: center;">
 
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-<!--                            --><?php //=
-//                            $this->Form->postLink(__('Favorite'),
-//                                ['action' => 'savecaseaction', $moncase->id],
-//                                ['class' => 'theme-btn style-one',
-//                                    'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)])
-//                            ?>
+                        <div class="col-lg-4" >
+                            <!--                            --><?php //=
+                            //                            $this->Form->postLink(__('Favorite'),
+                            //                                ['action' => 'savecaseaction', $moncase->id],
+                            //                                ['class' => 'theme-btn style-one',
+                            //                                    'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)])
+                            //                            ?>
 
-<!--                            if the user do not have any folder, collect button going to crete a folder-->
-<!--                            -->
-<!--                            else, going to add the case into a folder.-->
+                            <!--                            if the user do not have any folder, collect button going to crete a folder-->
+                            <!--                            -->
+                            <!--                            else, going to add the case into a folder.-->
                             <?php if ($collectionCount == 0): ?>
                                 <?=
                                 $this->Html->link(__('Collect'),
@@ -113,25 +126,16 @@
 
                             <?php endif; ?>
 
+                        </div>
+
+                        <div class="col-lg-4">
                             <?php if ($author != $caseAuthor): ?>
                                 <!-- Don't show button when $author is not equal to $caseAuthor -->
                             <?php else: ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                             <?php endif; ?>
-
                         </div>
-
-                        <td>
-                            <button class="btn btn-info" onclick="goBack()">Go Back</button>
-                        </td>
-                        <script>
-                            function goBack() {
-                                window.history.back();
-                            }
-                        </script>
-
                     </div>
-
 
                     <section class="accordion-box" style="padding: 0px 0px 0px 0px;">
                         <div class="accordion block active-block">

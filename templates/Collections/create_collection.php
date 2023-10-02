@@ -12,10 +12,10 @@
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
         <div class="content-box">
-            <h1>My Collection</h1>
+            <h1>Create Folder</h1>
             <ul class="bread-crumb clearfix">
-                <li>My Collection</li>
-                <li>Create Collection</li>
+                <li>Case  List</li>
+                <li>Create Folder</li>
             </ul>
         </div>
     </div>
@@ -35,13 +35,13 @@
                         'required' => true,
                         'maxlength' => 50,
                         'placeholder' => 'Enter the name',
-                        'label' => ['class' => 'required-label', 'text' => 'Collection Name'],
+                        'label' => ['class' => 'required-label', 'text' => 'Folder Name'],
                     ]);
                     //                echo $this->Form->control('user_id', ['options' => $users]);
                     //                echo $this->Form->control('moncases._ids', ['options' => $moncases]);
                     ?>
 
-                    <p>Current case will added the collection automatically.</p>
+                    <p>Current case will added to the folder automatically.</p>
 
 
                 </fieldset>

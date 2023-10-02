@@ -191,7 +191,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Collection</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Favorites</a>
                                 </li>
 
                             </ul>

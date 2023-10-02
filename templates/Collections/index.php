@@ -63,10 +63,10 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
         <div class="content-box">
-            <h1>My Collection</h1>
+            <h1>My Favorites</h1>
             <ul class="bread-crumb clearfix">
-                <li>My Collection</li>
-                <li>View Collection</li>
+                <li>My Favorites</li>
+                <li>View Folders</li>
             </ul>
         </div>
     </div>
@@ -80,7 +80,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
         <div class="moncases index content">
             <!-- Page Heading -->
             <div class="d-flex" style="justify-content: flex-end; width: 88%">
-                <?= $this->Html->link(__('New Collection'), ['action' => 'add'], ['class' => 'theme-btn style-one']) ?>
+                <?= $this->Html->link(__('New Folder'), ['action' => 'add'], ['class' => 'theme-btn style-one']) ?>
             </div>
             <br>
             <div class="row d-flex justify-content-center">
@@ -88,7 +88,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th><?= h('Collection Name') ?></th>
+                        <th><?= h('Folder Name') ?></th>
                         <th class="actions"><?= __('Actions') ?></th>
                     </tr>
                     </thead>

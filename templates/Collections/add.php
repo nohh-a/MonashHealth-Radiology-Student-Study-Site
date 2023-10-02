@@ -11,11 +11,22 @@
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
+        <div class="col-md-8">
+            <td>
+                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+            </td>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        </div>
+
         <div class="content-box">
-            <h1>My Collection</h1>
+            <h1>Create Folder</h1>
             <ul class="bread-crumb clearfix">
-                <li>My Collection</li>
-                <li>Create Collection</li>
+                <li>My Favorites</li>
+                <li>Create folder</li>
             </ul>
         </div>
     </div>
@@ -41,11 +52,11 @@
                     'required' => true,
                     'maxlength' => 50,
                     'placeholder' => 'Enter the name',
-                    'label' => ['class' => 'required-label', 'text' => 'Collection Name'],
+                    'label' => ['class' => 'required-label', 'text' => 'Folder Name'],
                 ]);
                 ?>
                 <div class="text-center">
-                    <label>Select Moncases:</label>
+                    <label>Select Cases:</label>
                     <?= $this->Form->select('moncases._ids',
                         $combinedOptions,
                         [
@@ -64,16 +75,8 @@
                 </div>
 
             </fieldset>
-            <td>
-                <button class="btn btn-info" onclick="goBack()">Go Back</button>
-            </td>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script>
 
-            <?= $this->Form->button(__('Submit'),['class'=>'btn btn-outline-primary']) ?>
+            <?= $this->Form->button(__('Create'),['class'=>'btn btn-outline-primary']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

@@ -51,7 +51,7 @@
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
         <div class="content-box">
-            <h1>Collection: <?= h($collection->name) ?></h1>
+            <h1><?= h($collection->name) ?></h1>
             <ul class="bread-crumb clearfix">
                     <li>My Collection</li>
                 <li>View Collection</li>

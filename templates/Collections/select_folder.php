@@ -7,15 +7,29 @@
  */
 ?>
 
+
 <section class="page-title bg-color-1 text-center">
+
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
+
+        <div class="col-md-8">
+            <td>
+                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+            </td>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        </div>
+
         <div class="content-box">
             <?= $this->Flash->render() ?>
-            <h1>Select Collection Folder</h1>
+            <h1>Select Favorites Folder</h1>
             <ul class="bread-crumb clearfix">
                 <li>Case List</li>
-                <li>Save Case</li>
+                <li>Favorite Case</li>
             </ul>
         </div>
     </div>
@@ -23,6 +37,7 @@
 
 
 <div class="row">
+
     <div class="col-12 d-flex justify-content-center">
         <div class="collections form content">
             <?= $this->Html->link(__('Create a New Collection'), ['action' => 'create_collection'], ['class' => 'theme-btn style-one']) ?>
@@ -33,11 +48,11 @@
                 echo $this->Form->control('collection_name', [
                     'type' => 'select',
                     'options' => $name,
-                    'label' => 'Select a Collection',
+                    'label' => 'Select a Folder: ',
                 ]);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Put the case in this collection'),['class'=>'btn btn-outline-primary']) ?>
+            <?= $this->Form->button(__('Put the case in this folder'),['class'=>'btn btn-outline-primary']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
