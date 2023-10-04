@@ -22,31 +22,9 @@ class MoncasesController extends AppController
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if ($access_role !== 'ADMIN') {
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
+        } else {
+            return $this->redirect(['controller' => 'moncases', 'action' => 'userlist']);
         }
-
-        $moncases = $this->paginate($this->Moncases);
-
-        $oscerCount = $this->Moncases->find()
-            ->where(['case_type' => 'Oscer'])
-            ->count();
-
-        $longCount = $this->Moncases->find()
-            ->where(['case_type' => 'Long'])
-            ->count();
-
-        $mediumCount = $this->Moncases->find()
-            ->where(['case_type' => 'Medium'])
-            ->count();
-
-        $shortCount = $this->Moncases->find()
-            ->where(['case_type' => 'Short'])
-            ->count();
-
-        $generalCount = $this->Moncases->find()
-            ->where(['case_type' => 'General'])
-            ->count();
-
-        $this->set(compact('moncases', 'oscerCount', 'longCount', 'mediumCount', 'shortCount', 'generalCount'));
     }
 
     /**
@@ -1068,6 +1046,40 @@ class MoncasesController extends AppController
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
         $this->viewBuilder()->setLayout('moncase');
+
+    }
+
+    public function help() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role !== 'ADMIN') {
+            return $this->redirect(['controller' => 'moncases', 'action' => 'helpNotAdmin']);
+        }
+
+        $this->viewBuilder()->setLayout('help');
+        $this->set(compact( 'author', 'username'));
+
+
+    }
+
+    public function helpNotadmin() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $this->viewBuilder()->setLayout('help_notadmin');
+        $this->set(compact( 'author', 'username'));
+
+
 
     }
 

@@ -178,6 +178,10 @@
                                     <a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Favorites</a>
                                 </li>
 
+                                <li>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'help_notadmin'])?>">Help</a>
+                                </li>
+
                             </ul>
                         </div>
                     </nav>

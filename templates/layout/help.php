@@ -195,7 +195,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'help'])?>">Help</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'index'])?>">Help</a>
                                 </li>
 
                             </ul>
@@ -244,7 +244,8 @@
             </h4>
         </div>
     </nav>
-</div><!-- End Mobile Menu -->
+</div>
+<!-- End Mobile Menu -->
 
 
 <!-- Main body Here-->
