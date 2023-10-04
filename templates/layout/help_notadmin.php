@@ -232,22 +232,6 @@
 </div><!-- End Mobile Menu -->
 
 
-<!--Page Title-->
-<section class="page-title bg-color-1 text-center">
-    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
-    <div class="auto-container">
-        <div class="content-box">
-            <h1>Help</h1>
-            <ul class="bread-crumb clearfix">
-                <li>My Favorites</li>
-                <li>View Folders</li>
-            </ul>
-        </div>
-    </div>
-</section>
-<!--End Page Title-->
-
-
 <!--Main Body-->
 <?= $this->fetch('content') ?>
 
@@ -261,7 +245,7 @@
         </div>
     </section>
     <!-- cta-section end -->
-    <div class="auto-container">
+    <div class="container">
         <div class="footer-bottom clearfix">
             <div class="copyright pull-left">
                 <p><a href="<?= $this->Url->build('/') ?>"> Monash Health</a> &copy; 2023 All Right Reserved</p>
@@ -299,6 +283,9 @@
 <?= $this->Html->script(['list/appear.js']) ?>
 
 <?= $this->Html->script(['list/scrollbar.js']) ?>
+
+<script src="https://kit.fontawesome.com/190c98c6ba.js" crossorigin="anonymous"></script>
+
 
 <?= $this->Html->script(['list/tilt.jquery.js']) ?>
 

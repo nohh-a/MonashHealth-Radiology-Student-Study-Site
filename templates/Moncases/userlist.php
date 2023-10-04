@@ -127,16 +127,12 @@
                 <div class = "col-lg-2 col-md-2 col-sm-2 col-2">
                         <!-- Trigger the modal with a button -->
                     <i class="fas fas fa-search fa-lg modal-hide" data-toggle="modal" data-target="#myModal">
-
                     </i>
-
                         <!-- Modal -->
                         <div id="myModal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
-
                                 <!-- Modal content-->
                                 <div class="modal-content">
-
                                     <div class="modal-body">
                                         <div class="sidebar">
                                             <div class="sidebar-widget sidebar-search">

@@ -41,6 +41,8 @@
 
     <!-- Stylesheets -->
     <?= $this->Html->css(['/detoxpack/detox/assets/css/font-awesome-all.css']) ?>
+    <?= $this->Html->css(['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css']) ?>
+
     <!--===============================================================================================-->
     <?= $this->Html->css(['list/flaticon.css']) ?>
     <!--===============================================================================================-->
@@ -262,7 +264,7 @@
         </div>
     </section>
     <!-- cta-section end -->
-    <div class="auto-container">
+    <div class="container">
         <div class="footer-bottom clearfix">
             <div class="copyright pull-left">
                 <p><a href="<?= $this->Url->build('/') ?>"> Monash Health</a> &copy; 2023 All Right Reserved</p>
@@ -300,6 +302,8 @@
 <?= $this->Html->script(['list/scrollbar.js']) ?>
 
 <?= $this->Html->script(['list/tilt.jquery.js']) ?>
+
+<script src="https://kit.fontawesome.com/190c98c6ba.js" crossorigin="anonymous"></script>
 
 <?= $this->Html->script(['list/script.js']) ?>
 
