@@ -40,13 +40,6 @@
             <fieldset>
 
                 <?php
-                $combinedOptions = [];
-                foreach ($moncases as $id => $case) {
-                    $accessionNo = isset($accession_no[$id]) ? $accession_no[$id] : '';
-                    $diagnosisText = isset($diagnosis[$id]) ? $diagnosis[$id] : '';
-                    $combinedOptions[$id] = $accessionNo . ' - ' . $diagnosisText;
-                }
-
                 echo $this->Form->control('name', [
                     'class' => 'form-control',
                     'required' => true,
@@ -54,17 +47,11 @@
                     'placeholder' => 'Enter the name',
                     'label' => ['class' => 'required-label', 'text' => 'Folder Name'],
                 ]);
+                //                echo $this->Form->control('user_id', ['options' => $users]);
+                //                echo $this->Form->control('moncases._ids', ['options' => $moncases]);
                 ?>
-                <div class="text-center">
-                    <label>Select Cases:</label>
-                    <?= $this->Form->select('moncases._ids',
-                        $combinedOptions,
-                        [
-                            'multiple' => 'checkbox',
-                            'class' => 'text-center',
-                        ]
-                    )?>
-                </div>
+
+                <p>You will get a empty folder.</p>
 
                 <!--must be here, cannot delete-->
                 <div class="hidden-element">
