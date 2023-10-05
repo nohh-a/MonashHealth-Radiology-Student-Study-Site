@@ -30,18 +30,14 @@
     <div class="d-flex justify-content-center align-items-center">
         <div class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-md-6">
-                        <div class ="card-body row justify-content-center align-items-center">
-                            <div class="col-lg-6">
-                                <td>
-                                    <button class="btn btn-info" onclick="goBack()">Go Back</button>
-                                </td>
-                                <script>
-                                    function goBack() {
-                                        window.history.back();
-                                    }
-                                </script>
 
+                <div class="col-md-6">
+                    <td>
+                        <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                    </td>
+
+                    <div class ="card-body row justify-content-center align-items-center">
+                            <div class="col-lg-6">
 
                                 <div class="card mb-2 py-1 border-bottom-primary">
                                     <div class="card-body">
@@ -86,4 +82,8 @@
 
 
 
-
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

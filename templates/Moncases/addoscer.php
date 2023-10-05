@@ -32,16 +32,7 @@
 
 
 <div class="row justify-content-center align-items-center">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
     <div class="col-md-8">
         <div class="card-footer">
             <?= $this->Flash->render() ?>
@@ -49,6 +40,7 @@
         <td>
             <button class="btn btn-info" onclick="goBack()">Go Back</button>
         </td>
+        <br><br>
         <script>
             function goBack() {
                 window.history.back();
