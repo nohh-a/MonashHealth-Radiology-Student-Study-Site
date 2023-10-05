@@ -354,6 +354,36 @@ class CollectionsController extends AppController
 
     }
 
+    /**
+     * delete case from a collection folder method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful collection, renders view otherwise.
+     */
+    public function deletecaseinfoldder() {
+        $args = func_get_args(); // Get the passed parameter array
+
+        // Get parameter value
+        $moncasesId = $args[0]; // The first parameter is $moncases->id
+        $collectionId = $args[1]; // The second parameter is $collection->id
+
+        $collectionsMoncasesTable = $this->fetchTable('CollectionsMoncases');
+
+        $result = $collectionsMoncasesTable->deleteAll([
+            'moncase_id' => $moncasesId,
+            'collection_id' => $collectionId,
+        ]);
+
+        // Delete instance
+        if ($result == 1) {
+            $this->Flash->success(__('The case has been removed from the folder.'));
+        } else {
+            $this->Flash->error(__('The case could not be removed from the folder. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'view', $collectionId]);
+
+    }
+
 
 
 }
