@@ -59,26 +59,22 @@
             </ul>
         </div>
     </div>
+    <td>
+        <button class="btn btn-info" onclick="goBack()">Go Back</button>
+    </td>
 </section>
 
 <div class="container">
     <?= $this->Flash->render() ?>
+
     <div class="row">
-        <div class="col-6">
-            <h3 class="heading"><?= __('Actions') ?></h3>
+        <div class="col-12" align="right">
+            <h4 class="heading"><?= __('Actions') ?></h4>
 
-            <td>
-                <button class="btn btn-info" onclick="goBack()">Go Back</button>
-            </td>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script>
-
+            <?= $this->Html->link(__('New Folder'), ['action' => 'add'], ['class' => 'btn btn-outline-primary']) ?>
             <?= $this->Html->link(__('Change Folder Name'), ['action' => 'edit', $collection->id], ['class' => 'btn btn-outline-warning']) ?>
             <?= $this->Form->postLink(__('Delete This Folder'), ['action' => 'delete', $collection->id], ['confirm' => __('Are you sure you want to delete your collection "{0}"?', $collection->name), 'class' => 'btn btn-outline-danger']) ?>
-            <?= $this->Html->link(__('New Folder'), ['action' => 'add'], ['class' => 'btn btn-outline-primary']) ?>
+
         </div>
     </div>
 
@@ -139,3 +135,10 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
