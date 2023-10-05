@@ -220,15 +220,15 @@ class MoncasesController extends AppController
 //            debug($this->Moncases->save($moncase));
 
             if ($this->Moncases->save($moncase)) {
-                $this->Flash->success(__('The moncase has been saved.'));
+                $this->Flash->success(__('The case has been saved.'));
 
                 // Redirect logic based on access_role
-                $redirectAction = $accessRole == 'ADMIN' ? 'userlist' : 'userlistNotadmin';
+                $redirectAction = $accessRole == 'ADMIN' ? 'view' : 'viewNotadmin';
 
-                return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
+                return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction, $id]);
             }
 
-            $this->Flash->error(__('The moncase could not be saved. Please, try again.'));
+            $this->Flash->error(__('The case could not be saved. Please, try again.'));
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
@@ -577,11 +577,7 @@ class MoncasesController extends AppController
             if ($this->Moncases->save($moncase)) {
                 $this->Flash->success(__('The case has been restored.'));
 
-                // Redirect logic based on access_role
-                $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
-                $redirectAction = $accessRole == 'ADMIN' ? 'userlist' : 'userlistNotadmin';
-
-                return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
+                return $this->redirect(['action' => 'archivedcases']);
             }
 
             $this->Flash->error(__('The case could not be restored. Please, try again.'));
@@ -764,7 +760,7 @@ class MoncasesController extends AppController
                 $save = $saveTable->patchEntity($save, $saveData);
 
                 if ($saveTable->save($save)) {
-                    $this->Flash->success(__('The case has been saved. Check it in the My Favorites tab.'));
+                    $this->Flash->success(__('Your case has been saved. Check it in the My Favorites tab.'));
 
                     // Redirect logic based on access_role
                     $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
@@ -773,7 +769,7 @@ class MoncasesController extends AppController
                     return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
                 }
 
-                $this->Flash->error(__('The case could not be saved. Please, try again.'));
+                $this->Flash->error(__('Your case could not be saved. Please, try again.'));
             }
         }
 
@@ -833,7 +829,7 @@ class MoncasesController extends AppController
 //            debug($this->Moncases->save($moncase));
 
             if ($this->Moncases->save($moncase)) {
-                $this->Flash->success(__('The case has been saved.'));
+                $this->Flash->success(__('Your case has been created.'));
 
                 // Redirect logic based on access_role
                 $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
@@ -841,7 +837,7 @@ class MoncasesController extends AppController
 
                 return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
             }
-            $this->Flash->error(__('The case could not be saved. Please, try again.'));
+            $this->Flash->error(__('Your case could not be created. Please, try again.'));
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
@@ -881,7 +877,7 @@ class MoncasesController extends AppController
             }
 
             if ($this->Moncases->save($moncase)) {
-                $this->Flash->success(__('The case has been saved.'));
+                $this->Flash->success(__('Your case has been created.'));
 
                 // Redirect logic based on access_role
                 $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
@@ -889,7 +885,7 @@ class MoncasesController extends AppController
 
                 return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
             }
-            $this->Flash->error(__('The case could not be saved. Please, try again.'));
+            $this->Flash->error(__('Your case could not be created. Please, try again.'));
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
@@ -932,7 +928,7 @@ class MoncasesController extends AppController
             }
 
             if ($this->Moncases->save($moncase)) {
-                $this->Flash->success(__('The case has been saved.'));
+                $this->Flash->success(__('Your case has been created.'));
 
                 // Redirect logic based on access_role
                 $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
@@ -940,7 +936,7 @@ class MoncasesController extends AppController
 
                 return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
             }
-            $this->Flash->error(__('The case could not be saved. Please, try again.'));
+            $this->Flash->error(__('Your case could not be created. Please, try again.'));
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
@@ -980,7 +976,7 @@ class MoncasesController extends AppController
             }
 
             if ($this->Moncases->save($moncase)) {
-                $this->Flash->success(__('The case has been saved.'));
+                $this->Flash->success(__('Your case has been created.'));
 
                 // Redirect logic based on access_role
                 $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
@@ -988,7 +984,7 @@ class MoncasesController extends AppController
 
                 return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
             }
-            $this->Flash->error(__('The case could not be saved. Please, try again.'));
+            $this->Flash->error(__('Your case could not be created. Please, try again.'));
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
@@ -1033,7 +1029,7 @@ class MoncasesController extends AppController
             }
 
             if ($this->Moncases->save($moncase)) {
-                $this->Flash->success(__('The case has been saved.'));
+                $this->Flash->success(__('Your case has been created.'));
 
                 // Redirect logic based on access_role
                 $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
@@ -1041,7 +1037,7 @@ class MoncasesController extends AppController
 
                 return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction]);
             }
-            $this->Flash->error(__('The case could not be saved. Please, try again.'));
+            $this->Flash->error(__('Your case could not be created. Please, try again.'));
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
