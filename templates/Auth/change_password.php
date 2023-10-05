@@ -15,11 +15,6 @@ $this->assign('title', 'Change User Password - Users');
             <td>
                 <button class="btn btn-info" onclick="goBack()">Go Back</button>
             </td>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script>
         </div>
 
         <div class="content-box">
@@ -44,14 +39,27 @@ $this->assign('title', 'Change User Password - Users');
             <div class="row">
 
                 <div class="col-md-6 mx-auto">
-                    <?php
-                    echo $this->Form->control('password', [
-                        'style' => 'width: 100%;',
-                        'label' => ['class' => 'required-label', 'text' => 'New Password (including upper and lower letters, numbers and special symbols)'],
-                        'value' => '', // Ensure password is not sending back to the client side
-                        'placeholder' => 'At least 6 characters'
-                    ]);
+                    <div style="position: relative;">
+                        <?php echo $this->Form->control('password', [
+                            'label' => ['class' => 'required-label', 'text' => 'Password (including upper and lower letters, numbers and special symbols)'],
+                            'style' => 'width: 100%;',
+                            'placeholder' => 'At least 6 characters',
+                            'type' => 'password', // The initial type is "password", hiding the password
+                            'id' => 'password-input',
+                            'autofocus' => true,
+                            'required' => true,
+                            'value' => '', // Ensure password is not sending back to the client side
+                        ]); ?>
 
+                        <span id="password-toggle" style="position: absolute; top: 85px; right: -30px; cursor: pointer;">
+
+                            <i class="fa fa-eye" id="eye-icon" aria-hidden="true"></i>
+
+                        </span>
+
+                    </div>
+
+                    <?php
                     echo $this->Form->control('password_confirm', [
                         'style' => 'width: 100%;', // Make input width 100%
                         'type' => 'password',
@@ -85,3 +93,23 @@ $this->assign('title', 'Change User Password - Users');
     </div>
 
 </div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    const passwordInput = document.getElementById('password-input');
+    const eyeIcon = document.getElementById('eye-icon');
+
+    // Switch the type of password input box
+    eyeIcon.addEventListener('click', function () {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text'; // show
+            eyeIcon.className = 'fa fa-eye-slash'; // switch icon to close eye
+        } else {
+            passwordInput.type = 'password'; // hide
+            eyeIcon.className = 'fa fa-eye'; // switch icon to open eye
+        }
+    });
+</script>

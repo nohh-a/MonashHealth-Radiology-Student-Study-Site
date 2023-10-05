@@ -80,21 +80,35 @@ $this->disableAutoLayout();
                 <?= $this->Flash->render() ?>
 
                 <fieldset>
+
+                    <div style="position: relative;">
+                        <?php echo $this->Form->control('password', [
+                            'label' => 'New Password (including upper and lower letters, numbers and special symbols)',
+                            'class' => 'input100, wrap-input100 validate-input',
+                            'type' => 'password', // The initial type is "password", hiding the password
+                            'id' => 'password-input',
+                            'placeholder' => 'At least 6 characters',
+                            'autofocus' => true,
+                            'required' => true,
+                            'value' => '', // Ensure password is not sending back to the client side
+                        ]); ?>
+
+                        <span id="password-toggle" style="position: absolute; top: 60px; right: -30px; cursor: pointer;">
+
+                            <i class="fa fa-eye" id="eye-icon" aria-hidden="true"></i>
+
+                        </span>
+
+                    </div>
+
                     <?php
-                    echo $this->Form->control('password', [
-                        'type' => 'password',
-                        'label' => 'New Password',
-                        'required' => true,
-                        'autofocus' => true,
-                        'value' => '',
-                        'class' => 'input100, wrap-input100 validate-input'
-                    ]);
                     echo $this->Form->control('password_confirm', [
                         'type' => 'password',
                         'label' => 'Repeat New Password',
                         'required' => true,
                         'value' => '',
-                        'class' => 'input100, wrap-input100 validate-input'
+                        'class' => 'input100, wrap-input100 validate-input',
+                        'placeholder' => 'Retype Password'
                     ]);
                     ?>
                 </fieldset>
@@ -117,7 +131,22 @@ $this->disableAutoLayout();
     </div>
 </div>
 
+<script>
 
+    const passwordInput = document.getElementById('password-input');
+    const eyeIcon = document.getElementById('eye-icon');
+
+    // Switch the type of password input box
+    eyeIcon.addEventListener('click', function () {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text'; // show
+            eyeIcon.className = 'fa fa-eye-slash'; // switch icon to close eye
+        } else {
+            passwordInput.type = 'password'; // hide
+            eyeIcon.className = 'fa fa-eye'; // switch icon to open eye
+        }
+    });
+</script>
 
 
 

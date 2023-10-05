@@ -95,17 +95,31 @@ $this->assign('title', 'Create New User - Users');
                                 'required' => true
                             ])
                             ?>
+                            <div style="position: relative;">
+                                <?php echo $this->Form->control('password', [
+                                    'label' => ['class' => 'required-label', 'text' => 'Password (including upper and lower letters, numbers and special symbols)'],
+                                    'style' => 'width: 100%;',
+                                    'required' => true,
+                                    'placeholder' => 'At least 6 characters',
+                                    'type' => 'password', // The initial type is "password", hiding the password
+                                    'id' => 'password-input'
+                                ]); ?>
+
+                                <span id="password-toggle" style="position: absolute; top: 115px; right: -30px; cursor: pointer;">
+
+                                    <i class="fa fa-eye" id="eye-icon" aria-hidden="true"></i>
+
+                                </span>
+
+                            </div>
 
                             <?php
-                            echo $this->Form->control('password', [
-                                'label' => ['class' => 'required-label', 'text' => 'Password (including upper and lower letters, numbers and special symbols)'],
-                                'style' => 'width: 100%;',
-                                'placeholder' => 'At least 6 characters'
-                            ]); // Make input width 100%
+                             // Make input width 100%
                             // Validate password by repeating it
                             echo $this->Form->control('password_confirm', [
                                 'style' => 'width: 100%;', // Make input width 100%
                                 'type' => 'password',
+                                'required' => true,
                                 'value' => '',  // Ensure password is not sending back to the client side
                                 'label' => ['class' => 'required-label', 'text' => 'Retype Password'],
                                 'templateVars' => ['container_class' => 'column'],
@@ -127,4 +141,18 @@ $this->assign('title', 'Create New User - Users');
     function goBack() {
         window.history.back();
     }
+
+    const passwordInput = document.getElementById('password-input');
+    const eyeIcon = document.getElementById('eye-icon');
+
+    // Switch the type of password input box
+    eyeIcon.addEventListener('click', function () {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text'; // show
+            eyeIcon.className = 'fa fa-eye-slash'; // switch icon to close eye
+        } else {
+            passwordInput.type = 'password'; // hide
+            eyeIcon.className = 'fa fa-eye'; // switch icon to open eye
+        }
+    });
 </script>
