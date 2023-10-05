@@ -42,22 +42,30 @@ $this->assign('title', 'Edit - Users');
                     <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
                     <?php
                     echo $this->Form->control('username', [
-                        'style' => 'width: 100%;',
-                        'maxlength' => 20
+                        'label' => ['class' => 'required-label', 'text' => 'Username'],
+                        'style' => 'width: 100%;', // Make input width 100%
+                        'maxlength' => 20,
+                        'placeholder' => 'The username for login used'
                     ]);
                     echo $this->Form->control('email', [
-                        'style' => 'width: 100%;',
-                        'maxlength' => 20
+                        'label' => ['class' => 'required-label', 'text' => 'Email'],
+                        'style' => 'width: 100%;', // Make input width 100%
+                        'placeholder' => 'e.g. xxx@xxx.com'
                     ]);
                     echo $this->Form->control('first_name', [
-                        'style' => 'width: 100%;',
-                        'maxlength' => 20
+                        'label' => ['class' => 'required-label', 'text' => 'First Name'],
+                        'style' => 'width: 100%;', // Make input width 100%
+                        'maxlength' => 20,
+                        'placeholder' => 'e.g. Roger'
                     ]);
                     echo $this->Form->control('last_name', [
-                        'style' => 'width: 100%;',
-                        'maxlength' => 20
+                        'label' => ['class' => 'required-label', 'text' => 'Last Name'],
+                        'style' => 'width: 100%;', // Make input width 100%
+                        'maxlength' => 20,
+                        'placeholder' => 'e.g. Wang'
                     ]);
                     ?>
+
                     <?= $this->Form->label('access_role', 'Access Role') ?>
                     <?= $this->Form->select('access_role', [
                         'ADMIN' => 'ADMIN',

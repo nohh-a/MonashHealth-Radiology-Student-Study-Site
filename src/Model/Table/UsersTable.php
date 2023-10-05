@@ -68,7 +68,17 @@ class UsersTable extends Table
             ->scalar('password')
             ->maxLength('password', 96)
             ->requirePresence('password', 'create')
-            ->notEmptyString('password');
+            ->notEmptyString('password')
+            ->add('password', 'custom', [
+                'rule' => function ($value, $context) {
+                    //Write custom validation rules here
+                    // Check if the password length is at least 6 characters
+                    // Check whether it contains uppercase and lowercase letters, numbers and special symbols
+                    $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{6,}$/';
+                    return (bool)preg_match($regex, $value);
+                },
+                'message' => 'Password must contain at least 6 characters, including uppercase and lowercase letters, numbers and special symbols'
+            ]);
 
         // Validate retyped password
         $validator
@@ -114,8 +124,19 @@ class UsersTable extends Table
     public function validationResetPassword(Validator $validator): Validator {
         $validator
             ->scalar('password')
-            ->requirePresence('password', 'reset-password')
-            ->notEmptyString('password');
+            ->maxLength('password', 96)
+            ->requirePresence('password')
+            ->notEmptyString('password')
+            ->add('password', 'custom', [
+                'rule' => function ($value, $context) {
+                    //Write custom validation rules here
+                    // Check if the password length is at least 6 characters
+                    // Check whether it contains uppercase and lowercase letters, numbers and special symbols
+                    $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{6,}$/';
+                    return (bool)preg_match($regex, $value);
+                },
+                'message' => 'Password must contain at least 6 characters, including uppercase and lowercase letters, numbers and special symbols'
+            ]);
 
         // Validate retyped password
         $validator

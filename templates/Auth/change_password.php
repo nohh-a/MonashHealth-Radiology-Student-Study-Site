@@ -39,19 +39,26 @@ $this->assign('title', 'Change User Password - Users');
     <div class="col-md-8">
 
         <div class="moncases form content">
-
+            <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
+            <?= $this->Flash->render() ?>
             <div class="row">
 
                 <div class="col-md-6 mx-auto">
                     <?php
                     echo $this->Form->control('password', [
                         'style' => 'width: 100%;',
-                        'label' => 'New Password',
+                        'label' => ['class' => 'required-label', 'text' => 'New Password (including upper and lower letters, numbers and special symbols)'],
                         'value' => '', // Ensure password is not sending back to the client side
+                        'placeholder' => 'At least 6 characters'
                     ]);
 
                     echo $this->Form->control('password_confirm', [
-                        'style' => 'width: 100%;'
+                        'style' => 'width: 100%;', // Make input width 100%
+                        'type' => 'password',
+                        'value' => '',  // Ensure password is not sending back to the client side
+                        'label' => ['class' => 'required-label', 'text' => 'Retype Password'],
+                        'templateVars' => ['container_class' => 'column'],
+                        'placeholder' => 'Retype Password'
                     ]);
                     ?>
 

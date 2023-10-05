@@ -39,23 +39,27 @@ $this->assign('title', 'Create New User - Users');
                             <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
                             <?php
                             echo $this->Form->control('username', [
-                                'label' => ['class' => 'required-label', 'text' => 'Username (For Login)'],
+                                'label' => ['class' => 'required-label', 'text' => 'Username'],
                                 'style' => 'width: 100%;', // Make input width 100%
-                                'maxlength' => 20
+                                'maxlength' => 20,
+                                'placeholder' => 'The username for login used'
                             ]);
                             echo $this->Form->control('email', [
                                 'label' => ['class' => 'required-label', 'text' => 'Email'],
-                                'style' => 'width: 100%;' // Make input width 100%
+                                'style' => 'width: 100%;', // Make input width 100%
+                                'placeholder' => 'e.g. xxx@xxx.com'
                             ]);
                             echo $this->Form->control('first_name', [
                                 'label' => ['class' => 'required-label', 'text' => 'First Name'],
                                 'style' => 'width: 100%;', // Make input width 100%
-                                'maxlength' => 20
+                                'maxlength' => 20,
+                                'placeholder' => 'e.g. Roger'
                             ]);
                             echo $this->Form->control('last_name', [
                                 'label' => ['class' => 'required-label', 'text' => 'Last Name'],
                                 'style' => 'width: 100%;', // Make input width 100%
-                                'maxlength' => 20
+                                'maxlength' => 20,
+                                'placeholder' => 'e.g. Wang'
                             ]);
                             ?>
 
@@ -94,8 +98,9 @@ $this->assign('title', 'Create New User - Users');
 
                             <?php
                             echo $this->Form->control('password', [
-                                'label' => ['class' => 'required-label', 'text' => 'Password'],
-                                'style' => 'width: 100%;'
+                                'label' => ['class' => 'required-label', 'text' => 'Password (including upper and lower letters, numbers and special symbols)'],
+                                'style' => 'width: 100%;',
+                                'placeholder' => 'At least 6 characters'
                             ]); // Make input width 100%
                             // Validate password by repeating it
                             echo $this->Form->control('password_confirm', [
@@ -103,7 +108,8 @@ $this->assign('title', 'Create New User - Users');
                                 'type' => 'password',
                                 'value' => '',  // Ensure password is not sending back to the client side
                                 'label' => ['class' => 'required-label', 'text' => 'Retype Password'],
-                                'templateVars' => ['container_class' => 'column']
+                                'templateVars' => ['container_class' => 'column'],
+                                'placeholder' => 'Retype Password'
                             ]);
                             ?>
                         </div>
