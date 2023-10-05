@@ -59,12 +59,13 @@
             </ul>
         </div>
     </div>
-    <td>
-        <button class="btn btn-info" onclick="goBack()">Go Back</button>
-    </td>
+
 </section>
 
 <div class="container">
+    <td>
+        <button class="btn btn-info" onclick="goBack()">Go Back</button>
+    </td>
     <?= $this->Flash->render() ?>
 
     <div class="row">
