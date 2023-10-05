@@ -110,7 +110,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                             )
                             ?>
 
-                            <?= $this->Html->link(__('Edit'),
+                            <?= $this->Html->link(__('Change the folder name'),
                                 ['action' => 'edit', $collection->id
                                 ],
                                 [

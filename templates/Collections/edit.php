@@ -62,14 +62,14 @@
 
                     ?>
                     <dev>
-                        <label>Select Cases:</label>
-                        <?= $this->Form->select('moncases._ids',
-                            $combinedOptions,
-                            [
-                                'multiple' => 'checkbox',
-                                'class' => 'text-center',
-                            ]
-                        )?>
+<!--                        <label>Select Cases:</label>-->
+<!--                        --><?php //= $this->Form->select('moncases._ids',
+//                            $combinedOptions,
+//                            [
+//                                'multiple' => 'checkbox',
+//                                'class' => 'text-center',
+//                            ]
+//                        )?>
                     </dev>
 
 
