@@ -3,6 +3,8 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Collection $collection
  */
+
+$this->assign('title', 'Change User Password - My Favorites');
 ?>
 
 <style>
@@ -52,6 +54,7 @@
     <div class="auto-container">
 
         <div class="content-box">
+
             <h1><?= h($collection->name) ?></h1>
             <ul class="bread-crumb clearfix">
                     <li>My Collection</li>

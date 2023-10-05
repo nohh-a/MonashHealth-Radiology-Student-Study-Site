@@ -41,7 +41,6 @@ class CollectionsController extends AppController
         $collections = $this->paginate($this->Collections);
 
         $this->set(compact('collections','author','username'));
-
     }
 
     /**

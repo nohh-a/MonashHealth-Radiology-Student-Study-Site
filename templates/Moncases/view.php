@@ -18,6 +18,7 @@
  * @var \App\Model\Entity\Moncase $moncase
  */
 
+$this->assign('title', 'View Case - Cases');
 ?>
 
 <head>

@@ -3,6 +3,8 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Moncase $moncase
  */
+
+$this->assign('title', 'Edit Case - Cases');
 ?>
 
     <?= $this->Html->css('/webroot/css/valid-msg.css') ?>
@@ -18,7 +20,7 @@
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
         <div class="content-box">
-            <h1>Edit case</h1>
+            <h1>Edit Case</h1>
             <ul class="bread-crumb clearfix">
                 <li>View Case</li>
                 <li>Edit Case</li>

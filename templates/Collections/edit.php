@@ -5,26 +5,20 @@
  * @var string[]|\Cake\Collection\CollectionInterface $users
  * @var string[]|\Cake\Collection\CollectionInterface $moncases
  */
+
+$this->assign('title', 'Change The Folder Name - My Favorites');
+
 ?>
 
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
-        <div class="col-md-8">
-            <td>
-                <button class="btn btn-info" onclick="goBack()">Go Back</button>
-            </td>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script>
-        </div>
+
         <div class="content-box">
-            <h1>Edit Folder: <?= h($collection->name) ?></h1>
+            <h1><?= h($collection->name) ?></h1>
             <ul class="bread-crumb clearfix">
                 <li>My Favorites</li>
-                <li>View Folder</li>
+                <li>Change The Folder Name</li>
             </ul>
         </div>
     </div>
@@ -54,7 +48,7 @@
                         'required' => true,
                         'maxlength' => 50,
                         'placeholder' => 'Enter the name',
-                        'label' => ['class' => 'required-label', 'text' => 'Folder Name'],
+                        'label' => ['class' => 'required-label', 'text' => 'New Folder Name'],
                     ]);
                     //                echo $this->Form->control('user_id', ['options' => $users]);
 

@@ -5,12 +5,26 @@
  * @var \Cake\Collection\CollectionInterface|string[] $users
  * @var \Cake\Collection\CollectionInterface|string[] $moncases
  */
+
+$this->assign('title', 'Create New Folder - My Favorites');
 ?>
 <?= $this->Html->css('/webroot/css/valid-msg.css') ?>
 
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
+
+        <div class="col-md-8">
+            <td>
+                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+            </td>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        </div>
+
         <div class="content-box">
             <h1>Create Folder</h1>
             <ul class="bread-crumb clearfix">
@@ -45,14 +59,6 @@
 
 
                 </fieldset>
-                <td>
-                    <button class="btn btn-info" onclick="goBack()">Go Back</button>
-                </td>
-                <script>
-                    function goBack() {
-                        window.history.back();
-                    }
-                </script>
 
                 <?= $this->Form->button(__('Create'),['class'=>'btn btn-outline-primary']) ?>
                 <?= $this->Form->end() ?>

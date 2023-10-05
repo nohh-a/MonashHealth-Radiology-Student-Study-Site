@@ -23,6 +23,7 @@
  * @var int $generalCount
  */
 
+$this->assign('title', 'Case List - Cases');
 ?>
 
 <head>

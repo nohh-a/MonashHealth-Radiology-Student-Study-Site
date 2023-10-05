@@ -5,6 +5,9 @@
  * @var \Cake\Collection\CollectionInterface|string[] $users
  * @var \Cake\Collection\CollectionInterface|string[] $moncases
  */
+
+$this->assign('title', 'Select Favorites Folder - My Favorites');
+
 ?>
 
 

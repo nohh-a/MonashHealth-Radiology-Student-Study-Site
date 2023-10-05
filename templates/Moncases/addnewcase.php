@@ -3,6 +3,8 @@
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\Moncase> $moncases
  */
+
+$this->assign('title', 'Select Case Type - Cases');
 ?>
 
 <?= $this->Html->css('/webroot/css/animate.min.css') ?>

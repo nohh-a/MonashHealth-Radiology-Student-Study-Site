@@ -5,6 +5,7 @@
  * @var
  */
 
+$this->assign('title', 'Add Short Case - Cases');
 ?>
 
 <?= $this->Html->css('/webroot/css/valid-msg.css') ?>

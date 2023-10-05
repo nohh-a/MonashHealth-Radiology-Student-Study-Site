@@ -5,6 +5,8 @@
  * @var \Cake\Collection\CollectionInterface|string[] $users
  * @var \Cake\Collection\CollectionInterface|string[] $moncases
  */
+
+$this->assign('title', 'Create Empty Folder - My Favorites');
 ?>
 
 

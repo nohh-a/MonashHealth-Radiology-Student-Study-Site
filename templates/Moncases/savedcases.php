@@ -9,6 +9,7 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css',['block
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js',['block'=>true]);
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['block'=>true]);
 
+$this->assign('title', 'My Favorites - Saved - Cases');
 ?>
 
 

@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\User $user
  */
 
-$this->assign('title', 'Add - Users');
+$this->assign('title', 'Create New User - Users');
 ?>
 
 <section class="page-title bg-color-1 text-center">

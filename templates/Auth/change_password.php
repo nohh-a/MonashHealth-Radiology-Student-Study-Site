@@ -11,6 +11,17 @@ $this->assign('title', 'Change User Password - Users');
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
+        <div class="col-md-8">
+            <td>
+                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+            </td>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        </div>
+
         <div class="content-box">
             <h1>Change Password</h1>
             <ul class="bread-crumb clearfix">
@@ -29,10 +40,8 @@ $this->assign('title', 'Change User Password - Users');
 
         <div class="moncases form content">
 
-            <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
-            <?= $this->Flash->render() ?>
-
             <div class="row">
+
                 <div class="col-md-6 mx-auto">
                     <?php
                     echo $this->Form->control('password', [
@@ -52,15 +61,6 @@ $this->assign('title', 'Change User Password - Users');
 
             <div class="row" style="padding-bottom: 20px; padding-top: 20px;">
                 <div class="col-md-6 mx-auto text-center">
-                    <td>
-                        <button class="btn btn-info" onclick="goBack()">Go Back</button>
-                    </td>
-                    <script>
-                        function goBack() {
-                            window.history.back();
-                        }
-                    </script>
-
 
                     <?=
                     $this->Form->button(__('Save'), [

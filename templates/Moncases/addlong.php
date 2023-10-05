@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Moncase $moncase
  */
 
+$this->assign('title', 'Add Long Case - Cases');
 ?>
 
 <?= $this->Html->css('/webroot/css/valid-msg.css') ?>
