@@ -31,9 +31,7 @@
 </section>
 
 <div class="container">
-    <div class="row">
-        </div>
-    </div>
+
     <div class="row">
 
         <div class="col-12 d-flex justify-content-center">
@@ -75,16 +73,22 @@
 
                 </fieldset>
 
-                <div class="row">
-                    <?= $this->Form->button(__('Save'),['class' => 'btn btn-outline-primary']) ?>
-                    <?= $this->Form->end() ?>
+                <br>
 
-                    <?= $this->Form->postLink(
-                        __('Delete'),
-                        ['action' => 'delete', $collection->id],
-                        ['confirm' => __('Are you sure you want to delete # {0}?', $collection->id), 'class' => 'btn btn-outline-danger ']
-                    ) ?>
+                <div class="row">
+                    <div class="col-md-6 col-xs-6 text-center">
+                        <?= $this->Form->button(__('Save'), ['class' => 'btn btn-outline-primary']) ?>
+                    </div>
+                    <br><br>
+                    <div class="col-md-6 col-xs-6 text-center">
+                        <?= $this->Form->postLink(
+                            __('Delete'),
+                            ['action' => 'delete', $collection->id],
+                            ['confirm' => __('Are you sure you want to delete # {0}?', $collection->id), 'class' => 'btn btn-outline-danger']
+                        ) ?>
+                    </div>
                 </div>
+
 
 
 
