@@ -10,6 +10,11 @@ $this->assign('title', 'Create New User - Users');
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
+        <div class="col-md-8">
+            <td>
+                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+            </td>
+        </div>
         <div class="content-box">
             <h1>Create New User</h1>
             <ul class="bread-crumb clearfix">
@@ -23,21 +28,15 @@ $this->assign('title', 'Create New User - Users');
 
 <div class="row justify-content-center align-items-center" style="padding: 25px;">
     <div class="col-md-6">
+
         <div class="moncases form content">
 
-            <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
+
             <?= $this->Flash->render() ?>
                     <div class="row">
                         <div class="col-md-6 mx-auto">
-                            <td>
-                                <button class="btn btn-info" onclick="goBack()">Go Back</button>
-                            </td>
-                            <script>
-                                function goBack() {
-                                    window.history.back();
-                                }
-                            </script>
 
+                            <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
                             <?php
                             echo $this->Form->control('username', [
                                 'label' => ['class' => 'required-label', 'text' => 'Username (For Login)'],
@@ -117,3 +116,9 @@ $this->assign('title', 'Create New User - Users');
         </div>
     </div>
 </div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
