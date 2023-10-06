@@ -110,8 +110,8 @@ $this->disableAutoLayout();
                             'value' => '', // Ensure password is not sending back to the client side
                         ]); ?>
 
-                        <span id="password-toggle" style="position: absolute; top: 60px; right: -30px; cursor: pointer;">
-                            <i class="fa fa-eye" id="eye-icon" aria-hidden="true"></i>
+                        <span id="password-toggle" style="position: absolute; top: 60px; right: 15px; cursor: pointer;">
+                            <i class="fa fa-eye-slash" id="eye-icon" aria-hidden="true"></i>
                         </span>
 
                     </div>
@@ -150,10 +150,10 @@ $this->disableAutoLayout();
     eyeIcon.addEventListener('click', function () {
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text'; // show
-            eyeIcon.className = 'fa fa-eye-slash'; // switch icon to close eye
+            eyeIcon.className = 'fa fa-eye'; // switch icon to open eye
         } else {
             passwordInput.type = 'password'; // hide
-            eyeIcon.className = 'fa fa-eye'; // switch icon to open eye
+            eyeIcon.className = 'fa fa-eye-slash'; // switch icon to close eye
         }
     });
 </script>

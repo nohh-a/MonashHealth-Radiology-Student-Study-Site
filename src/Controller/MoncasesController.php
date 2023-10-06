@@ -52,7 +52,7 @@ class MoncasesController extends AppController
             'contain' => [],
         ]);
 
-        // Get the model instance of the Saves table
+        // Get the model instance of the Collections table
         $collectionsTable = $this->fetchTable('Collections');
 
         $collectionCount = $collectionsTable->find()
@@ -86,7 +86,7 @@ class MoncasesController extends AppController
 
         $caseAuthor = $moncase->author; // get the author of the case
 
-        // Get the model instance of the Saves table
+        // Get the model instance of the Collections table
         $collectionsTable = $this->fetchTable('Collections');
 
         $collectionCount = $collectionsTable->find()

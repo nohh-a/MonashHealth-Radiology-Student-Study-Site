@@ -41,7 +41,7 @@ $this->assign('title', 'Change User Password - Users');
                 <div class="col-md-6 mx-auto">
                     <div style="position: relative;">
                         <?php echo $this->Form->control('password', [
-                            'label' => ['class' => 'required-label', 'text' => 'Password (including upper and lower letters, numbers and special symbols)'],
+                            'label' => ['class' => 'required-label', 'text' => 'Password'],
                             'style' => 'width: 100%;',
                             'placeholder' => 'At least 6 characters',
                             'type' => 'password', // The initial type is "password", hiding the password
@@ -51,9 +51,11 @@ $this->assign('title', 'Change User Password - Users');
                             'value' => '', // Ensure password is not sending back to the client side
                         ]); ?>
 
-                        <span id="password-toggle" style="position: absolute; top: 85px; right: -30px; cursor: pointer;">
+                        <p>(Including upper and lower letters, numbers and special symbols)</p>
 
-                            <i class="fa fa-eye" id="eye-icon" aria-hidden="true"></i>
+                        <span id="password-toggle" style="position: absolute; top: 50px; right: 15px; cursor: pointer;">
+
+                            <i class="fa fa-eye-slash" id="eye-icon" aria-hidden="true"></i>
 
                         </span>
 
@@ -106,10 +108,10 @@ $this->assign('title', 'Change User Password - Users');
     eyeIcon.addEventListener('click', function () {
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text'; // show
-            eyeIcon.className = 'fa fa-eye-slash'; // switch icon to close eye
+            eyeIcon.className = 'fa fa-eye'; // switch icon to open eye
         } else {
             passwordInput.type = 'password'; // hide
-            eyeIcon.className = 'fa fa-eye'; // switch icon to open eye
+            eyeIcon.className = 'fa fa-eye-slash'; // switch icon to close eye
         }
     });
 </script>

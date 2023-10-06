@@ -97,17 +97,17 @@ $this->assign('title', 'Create New User - Users');
                             ?>
                             <div style="position: relative;">
                                 <?php echo $this->Form->control('password', [
-                                    'label' => ['class' => 'required-label', 'text' => 'Password (including upper and lower letters, numbers and special symbols)'],
+                                    'label' => ['class' => 'required-label', 'text' => 'Password'],
                                     'style' => 'width: 100%;',
                                     'required' => true,
                                     'placeholder' => 'At least 6 characters',
                                     'type' => 'password', // The initial type is "password", hiding the password
                                     'id' => 'password-input'
                                 ]); ?>
+                                <p>(Including upper and lower letters, numbers and special symbols)</p>
+                                <span id="password-toggle" style="position: absolute; top: 50px; right: 15px; cursor: pointer;">
 
-                                <span id="password-toggle" style="position: absolute; top: 115px; right: -30px; cursor: pointer;">
-
-                                    <i class="fa fa-eye" id="eye-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-eye-slash" id="eye-icon" aria-hidden="true"></i>
 
                                 </span>
 
@@ -123,7 +123,8 @@ $this->assign('title', 'Create New User - Users');
                                 'value' => '',  // Ensure password is not sending back to the client side
                                 'label' => ['class' => 'required-label', 'text' => 'Retype Password'],
                                 'templateVars' => ['container_class' => 'column'],
-                                'placeholder' => 'Retype Password'
+                                'placeholder' => 'Retype Password',
+                                'id' => 'password_confirm-input'
                             ]);
                             ?>
                         </div>
@@ -149,10 +150,10 @@ $this->assign('title', 'Create New User - Users');
     eyeIcon.addEventListener('click', function () {
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text'; // show
-            eyeIcon.className = 'fa fa-eye-slash'; // switch icon to close eye
+            eyeIcon.className = 'fa fa-eye'; // switch icon to open eye
         } else {
             passwordInput.type = 'password'; // hide
-            eyeIcon.className = 'fa fa-eye'; // switch icon to open eye
+            eyeIcon.className = 'fa fa-eye-slash'; // switch icon to close eye
         }
     });
 </script>
