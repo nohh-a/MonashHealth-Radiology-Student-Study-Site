@@ -106,7 +106,7 @@
                                     </div>
                                     <div class="table-content">
                                         <ul id="results">
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to login?</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'howtologin'])?>"><i class="fa-regular fa-file-lines"></i>How to login?</a></li>
                                             <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to change password?</a></li>
                                             <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to create new case?</a></li>
                                         </ul>

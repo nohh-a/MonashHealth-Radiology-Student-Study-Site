@@ -890,7 +890,6 @@ class MoncasesController extends AppController
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
         $this->viewBuilder()->setLayout('moncase');
-        $this->viewBuilder()->setLayout('moncase');
 
 
     }

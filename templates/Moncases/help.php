@@ -106,7 +106,7 @@
                                     </div>
                                     <div class="table-content">
                                         <ul id="results">
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to login?</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'howtologin'])?>"><i class="fa-regular fa-file-lines"></i>How to login?</a></li>
                                             <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to change password?</a></li>
                                             <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to create new case?</a></li>
                                         </ul>
@@ -177,7 +177,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
                             <div class="pricing-block-one">
                                 <div class="pricing-table">
-                                    <div class="pattern-box"></div></div>
+                                    <div class="pattern-box"></div>
                                     <div class="table-header">
                                         <h5>Input Formatting</h5>
                                     </div>

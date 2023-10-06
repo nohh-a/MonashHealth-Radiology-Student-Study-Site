@@ -195,7 +195,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'help'])?>">Help</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'help'])?>">Support</a>
                                 </li>
 
                             </ul>
