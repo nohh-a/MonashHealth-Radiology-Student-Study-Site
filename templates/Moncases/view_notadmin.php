@@ -99,7 +99,7 @@ $this->assign('title', 'View Case - Cases');
                             <!--                            else, going to add the case into a folder.-->
                             <?php if ($collectionCount == 0): ?>
                                 <?=
-                                $this->Html->link(__('Collect'),
+                                $this->Html->link(__('Added to Favorite'),
                                     [
                                         'controller' => 'collections',
                                         'action' => 'create_collection',
@@ -113,7 +113,7 @@ $this->assign('title', 'View Case - Cases');
 
                             <?php else: ?>
                                 <?=
-                                $this->Html->link(__('Collect'),
+                                $this->Html->link(__('Added to Favorite'),
                                     [
                                         'controller' => 'collections',
                                         'action' => 'select_folder',
@@ -217,7 +217,7 @@ $this->assign('title', 'View Case - Cases');
 <!--                                                            --><?php //= $this->Form->postLink(__('Favorite'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
                                                             <?php if ($collectionCount == 0): ?>
                                                                 <?=
-                                                                $this->Html->link(__('Collect'),
+                                                                $this->Html->link(__('Added to Favorite'),
                                                                     [
                                                                         'controller' => 'collections',
                                                                         'action' => 'create_collection',
@@ -231,7 +231,7 @@ $this->assign('title', 'View Case - Cases');
 
                                                             <?php else: ?>
                                                                 <?=
-                                                                $this->Html->link(__('Collect'),
+                                                                $this->Html->link(__('Added to Favorite'),
                                                                     [
                                                                         'controller' => 'collections',
                                                                         'action' => 'select_folder',
@@ -296,7 +296,7 @@ $this->assign('title', 'View Case - Cases');
 <!--                                                            --><?php //= $this->Form->postLink(__('Favorite'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
                                                             <?php if ($collectionCount == 0): ?>
                                                                 <?=
-                                                                $this->Html->link(__('Collect'),
+                                                                $this->Html->link(__('Added to Favorite'),
                                                                     [
                                                                         'controller' => 'collections',
                                                                         'action' => 'create_collection',
@@ -310,7 +310,7 @@ $this->assign('title', 'View Case - Cases');
 
                                                             <?php else: ?>
                                                                 <?=
-                                                                $this->Html->link(__('Collect'),
+                                                                $this->Html->link(__('Added to Favorite'),
                                                                     [
                                                                         'controller' => 'collections',
                                                                         'action' => 'select_folder',
