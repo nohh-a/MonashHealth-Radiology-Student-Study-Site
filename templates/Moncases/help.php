@@ -44,7 +44,22 @@
         }
         .pricing-section .upper-box .text {
             max-width: 100%;
-        }
+        }s
+    }
+    .sidebar-page-container .sidebar .sidebar-search .form-group .fake-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #848484;
+        background: transparent;
+        cursor: pointer;
+        transition: all 500ms ease;
+    }
+
+    a {
+        color: #0a0a0a;
     }
 
 
@@ -70,12 +85,10 @@
                     <div class="sidebar" style="margin-left: 0px; margin-top:0px;">
                     <div class="sidebar-widget sidebar-search" style="margin-bottom: 0px;">
                         <div class="widget-content">
-                                <form action="blog-grid.html" method="post">
-                                    <div class="form-group">
-                                        <input type="search" name="search-field" placeholder="Search" required="">
-                                        <button type="submit"><i class="fas fa-search"></i></button>
-                                    </div>
-                                </form>
+                                <div class="form-group">
+                                    <input type="search" id="mySearch" placeholder="Enter what you're looking for here to filter our pages!" onkeyup="supportCenter()">
+                                    <div class="fake-button"><i class="fas fa-search"></i></div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -87,15 +100,15 @@
                         <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
                             <div class="pricing-block-one">
                                 <div class="pricing-table">
-                                    <div class="pattern-box" style="background-image: url(assets/images/shape/pattern-5.png);"></div>
+                                    <div class="pattern-box"></div>
                                     <div class="table-header">
                                         <h5>Account Information</h5>
                                     </div>
                                     <div class="table-content">
-                                        <ul>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to login?</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to change password?</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to create new case?</li>
+                                        <ul id="results">
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to login?</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to change password?</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to create new case?</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -104,16 +117,15 @@
                         <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
                             <div class="pricing-block-one">
                                 <div class="pricing-table">
-                                    <div class="pattern-box" style="background-image: url(assets/images/shape/pattern-5.png);"></div>
+                                    <div class="pattern-box"></div>
                                     <div class="table-header">
                                         <h5>Case Management</h5>
                                     </div>
                                     <div class="table-content">
-                                        <ul>
-                                            <li><i class="fa-regular fa-file-lines"></i><a>How to view cases?</a></li>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to create a new case?</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>Case input formats</li>
-
+                                        <ul id="results">
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to view cases?</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to create a new case?</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Case input formats</a></li>
                                         </ul>
                                     </div>
                                     <div class="table-footer">
@@ -124,15 +136,15 @@
                         <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
                             <div class="pricing-block-one">
                                 <div class="pricing-table">
-                                    <div class="pattern-box" style="background-image: url(assets/images/shape/pattern-5.png);"></div>
+                                    <div class="pattern-box"></div>
                                     <div class="table-header">
                                         <h5>Saved Cases</h5>
                                     </div>
                                     <div class="table-content">
-                                        <ul>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to save a case?</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to create a new folder?</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to view my case collection?</li>
+                                        <ul id="results">
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to save a case?</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to create a new folder?</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to view my case collection?</a></li>
 
                                         </ul>
                                     </div>
@@ -146,16 +158,15 @@
                         <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
                             <div class="pricing-block-one">
                                 <div class="pricing-table">
-                                    <div class="pattern-box" style="background-image: url(assets/images/shape/pattern-5.png);"></div>
+                                    <div class="pattern-box"></div>
                                     <div class="table-header">
                                         <h5>Error Handling</h5>
                                     </div>
                                     <div class="table-content">
-                                        <ul>
-                                            <li><i class="fa-regular fa-file-lines"></i>Account related errors</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>Case related errors</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>Saved cases errors</li>
-
+                                        <ul id="results">
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Account related errors</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Case related errors</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Saved cases errors</a></li>
                                         </ul>
                                     </div>
                                     <div class="table-footer">
@@ -166,15 +177,14 @@
                         <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
                             <div class="pricing-block-one">
                                 <div class="pricing-table">
-                                    <div class="pattern-box" style="background-image: url(assets/images/shape/pattern-5.png);"></div>
+                                    <div class="pattern-box"></div></div>
                                     <div class="table-header">
                                         <h5>Input Formatting</h5>
                                     </div>
                                     <div class="table-content">
-                                        <ul>
-                                            <li><i class="fa-regular fa-file-lines"></i>Case Input Formats</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>Uneditable Fields</li>
-
+                                        <ul id="results">
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Case Input Formats</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Uneditable Fields</a></li>
                                         </ul>
                                     </div>
                                     <div class="table-footer">
@@ -185,18 +195,17 @@
                         <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
                             <div class="pricing-block-one">
                                 <div class="pricing-table">
-                                    <div class="pattern-box" style="background-image: url(assets/images/shape/pattern-5.png);"></div>
+                                    <div class="pattern-box"></div>
                                     <div class="table-header">
                                         <h5>Admin</h5>
                                     </div>
                                     <div class="table-content">
-                                        <ul>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to view users?</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to edit users?</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to add new users?</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to remove users?</li>
-                                            <li><i class="fa-regular fa-file-lines"></i>How to change a new user's password?</li>
-
+                                        <ul id="results">
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to view users?</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to edit users?</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to add new users?</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to remove users?</a></li>
+                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to change a new user's password?</a></li>
                                         </ul>
                                     </div>
                                     <div class="table-footer">
@@ -209,3 +218,33 @@
             </div>
     </div>
 </section>
+
+<script>
+    function supportCenter() {
+        var input, filter;
+        input = $("#mySearch");
+        filter = input.val().toUpperCase();
+
+        $(".pricing-block-one").each(function () {
+            var ul = $(this).find('#results');
+            var li = ul.find("li");
+            var anyVisible = false;
+
+            li.each(function () {
+                var a = $(this).find("a");
+                if (a.text().toUpperCase().indexOf(filter) > -1) {
+                    $(this).show();
+                    anyVisible = true;
+                } else {
+                    $(this).hide();
+                }
+            });
+
+            if (!anyVisible) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    }
+</script>

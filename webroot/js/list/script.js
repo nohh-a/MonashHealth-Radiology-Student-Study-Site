@@ -542,10 +542,8 @@
             $('#moncases-list').show();
         }
 
-        // Initial state (grid view)
         showGridView();
 
-        // Event handler for the button/icon click
         $('.toggle-view-button').on('click', function () {
             const view = $(this).data('view');
             if (view === 'grid') {
@@ -558,7 +556,7 @@
 
 
 	/*	=========================================================================
-	When document is Scrollig, do
+	When document is Scrolling, do
 	========================================================================== */
 
 	jQuery(document).on('ready', function () {
