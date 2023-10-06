@@ -1054,7 +1054,7 @@ class MoncasesController extends AppController
 
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if ($access_role !== 'ADMIN') {
-            return $this->redirect(['controller' => 'moncases', 'action' => 'helpNotAdmin']);
+            return $this->redirect(['controller' => 'moncases', 'action' => 'helpNotadmin']);
         }
 
         $this->viewBuilder()->setLayout('help');

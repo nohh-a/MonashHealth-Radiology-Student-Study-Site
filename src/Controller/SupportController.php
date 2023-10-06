@@ -102,7 +102,7 @@ class SupportController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function howtologin() {
+    public function searchingfordata() {
 
         $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
         $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
@@ -122,5 +122,243 @@ class SupportController extends AppController
 
     }
 
+    public function archivingcases() {
 
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
+
+    public function changeuserpassword() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
+
+    public function editcase() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
+
+    public function editusers() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
+
+    public function newcases() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
+
+    public function newfolder() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
+
+    public function newuser() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
+
+    public function removeuser() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
+
+    public function savecase() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
+
+    public function searchcase() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
+
+    public function viewsavedcases() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
+
+    public function viewusers() {
+
+        $firstName = $this->getRequest()->getSession()->read('Auth.first_name');
+        $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
+        $author = $firstName . ' ' . $lastName;
+
+        $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('help');
+        } else {
+            $this->viewBuilder()->setLayout('help_notadmin');
+
+        }
+
+        $this->set(compact('author', 'username'));
+
+    }
 }

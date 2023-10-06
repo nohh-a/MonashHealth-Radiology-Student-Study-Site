@@ -102,33 +102,15 @@
                                 <div class="pricing-table">
                                     <div class="pattern-box"></div>
                                     <div class="table-header">
-                                        <h5>Account Information</h5>
-                                    </div>
-                                    <div class="table-content">
-                                        <ul id="results">
-                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'howtologin'])?>"><i class="fa-regular fa-file-lines"></i>How to login?</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to change password?</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to create new case?</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
-                            <div class="pricing-block-one">
-                                <div class="pricing-table">
-                                    <div class="pattern-box"></div>
-                                    <div class="table-header">
                                         <h5>Case Management</h5>
                                     </div>
                                     <div class="table-content">
                                         <ul id="results">
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to view cases?</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to create a new case?</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Case input formats</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'archivingcases'])?>"><i class="fa-regular fa-file-lines"></i>Archiving Cases</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'newcases'])?>"><i class="fa-regular fa-file-lines"></i>Creating New Cases</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'editcase'])?>"><i class="fa-regular fa-file-lines"></i>Editing Case Details</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'searchingfordata'])?>"><i class="fa-regular fa-file-lines"></i>Searching for cases</a></li>
                                         </ul>
-                                    </div>
-                                    <div class="table-footer">
                                     </div>
                                 </div>
                             </div>
@@ -142,9 +124,9 @@
                                     </div>
                                     <div class="table-content">
                                         <ul id="results">
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to save a case?</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to create a new folder?</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to view my case collection?</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'savecase'])?>"><i class="fa-regular fa-file-lines"></i>How to save a case?</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'newfolder'])?>"><i class="fa-regular fa-file-lines"></i>How to create a new folder?</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'viewsavedcases'])?>"><i class="fa-regular fa-file-lines"></i>How to view or remove my saved cases?</a></li>
 
                                         </ul>
                                     </div>
@@ -153,68 +135,29 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
+                            <div class="pricing-block-one">
+                                <div class="pricing-table">
+                                    <div class="pattern-box"></div>
+                                    <div class="table-header">
+                                        <h5>User Management</h5>
+                                    </div>
+                                    <div class="table-content">
+                                        <ul id="results">
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'editusers'])?>"><i class="fa-regular fa-file-lines"></i>How to edit users?</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'newuser'])?>"><i class="fa-regular fa-file-lines"></i>How to add new users?</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'removeuser'])?>"><i class="fa-regular fa-file-lines"></i>How to remove users?</a></li>
+                                            <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'changeuserpassword'])?>"><i class="fa-regular fa-file-lines"></i>How to change as user's password?</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="table-footer">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="row clearfix">
-                        <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
-                            <div class="pricing-block-one">
-                                <div class="pricing-table">
-                                    <div class="pattern-box"></div>
-                                    <div class="table-header">
-                                        <h5>Error Handling</h5>
-                                    </div>
-                                    <div class="table-content">
-                                        <ul id="results">
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Account related errors</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Case related errors</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Saved cases errors</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="table-footer">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
-                            <div class="pricing-block-one">
-                                <div class="pricing-table">
-                                    <div class="pattern-box"></div>
-                                    <div class="table-header">
-                                        <h5>Input Formatting</h5>
-                                    </div>
-                                    <div class="table-content">
-                                        <ul id="results">
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Case Input Formats</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>Uneditable Fields</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="table-footer">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
-                            <div class="pricing-block-one">
-                                <div class="pricing-table">
-                                    <div class="pattern-box"></div>
-                                    <div class="table-header">
-                                        <h5>Admin</h5>
-                                    </div>
-                                    <div class="table-content">
-                                        <ul id="results">
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to view users?</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to edit users?</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to add new users?</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to remove users?</a></li>
-                                            <li><a href="#"><i class="fa-regular fa-file-lines"></i>How to change a new user's password?</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="table-footer">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
+              </div>
             </div>
     </div>
 </section>

@@ -554,6 +554,51 @@
         });
     }
 
+    function buttonGroup() {
+        function show1() {
+            $('#but1').show();
+            $('#but2').hide();
+            $('#but3').hide();
+            $('#but4').hide();
+        }
+
+        function show2() {
+            $('#but1').hide();
+            $('#but2').show();
+            $('#but3').hide();
+            $('#but4').hide();
+        }
+
+        function show3() {
+            $('#but1').hide();
+            $('#but2').hide();
+            $('#but3').show();
+            $('#but4').hide();
+        }
+
+        function show4() {
+            $('#but1').hide();
+            $('#but2').hide();
+            $('#but3').hide();
+            $('#but4').show();
+        }
+
+        show1();
+
+        $('.butgroup').on('click', function () {
+            const view = $(this).data('view');
+            if (view === 'butgroup1') {
+                show1();
+            } else if (view === 'butgroup2') {
+                show2();
+            } else if (view === 'butgroup3') {
+                show3();
+            } else if (view === 'butgroup4') {
+                show4();
+            }
+        });
+
+    }
 
 	/*	=========================================================================
 	When document is Scrolling, do
@@ -567,6 +612,8 @@
 			bodylayout();
 			directionswitch();
             toggleView();
+            buttonGroup();
+
 
         })(jQuery);
 	});

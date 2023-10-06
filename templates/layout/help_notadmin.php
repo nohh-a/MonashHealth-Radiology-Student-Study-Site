@@ -179,7 +179,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'index'])?>">Support</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'help_notadmin'])?>">Support</a>
                                 </li>
 
                             </ul>

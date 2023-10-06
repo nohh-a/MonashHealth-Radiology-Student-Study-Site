@@ -71,7 +71,7 @@
                         <a href="javascript: void(0)" data-theme="orange" class="orange-color"></a>
                     </li>
                 </ul>
-            </div> 
+            </div>
         </div>
     </div>
     <!-- end switcher menu -->
@@ -110,7 +110,7 @@
                                                 </ul>
                                             </li>
                                         </ul>
-                                    </li> 
+                                    </li>
                                     <li class="dropdown"><a href="about-element-2.html">Services</a>
                                         <ul>
                                             <li><a href="service.html">Services One</a></li>
@@ -199,7 +199,7 @@
                                             <li><a href="blog-standard.html">Blog Standard</a></li>
                                             <li><a href="blog-details.html">Blog Details</a></li>
                                         </ul>
-                                    </li>                              
+                                    </li>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </div>
@@ -231,7 +231,7 @@
     <div class="mobile-menu">
         <div class="menu-backdrop"></div>
         <div class="close-btn"><i class="fas fa-times"></i></div>
-        
+
         <nav class="menu-box">
             <div class="nav-logo"><a href="index.html"><img src="assets/images/logo-2.png" alt="" title=""></a></div>
             <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
@@ -281,7 +281,102 @@
                         <div class="image-box">
                             <div class="pattern-box">
                                 <div class="pattern-1 rotate-me" style="background-image: url(assets/images/shape/shap-1.png);"></div>
-                                <div class="pattern-2" style="background-image: url(assets/images/shape/shap-2.png);"></div>
+                                <div class="pattern-2" style="<section class="pricing-section bg-color-1 sec-pad">
+                                <div class="auto-container">
+                                    <div class="sec-title">
+                                        <p>SUPPORT CENTER<p>
+                                        <h2>Support Center</h2>
+                                    </div>
+                                    <div class="tabs-box">
+                                        <div class="row">
+                                            <div class="upper-box" style="margin-bottom: 0px; margin-left: 15px;">
+                                                <div class="text pull-left" style="margin-bottom: 0px">
+                                                    <p>Browse through our frequently asked questions, tutorials, and other self-help resources to find the answers you need.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sidebar-page-container" style="padding: 10px 0px 30px 0px;">
+                                            <div class="sidebar" style="margin-left: 0px; margin-top:0px;">
+                                                <div class="sidebar-widget sidebar-search" style="margin-bottom: 0px;">
+                                                    <div class="widget-content">
+                                                        <div class="form-group">
+                                                            <input type="search" id="mySearch" placeholder="Enter what you're looking for here to filter our pages!" onkeyup="supportCenter()">
+                                                            <div class="fake-button"><i class="fas fa-search"></i></div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tabs-content">
+                                            <div class="tab active-tab" id="tab-1">
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
+                                                        <div class="pricing-block-one">
+                                                            <div class="pricing-table">
+                                                                <div class="pattern-box"></div>
+                                                                <div class="table-header">
+                                                                    <h5>Case Management</h5>
+                                                                </div>
+                                                                <div class="table-content">
+                                                                    <ul id="results">
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'archivingcases'])?>"><i class="fa-regular fa-file-lines"></i>Archiving Cases (Admin)</a></li>
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'newcases'])?>"><i class="fa-regular fa-file-lines"></i>Creating New Cases</a></li>
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'editcase'])?>"><i class="fa-regular fa-file-lines"></i>Editing Case Details</a></li>
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'searchingfordata'])?>"><i class="fa-regular fa-file-lines"></i>Searching for cases</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
+                                                        <div class="pricing-block-one">
+                                                            <div class="pricing-table">
+                                                                <div class="pattern-box"></div>
+                                                                <div class="table-header">
+                                                                    <h5>Saved Cases</h5>
+                                                                </div>
+                                                                <div class="table-content">
+                                                                    <ul id="results">
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'savecase'])?>"><i class="fa-regular fa-file-lines"></i>How to save a case?</a></li>
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'newfolder'])?>"><i class="fa-regular fa-file-lines"></i>How to create a new folder?</a></li>
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'viewsavedcases'])?>"><i class="fa-regular fa-file-lines"></i>How to view my saved cases?</a></li>
+
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="table-footer">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 col-sm-12 pricing-block">
+                                                        <div class="pricing-block-one">
+                                                            <div class="pricing-table">
+                                                                <div class="pattern-box"></div>
+                                                                <div class="table-header">
+                                                                    <h5>User Management</h5>
+                                                                </div>
+                                                                <div class="table-content">
+                                                                    <ul id="results">
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'viewusers'])?>"><i class="fa-regular fa-file-lines"></i>How to view users?</a></li>
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'editusers'])?>"><i class="fa-regular fa-file-lines"></i>How to edit users?</a></li>
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'newuser'])?>"><i class="fa-regular fa-file-lines"></i>How to add new users?</a></li>
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'removeuser'])?>"><i class="fa-regular fa-file-lines"></i>How to remove users?</a></li>
+                                                                        <li><a href="<?= $this->Url->build(['controller' => 'support', 'action' => 'changeuserpassword'])?>"><i class="fa-regular fa-file-lines"></i>How to change as user's password?</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="table-footer">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    </section>
+    background-image: url(assets/images/shape/shap-2.png);"></div>
                             </div>
                             <figure class="image image-1 wow slideInLeft" data-wow-delay="00ms" data-wow-duration="1500ms"><img src="assets/images/resource/phone-1.png" alt=""></figure>
                             <figure class="image image-2"><img src="assets/images/resource/tab-1.png" alt=""></figure>
