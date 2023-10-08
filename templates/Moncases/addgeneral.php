@@ -23,6 +23,7 @@ $this->assign('title', 'Add General Case - Cases');
             <h1>Add New General Case</h1>
             <ul class="bread-crumb clearfix">
                 <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'userlist'])?>">New Case</a></li>
+                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'addnewcase'])?>">Select Case Type</a></li>
                 <li>GENERAL</li>
             </ul>
         </div>
