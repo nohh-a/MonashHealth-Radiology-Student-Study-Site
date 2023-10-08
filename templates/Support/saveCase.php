@@ -53,7 +53,7 @@
                             </li>
                         </div>
                         <ul class="clearfix wow slideInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-                            <li><strong>1. Locate Case:</strong> FNavigate to the User Dashboard and select the case you want to include in the folder.
+                            <li><strong>1. Locate Case:</strong> Navigate to the User Dashboard and select the case you want to include in the folder.
                             </li>
                             <br>
                             <li><strong>2. Select Case:</strong> If you have already created folders, you will see them listed here.</li>

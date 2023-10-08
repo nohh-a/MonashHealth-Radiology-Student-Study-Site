@@ -21,7 +21,7 @@ $this->assign('title', 'Select Case Type - Cases');
         <div class="content-box">
             <h1>Select Case Type</h1>
             <ul class="bread-crumb clearfix">
-                <li>Case List</li>
+                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'userlist'])?>">Case List</a></li>
                 <li>New Case</li>
             </ul>
         </div>
@@ -34,10 +34,6 @@ $this->assign('title', 'Select Case Type - Cases');
             <div class="row justify-content-center align-items-center">
 
                 <div class="col-md-6">
-                    <td>
-                        <button class="btn btn-info" onclick="goBack()">Go Back</button>
-                    </td>
-
                     <div class ="card-body row justify-content-center align-items-center">
                             <div class="col-lg-6">
 

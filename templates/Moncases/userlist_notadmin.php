@@ -82,7 +82,7 @@ $this->assign('title', 'Case List - Cases');
         <div class="content-box">
             <h1>Case List</h1>
             <ul class="bread-crumb clearfix">
-                <button class="toggle-view-button theme-btn style-two" data-view="grid">Grid</button>
+                <button class="toggle-view-button theme-btn style-one" data-view="grid">Grid</button>
                 <button class="toggle-view-button theme-btn style-two" data-view="list">List</button>
             </ul>
         </div>
@@ -429,6 +429,7 @@ $this->assign('title', 'Case List - Cases');
                         </div>
                         <div class="widget-content">
                             <div class="form-group">
+                                <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                                 <?= $this->Form->input('search', [
                                     'type' => 'search',
                                     'placeholder' => 'Search',
@@ -453,119 +454,124 @@ $this->assign('title', 'Case List - Cases');
                                     <div class="acc-content current">
                                         <div class="content">
                                             <p>
-                                            <?= $this->Form->select('case_type', [
-                                                'Oscer' => 'Oscer',
-                                                'Long' => 'Long',
-                                                'Medium' => 'Medium',
-                                                'Short' => 'Short',
-                                                'General' => 'General',
-                                            ], [
-                                                'class' => 'select select_mod-a jelect',
-                                                'default' => $this->request->getQuery('case_type'),
-                                                'empty' => 'Choose Case Type',
-                                            ]); ?>
+                                                <?= $this->Form->select('case_type', [
+                                                    'Oscer' => '  Oscer',
+                                                    'Long' => '  Long',
+                                                    'Medium' => '  Medium',
+                                                    'Short' => '  Short',
+                                                    'General' => '  General',
+                                                ], [
+                                                    'class' => 'select select_mod-a jelect',
+                                                    'default' => $this->request->getQuery('case_type'),
+                                                    'empty' => 'Choose Case Type',
+                                                    'multiple' => 'checkbox',
+                                                ]); ?>
                                             </p>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="accordion block active-block">
-                                    <div class="acc-btn active">
+                                    <div class="acc-btn">
                                         <h4><span>+</span>Contributor</h4>
                                     </div>
-                                    <div class="acc-content current">
+                                    <div class="acc-content">
                                         <div class="content">
                                             <p>
-                                            <?= $this->Form->select('contributor', [
-                                                'Trainee' => 'Trainee',
-                                                'Consultant' => 'Consultant',
-                                                'Library' => 'Library',
-                                            ], [
-                                                'class' => 'select select_mod-a jelect',
-                                                'default' => $this->request->getQuery('contributor'),
-                                                'empty' => 'Choose Contributor',
-                                            ]); ?>
+                                                <?= $this->Form->select('contributor', [
+                                                    'Trainee' => '  Trainee',
+                                                    'Consultant' => '  Consultant',
+                                                    'Library' => '  Library',
+                                                ], [
+                                                    'class' => 'select select_mod-a jelect',
+                                                    'default' => $this->request->getQuery('contributor'),
+                                                    'empty' => 'Choose Contributor',
+                                                    'multiple' => 'checkbox',
+                                                ]); ?>
                                             </p>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="accordion block active-block">
-                                    <div class="acc-btn active">
+                                    <div class="acc-btn">
                                         <h4><span>+</span>Rating</h4>
                                     </div>
-                                    <div class="acc-content current">
+                                    <div class="acc-content">
                                         <div class="content">
                                             <p> <?= $this->Form->select('rating', [
-                                                    '1' => '1',
-                                                    '2' => '2',
-                                                    '3' => '3',
-                                                    '4' => '4',
-                                                    '5' => '5',
+                                                    '1' => '  1',
+                                                    '2' => '  2',
+                                                    '3' => '  3',
+                                                    '4' => '  4',
+                                                    '5' => '  5',
                                                 ], [
                                                     'class' => 'form-select',
                                                     'default' => $this->request->getQuery('rating'),
                                                     'empty' => 'Choose Rating',
+                                                    'multiple' => 'checkbox',
+                                                    'id' => 'form-select',
                                                 ]); ?>
                                             </p>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="accordion block active-block">
-                                    <div class="acc-btn active">
+                                    <div class="acc-btn">
                                         <h4><span>+</span>Specialty</h4>
                                     </div>
-                                    <div class="acc-content current">
+                                    <div class="acc-content">
                                         <div class="content">
                                             <p> <?= $this->Form->select('specialty', [
-                                                    'ABDOMINAL' => 'ABDOMINAL',
-                                                    'CARDIOTHORACIC' => 'CARDIOTHORACIC',
-                                                    'NEURO' => 'NEURO',
-                                                    'HEAD AND NECK' => 'HEAD AND NECK',
-                                                    'MSK' => 'MSK',
-                                                    'BREAST' => 'BREAST',
-                                                    'GYN' => 'GYN',
-                                                    'O+G' => 'O+G',
-                                                    'PEADS' => 'PEADS',
-                                                    'VASCULAR' => 'VASCULAR',
-                                                    'INTERVENTION' => 'INTERVENTION',
+                                                    'ABDOMINAL' => '  ABDOMINAL',
+                                                    'CARDIOTHORACIC' => '  CARDIOTHORACIC',
+                                                    'NEURO' => '  NEURO',
+                                                    'HEAD AND NECK' => '  HEAD AND NECK',
+                                                    'MSK' => '  MSK',
+                                                    'BREAST' => '  BREAST',
+                                                    'GYN' => '  GYN',
+                                                    'O+G' => '  O+G',
+                                                    'PEADS' => '  PEADS',
+                                                    'VASCULAR' => '  VASCULAR',
+                                                    'INTERVENTION' => '  INTERVENTION',
                                                 ], [
                                                     'class' => 'form-select',
                                                     'default' => $this->request->getQuery('specialty'),
                                                     'empty' => 'Choose Specialty',
+                                                    'multiple' => 'checkbox',
                                                 ]); ?>
                                             </p>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="accordion block active-block">
-                                    <div class="acc-btn active">
+                                    <div class="acc-btn">
                                         <h4><span>+</span>Imaging</h4>
                                     </div>
-                                    <div class="acc-content current">
+                                    <div class="acc-content">
                                         <div class="content">
                                             <p>
                                                 <?= $this->Form->select('imaging', [
-                                                    'X-ray' => 'X-ray',
-                                                    'Ultrasound' => 'Ultrasound',
-                                                    'CT' => 'CT',
-                                                    'MRI' => 'MRI',
-                                                    'Nuclear Medicine' => 'Nuclear Medicine',
-                                                    'Fluoroscopy' => 'Fluoroscopy',
-                                                    'Mammography' => 'Mammography',
-                                                    'Other' => 'Other',
+                                                    'X-ray' => '  X-ray',
+                                                    'Ultrasound' => '  Ultrasound',
+                                                    'CT' => '  CT',
+                                                    'MRI' => '  MRI',
+                                                    'Nuclear Medicine' => '  Nuclear Medicine',
+                                                    'Fluoroscopy' => '  Fluoroscopy',
+                                                    'Mammography' => '  Mammography',
+                                                    'Other' => '  Other',
                                                 ], [
                                                     'class' => 'form-select',
                                                     'empty' => 'Select Imaging',
+                                                    'multiple' => 'checkbox',
                                                 ]) ?>
                                         </div>
                                     </div>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
                     <div class="sidebar-widget sidebar-tags">
                         <div class="widget-title">
-                            <div class="widget-content" style="display: flex; justify-content: space-between; align-items: center;">
+                            <div class="widget-content" style="display: flex; justify-content: space-around; align-items: center;">
                                 <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style' => 'margin-right: 10px;']) ?>
                                 <?= $this->Form->end() ?>
                                 <a href="<?= $this->Url->build('/') ?>"><button class="theme-btn style-two" style="flex: 1;">Reset Filter</button></a>

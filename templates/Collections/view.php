@@ -57,7 +57,7 @@ $this->assign('title', 'Change User Password - My Favorites');
 
             <h1><?= h($collection->name) ?></h1>
             <ul class="bread-crumb clearfix">
-                    <li>My Collection</li>
+                <li><a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Favourites</a></li>
                 <li>View Collection</li>
             </ul>
         </div>
@@ -66,9 +66,6 @@ $this->assign('title', 'Change User Password - My Favorites');
 </section>
 
 <div class="container">
-    <td>
-        <button class="btn btn-info" onclick="goBack()">Go Back</button>
-    </td>
     <?= $this->Flash->render() ?>
 
     <div class="row">

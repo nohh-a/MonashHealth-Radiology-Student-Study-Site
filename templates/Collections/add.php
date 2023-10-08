@@ -13,21 +13,10 @@ $this->assign('title', 'Create Empty Folder - My Favorites');
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
-        <div class="col-md-8">
-            <td>
-                <button class="btn btn-info" onclick="goBack()">Go Back</button>
-            </td>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script>
-        </div>
-
         <div class="content-box">
             <h1>Create Folder</h1>
             <ul class="bread-crumb clearfix">
-                <li>My Favorites</li>
+                <li><a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Favourites</a></li>
                 <li>Create folder</li>
             </ul>
         </div>

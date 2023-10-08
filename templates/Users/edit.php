@@ -13,7 +13,7 @@ $this->assign('title', 'Edit - Users');
         <div class="content-box">
             <h1>Edit user</h1>
             <ul class="bread-crumb clearfix">
-                <li>User Management</li>
+                <li><a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'index'])?>">User Management</a></li>
                 <li>Edit User</li>
             </ul>
         </div>
@@ -29,16 +29,6 @@ $this->assign('title', 'Edit - Users');
             <div class="row">
 
                 <div class="col-md-6 mx-auto">
-                    <td>
-                        <button class="btn btn-info" onclick="goBack()">Go Back</button>
-                    </td>
-                    <script>
-                        function goBack() {
-                            window.history.back();
-                        }
-                    </script>
-
-
                     <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
                     <?php
                     echo $this->Form->control('username', [

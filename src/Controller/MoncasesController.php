@@ -329,30 +329,81 @@ class MoncasesController extends AppController
         $specialtyFilter = $this->request->getQuery('specialty');
         $imagingFilter = $this->request->getQuery('imaging');
 
-
-
-        if ($caseTypeFilter !== '') {
-            $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
-        }
-        if ($contributorFilter !== '') {
-            $filter[] = ['contributor LIKE' => '%' . $contributorFilter . '%'];
-        }
-        if ($ratingFilter !== '') {
-            $ratingFilter = (int)$ratingFilter;
-            if ($ratingFilter > 0 && $ratingFilter <= 5) {
-                $filter[] = ['rating' => $ratingFilter];
+        if (!empty($caseTypeFilter)) {
+            foreach ($caseTypeFilter as $caseTypeFilter) {
+                $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
             }
         }
-        if ($specialtyFilter !== '') {
-            $filter[] = ['specialty LIKE' => '%' . $specialtyFilter . '%'];
+
+        if (!empty($contributorFilter)) {
+            foreach ($contributorFilter as $contributorFilter) {
+                $filter[] = ['contributor LIKE' => '%' . $contributorFilter . '%'];
+            }
         }
-        if ($imagingFilter !== '') {
-            $filter[] = ['imaging LIKE' => '%' . $imagingFilter . '%'];
+
+        if (!empty($ratingFilter) && is_array($ratingFilter)) {
+            $ratingFilter = array_map('intval', $ratingFilter);
+            $filter[] = ['rating IN' => $ratingFilter];
+        }
+        if (!empty($specialtyFilter)) {
+            foreach ($specialtyFilter as $specialtyFilter) {
+                $filter[] = ['specialty LIKE' => '%' . $specialtyFilter . '%'];
+            }
+        }
+
+        if (!empty($imagingFilter)) {
+            foreach ($imagingFilter as $imagingFilter) {
+                $filter[] = ['imaging LIKE' => '%' . $imagingFilter . '%'];
+            }
         }
 
         if ($filter) {
-            $moncases->where(['AND' => $filter]);
+            $moncases->where(['OR' => $filter]);
         }
+
+        /*
+
+        $filterModal = [];
+        $caseTypeFilterModal = $this->request->getQuery('case_type_modal)');
+        $contributorFilterModal = $this->request->getQuery('contributor_modal');
+        $ratingFilterModal = $this->request->getQuery('rating_modal');
+        $specialtyFilterModal = $this->request->getQuery('specialty_modal');
+        $imagingFilterModal = $this->request->getQuery('imaging_modal');
+
+        if (!empty($caseTypeFilterModal)) {
+            foreach ($caseTypeFilterModal as $caseTypeFilterModal) {
+                $filterModal[] = ['case_type LIKE' => '%' . $caseTypeFilterModal . '%'];
+            }
+
+        }
+
+
+        if (!empty($contributorFilterModal)) {
+            foreach ($contributorFilterModal as $contributorFilterModal) {
+                $filterModal[] = ['contributor LIKE' => '%' . $contributorFilterModal . '%'];
+            }
+        }
+
+        if (!empty($ratingFilterModal) && is_array($ratingFilterModal)) {
+            $ratingFilterModal = array_map('intval', $ratingFilterModal);
+            $filterModal[] = ['rating IN' => $ratingFilterModal];
+        }
+        if (!empty($specialtyFilterModal)) {
+            foreach ($specialtyFilterModal as $specialtyFilterModal) {
+                $filterModal[] = ['specialty LIKE' => '%' . $specialtyFilterModal . '%'];
+            }
+        }
+
+        if (!empty($imagingFilterModal)) {
+            foreach ($imagingFilterModal as $imagingFilterModal) {
+                $filterModal[] = ['imaging LIKE' => '%' . $imagingFilterModal . '%'];
+            }
+        }
+
+        if ($filterModal) {
+            $moncases->where(['OR' => $filterModal]);
+        }
+        */
 
         // Sorting feature
         $sort = $this->request->getQuery('sort');
@@ -364,10 +415,10 @@ class MoncasesController extends AppController
                 $moncases->order(['date' => 'ASC']);
                 break;
             case 'az':
-                $moncases->order(['differential_diagnosis' => 'ASC']);
+                $moncases->order(['diagnosis' => 'ASC']);
                 break;
             case 'za':
-                $moncases->order(['differential_diagnosis' => 'DESC']);
+                $moncases->order(['diagnosis' => 'DESC']);
                 break;
             case 'rating_asc':
                 $moncases->order(['rating' => 'ASC']);
@@ -428,28 +479,36 @@ class MoncasesController extends AppController
         $imagingFilter = $this->request->getQuery('imaging');
 
 
-
-
-        if ($caseTypeFilter !== '') {
-            $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
-        }
-        if ($contributorFilter !== '') {
-            $filter[] = ['contributor LIKE' => '%' . $contributorFilter . '%'];
-        }
-        if ($ratingFilter !== '') {
-            $ratingFilter = (int)$ratingFilter;
-            if ($ratingFilter > 0 && $ratingFilter <= 5) {
-                $filter[] = ['rating' => $ratingFilter];
+        if (!empty($caseTypeFilter)) {
+            foreach ($caseTypeFilter as $caseTypeFilter) {
+                $filter[] = ['case_type LIKE' => '%' . $caseTypeFilter . '%'];
             }
         }
-        if ($specialtyFilter !== '') {
-            $filter[] = ['specialty LIKE' => '%' . $specialtyFilter . '%'];
+
+        if (!empty($contributorFilter)) {
+            foreach ($contributorFilter as $contributorFilter) {
+                $filter[] = ['contributor LIKE' => '%' . $contributorFilter . '%'];
+            }
         }
-        if ($imagingFilter !== '') {
-            $filter[] = ['imaging LIKE' => '%' . $imagingFilter . '%'];
+
+        if (!empty($ratingFilter) && is_array($ratingFilter)) {
+            $ratingFilter = array_map('intval', $ratingFilter);
+            $filter[] = ['rating IN' => $ratingFilter];
         }
+        if (!empty($specialtyFilter)) {
+            foreach ($specialtyFilter as $specialtyFilter) {
+                $filter[] = ['specialty LIKE' => '%' . $specialtyFilter . '%'];
+            }
+        }
+
+        if (!empty($imagingFilter)) {
+            foreach ($imagingFilter as $imagingFilter) {
+                $filter[] = ['imaging LIKE' => '%' . $imagingFilter . '%'];
+            }
+        }
+
         if ($filter) {
-            $moncases->where(['AND' => $filter]);
+            $moncases->where(['OR' => $filter]);
         }
 
         // Sorting feature
@@ -462,10 +521,10 @@ class MoncasesController extends AppController
                 $moncases->order(['date' => 'ASC']);
                 break;
             case 'az':
-                $moncases->order(['differential_diagnosis' => 'ASC']);
+                $moncases->order(['diagnosis' => 'ASC']);
                 break;
             case 'za':
-                $moncases->order(['differential_diagnosis' => 'DESC']);
+                $moncases->order(['diagnosis' => 'DESC']);
                 break;
             case 'rating_asc':
                 $moncases->order(['rating' => 'ASC']);

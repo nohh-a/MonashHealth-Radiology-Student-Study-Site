@@ -11,16 +11,11 @@ $this->assign('title', 'Change User Password - Users');
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
-        <div class="col-md-8">
-            <td>
-                <button class="btn btn-info" onclick="goBack()">Go Back</button>
-            </td>
-        </div>
 
         <div class="content-box">
             <h1>Change Password</h1>
             <ul class="bread-crumb clearfix">
-                <li>User Management</li>
+                <li><a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'index'])?>">User Management</a></li>
                 <li>Change Password</li>
             </ul>
 

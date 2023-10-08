@@ -24,7 +24,7 @@ $this->assign('title', 'Add Oscer Case - Cases');
         <div class="content-box">
             <h1>Add New Oscer Case</h1>
             <ul class="bread-crumb clearfix">
-                <li>New Case</li>
+                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'userlist'])?>">New Case</a></li>
                 <li>OSCER</li>
             </ul>
         </div>
@@ -38,15 +38,6 @@ $this->assign('title', 'Add Oscer Case - Cases');
         <div class="card-footer">
             <?= $this->Flash->render() ?>
         </div>
-        <td>
-            <button class="btn btn-info" onclick="goBack()">Go Back</button>
-        </td>
-        <br><br>
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
 
         <div class="moncases form content">
 
