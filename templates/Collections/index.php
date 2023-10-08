@@ -72,6 +72,7 @@ $this->assign('title', 'My Favorites');
         <div class="content-box">
             <h1>My Favorites</h1>
             <ul class="bread-crumb clearfix">
+                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'userlist'])?>">Case List</a></li>
                 <li>My Favorites</li>
                 <li>View Folders</li>
             </ul>

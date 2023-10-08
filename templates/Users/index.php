@@ -68,7 +68,7 @@
         <div class="content-box">
             <h1>My Users</h1>
             <ul class="bread-crumb clearfix">
-                <li>Case List</li>
+                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'userlist'])?>">Case List</a></li>
                 <li>User Management</li>
             </ul>
         </div>

@@ -66,7 +66,7 @@ $this->assign('title', 'Archived Cases - Cases');
         <div class="content-box">
             <h1>Archived Cases</h1>
             <ul class="bread-crumb clearfix">
-                <li>Case List</li>
+                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'userlist'])?>">Case List</a></li>
                 <li>Archived Cases</li>
             </ul>
         </div>
