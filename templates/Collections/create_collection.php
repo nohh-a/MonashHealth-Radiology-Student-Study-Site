@@ -16,7 +16,7 @@ $this->assign('title', 'Create New Folder - My Favorites');
 
         <div class="col-md-8">
             <td>
-                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                <button class="btn btn-outline-primary" onclick="goBack()">Back</button>
             </td>
             <script>
                 function goBack() {
@@ -28,7 +28,7 @@ $this->assign('title', 'Create New Folder - My Favorites');
         <div class="content-box">
             <h1>Create Folder</h1>
             <ul class="bread-crumb clearfix">
-                <li>Case  List</li>
+                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'userlist'])?>">Case List</a></li>
                 <li>Create Folder</li>
             </ul>
         </div>

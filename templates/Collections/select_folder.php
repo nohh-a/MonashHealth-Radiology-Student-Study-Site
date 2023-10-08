@@ -18,7 +18,7 @@ $this->assign('title', 'Select Favorites Folder - My Favorites');
 
         <div class="col-md-8">
             <td>
-                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                <button class="btn btn-outline-primary" onclick="goBack()">Back</button>
             </td>
             <script>
                 function goBack() {
@@ -31,7 +31,7 @@ $this->assign('title', 'Select Favorites Folder - My Favorites');
             <?= $this->Flash->render() ?>
             <h1>Select Favorites Folder</h1>
             <ul class="bread-crumb clearfix">
-                <li>Case List</li>
+                <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'userlist'])?>">Case List</a></li>
                 <li>Favorite Case</li>
             </ul>
         </div>
