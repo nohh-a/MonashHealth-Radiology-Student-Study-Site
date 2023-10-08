@@ -306,7 +306,9 @@ class MoncasesController extends AppController
         // obtain cases list
         $moncases = $this->Moncases->find()
             // Add a condition to filter archive_status
-            ->where(['archive_status' => 'no']);
+            ->where(['archive_status' => 'no'])
+            // Add sorting order
+            ->order(['date' => 'DESC']);
 
         //search functionality
         $search = $this->request->getQuery('search');
@@ -454,7 +456,9 @@ class MoncasesController extends AppController
         // obtain cases list
         $moncases = $this->Moncases->find()
             // Add a condition to filter archive_status
-            ->where(['archive_status' => 'no']);
+            ->where(['archive_status' => 'no'])
+            // Add sorting order
+            ->order(['date' => 'DESC']);
 
         //search functionality
         $search = $this->request->getQuery('search');

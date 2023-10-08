@@ -121,7 +121,9 @@ $this->assign('title', 'Case List - Cases');
                             'class' => 'custom-select',
                         ]
                     ) ?>
-                <?= $this->Form->button(__('Apply'), ['class' => 'btn btn-secondary', 'style' => 'margin-top: -20px;']) ?>
+
+
+                    <?= $this->Form->button(__('Apply'), ['class' => 'btn btn-secondary', 'style' => 'margin-top: -20px;']) ?>
 
                 </div>
 
