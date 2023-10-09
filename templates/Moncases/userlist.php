@@ -51,10 +51,13 @@ $this->assign('title', 'Case List - Cases');
             color: #576ec2;
             font-weight: 600;
             font-size: 18px;
+
         }
 
         .carousel-text p {
             padding-bottom: 30px;
+            font-family: 'Poppins', sans-serif;
+
         }
 
         .button a {
@@ -68,10 +71,6 @@ $this->assign('title', 'Case List - Cases');
 
         .noresults {
             padding-left: 30px;
-        }
-
-        .carousel-text p {
-            font-family: 'Poppins', sans-serif;
         }
 
     </style>
@@ -297,8 +296,9 @@ $this->assign('title', 'Case List - Cases');
                                             </div>
                                             <div class="sidebar-widget sidebar-tags">
                                                 <div class="widget-title">
-                                                    <div class="widget-content" style="display: flex; justify-content: space-between; align-items: center;">
+                                                    <div class="widget-content" style="display: flex; justify-content: space-around; align-items: center;">
                                                         <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style' => 'margin-right: 10px;']) ?>
+                                                        <?= $this->Form->end() ?>
                                                         <a href="<?= $this->Url->build('/') ?>"><button class="theme-btn style-two" style="flex: 1;">Reset Filter</button></a>
                                                     </div>
                                                 </div>
@@ -451,6 +451,7 @@ $this->assign('title', 'Case List - Cases');
                         </div>
                         <div class="widget-content">
                             <div class="form-group">
+                                <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                                 <?= $this->Form->input('search', [
                                     'type' => 'search',
                                     'placeholder' => 'Search',

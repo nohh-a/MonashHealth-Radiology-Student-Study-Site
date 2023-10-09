@@ -37,6 +37,8 @@ $this->assign('title', 'Case List - Cases');
 
         .designation {
             color: #576ec2;
+            padding-bottom: 5px;
+
         }
 
         .project-block-one .inner-box .image-box {
@@ -45,7 +47,7 @@ $this->assign('title', 'Case List - Cases');
         }
 
         .carousel-text h5 {
-            padding-top: 20px;
+            padding-top: 10px;
             padding-bottom: 5px;
             color: #576ec2;
             font-weight: 600;
@@ -54,6 +56,8 @@ $this->assign('title', 'Case List - Cases');
 
         .carousel-text p {
             padding-bottom: 30px;
+            font-family: 'Poppins', sans-serif;
+
         }
 
         .button a {
@@ -282,8 +286,9 @@ $this->assign('title', 'Case List - Cases');
                                             </div>
                                             <div class="sidebar-widget sidebar-tags">
                                                 <div class="widget-title">
-                                                    <div class="widget-content">
+                                                    <div class="widget-content" style="display: flex; justify-content: space-around; align-items: center;">
                                                         <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one']) ?>
+                                                        <?= $this->Form->end() ?>
                                                         <button class="theme-btn style-two"><a href="<?= $this->Url->build('/') ?>">Reset Filter</a></button>
                                                     </div>
                                                 </div>
@@ -344,7 +349,14 @@ $this->assign('title', 'Case List - Cases');
                                                                     <p><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></p>
                                                                 </div>
                                                             </div>
+                                                            <div class="carousel-item">
+                                                                <div class="carousel-text">
+                                                                    <h5>Rating</h5>
+                                                                    <p><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></p>
+                                                                </div>
+                                                            </div>
                                                         </div>
+
                                                         <a class="carousel-control-prev" style="margin-right: 19px;" href="#textCarousel<?= $index ?>" role="button" data-slide="prev">
                                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                             <span class="sr-only">Previous</span>
@@ -355,10 +367,6 @@ $this->assign('title', 'Case List - Cases');
                                                         </a>
                                                     </div>
                                                     <div class="row" style="display: flex; justify-content: center; flex-wrap: nowrap;">
-
-                                                       <!-- <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <?= $this->Html->postLink(__('Save'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two','style'=>'padding: 0px 45px; font-size: 15px;', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
-                                                        </div> -->
 
                                                     </div>
 
@@ -429,7 +437,7 @@ $this->assign('title', 'Case List - Cases');
                         </div>
                         <div class="widget-content">
                             <div class="form-group">
-                                <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
+                                <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlistNotadmin'], 'type' => 'get']) ?>
                                 <?= $this->Form->input('search', [
                                     'type' => 'search',
                                     'placeholder' => 'Search',
