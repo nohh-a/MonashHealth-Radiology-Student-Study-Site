@@ -100,8 +100,8 @@
 
         /* ALL: add padding to page title*/
         .page-title {
-            padding-top: 170px;
-            padding-bottom: 20px;
+            padding-top: 150px;
+            padding-bottom: 0px;
         }
 
         /* USER LIST: adjust how text views in grid view */
@@ -137,6 +137,15 @@
                 display: none;
             }
 
+            .custom-select {
+                width:60%;
+                margin-bottom: 20px;
+            }
+
+            .btn-desk {
+                display:none;
+            }
+
         }
 
         /* USER LIST: hide filter button in desktop view and show sidebar */
@@ -147,6 +156,15 @@
 
             .sidebar-hide {
                 display: block;
+            }
+
+            .custom-select {
+                width:25%;
+                margin-bottom: 20px;
+
+            }
+            .btn-phone {
+                display:none;
             }
         }
 

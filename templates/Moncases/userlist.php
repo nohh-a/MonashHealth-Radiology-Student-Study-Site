@@ -73,6 +73,11 @@ $this->assign('title', 'Case List - Cases');
             padding-left: 30px;
         }
 
+        .sidebar-page-container .sidebar {
+            margin-left: 5px;
+        }
+
+
     </style>
 
 
@@ -101,7 +106,7 @@ $this->assign('title', 'Case List - Cases');
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class = "row">
                 <!-- Sort Feature -->
-                <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+                <div class ="mon-sort col-lg-8 col-md-8 col-sm-8 col-8">
                     <h3> Sort by</h3>
                     <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlist'], 'type' => 'get']) ?>
                     <?= $this->Form->select(
@@ -125,18 +130,15 @@ $this->assign('title', 'Case List - Cases');
                     <?= $this->Form->button(__('Apply'), ['class' => 'btn btn-secondary', 'style' => 'margin-top: -20px;']) ?>
 
                 </div>
-
-                <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                <div class ="mon-new-btn-phone col-lg-1 col-md-1 col-sm-1 col-1">
                     <h3><br></h3>
-                    <?= $this->Html->link(__('New'), ['controller' => 'moncases', 'action' => 'addnewcase'], ['class' => 'theme-btn style-one']) ?>
+                    <?= $this->Html->link(__('New'), ['controller' => 'moncases', 'action' => 'addnewcase'], ['class' => 'theme-btn style-one btn-phone']) ?>
                 </div>
-
-                <div class = "col-lg-2 col-md-2 col-sm-2 col-2">
+                <div class ="mon-modal col-lg-2 col-md-1 col-sm-2 col-2">
                         <!-- Trigger the modal with a button -->
-                    <i class="fas fas fa-search fa-lg modal-hide" data-toggle="modal" data-target="#myModal">
-                    </i>
-                        <!-- Modal -->
-                        <div id="myModal" class="modal fade" role="dialog">
+                    <i class="fas fas fa-search fa-lg modal-hide" data-toggle="modal" data-target="#myModal"></i>
+                    <!-- Modal -->
+                    <div id="myModal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <!-- Modal content-->
                                 <div class="modal-content">
@@ -311,6 +313,10 @@ $this->assign('title', 'Case List - Cases');
                                 </div>
                             </div>
                         </div>
+                </div>
+                <div class ="mon-new-btn-desk col-lg-1 col-md-1 col-sm-1 col-1">
+                        <h3><br></h3>
+                        <?= $this->Html->link(__('New'), ['controller' => 'moncases', 'action' => 'addnewcase'], ['class' => 'theme-btn style-one btn-desk']) ?>
                     </div>
                     <!-- Modal Filters -->
                 </div>
@@ -320,129 +326,6 @@ $this->assign('title', 'Case List - Cases');
         <!-- default content-->
         <div class="row clearfix">
             <!-- grid view-->
-            <div id="moncases-grid" class="col-lg-9 col-md-12 col-sm-12 content-side">
-                <div class="blog-grid-content">
-                    <div class="row clearfix">
-                        <?php if ($moncases->count() > 0) : ?>
-                            <?php foreach ($moncases as $index => $moncase) : ?>
-                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <div class="project-block-one mb-100 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                                        <div class="inner-box" style="text-align: center;">
-                                            <div class="image-holder">
-                                                <figure class="image-box" style="height: fit-content;">
-                                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
-                                                        <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill; width: 390px; height: 340px;">
-                                                    </a>
-                                                </figure>
-                                            </div>
-                                            <div class="lower-content" style="height: fit-content;">
-                                                    <span class="designation"><?= h($moncase->case_type) ?>&nbsp;|&nbsp;
-                                                        <?= h($moncase->author) ?>&nbsp;|&nbsp;
-                                                        <?= h($moncase->date) ?>
-                                                    </span>
-                                                <h3><?= h($moncase->diagnosis) ?></h3>
-                                                <div class="container">
-                                                    <div id="textCarousel<?= $index ?>" class="carousel slide" data-ride="carousel" data-touch="true" data-interval="false">
-                                                        <div class="carousel-inner">
-                                                            <div class="carousel-item active">
-                                                                <div class="carousel-text">
-                                                                    <h5>Specialty</h5>
-                                                                    <p><?= !empty($moncase->specialty) ? h($moncase->specialty) : 'N/A' ?></p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="carousel-item">
-                                                                <div class="carousel-text">
-                                                                    <h5>Teaching Points</h5>
-                                                                    <p><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="carousel-item">
-                                                                <div class="carousel-text">
-                                                                    <h5>Imaging</h5>
-                                                                    <p><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="carousel-item">
-                                                                <div class="carousel-text">
-                                                                    <h5>Rating</h5>
-                                                                    <p><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a class="carousel-control-prev" style="margin-right: 19px;" href="#textCarousel<?= $index ?>" role="button" data-slide="prev">
-                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </a>
-                                                        <a class="carousel-control-next" href="#textCarousel<?= $index ?>" role="button" data-slide="next">
-                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                            <span class="sr-only">Next</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="row" style="display: flex; justify-content: center; flex-wrap: nowrap;">
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <dev class="noresults">
-                                <p>No results found.</p>
-                            </dev>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-
-            <!-- list view-->
-            <div id ="moncases-list" class="col-lg-9 col-md-12 col-sm-12 content-side" style="display: none">
-                <div class="row clearfix">
-                    <table class="table table-hover table-responsive wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms" style="margin-left: 18px;">
-                        <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Accession No.</th>
-                            <th>Type</th>
-                            <th>Diagnosis</th>
-                            <th>Imaging</th>
-                            <th>Contributor</th>
-                            <th>Date</th>
-                            <th>Rating</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php if ($moncases->count() > 0) : ?>
-                            <?php foreach ($moncases as $moncase) : ?>
-                                <tr>
-                                    <td>
-                                        <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>" style=" height: 142px; max-width: fit-content;">
-                                    </td>
-                                    <td style="text-align: center;"> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
-                                    <td><?= h($moncase->case_type) ?></td>
-                                    <td><?= h($moncase->diagnosis) ?></td>
-                                    <td><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></td>
-                                    <td><?= h($moncase->contributor) ?></td>
-                                    <td><?= h($moncase->date) ?></td>
-                                    <td><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></td>
-
-
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <dev class="noresults">
-                                <p>No results found.</p>
-                            </dev>
-                        <?php endif; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- sidebar of filters and search bar -->
             <div class="col-lg-3 col-md-12 col-sm-12 sidebar-side sidebar-hide">
                 <div class="sidebar">
                     <div class="sidebar-widget sidebar-search">
@@ -602,14 +485,135 @@ $this->assign('title', 'Case List - Cases');
                     </div>
                 </div>
             </div>
+
+            <div id="moncases-grid" class="col-lg-9 col-md-12 col-sm-12 content-side">
+                <div class="blog-grid-content">
+                    <div class="row clearfix">
+                        <?php if ($moncases->count() > 0) : ?>
+                            <?php foreach ($moncases as $index => $moncase) : ?>
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="project-block-one mb-100 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                        <div class="inner-box" style="text-align: center;">
+                                            <div class="image-holder">
+                                                <figure class="image-box" style="height: fit-content;">
+                                                    <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>">
+                                                        <img src="<?= $this->Url->image($moncase -> image_url, ['alt' => 'photo']) ?>" style="object-fit: fill; width: 390px; height: 340px;">
+                                                    </a>
+                                                </figure>
+                                            </div>
+                                            <div class="lower-content" style="height: fit-content;">
+                                                    <span class="designation"><?= h($moncase->case_type) ?>&nbsp;|&nbsp;
+                                                        <?= h($moncase->author) ?>&nbsp;|&nbsp;
+                                                        <?= h($moncase->date) ?>
+                                                    </span>
+                                                <h3><?= h($moncase->diagnosis) ?></h3>
+                                                <div class="container">
+                                                    <div id="textCarousel<?= $index ?>" class="carousel slide" data-ride="carousel" data-touch="true" data-interval="false">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active">
+                                                                <div class="carousel-text">
+                                                                    <h5>Specialty</h5>
+                                                                    <p><?= !empty($moncase->specialty) ? h($moncase->specialty) : 'N/A' ?></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="carousel-text">
+                                                                    <h5>Teaching Points</h5>
+                                                                    <p><?= !empty($moncase->teaching_points) ? h($moncase->teaching_points) : 'N/A' ?></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="carousel-text">
+                                                                    <h5>Imaging</h5>
+                                                                    <p><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="carousel-text">
+                                                                    <h5>Rating</h5>
+                                                                    <p><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <a class="carousel-control-prev" style="margin-right: 19px;" href="#textCarousel<?= $index ?>" role="button" data-slide="prev">
+                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                        <a class="carousel-control-next" href="#textCarousel<?= $index ?>" role="button" data-slide="next">
+                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="row" style="display: flex; justify-content: center; flex-wrap: nowrap;">
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <dev class="noresults">
+                                <p>No results found.</p>
+                            </dev>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- list view-->
+            <div id ="moncases-list" class="col-lg-9 col-md-12 col-sm-12 content-side" style="display: none">
+                <div class="row clearfix">
+                    <table class="table table-hover table-responsive wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms" style="margin-left: 18px;">
+                        <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Accession No.</th>
+                            <th>Type</th>
+                            <th>Diagnosis</th>
+                            <th>Imaging</th>
+                            <th>Contributor</th>
+                            <th>Date</th>
+                            <th>Rating</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php if ($moncases->count() > 0) : ?>
+                            <?php foreach ($moncases as $moncase) : ?>
+                                <tr>
+                                    <td>
+                                        <img src="<?= $this->Url->image($moncase -> image_url, ['alt'=>'photo']) ?>" style=" height: 142px; max-width: fit-content;">
+                                    </td>
+                                    <td style="text-align: center;"> <a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'view', $moncase->id])?>"> <?= h($moncase->accession_no)?></a></td>
+                                    <td><?= h($moncase->case_type) ?></td>
+                                    <td><?= h($moncase->diagnosis) ?></td>
+                                    <td><?= !empty($moncase->imaging) ? h($moncase->imaging) : 'N/A' ?></td>
+                                    <td><?= h($moncase->contributor) ?></td>
+                                    <td><?= h($moncase->date) ?></td>
+                                    <td><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></td>
+
+
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <dev class="noresults">
+                                <p>No results found.</p>
+                            </dev>
+                        <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- sidebar of filters and search bar -->
         </div>
     </div>
 </section>
 <!-- blog-grid end -->
 
-<script>
-
-</script>
 
 
 

@@ -67,10 +67,7 @@
         .theme-btn {
             padding: 5px 20px;
         }
-        .custom-select {
-            width: 50%;
-            margin-bottom: 20px;
-        }
+
         .sidebar-page-container {
             padding-top: 15px;
         }
@@ -88,8 +85,8 @@
         }
 
         .page-title {
-            padding-top: 170px;
-            padding-bottom: 20px;
+            padding-top: 150px;
+            padding-bottom: 0px;
         }
         .lower-box, .lower-content, .post-info{
             overflow-wrap: break-word;
@@ -120,6 +117,15 @@
                 display: none;
             }
 
+            .custom-select {
+                width:60%;
+                margin-bottom: 20px;
+            }
+
+            .btn-desk {
+                display:none;
+            }
+
         }
 
         @media (min-width: 992px) {
@@ -129,6 +135,15 @@
 
             .sidebar-hide {
                 display: block;
+            }
+
+            .custom-select {
+                width:25%;
+                margin-bottom: 20px;
+
+            }
+            .btn-phone {
+                display:none;
             }
         }
 
