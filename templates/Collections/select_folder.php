@@ -40,7 +40,7 @@ $this->assign('title', 'Select Favorites Folder - My Favorites');
 
     <div class="col-12 d-flex justify-content-center">
         <div class="collections form content">
-            <?= $this->Html->link(__('Create a New Folder'), ['action' => 'create_collection'], ['class' => 'theme-btn style-one']) ?>
+            <?= $this->Html->link(__('Create a New Folder'), ['action' => 'create_collection', $id], ['class' => 'theme-btn style-one']) ?>
             <?= $this->Form->create() ?>
             <fieldset>
                 <legend style="display:flex; justify-content:center; padding-top: 10px; padding-bottom: 10px;"><?= __('Or') ?></legend>

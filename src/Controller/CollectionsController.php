@@ -274,17 +274,21 @@ class CollectionsController extends AppController
 
                 $collectionsMoncasesTable->save($collectionsMoncases);
 
-                $this->Flash->success(__('The collection folder has been created and the current case has been automatically added to the folder.'));
+                $this->Flash->success(__('The new folder has been created and the current case has been automatically added to the folder.'));
+                $this->Flash->success(__('Check it in the My favorites!'));
 
-                return $this->redirect(['action' => 'index']);
+                // Redirect logic based on access_role
+                $redirectAction = $access_role == 'ADMIN' ? 'view' : 'viewNotadmin';
+
+                return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction, $moncaseId]);
             }
-            $this->Flash->error(__('The collection could not be created. Please, try again.'));
+            $this->Flash->error(__('The new folder could not be created. Please, try again.'));
         }
 
         $users = $this->Collections->Users->find('list', ['limit' => 200])->all();
         $moncases = $this->Collections->Moncases->find('list', ['limit' => 200])->all();
 
-        $this->set(compact('collection', 'users', 'moncases', 'author', 'username'));
+        $this->set(compact('collection', 'users', 'moncases', 'author', 'username', 'id'));
 
     }
 
@@ -341,15 +345,18 @@ class CollectionsController extends AppController
             $collectionsMoncases = $collectionsMoncasesTable->patchEntity($collectionsMoncases, $collectionsMoncasesData);
 
             if ($collectionsMoncasesTable->save($collectionsMoncases)) {
-                $this->Flash->success(__('The case has been added to the collection folder.'));
+                $this->Flash->success(__('The case has been added to the folder. Check it in the My favorites!'));
 
-                return $this->redirect(['action' => 'index']);
+                // Redirect logic based on access_role
+                $redirectAction = $access_role == 'ADMIN' ? 'view' : 'viewNotadmin';
+
+                return $this->redirect(['controller' => 'moncases', 'action' => $redirectAction, $moncaseId]);
             }
-            $this->Flash->error(__('The collection could not be added to the collection folder. Please, try again.'));
+            $this->Flash->error(__('The case could not be added to the folder. Please, try again.'));
 
         }
 
-        $this->set(compact('collections', 'name','username','author'));
+        $this->set(compact('collections', 'name','username','author', 'id'));
 
     }
 
