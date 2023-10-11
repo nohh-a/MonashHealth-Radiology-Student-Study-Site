@@ -34,7 +34,9 @@ $this->assign('title', 'Edit Case - Cases');
         <div class="col-md-8">
 
             <td>
-                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                <button class="btn btn-outline-primary" onclick="goBack()">
+                    <?= $this->Html->tag('i', ' Back', ['class' => 'fas fa-arrow-left']) ?>
+                </button>
             </td>
             <br><br>
             <script>
