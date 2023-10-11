@@ -134,7 +134,7 @@ $this->assign('title', 'Archived Cases - Cases');
                                         'action' => 'restore', $moncases->id
                                     ],
                                     [
-                                        'class' => 'btn btn-outline-warning',
+                                        'class' => 'btn btn-outline-secondary',
                                         'confirm' => __(
                                             'Are you sure you want to restore # {0}?', $moncases->diagnosis
                                         )

@@ -22,11 +22,6 @@ $this->assign('title', 'Select Favorites Folder - My Favorites');
                     <?= $this->Html->tag('i', ' Back', ['class' => 'fas fa-arrow-left']) ?>
                 </button>
             </td>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script>
         </div>
 
         <div class="content-box">
@@ -34,7 +29,7 @@ $this->assign('title', 'Select Favorites Folder - My Favorites');
             <h1>Select Favorites Folder</h1>
             <ul class="bread-crumb clearfix">
                 <li><a href="<?= $this->Url->build(['controller' => 'moncases', 'action' => 'userlist'])?>">Case List</a></li>
-                <li>Favorite Case</li>
+                <li>Select Favorites Folder</li>
             </ul>
         </div>
     </div>
@@ -45,7 +40,7 @@ $this->assign('title', 'Select Favorites Folder - My Favorites');
 
     <div class="col-12 d-flex justify-content-center">
         <div class="collections form content">
-            <?= $this->Html->link(__('Create a New Collection'), ['action' => 'create_collection'], ['class' => 'theme-btn style-one']) ?>
+            <?= $this->Html->link(__('Create a New Folder'), ['action' => 'create_collection'], ['class' => 'theme-btn style-one']) ?>
             <?= $this->Form->create() ?>
             <fieldset>
                 <legend style="display:flex; justify-content:center; padding-top: 10px; padding-bottom: 10px;"><?= __('Or') ?></legend>
@@ -62,3 +57,9 @@ $this->assign('title', 'Select Favorites Folder - My Favorites');
         </div>
     </div>
 </div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

@@ -100,7 +100,7 @@ $this->assign('title', 'Edit - Users');
                     'action' => 'change-password',
                     $user->id
                 ],[
-                    'class' => 'btn btn-outline-warning'
+                    'class' => 'btn btn-outline-secondary'
                 ])
                 ?>
 

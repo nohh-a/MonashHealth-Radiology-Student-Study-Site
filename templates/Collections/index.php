@@ -122,7 +122,7 @@ $this->assign('title', 'My Favorites');
                                 ['action' => 'edit', $collection->id
                                 ],
                                 [
-                                    'class' => 'btn btn-outline-warning'
+                                    'class' => 'btn btn-outline-secondary'
                                 ]) ?>
 
                             <?=

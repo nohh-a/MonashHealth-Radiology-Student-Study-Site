@@ -114,7 +114,7 @@
                             <td><?= h($user->contributor) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class' => 'btn btn-outline-primary']) ?>
-                                <?= $this->Html->link(__('Change Password'), ['controller' => 'Auth', 'action' => 'change-password', $user->id], ['class' => 'btn btn-outline-warning']) ?>
+                                <?= $this->Html->link(__('Change Password'), ['controller' => 'Auth', 'action' => 'change-password', $user->id], ['class' => 'btn btn-outline-secondary']) ?>
                                 <?php if ($user->access_role !== 'ADMIN') : ?>
                                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], [
                                         'class' => 'btn btn-outline-danger',

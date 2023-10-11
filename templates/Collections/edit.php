@@ -13,8 +13,17 @@ $this->assign('title', 'Change The Folder Name - My Favorites');
 <section class="page-title bg-color-1 text-center">
     <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
+
+        <div class="col-md-8">
+            <td>
+                <button class="btn btn-outline-primary" onclick="goBack()">
+                    <?= $this->Html->tag('i', ' Back', ['class' => 'fas fa-arrow-left']) ?>
+                </button>
+            </td>
         </div>
+
         <div class="content-box">
+
             <h1><?= h($collection->name) ?></h1>
             <ul class="bread-crumb clearfix">
                 <li><a href="<?= $this->Url->build(['controller' => 'collections', 'action' => 'index'])?>">My Favourites</a></li>
@@ -90,3 +99,9 @@ $this->assign('title', 'Change The Folder Name - My Favorites');
         </div>
     </div>
 </div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
