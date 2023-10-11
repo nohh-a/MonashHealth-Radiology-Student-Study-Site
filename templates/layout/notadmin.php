@@ -151,6 +151,11 @@
             text-decoration: dashed;
         }
 
+        .main-menu .navigation > li > a {
+            text-decoration: auto;
+        }
+
+
 
 
     </style>

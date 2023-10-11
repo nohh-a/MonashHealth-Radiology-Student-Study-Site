@@ -168,6 +168,10 @@
             }
         }
 
+        .main-menu .navigation > li > a {
+            text-decoration: auto;
+        }
+
     </style>
 
 </head>

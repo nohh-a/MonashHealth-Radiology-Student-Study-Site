@@ -164,6 +164,13 @@ class AuthController extends AppController {
         $author = $firstName . ' ' . $lastName;
         $username = $this->getRequest()->getSession()->read('Auth.username');
 
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
 
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
@@ -184,7 +191,6 @@ class AuthController extends AppController {
             $this->Flash->error('The user could not be saved. Please, try again.');
         }
         $this->set(compact('user','author','username'));
-        $this->viewBuilder()->setLayout('moncase');
 
     }
 

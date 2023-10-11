@@ -363,50 +363,6 @@ class MoncasesController extends AppController
             $moncases->where(['OR' => $filter]);
         }
 
-        /*
-
-        $filterModal = [];
-        $caseTypeFilterModal = $this->request->getQuery('case_type_modal)');
-        $contributorFilterModal = $this->request->getQuery('contributor_modal');
-        $ratingFilterModal = $this->request->getQuery('rating_modal');
-        $specialtyFilterModal = $this->request->getQuery('specialty_modal');
-        $imagingFilterModal = $this->request->getQuery('imaging_modal');
-
-        if (!empty($caseTypeFilterModal)) {
-            foreach ($caseTypeFilterModal as $caseTypeFilterModal) {
-                $filterModal[] = ['case_type LIKE' => '%' . $caseTypeFilterModal . '%'];
-            }
-
-        }
-
-
-        if (!empty($contributorFilterModal)) {
-            foreach ($contributorFilterModal as $contributorFilterModal) {
-                $filterModal[] = ['contributor LIKE' => '%' . $contributorFilterModal . '%'];
-            }
-        }
-
-        if (!empty($ratingFilterModal) && is_array($ratingFilterModal)) {
-            $ratingFilterModal = array_map('intval', $ratingFilterModal);
-            $filterModal[] = ['rating IN' => $ratingFilterModal];
-        }
-        if (!empty($specialtyFilterModal)) {
-            foreach ($specialtyFilterModal as $specialtyFilterModal) {
-                $filterModal[] = ['specialty LIKE' => '%' . $specialtyFilterModal . '%'];
-            }
-        }
-
-        if (!empty($imagingFilterModal)) {
-            foreach ($imagingFilterModal as $imagingFilterModal) {
-                $filterModal[] = ['imaging LIKE' => '%' . $imagingFilterModal . '%'];
-            }
-        }
-
-        if ($filterModal) {
-            $moncases->where(['OR' => $filterModal]);
-        }
-        */
-
         // Sorting feature
         $sort = $this->request->getQuery('sort');
         switch ($sort) {
@@ -848,10 +804,17 @@ class MoncasesController extends AppController
 
         $username = $this->getRequest()->getSession()->read('Auth.username');
 
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
+
         $moncases = $this->paginate($this->Moncases);
 
         $this->set(compact('moncases','author','username'));
-        $this->viewBuilder()->setLayout('moncase');
 
     }
 
@@ -863,6 +826,14 @@ class MoncasesController extends AppController
 
         $contributor = $this->getRequest()->getSession()->read('Auth.contributor');
         $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
 
 
         $author = $firstName . ' ' . $lastName;
@@ -904,7 +875,6 @@ class MoncasesController extends AppController
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
-        $this->viewBuilder()->setLayout('moncase');
 
     }
 
@@ -916,6 +886,13 @@ class MoncasesController extends AppController
         $contributor = $this->getRequest()->getSession()->read('Auth.contributor');
         $username = $this->getRequest()->getSession()->read('Auth.username');
 
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
 
         $author = $firstName . ' ' . $lastName;
 
@@ -952,7 +929,6 @@ class MoncasesController extends AppController
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
-        $this->viewBuilder()->setLayout('moncase');
 
 
     }
@@ -966,6 +942,13 @@ class MoncasesController extends AppController
         $contributor = $this->getRequest()->getSession()->read('Auth.contributor');
         $username = $this->getRequest()->getSession()->read('Auth.username');
 
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
 
         $author = $firstName . ' ' . $lastName;
 
@@ -1002,7 +985,6 @@ class MoncasesController extends AppController
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
-        $this->viewBuilder()->setLayout('moncase');
 
     }
 
@@ -1014,6 +996,13 @@ class MoncasesController extends AppController
         $contributor = $this->getRequest()->getSession()->read('Auth.contributor');
         $username = $this->getRequest()->getSession()->read('Auth.username');
 
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
 
         $author = $firstName . ' ' . $lastName;
 
@@ -1050,7 +1039,6 @@ class MoncasesController extends AppController
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
-        $this->viewBuilder()->setLayout('moncase');
 
     }
 
@@ -1063,7 +1051,13 @@ class MoncasesController extends AppController
         $contributor = $this->getRequest()->getSession()->read('Auth.contributor');
         $username = $this->getRequest()->getSession()->read('Auth.username');
 
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
 
+        }
         $author = $firstName . ' ' . $lastName;
 
         $moncase = $this->Moncases->newEmptyEntity();
@@ -1103,7 +1097,6 @@ class MoncasesController extends AppController
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
-        $this->viewBuilder()->setLayout('moncase');
 
     }
 

@@ -25,6 +25,14 @@ class UsersController extends AppController
         $username = $this->getRequest()->getSession()->read('Auth.username');
 
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== 'ADMIN' ){
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }
@@ -75,6 +83,14 @@ class UsersController extends AppController
         $username = $this->getRequest()->getSession()->read('Auth.username');
 
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }
@@ -90,7 +106,6 @@ class UsersController extends AppController
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $this->set(compact('user', 'author', 'username'));
-        $this->viewBuilder()->setLayout('moncase');
 
     }
 
@@ -107,6 +122,14 @@ class UsersController extends AppController
         $lastName = $this->getRequest()->getSession()->read('Auth.last_name');
         $author = $firstName . ' ' . $lastName;
         $username = $this->getRequest()->getSession()->read('Auth.username');
+
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
 
         $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
         if($access_role !== "ADMIN" ){
@@ -126,7 +149,6 @@ class UsersController extends AppController
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $this->set(compact('user', 'author', 'username'));
-        $this->viewBuilder()->setLayout('moncase');
 
     }
 

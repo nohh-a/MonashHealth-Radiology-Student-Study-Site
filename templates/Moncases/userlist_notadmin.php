@@ -592,7 +592,6 @@ $this->assign('title', 'Case List - Cases');
                                     <td><?= h($moncase->date) ?></td>
                                     <td><?= !empty($moncase->rating) ? h($moncase->rating) : 'N/A' ?></td>
 
-
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
