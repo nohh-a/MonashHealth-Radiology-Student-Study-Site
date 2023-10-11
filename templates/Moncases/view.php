@@ -111,31 +111,37 @@ $this->assign('title', 'View Case - Cases');
                             <!--                            else, going to add the case into a folder.-->
                             <?php if ($collectionCount == 0): ?>
                                 <?=
-                                $this->Html->link(__('Favourite'),
+                                $this->Html->link(
+                                    $this->Html->tag('i', '', ['class' => 'fas fa-regular fa-bookmark']),
                                     [
                                         'controller' => 'collections',
                                         'action' => 'create_collection',
                                         $moncase->id
                                     ],
                                     [
-                                        'class' => 'theme-btn style-two'
+                                        'class' => 'theme-btn style-two',
+                                        'escape' => false
                                     ]
                                 )
                                 ?>
 
                             <?php else: ?>
+
                                 <?=
-                                $this->Html->link(__('Favourite'),
+                                $this->Html->link(
+                                    $this->Html->tag('i', '', ['class' => 'fas fa-regular fa-bookmark']),
                                     [
                                         'controller' => 'collections',
                                         'action' => 'select_folder',
                                         $moncase->id
                                     ],
                                     [
-                                        'class' => 'theme-btn style-two'
+                                        'class' => 'theme-btn style-two',
+                                        'escape' => false
                                     ]
                                 )
                                 ?>
+
 
                             <?php endif; ?>
 
@@ -143,9 +149,14 @@ $this->assign('title', 'View Case - Cases');
 
                         <div class="col-lg-4">
                             <?=
-                            $this->Html->link(__('Edit'),
+                            $this->Html->link(
+                                $this->Html->tag('i', '', ['class' => 'fas fa-regular fa-edit']),
                                 ['action' => 'edit', $moncase->id],
-                                ['class' => 'theme-btn style-one'])
+                                [
+                                    'class' => 'theme-btn style-one',
+                                    'escape' => false
+                                ]
+                            )
                             ?>
                         </div>
                     </div>

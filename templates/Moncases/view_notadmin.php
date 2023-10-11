@@ -112,28 +112,32 @@ $this->assign('title', 'View Case - Cases');
                             <!--                            else, going to add the case into a folder.-->
                             <?php if ($collectionCount == 0): ?>
                                 <?=
-                                $this->Html->link(__('Favourite'),
+                                $this->Html->link(
+                                    $this->Html->tag('i', '', ['class' => 'fas fa-regular fa-bookmark']),
                                     [
                                         'controller' => 'collections',
                                         'action' => 'create_collection',
                                         $moncase->id
                                     ],
                                     [
-                                        'class' => 'theme-btn style-one'
+                                        'class' => 'theme-btn style-two',
+                                        'escape' => false
                                     ]
                                 )
                                 ?>
 
                             <?php else: ?>
                                 <?=
-                                $this->Html->link(__('Favourite'),
+                                $this->Html->link(
+                                    $this->Html->tag('i', '', ['class' => 'fas fa-regular fa-bookmark']),
                                     [
                                         'controller' => 'collections',
                                         'action' => 'select_folder',
                                         $moncase->id
                                     ],
                                     [
-                                        'class' => 'theme-btn style-one'
+                                        'class' => 'theme-btn style-two',
+                                        'escape' => false
                                     ]
                                 )
                                 ?>
@@ -146,7 +150,16 @@ $this->assign('title', 'View Case - Cases');
                             <?php if ($author != $caseAuthor): ?>
                                 <!-- Don't show button when $author is not equal to $caseAuthor -->
                             <?php else: ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
+                                <?=
+                                $this->Html->link(
+                                    $this->Html->tag('i', '', ['class' => 'fas fa-regular fa-edit']),
+                                    ['action' => 'edit', $moncase->id],
+                                    [
+                                        'class' => 'theme-btn style-one',
+                                        'escape' => false
+                                    ]
+                                )
+                                ?>
                             <?php endif; ?>
                         </div>
                     </div>
