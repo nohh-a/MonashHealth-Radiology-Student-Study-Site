@@ -83,13 +83,11 @@
             <div class="row">
                 <div class="col-12">
                     <?= $this->Flash->render() ?>
-                    <div class="d-flex" style="justify-content: flex-end;">
+                    <div class="d-flex" style="justify-content: flex-end; padding: 10px 0px 10px 0px;">
                         <?= $this->Html->link(__('Create New User'), ['action' => 'add'], ['class' => 'theme-btn style-one']) ?>
                     </div>
                 </div>
             </div>
-            <br>
-            <br>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>

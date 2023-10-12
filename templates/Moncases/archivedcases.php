@@ -78,16 +78,14 @@ $this->assign('title', 'Archived Cases - Cases');
 <div class="container">
     <div class="container-fluid">
         <div class="moncases index content">
-            <div>
+            <div class="row d-flex" style="justify-content: end; padding: 10px 18px 10px 0px;">
                 <?=
-                $this->Form->postLink(__('Delete All forever'), [
+                $this->Form->postLink(__('Delete All Permanently'), [
                     'action' => 'deleteall'], [
                     'class' => 'btn btn-danger float-right',
                     'confirm' => __('Are you sure you want to delete all of cases?')])
                 ?>
             </div>
-
-            <br><br>
 
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -143,7 +141,7 @@ $this->assign('title', 'Archived Cases - Cases');
                                 ?>
 
                                 <?=
-                                $this->Form->postLink(__('Delete forever'),
+                                $this->Form->postLink(__('Delete Permanently'),
                                     [
                                         'action' => 'delete', $moncases->id
                                     ],

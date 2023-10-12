@@ -77,20 +77,20 @@ $this->assign('title', 'My Favorites');
                 <li>View Folders</li>
             </ul>
         </div>
+        <?= $this->Flash->render() ?>
+
     </div>
 </section>
 
 <div class="container">
     <div class="row align-items-center d-flex justify-content-center" data-animate="fadeInUp">
     </div>
-    <?= $this->Flash->render() ?>
     <div class="container-fluid" data-animate="fadeInUp">
         <div class="moncases index content">
             <!-- Page Heading -->
-            <div class="d-flex" style="justify-content: flex-end; width: 88%">
+            <div class="d-flex" style="justify-content: flex-end; width: 88%; padding: 10px 0px 10px 0px;">
                 <?= $this->Html->link(__('New Folder'), ['action' => 'add'], ['class' => 'theme-btn style-one']) ?>
             </div>
-            <br>
             <div class="row d-flex justify-content-center">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

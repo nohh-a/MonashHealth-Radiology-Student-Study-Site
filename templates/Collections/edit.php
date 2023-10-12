@@ -10,11 +10,21 @@ $this->assign('title', 'Change The Folder Name - My Favorites');
 
 ?>
 
-<section class="page-title bg-color-1 text-center">
-    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
-    <div class="auto-container">
+<style>
+    .p-style {
+        padding: 10px 0px 10px 0px;
+    }
 
-        <div class="col-md-8">
+    .center-style {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<section class="page-title bg-color-1 text-center">
+    <div class="auto-container p-style">
+
+        <div class="col-md-8 d-flex" style="justify-content: start;">
             <td>
                 <button class="btn btn-outline-primary" onclick="goBack()">
                     <?= $this->Html->tag('i', ' Back', ['class' => 'fas fa-arrow-left']) ?>
@@ -37,8 +47,8 @@ $this->assign('title', 'Change The Folder Name - My Favorites');
 
     <div class="row">
 
-        <div class="col-12 d-flex justify-content-center">
-            <div class="collections form content">
+        <div class="col-12 d-flex justify-content-center contact-section">
+            <div class="collections form content form-inner">
 
                 <?= $this->Form->create($collection) ?>
                 <fieldset>
@@ -57,7 +67,7 @@ $this->assign('title', 'Change The Folder Name - My Favorites');
                         'required' => true,
                         'maxlength' => 50,
                         'placeholder' => 'Enter the name',
-                        'label' => ['class' => 'required-label', 'text' => 'New Folder Name'],
+                        'label' => ['class' => 'required-label h5 center-style p-style', 'text' => 'New Folder Name'],
                     ]);
                     //                echo $this->Form->control('user_id', ['options' => $users]);
 
@@ -78,12 +88,9 @@ $this->assign('title', 'Change The Folder Name - My Favorites');
 
                 <br>
 
-                <div class="row">
-                    <div class="col-md-6 col-xs-6 text-center">
+                <div class="row d-flex justify-content-around">
+                    <div class="col-md-12 col-xs-12 text-center">
                         <?= $this->Form->button(__('Save'), ['class' => 'btn btn-outline-primary']) ?>
-                    </div>
-                    <br><br>
-                    <div class="col-md-6 col-xs-6 text-center">
                         <?= $this->Form->postLink(
                             __('Delete'),
                             ['action' => 'delete', $collection->id],
@@ -91,9 +98,6 @@ $this->assign('title', 'Change The Folder Name - My Favorites');
                         ) ?>
                     </div>
                 </div>
-
-
-
 
             </div>
         </div>
