@@ -171,6 +171,13 @@ class MoncasesController extends AppController
 //        debug($moncase);
 
         $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');
+        $access_role = $this->getRequest()->getSession()->read('Auth.access_role');
+        if ($access_role == 'ADMIN') {
+            $this->viewBuilder()->setLayout('admin');
+        } else {
+            $this->viewBuilder()->setLayout('notadmin');
+
+        }
         $caseAuthor = $moncase->author; // get the author of the case
 
         // redirect when a user want edit others cases.
@@ -232,7 +239,6 @@ class MoncasesController extends AppController
         }
 
         $this->set(compact('moncase', 'author', 'contributor','username'));
-        $this->viewBuilder()->setLayout('moncase');
 
     }
 
@@ -609,6 +615,12 @@ class MoncasesController extends AppController
             case 'rating_desc':
                 $moncases->order(['rating' => 'DESC']);
         }
+
+        // Use the Paginator component to paginate the query
+        $moncases = $this->paginate($moncases, [
+            'limit' => 9, // Number of records per page
+            'order' => ['date' => 'DESC'], // Default sorting order
+        ]);
 
         $this->set(compact('moncases', 'search', 'filter', 'search_mobile', 'filter_mobile', 'sort', 'author', 'username'));
         $this->viewBuilder()->setLayout('notadmin');

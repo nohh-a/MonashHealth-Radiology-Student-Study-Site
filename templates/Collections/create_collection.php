@@ -16,7 +16,7 @@ $this->assign('title', 'Create New Folder - My Favorites');
         <div class="col-md-8 d-flex" style="justify-content: start;">
             <td>
                 <button class="btn btn-outline-primary" onclick="goBack()">
-                    <?= $this->Html->tag('i', ' Back', ['class' => 'fas fa-arrow-left']) ?>
+                    <?= $this->Html->tag('i', ' ', ['class' => 'fas fa-arrow-left']) ?>
                 </button>
             </td>
             <script>

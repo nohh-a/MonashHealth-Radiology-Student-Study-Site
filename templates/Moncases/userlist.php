@@ -642,19 +642,18 @@ $this->assign('title', 'Case List - Cases');
                         <?php endif; ?>
                         </tbody>
                     </table>
-                    <!-- Pagination Controls -->
-                    <div class="pagination-weapper text-center">
-                        <ul class="pagination clearfix">
-                            <li><?= $this->Paginator->first('<<'); ?></li>
-                            <li><?= $this->Paginator->prev('<') ?></li>
-                            <li><?= $this->Paginator->numbers([
-                                    'modulus' => 3,
-                                ]) ?></li>
-                            <li><?= $this->Paginator->next('>') ?></li>
-                            <li><?= $this->Paginator->last('>>'); ?></li>
-                        </ul>
-                    </div>
-
+                </div>
+                <!-- Pagination Controls -->
+                <div class="pagination-weapper text-center">
+                    <ul class="pagination clearfix">
+                        <li><?= $this->Paginator->first('<<'); ?></li>
+                        <li><?= $this->Paginator->prev('<') ?></li>
+                        <li><?= $this->Paginator->numbers([
+                                'modulus' => 3,
+                            ]) ?></li>
+                        <li><?= $this->Paginator->next('>') ?></li>
+                        <li><?= $this->Paginator->last('>>'); ?></li>
+                    </ul>
                 </div>
             </div>
 

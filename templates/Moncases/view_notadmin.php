@@ -43,6 +43,11 @@ $this->assign('title', 'View Case - Cases');
             top: 12px;
         }
 
+        .pricing-block-one .pricing-table .table-content ul li {
+            background: #f3f8ff; border-radius: 15px;
+
+        }
+
     </style>
 </head>
 
@@ -60,7 +65,6 @@ $this->assign('title', 'View Case - Cases');
                 <li>View Case: <?= h($moncase->diagnosis) ?></li>
             </ul>
         </div>
-
     </div>
 </section>
 
@@ -76,16 +80,10 @@ $this->assign('title', 'View Case - Cases');
             <div class="row">
 
                 <div class="col-md-8">
-                    <td>
-                        <button class="btn btn-outline-primary" onclick="goBack()">
-                            <?= $this->Html->tag('i', ' Back', ['class' => 'fas fa-arrow-left']) ?>
-                        </button>
-                    </td>
-                </div>
+                    <button class="btn btn-outline-primary" onclick="goBack()">
+                        <?= $this->Html->tag('i', '  ', ['class' => 'fas fa-arrow-left']) ?>
+                    </button>
 
-                <br><br>
-
-                <div class="col-md-8">
                     <td>
                         <button onclick="copyTextAndRedirect()" class='btn btn-outline-primary'>
                             Copy Accession No
@@ -94,7 +92,7 @@ $this->assign('title', 'View Case - Cases');
 
                     <td>
                         <a class="btn btn-outline-primary" href="JavaScript:newPostDICOM('https://www.postdicom.com/en/login');">
-                            Open PostDICOM
+                            PostDICOM
                         </a>
                     </td>
                 </div>
@@ -111,7 +109,7 @@ $this->assign('title', 'View Case - Cases');
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="widget-content" style="display: flex; justify-content: space-around; align-items: center;">
+                    <div class="widget-content" style="display: flex; justify-content: start; align-items: center;">
 
                         <div class="col-lg-4" >
                             <!--                            --><?php //=
@@ -163,16 +161,20 @@ $this->assign('title', 'View Case - Cases');
                         </div>
 
                         <div class="col-lg-4">
-                            <?=
-                            $this->Html->link(
-                                $this->Html->tag('i', '', ['class' => 'fas fa-regular fa-edit']),
-                                ['action' => 'edit', $moncase->id],
-                                [
-                                    'class' => 'theme-btn style-one',
-                                    'escape' => false
-                                ]
-                            )
-                            ?>
+                            <?php if ($author != $caseAuthor): ?>
+                                <!-- Don't show button when $author is not equal to $caseAuthor -->
+                            <?php else: ?>
+                                <?=
+                                $this->Html->link(
+                                    $this->Html->tag('i', '', ['class' => 'fas fa-regular fa-edit']),
+                                    ['action' => 'edit', $moncase->id],
+                                    [
+                                        'class' => 'theme-btn style-one',
+                                        'escape' => false
+                                    ]
+                                )
+                                ?>
+                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -250,9 +252,9 @@ $this->assign('title', 'View Case - Cases');
                                                         </div>
                                                     </ul>
                                                 </div>
-                                                <div class="table-footer" style="padding-top: 10px;">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="table-footer" style="padding-top: 30px;">
+                                                    <div class="row d-flex justify-content-center">
+                                                        <div class="col-lg-4 col-md-12 col-sm-12">
 <!--                                                            --><?php //= $this->Form->postLink(__('Favorite'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
                                                             <?php if ($collectionCount == 0): ?>
                                                                 <?=
@@ -284,15 +286,15 @@ $this->assign('title', 'View Case - Cases');
 
                                                             <?php endif; ?>
                                                         </div>
-                                                        <br><br>
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    </div>
+                                                    <div class="row d-flex justify-content-center">
+                                                        <div class="col-lg-4 col-md-12 col-sm-12" style="padding-top: 15px;">
                                                             <?php if ($author != $caseAuthor): ?>
                                                                 <!-- Don't show button when $author is not equal to $caseAuthor -->
                                                             <?php else: ?>
                                                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $moncase->id], ['class' => 'theme-btn style-two']) ?>
                                                             <?php endif; ?>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -329,13 +331,13 @@ $this->assign('title', 'View Case - Cases');
 
                                                     </ul>
                                                 </div>
-                                                <div class="table-footer">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
-<!--                                                            --><?php //= $this->Form->postLink(__('Favorite'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
+                                                <div class="table-footer" style="padding-top: 30px;">
+                                                    <div class="row d-flex justify-content-center">
+                                                        <div class="col-lg-4 col-md-12 col-sm-12">
+                                                            <!--                                                            --><?php //= $this->Form->postLink(__('Favorite'), ['action' => 'savecaseaction', $moncase->id], ['class' => 'theme-btn style-two', 'confirm' => __('Are you sure you want to save # {0}?', $moncase->diagnosis)]) ?>
                                                             <?php if ($collectionCount == 0): ?>
                                                                 <?=
-                                                                $this->Html->link(__(' Favourite'),
+                                                                $this->Html->link(__('Favourite'),
                                                                     [
                                                                         'controller' => 'collections',
                                                                         'action' => 'create_collection',
@@ -363,8 +365,9 @@ $this->assign('title', 'View Case - Cases');
 
                                                             <?php endif; ?>
                                                         </div>
-                                                        <br><br>
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    </div>
+                                                    <div class="row d-flex justify-content-center">
+                                                        <div class="col-lg-4 col-md-12 col-sm-12" style="padding-top: 15px;">
                                                             <?php if ($author != $caseAuthor): ?>
                                                                 <!-- Don't show button when $author is not equal to $caseAuthor -->
                                                             <?php else: ?>

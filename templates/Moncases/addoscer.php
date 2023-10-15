@@ -16,7 +16,11 @@ $this->assign('title', 'Add Oscer Case - Cases');
 <?= $this->Html->css('/webroot/css/fontawesome-all.css') ?>
 <?= $this->Html->css('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css', ['integrity' => 'sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9', 'crossorigin' => 'anonymous']) ?>
 
-
+<style>
+    .required-label, .label {
+        font-weight: 500;
+    }
+</style>
 <!-- Page Heading -->
 <section class="page-title bg-color-1 text-center">
     <div class="auto-container">
@@ -180,7 +184,7 @@ $this->assign('title', 'Add Oscer Case - Cases');
                                             <div class="col-md-5">
                                                 <?= $this->Form->control('image_url', [
                                                     'type' => 'file',
-                                                    'label' => 'Image Upload (Optional) (PNG, JPEG, JPG) ',
+                                                    'label' => ['text'=>'Image Upload (Optional) (PNG, JPEG, JPG) ','class'=>'required-label'],
                                                     'class' => 'form-control'
                                                 ])
                                                 ?>

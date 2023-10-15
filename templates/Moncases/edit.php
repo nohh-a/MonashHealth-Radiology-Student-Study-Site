@@ -34,7 +34,7 @@ $this->assign('title', 'Edit Case - Cases');
 
             <td>
                 <button class="btn btn-outline-primary" onclick="goBack()">
-                    <?= $this->Html->tag('i', ' Back', ['class' => 'fas fa-arrow-left']) ?>
+                    <?= $this->Html->tag('i', ' ', ['class' => 'fas fa-arrow-left']) ?>
                 </button>
             </td>
             <br><br>
@@ -134,7 +134,7 @@ $this->assign('title', 'Edit Case - Cases');
                                             </div>
 
                                             <div class="row">
-                                                <?= $this->Html->image('/img/' . $moncase->image_url, ['width' => '100px']); ?>
+                                                <?= $this->Html->image('/img/' . $moncase->image_url, ['style' => 'max-width:25%; max-height:25%; padding: 15px;']); ?>
                                             </div>
 
                                             <div class="row">

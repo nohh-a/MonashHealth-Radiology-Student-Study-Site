@@ -27,7 +27,7 @@ $this->assign('title', 'Change The Folder Name - My Favorites');
         <div class="col-md-8 d-flex" style="justify-content: start;">
             <td>
                 <button class="btn btn-outline-primary" onclick="goBack()">
-                    <?= $this->Html->tag('i', ' Back', ['class' => 'fas fa-arrow-left']) ?>
+                    <?= $this->Html->tag('i', ' ', ['class' => 'fas fa-arrow-left']) ?>
                 </button>
             </td>
         </div>
@@ -44,9 +44,7 @@ $this->assign('title', 'Change The Folder Name - My Favorites');
 </section>
 
 <div class="container">
-
     <div class="row">
-
         <div class="col-12 d-flex justify-content-center contact-section">
             <div class="collections form content form-inner">
 

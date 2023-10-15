@@ -152,7 +152,8 @@ input{
 
     transition: all 500ms ease;
     padding: 0.6rem 1rem;
-    border: 1px solid #0a0a0a;
+    border: 1px solid #fff;
+    border-radius: 10px;
 }
 
 button:focus,

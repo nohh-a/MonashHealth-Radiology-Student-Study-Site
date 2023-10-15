@@ -30,9 +30,9 @@ $this->assign('title', 'Change User Password - Users');
         <div class="moncases form content">
             <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
             <?= $this->Flash->render() ?>
-            <div class="row">
+            <div class="row contact-section" style="padding-bottom: 0px;">
 
-                <div class="col-md-6 mx-auto">
+                <div class="col-md-6 mx-auto form-inner">
                     <div style="position: relative;">
                         <?php echo $this->Form->control('password', [
                             'label' => ['class' => 'required-label', 'text' => 'Password'],
@@ -75,7 +75,7 @@ $this->assign('title', 'Change User Password - Users');
 
                     <?=
                     $this->Form->button(__('Save'), [
-                        'class' => 'btn btn-outline-primary',
+                        'class' => 'theme-btn style-one',
                     ])
                     ?>
 

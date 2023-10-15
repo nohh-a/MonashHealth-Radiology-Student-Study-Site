@@ -23,12 +23,11 @@ $this->assign('title', 'Create New User - Users');
 <div class="row justify-content-center align-items-center" style="padding: 25px;">
     <div class="col-md-6">
 
-        <div class="moncases form content">
-
+        <div class="moncases form content contact-section">
 
             <?= $this->Flash->render() ?>
                     <div class="row">
-                        <div class="col-md-6 mx-auto">
+                        <div class="col-md-6 mx-auto form-inner">
 
                             <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
                             <?php
