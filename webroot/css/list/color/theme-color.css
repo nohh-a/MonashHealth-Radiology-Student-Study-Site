@@ -398,7 +398,7 @@ h3 a:hover{
 }
 
 .pagination li a:hover,
-.pagination li a.active{
+.pagination li.active a{
   border-color: #6377ee;
   background: #6377ee;
 }

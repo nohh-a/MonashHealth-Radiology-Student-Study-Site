@@ -581,10 +581,22 @@ $this->assign('title', 'Case List - Cases');
                                 </div>
                             <?php endforeach; ?>
                         <?php else : ?>
-                            <dev class="noresults">
+                            <div class="noresults">
                                 <p>No results found.</p>
-                            </dev>
+                            </div>
                         <?php endif; ?>
+                    </div>
+                    <!-- Pagination Controls -->
+                    <div class="pagination-weapper text-center">
+                        <ul class="pagination clearfix">
+                        <li><?= $this->Paginator->first('<<'); ?></li>
+                        <li><?= $this->Paginator->prev('<') ?></li>
+                        <li><?= $this->Paginator->numbers([
+                                'modulus' => 3,
+                            ]) ?></li>
+                        <li><?= $this->Paginator->next('>') ?></li>
+                        <li><?= $this->Paginator->last('>>'); ?></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -631,6 +643,19 @@ $this->assign('title', 'Case List - Cases');
                         <?php endif; ?>
                         </tbody>
                     </table>
+                    <!-- Pagination Controls -->
+                    <div class="pagination-weapper text-center">
+                        <ul class="pagination clearfix">
+                            <li><?= $this->Paginator->first('<<'); ?></li>
+                            <li><?= $this->Paginator->prev('<') ?></li>
+                            <li><?= $this->Paginator->numbers([
+                                    'modulus' => 3,
+                                ]) ?></li>
+                            <li><?= $this->Paginator->next('>') ?></li>
+                            <li><?= $this->Paginator->last('>>'); ?></li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
 
@@ -639,6 +664,7 @@ $this->assign('title', 'Case List - Cases');
     </div>
 </section>
 <!-- blog-grid end -->
+
 
 
 

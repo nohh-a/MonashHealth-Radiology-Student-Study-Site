@@ -253,7 +253,7 @@ class MoncasesController extends AppController
             $this->Flash->error(__('The case could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'userlist']);
+        return $this->redirect(['action' => 'archivedcases']);
     }
 
     /**
@@ -309,6 +309,7 @@ class MoncasesController extends AppController
             ->where(['archive_status' => 'no'])
             // Add sorting order
             ->order(['date' => 'DESC']);
+
 
         // PC
         // search functionality PC
@@ -440,6 +441,12 @@ class MoncasesController extends AppController
             case 'rating_desc':
                 $moncases->order(['rating' => 'DESC']);
         }
+
+        // Use the Paginator component to paginate the query
+        $moncases = $this->paginate($moncases, [
+            'limit' => 9, // Number of records per page
+            'order' => ['date' => 'DESC'], // Default sorting order
+        ]);
 
         $this->set(compact('moncases', 'search', 'filter', 'search_mobile', 'filter_mobile','sort', 'author', 'username'));
         $this->viewBuilder()->setLayout('admin');
