@@ -58,8 +58,8 @@ class MoncasesTable extends Table
                     'message' => 'Please upload only JPG, PNG, or JPEG images',
                 ],
                 'fileSize' => [
-                    'rule' => ['fileSize','<=','10MB'],
-                    'message' => 'Image file size must be less than 10MB.',
+                    'rule' => ['fileSize','<=','100MB'],
+                    'message' => 'Image file size must be less than 100MB.',
                 ],
             ]);
 
