@@ -310,7 +310,8 @@ class MoncasesController extends AppController
             // Add sorting order
             ->order(['date' => 'DESC']);
 
-        //search functionality
+        // PC
+        // search functionality PC
         $search = $this->request->getQuery('search');
         if ($search) {
             $moncases->where(['OR' => [
@@ -323,7 +324,7 @@ class MoncasesController extends AppController
             ]]);
         }
 
-        // filter functionality
+        // filter functionality PC
         $filter = [];
         $caseTypeFilter = $this->request->getQuery('case_type');
         $contributorFilter = $this->request->getQuery('contributor');
@@ -363,6 +364,61 @@ class MoncasesController extends AppController
             $moncases->where(['OR' => $filter]);
         }
 
+        // Mobile
+        // search functionality Mobile
+        $search_mobile = $this->request->getQuery('search_mobile');
+        if ($search_mobile) {
+            $moncases->where(['OR' => [
+                'differential_diagnosis LIKE' => "%$search_mobile%",
+                'diagnosis LIKE' => "%$search_mobile%",
+                'author LIKE' => "%$search_mobile%",
+                'seen_by LIKE' => "%$search_mobile%",
+                'teaching_points LIKE' => "%$search_mobile%",
+                'accession_no LIKE' => "%$search_mobile%",
+            ]]);
+        }
+
+        // filter functionality Mobile
+        $filter_mobile = [];
+        $caseTypeFilter_mobile = $this->request->getQuery('case_type_mobile');
+        $contributorFilter_mobile = $this->request->getQuery('contributor_mobile');
+        $ratingFilter_mobile = $this->request->getQuery('rating_mobile');
+        $specialtyFilter_mobile = $this->request->getQuery('specialty_mobile');
+        $imagingFilter_mobile = $this->request->getQuery('imaging_mobile');
+
+        if (!empty($caseTypeFilter_mobile)) {
+            foreach ($caseTypeFilter_mobile as $caseTypeFilter_mobile) {
+                $filter_mobile[] = ['case_type LIKE' => '%' . $caseTypeFilter_mobile . '%'];
+            }
+        }
+
+        if (!empty($contributorFilter_mobile)) {
+            foreach ($contributorFilter_mobile as $contributorFilter_mobile) {
+                $filter_mobile[] = ['contributor LIKE' => '%' . $contributorFilter_mobile . '%'];
+            }
+        }
+
+        if (!empty($ratingFilter_mobile) && is_array($ratingFilter_mobile)) {
+            $ratingFilter_mobile = array_map('intval', $ratingFilter_mobile);
+            $filter_mobile[] = ['rating IN' => $ratingFilter_mobile];
+        }
+        if (!empty($specialtyFilter_mobile)) {
+            foreach ($specialtyFilter_mobile as $specialtyFilter_mobile) {
+                $filter_mobile[] = ['specialty LIKE' => '%' . $specialtyFilter_mobile . '%'];
+            }
+        }
+
+        if (!empty($imagingFilter_mobile)) {
+            foreach ($imagingFilter_mobile as $imagingFilter_mobile) {
+                $filter_mobile[] = ['imaging LIKE' => '%' . $imagingFilter_mobile . '%'];
+            }
+        }
+
+        if ($filter_mobile) {
+            $moncases->where(['OR' => $filter_mobile]);
+        }
+
+
         // Sorting feature
         $sort = $this->request->getQuery('sort');
         switch ($sort) {
@@ -385,7 +441,7 @@ class MoncasesController extends AppController
                 $moncases->order(['rating' => 'DESC']);
         }
 
-        $this->set(compact('moncases', 'search', 'filter', 'sort', 'author', 'username'));
+        $this->set(compact('moncases', 'search', 'filter', 'search_mobile', 'filter_mobile','sort', 'author', 'username'));
         $this->viewBuilder()->setLayout('admin');
     }
 
@@ -471,6 +527,60 @@ class MoncasesController extends AppController
             $moncases->where(['OR' => $filter]);
         }
 
+        // Mobile
+        // search functionality Mobile
+        $search_mobile = $this->request->getQuery('search_mobile');
+        if ($search_mobile) {
+            $moncases->where(['OR' => [
+                'differential_diagnosis LIKE' => "%$search_mobile%",
+                'diagnosis LIKE' => "%$search_mobile%",
+                'author LIKE' => "%$search_mobile%",
+                'seen_by LIKE' => "%$search_mobile%",
+                'teaching_points LIKE' => "%$search_mobile%",
+                'accession_no LIKE' => "%$search_mobile%",
+            ]]);
+        }
+
+        // filter functionality Mobile
+        $filter_mobile = [];
+        $caseTypeFilter_mobile = $this->request->getQuery('case_type_mobile');
+        $contributorFilter_mobile = $this->request->getQuery('contributor_mobile');
+        $ratingFilter_mobile = $this->request->getQuery('rating_mobile');
+        $specialtyFilter_mobile = $this->request->getQuery('specialty_mobile');
+        $imagingFilter_mobile = $this->request->getQuery('imaging_mobile');
+
+        if (!empty($caseTypeFilter_mobile)) {
+            foreach ($caseTypeFilter_mobile as $caseTypeFilter_mobile) {
+                $filter_mobile[] = ['case_type LIKE' => '%' . $caseTypeFilter_mobile . '%'];
+            }
+        }
+
+        if (!empty($contributorFilter_mobile)) {
+            foreach ($contributorFilter_mobile as $contributorFilter_mobile) {
+                $filter_mobile[] = ['contributor LIKE' => '%' . $contributorFilter_mobile . '%'];
+            }
+        }
+
+        if (!empty($ratingFilter_mobile) && is_array($ratingFilter_mobile)) {
+            $ratingFilter_mobile = array_map('intval', $ratingFilter_mobile);
+            $filter_mobile[] = ['rating IN' => $ratingFilter_mobile];
+        }
+        if (!empty($specialtyFilter_mobile)) {
+            foreach ($specialtyFilter_mobile as $specialtyFilter_mobile) {
+                $filter_mobile[] = ['specialty LIKE' => '%' . $specialtyFilter_mobile . '%'];
+            }
+        }
+
+        if (!empty($imagingFilter_mobile)) {
+            foreach ($imagingFilter_mobile as $imagingFilter_mobile) {
+                $filter_mobile[] = ['imaging LIKE' => '%' . $imagingFilter_mobile . '%'];
+            }
+        }
+
+        if ($filter_mobile) {
+            $moncases->where(['OR' => $filter_mobile]);
+        }
+
         // Sorting feature
         $sort = $this->request->getQuery('sort');
         switch ($sort) {
@@ -493,7 +603,7 @@ class MoncasesController extends AppController
                 $moncases->order(['rating' => 'DESC']);
         }
 
-        $this->set(compact('moncases', 'search', 'filter', 'sort', 'author', 'username'));
+        $this->set(compact('moncases', 'search', 'filter', 'search_mobile', 'filter_mobile', 'sort', 'author', 'username'));
         $this->viewBuilder()->setLayout('notadmin');
 
     }

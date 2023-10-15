@@ -128,30 +128,37 @@ $this->assign('title', 'Case List - Cases');
                         <?= $this->Form->button(__('Apply'), ['class' => 'btn btn-secondary', 'style' => 'margin-top: -20px;']) ?>
 
                     </div>
+
+                    <!-- Add New Case Btn 1 Start -->
                     <div class ="mon-new-btn-phone col-lg-1 col-md-1 col-sm-1 col-1">
                         <h3><br></h3>
                         <?= $this->Html->link(__('New'), ['controller' => 'moncases', 'action' => 'addnewcase'], ['class' => 'theme-btn style-one btn-phone']) ?>
                     </div>
+                    <!-- Add New Case Btn 1 Start -->
+
+                    <!-- Mobile Filters Start -->
                     <div class ="mon-modal col-lg-2 col-md-1 col-sm-2 col-2">
-                        <!-- Trigger the modal with a button -->
+                        <!-- Trigger the Mobile with a button -->
                         <i class="fas fas fa-search fa-lg modal-hide" data-toggle="modal" data-target="#myModal"></i>
-                        <!-- Modal -->
+                        <!-- Mobile -->
                         <div id="myModal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
-                                <!-- Modal content-->
+                                <!-- Mobile content-->
                                 <div class="modal-content">
                                     <div class="modal-body">
                                         <div class="sidebar">
+
+                                            <!-- Search Start -->
                                             <div class="sidebar-widget sidebar-search">
                                                 <div class="widget-title">
                                                     <h3>Search</h3>
                                                 </div>
                                                 <div class="widget-content">
                                                     <div class="form-group">
-                                                        <?= $this->Form->input('search', [
+                                                        <?= $this->Form->input('search_mobile', [
                                                             'type' => 'search',
                                                             'placeholder' => 'Search',
-                                                            'default' => $this->request->getQuery('search'),
+                                                            'default' => $this->request->getQuery('search_mobile'),
                                                         ]) ?>
                                                         <button type="submit" class="search-button">
                                                             <?= $this->Html->tag('i', '', ['class' => 'fas fa-search']) ?>
@@ -159,6 +166,9 @@ $this->assign('title', 'Case List - Cases');
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- Search End -->
+
+                                            <!-- Filter variables Start -->
                                             <div class="sidebar-widget sidebar-categories">
                                                 <div class="widget-title">
                                                     <h3>FILTERS</h3>
@@ -172,7 +182,7 @@ $this->assign('title', 'Case List - Cases');
                                                             <div class="acc-content current">
                                                                 <div class="content">
                                                                     <p>
-                                                                        <?= $this->Form->select('case_type', [
+                                                                        <?= $this->Form->select('case_type_mobile', [
                                                                             'Oscer' => '  Oscer',
                                                                             'Long' => '  Long',
                                                                             'Medium' => '  Medium',
@@ -180,10 +190,9 @@ $this->assign('title', 'Case List - Cases');
                                                                             'General' => '  General',
                                                                         ], [
                                                                             'class' => 'select select_mod-a jelect',
-                                                                            'default' => $this->request->getQuery('case_type_modal'),
+                                                                            'default' => $this->request->getQuery('case_type_mobile'),
                                                                             'empty' => 'Choose Case Type',
                                                                             'multiple' => 'checkbox',
-                                                                            'id'=>'case_type_modal',
                                                                         ]); ?>
                                                                     </p>
                                                                 </div>
@@ -196,16 +205,15 @@ $this->assign('title', 'Case List - Cases');
                                                             <div class="acc-content">
                                                                 <div class="content">
                                                                     <p>
-                                                                        <?= $this->Form->select('contributor_modal', [
+                                                                        <?= $this->Form->select('contributor_mobile', [
                                                                             'Trainee' => '  Trainee',
                                                                             'Consultant' => '  Consultant',
                                                                             'Library' => '  Library',
                                                                         ], [
                                                                             'class' => 'select select_mod-a jelect',
-                                                                            'default' => $this->request->getQuery('contributor'),
+                                                                            'default' => $this->request->getQuery('contributor_mobile'),
                                                                             'empty' => 'Choose Contributor',
                                                                             'multiple' => 'checkbox',
-                                                                            'id'=>'contributor_modal',
                                                                         ]); ?>
                                                                     </p>
                                                                 </div>
@@ -217,7 +225,8 @@ $this->assign('title', 'Case List - Cases');
                                                             </div>
                                                             <div class="acc-content">
                                                                 <div class="content">
-                                                                    <p> <?= $this->Form->select('rating_modal', [
+                                                                    <p>
+                                                                        <?= $this->Form->select('rating_mobile', [
                                                                             '1' => '  1',
                                                                             '2' => '  2',
                                                                             '3' => '  3',
@@ -225,11 +234,10 @@ $this->assign('title', 'Case List - Cases');
                                                                             '5' => '  5',
                                                                         ], [
                                                                             'class' => 'form-select',
-                                                                            'default' => $this->request->getQuery('rating'),
+                                                                            'default' => $this->request->getQuery('rating_mobile'),
                                                                             'empty' => 'Choose Rating',
                                                                             'multiple' => 'checkbox',
-                                                                            'id' => 'rating_modal',
-
+                                                                            'id' => 'form-select',
                                                                         ]); ?>
                                                                     </p>
                                                                 </div>
@@ -241,7 +249,8 @@ $this->assign('title', 'Case List - Cases');
                                                             </div>
                                                             <div class="acc-content">
                                                                 <div class="content">
-                                                                    <p> <?= $this->Form->select('specialty_modal', [
+                                                                    <p>
+                                                                        <?= $this->Form->select('specialty_mobile', [
                                                                             'ABDOMINAL' => '  ABDOMINAL',
                                                                             'CARDIOTHORACIC' => '  CARDIOTHORACIC',
                                                                             'NEURO' => '  NEURO',
@@ -255,11 +264,9 @@ $this->assign('title', 'Case List - Cases');
                                                                             'INTERVENTION' => '  INTERVENTION',
                                                                         ], [
                                                                             'class' => 'form-select',
-                                                                            'default' => $this->request->getQuery('specialty'),
+                                                                            'default' => $this->request->getQuery('specialty_mobile'),
                                                                             'empty' => 'Choose Specialty',
                                                                             'multiple' => 'checkbox',
-                                                                            'id'=>'specialty_rating',
-
                                                                         ]); ?>
                                                                     </p>
                                                                 </div>
@@ -272,7 +279,7 @@ $this->assign('title', 'Case List - Cases');
                                                             <div class="acc-content">
                                                                 <div class="content">
                                                                     <p>
-                                                                        <?= $this->Form->select('imaging', [
+                                                                        <?= $this->Form->select('imaging_mobile', [
                                                                             'X-ray' => '  X-ray',
                                                                             'Ultrasound' => '  Ultrasound',
                                                                             'CT' => '  CT',
@@ -283,10 +290,9 @@ $this->assign('title', 'Case List - Cases');
                                                                             'Other' => '  Other',
                                                                         ], [
                                                                             'class' => 'form-select',
+                                                                            'default' => $this->request->getQuery('imaging_mobile'),
                                                                             'empty' => 'Select Imaging',
                                                                             'multiple' => 'checkbox',
-                                                                            'id'=>'imaging_rating',
-
                                                                         ]) ?>
                                                                 </div>
                                                             </div>
@@ -294,11 +300,12 @@ $this->assign('title', 'Case List - Cases');
                                                     </ul>
                                                 </div>
                                             </div>
+                                            <!-- Filter variables End -->
+
                                             <div class="sidebar-widget sidebar-tags">
                                                 <div class="widget-title">
                                                     <div class="widget-content" style="display: flex; justify-content: space-around; align-items: center;">
                                                         <?= $this->Form->button(__('Apply Filter'), ['class' => 'theme-btn style-one', 'style' => 'margin-right: 10px;']) ?>
-                                                        <?= $this->Form->end() ?>
                                                         <a href="<?= $this->Url->build('/') ?>"><button class="theme-btn style-two" style="flex: 1;">Reset Filter</button></a>
                                                     </div>
                                                 </div>
@@ -312,11 +319,15 @@ $this->assign('title', 'Case List - Cases');
                             </div>
                         </div>
                     </div>
+                    <!-- Mobile Filters End -->
+
+                    <!-- Add New Case Btn 2 Start -->
                     <div class ="mon-new-btn-desk col-lg-1 col-md-1 col-sm-1 col-1">
                         <h3><br></h3>
                         <?= $this->Html->link(__('New'), ['controller' => 'moncases', 'action' => 'addnewcase'], ['class' => 'theme-btn style-one btn-desk']) ?>
                     </div>
-                    <!-- Modal Filters -->
+                    <!-- Add New Case Btn 2 Start -->
+
                 </div>
             </div>
         </div>
@@ -325,13 +336,14 @@ $this->assign('title', 'Case List - Cases');
             <!-- grid view-->
             <div class="col-lg-3 col-md-12 col-sm-12 sidebar-side sidebar-hide">
                 <div class="sidebar">
+
+                    <!-- Search Start -->
                     <div class="sidebar-widget sidebar-search">
                         <div class="widget-title">
                             <h3>Search</h3>
                         </div>
                         <div class="widget-content">
                             <div class="form-group">
-                                <?= $this->Form->create(null, ['url' => ['controller' => 'Moncases', 'action' => 'userlistNotadmin'], 'type' => 'get']) ?>
                                 <?= $this->Form->input('search', [
                                     'type' => 'search',
                                     'placeholder' => 'Search',
@@ -343,6 +355,9 @@ $this->assign('title', 'Case List - Cases');
                             </div>
                         </div>
                     </div>
+                    <!-- Search End -->
+
+                    <!-- Filter variables Start -->
                     <div class="sidebar-widget sidebar-categories">
                         <div class="widget-title">
                             <h3>FILTERS</h3>
@@ -422,7 +437,8 @@ $this->assign('title', 'Case List - Cases');
                                     </div>
                                     <div class="acc-content">
                                         <div class="content">
-                                            <p> <?= $this->Form->select('specialty', [
+                                            <p>
+                                                <?= $this->Form->select('specialty', [
                                                     'ABDOMINAL' => '  ABDOMINAL',
                                                     'CARDIOTHORACIC' => '  CARDIOTHORACIC',
                                                     'NEURO' => '  NEURO',
@@ -462,6 +478,7 @@ $this->assign('title', 'Case List - Cases');
                                                     'Other' => '  Other',
                                                 ], [
                                                     'class' => 'form-select',
+                                                    'default' => $this->request->getQuery('imaging'),
                                                     'empty' => 'Select Imaging',
                                                     'multiple' => 'checkbox',
                                                 ]) ?>
@@ -471,6 +488,8 @@ $this->assign('title', 'Case List - Cases');
                             </ul>
                         </div>
                     </div>
+                    <!-- Filter variables End -->
+
                     <div class="sidebar-widget sidebar-tags">
                         <div class="widget-title">
                             <div class="widget-content" style="display: flex; justify-content: space-around; align-items: center;">
@@ -480,6 +499,7 @@ $this->assign('title', 'Case List - Cases');
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
