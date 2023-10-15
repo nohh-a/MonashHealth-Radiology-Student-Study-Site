@@ -118,7 +118,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -138,7 +138,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -158,7 +158,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -178,7 +178,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -198,7 +198,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -218,7 +218,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -238,7 +238,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -258,7 +258,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -278,7 +278,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -298,7 +298,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -318,7 +318,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -338,7 +338,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 
@@ -358,7 +358,7 @@ class SupportController extends AppController
 
         }
 
-        $this->set(compact('author', 'username'));
+        $this->set(compact('author', 'username','access_role'));
 
     }
 }
