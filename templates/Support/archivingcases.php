@@ -6,7 +6,6 @@
 
 </style>
 <section class="page-title bg-color-1 text-center">
-    <div class="pattern-layer" style="background-image: url(<?= $this->Url->image('/img/detox/shape/shap-3.png') ?>);"></div>
     <div class="auto-container">
         <div class="content-box">
             <h1>Archiving Cases</h1>

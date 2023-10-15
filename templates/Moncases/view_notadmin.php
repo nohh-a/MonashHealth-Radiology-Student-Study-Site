@@ -49,7 +49,6 @@ $this->assign('title', 'View Case - Cases');
 
 <!--Page Title-->
 <section class="page-title bg-color-1 text-center">
-    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
         <div class="sec-title" style="margin-bottom: 0px;">
             <p><?= h($moncase->case_type) ?> CASE </p>

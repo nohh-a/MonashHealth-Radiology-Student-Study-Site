@@ -61,7 +61,6 @@ $this->assign('title', 'Archived Cases - Cases');
 </style>
 
 <section class="page-title bg-color-1 text-center">
-    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
         <div class="content-box">
             <h1>Archived Cases</h1>
@@ -78,7 +77,7 @@ $this->assign('title', 'Archived Cases - Cases');
 <div class="container">
     <div class="container-fluid">
         <div class="moncases index content">
-            <div class="row d-flex" style="justify-content: end; padding: 10px 18px 10px 0px;">
+            <div class="row d-flex" style="justify-content: flex-end; padding: 10px 18px 10px 18px;">
                 <?=
                 $this->Form->postLink(__('Delete All Permanently'), [
                     'action' => 'deleteall'], [
@@ -163,12 +162,8 @@ $this->assign('title', 'Archived Cases - Cases');
     </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable();
-    });
 
-</script>
+
 
 
 

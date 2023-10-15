@@ -63,7 +63,6 @@ $this->assign('title', 'My Collection - Saved - Cases');
 
 <!--Page Title-->
 <section class="page-title bg-color-1 text-center">
-    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
         <div class="content-box">
             <h1>My Collection</h1>

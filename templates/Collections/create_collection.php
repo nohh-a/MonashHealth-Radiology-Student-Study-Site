@@ -11,7 +11,6 @@ $this->assign('title', 'Create New Folder - My Favorites');
 <?= $this->Html->css('/webroot/css/valid-msg.css') ?>
 
 <section class="page-title bg-color-1 text-center">
-    <div class="pattern-layer" style="background-image: <?= $this->Html->image('/detoxpack/detox/assets/images/pattern-18.png') ?> "</div>
     <div class="auto-container">
 
         <div class="col-md-8">
