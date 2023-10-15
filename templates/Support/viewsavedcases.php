@@ -76,7 +76,7 @@
                                 <li><strong> 2. Delete Option:</strong>   Once you have found the folder you want to delete, press the ‘Delete’ button associated with it.
                                 </li>
                                 <br>
-                                <li><strong>3. Confirm Deletion:</strong> Press “OK” on the pop up box that occurs. Message saying “The collection has been deleted” indicates successful deletion of the folder.</li>
+                                <li><strong>3. Confirm Deletion:</strong> Press “OK” on the pop up box that occurs. Message saying “The folder has been deleted” indicates successful deletion of the folder.</li>
                                 <br>
                                 <li>You have now successfully deleted a  folder.
                                 </li>

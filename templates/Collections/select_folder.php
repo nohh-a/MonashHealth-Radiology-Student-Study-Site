@@ -14,7 +14,7 @@ $this->assign('title', 'Select Favorites Folder - My Favorites');
 <section class="page-title bg-color-1 text-center">
     <div class="auto-container">
 
-        <div class="col-md-8">
+        <div class="col-md-8 d-flex" style="justify-content: start;">
             <td>
                 <button class="btn btn-outline-primary" onclick="goBack()">
                     <?= $this->Html->tag('i', ' Back', ['class' => 'fas fa-arrow-left']) ?>

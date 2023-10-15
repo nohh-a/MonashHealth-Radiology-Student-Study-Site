@@ -115,11 +115,11 @@ class CollectionsController extends AppController
 
             if ($this->Collections->save($collection)) {
 
-                $this->Flash->success(__('The collection has been saved.'));
+                $this->Flash->success(__('The folder has been created.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The collection could not be saved. Please, try again.'));
+            $this->Flash->error(__('The folder could not be saved. Please, try again.'));
         }
         $users = $this->Collections->Users->find('list', ['limit' => 200])->all();
         $moncases = $this->Collections->Moncases->find('list', ['limit' => 200])->all();
@@ -179,11 +179,11 @@ class CollectionsController extends AppController
             $collection = $this->Collections->patchEntity($collection, $this->request->getData());
 
             if ($this->Collections->save($collection)) {
-                $this->Flash->success(__('The collection has been saved.'));
+                $this->Flash->success(__('The folder has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The collection could not be saved. Please, try again.'));
+            $this->Flash->error(__('The folder could not be saved. Please, try again.'));
         }
         $users = $this->Collections->Users->find('list', ['limit' => 200])->all();
         $moncases = $this->Collections->Moncases->find('list', ['limit' => 200])->all();
@@ -215,9 +215,9 @@ class CollectionsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $collection = $this->Collections->get($id);
         if ($this->Collections->delete($collection)) {
-            $this->Flash->success(__('The collection has been deleted.'));
+            $this->Flash->success(__('The folder has been deleted.'));
         } else {
-            $this->Flash->error(__('The collection could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The folder could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
@@ -275,7 +275,7 @@ class CollectionsController extends AppController
                 $collectionsMoncasesTable->save($collectionsMoncases);
 
                 $this->Flash->success(__('The new folder has been created and the current case has been automatically added to the folder.'));
-                $this->Flash->success(__('Check it in the My favorites!'));
+                $this->Flash->success(__('Check it in the My Favorites!'));
 
                 // Redirect logic based on access_role
                 $redirectAction = $access_role == 'ADMIN' ? 'view' : 'viewNotadmin';
@@ -345,7 +345,7 @@ class CollectionsController extends AppController
             $collectionsMoncases = $collectionsMoncasesTable->patchEntity($collectionsMoncases, $collectionsMoncasesData);
 
             if ($collectionsMoncasesTable->save($collectionsMoncases)) {
-                $this->Flash->success(__('The case has been added to the folder. Check it in the My favorites!'));
+                $this->Flash->success(__('The case has been added to the folder. Check it in the My Favorites!'));
 
                 // Redirect logic based on access_role
                 $redirectAction = $access_role == 'ADMIN' ? 'view' : 'viewNotadmin';
