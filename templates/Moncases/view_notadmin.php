@@ -75,29 +75,44 @@ $this->assign('title', 'View Case - Cases');
         <div class="inner-container">
 
             <div class="row">
+
                 <div class="col-md-8">
                     <td>
                         <button class="btn btn-outline-primary" onclick="goBack()">
                             <?= $this->Html->tag('i', ' Back', ['class' => 'fas fa-arrow-left']) ?>
                         </button>
                     </td>
-                    <script>
-                        function goBack() {
-                            window.history.back();
-                        }
-                    </script>
                 </div>
+
+                <br><br>
+
+                <div class="col-md-8">
+                    <td>
+                        <button onclick="copyTextAndRedirect()" class='btn btn-outline-primary'>
+                            Copy Accession No
+                        </button>
+                    </td>
+
+                    <td>
+                        <a class="btn btn-outline-primary" href="JavaScript:newPostDICOM('https://www.postdicom.com/en/login');">
+                            Open PostDICOM
+                        </a>
+                    </td>
+                </div>
+
                 <br><br>
 
                 <div class="col-lg-8">
                     <figure class="image-box">
-                        <a href="https://monashimaging.monashhealth.org/portal/Login.aspx" >
-                            <img src="<?= $this->Url->image($moncase -> image_url, ['style' => 'max-width:50%; max-height:50%;', 'alt' => 'photo']) ?>">
+                        <a>
+                            <img src="<?= $this->Url->image($moncase->image_url, ['style' => 'max-width:50%; max-height:50%;', 'alt' => 'photo']) ?>" onclick="copyTextAndRedirect()">
                         </a>
+
                     </figure>
                 </div>
+
                 <div class="col-lg-4">
-                    <div class="widget-content" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="widget-content" style="display: flex; justify-content: space-around; align-items: center;">
 
                         <div class="col-lg-4" >
                             <!--                            --><?php //=
@@ -127,6 +142,7 @@ $this->assign('title', 'View Case - Cases');
                                 ?>
 
                             <?php else: ?>
+
                                 <?=
                                 $this->Html->link(
                                     $this->Html->tag('i', '', ['class' => 'fas fa-regular fa-bookmark']),
@@ -142,27 +158,25 @@ $this->assign('title', 'View Case - Cases');
                                 )
                                 ?>
 
+
                             <?php endif; ?>
 
                         </div>
 
                         <div class="col-lg-4">
-                            <?php if ($author != $caseAuthor): ?>
-                                <!-- Don't show button when $author is not equal to $caseAuthor -->
-                            <?php else: ?>
-                                <?=
-                                $this->Html->link(
-                                    $this->Html->tag('i', '', ['class' => 'fas fa-regular fa-edit']),
-                                    ['action' => 'edit', $moncase->id],
-                                    [
-                                        'class' => 'theme-btn style-one',
-                                        'escape' => false
-                                    ]
-                                )
-                                ?>
-                            <?php endif; ?>
+                            <?=
+                            $this->Html->link(
+                                $this->Html->tag('i', '', ['class' => 'fas fa-regular fa-edit']),
+                                ['action' => 'edit', $moncase->id],
+                                [
+                                    'class' => 'theme-btn style-one',
+                                    'escape' => false
+                                ]
+                            )
+                            ?>
                         </div>
                     </div>
+
 
                     <section class="accordion-box" style="padding: 0px 0px 0px 0px;">
                         <div class="accordion block active-block">
@@ -373,3 +387,44 @@ $this->assign('title', 'View Case - Cases');
 
     </div>
 </section>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    /* Copy accession_no to clipboard and Jump to link*/
+    function copyTextAndRedirect() {
+
+        navigator.clipboard.writeText("<?= h($moncase->accession_no) ?>").then(function() {
+            // Copied successfully
+            alert("Successfully copied to clipboard: " + "<?= h($moncase->accession_no) ?>");
+
+            // Jump to link
+            window.location.href = "https://monashimaging.monashhealth.org/portal/Login.aspx";
+        }).catch(function(err) {
+            console.error("Error copying to clipboard: " + err);
+        });
+    }
+
+    /* Copy accession_no to clipboard */
+    function copyText() {
+        navigator.clipboard.writeText("<?= h($moncase->accession_no) ?>").then(function() {
+            alert("Successfully copied to clipboard: " + "<?= h($moncase->accession_no) ?>");
+        }).catch(function(err) {
+            console.error("Error copying to clipboard: " + err);
+        });
+    }
+
+    /* new pop windows for PostDICOM */
+    function newPostDICOM(url) {
+        navigator.clipboard.writeText("<?= h($moncase->accession_no) ?>").then(function() {
+            alert("Successfully copied to clipboard: " + "<?= h($moncase->accession_no) ?>");
+        }).catch(function(err) {
+            console.error("Error copying to clipboard: " + err);
+        });
+
+        popupPostDICOM = window.open(url,'popupPostDICOM','height=600,width=1000,left=200,top=60,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');
+    }
+
+</script>
