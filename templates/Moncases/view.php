@@ -106,7 +106,7 @@ $this->assign('title', 'View Case - Cases');
                  </div>
 
                 <div class="col-lg-4">
-                    <div class="widget-content" style="display: flex; justify-content: start;">
+                    <div class="widget-content" style="display: flex; justify-content: space-around; align-items: center;text-align: center;">
 
                         <div class="col-lg-4" >
 <!--                            --><?php //=
