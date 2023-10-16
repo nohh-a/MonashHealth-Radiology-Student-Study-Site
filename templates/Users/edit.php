@@ -22,12 +22,12 @@ $this->assign('title', 'Edit - Users');
 <div class="row justify-content-center align-items-center" style="padding-left: 30px; padding-right: 30px;">
     <div class="col-md-8">
 
-        <div class="moncases form content">
+        <div class="moncases form content contact-section">
 
             <?= $this->Flash->render() ?>
             <div class="row">
 
-                <div class="col-md-6 mx-auto">
+                <div class="col-md-6 mx-auto form-inner">
                     <?= $this->Form->create($user, ['enctype' => 'multipart/form-data']) ?>
                     <?php
                     echo $this->Form->control('username', [
@@ -55,7 +55,9 @@ $this->assign('title', 'Edit - Users');
                     ]);
                     ?>
 
-                    <?= $this->Form->label('access_role', 'Access Role') ?>
+                    <?= $this->Form->label('access_role', 'Access Role', [
+                        'class' => 'required-label',
+                    ]) ?>
                     <?= $this->Form->select('access_role', [
                         'ADMIN' => 'ADMIN',
                         'CONSULTANT' => 'CONSULTANT',
@@ -67,7 +69,9 @@ $this->assign('title', 'Edit - Users');
                         'empty' => 'Select Access Role',
                     ])
                     ?>
-                    <?= $this->Form->label('contributor', 'Contributor') ?>
+                    <?= $this->Form->label('contributor', 'Contributor', [
+                        'class' => 'required-label',
+                    ]) ?>
                     <?= $this->Form->select('contributor', [
                         'LIBRARY' => 'LIBRARY',
                         'CONSULTANT' => 'CONSULTANT',

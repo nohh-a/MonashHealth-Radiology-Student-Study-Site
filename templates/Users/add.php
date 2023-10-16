@@ -21,7 +21,7 @@ $this->assign('title', 'Create New User - Users');
 
 
 <div class="row justify-content-center align-items-center" style="padding: 25px;">
-    <div class="col-md-6">
+    <div class="col-md-8">
 
         <div class="moncases form content contact-section">
 
