@@ -196,11 +196,13 @@ class MoncasesController extends AppController
 
 //            debug($moncase);
 //            debug(!$moncase->getErrors());
+//            $uploadedFile = $this->request->getUploadedFile('image_url');
+//            debug($uploadedFile);
 
             if (!$moncase->getErrors()) {
 
                 $uploadedFile = $this->request->getUploadedFile('image_url');
-//                debug($uploadedFile);
+
 //
 //                debug($uploadedFile->getError() === UPLOAD_ERR_OK);
 //
