@@ -38,11 +38,7 @@ $this->assign('title', 'Edit Case - Cases');
                 </button>
             </td>
             <br><br>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script>
+
 
             <div class="moncases form content">
 
@@ -59,6 +55,7 @@ $this->assign('title', 'Edit Case - Cases');
                                         'class' => 'form-control',
                                         'readonly' => true,
                                         'disabled' => true,
+                                        'style' => 'text-align: center;'
                                     ])?>
                                 </div>
                                 <div class="col-md-3">
@@ -70,6 +67,7 @@ $this->assign('title', 'Edit Case - Cases');
                                         'disabled' => true,
                                         'type' => 'text',
                                         'maxlength' => 50,
+                                        'style' => 'text-align: center;'
                                     ])?>
                                 </div>
 
@@ -82,6 +80,7 @@ $this->assign('title', 'Edit Case - Cases');
                                         'disabled' => true,
                                         'type' => 'text',
                                         'maxlength' => 50,
+                                        'style' => 'text-align: center;'
                                     ])?>
                                 </div>
                                 <div class="col-md-3">
@@ -90,7 +89,7 @@ $this->assign('title', 'Edit Case - Cases');
                                         'type' => 'date',
                                         'value' => date('d-m-Y'),
                                         'required' => true,
-
+                                        'style' => 'text-align: center;'
                                     ]) ?>
                                 </div>
                             </div>
@@ -381,3 +380,8 @@ $this->assign('title', 'Edit Case - Cases');
                         ['integrity' => 'sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm', 'crossorigin' => 'anonymous']
                     ) ?>
 
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
