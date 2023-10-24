@@ -50,7 +50,7 @@ return static function (RouteBuilder $routes) {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['controller' => 'moncases', 'action' => 'userlist']);
+        $builder->connect('/', ['controller' => 'Pages', 'action' => 'home']);
        //    $builder->connect('/filtered-cases', ['controller' => 'moncases', 'action' => 'userlist'])->setPass(['sort', 'search', 'case_type', 'contributor', 'rating'])->setName
 
 
