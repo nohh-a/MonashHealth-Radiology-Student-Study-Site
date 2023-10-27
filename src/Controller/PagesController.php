@@ -33,27 +33,6 @@ class PagesController extends AppController
 {
 
     /**
-     * Controller initialize override
-     *
-     * @return void
-     */
-    public function initialize(): void {
-        parent::initialize();
-
-        // Controller-level function/action whitelist for authentication
-        $this->Authentication->allowUnauthenticated(['home']);
-    }
-
-    /**
-     * Home page action
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
-    public function home() {
-
-    }
-
-    /**
      * Displays a view
      *
      * @param string ...$path Path segments.
