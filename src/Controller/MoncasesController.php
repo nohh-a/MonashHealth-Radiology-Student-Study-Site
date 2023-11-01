@@ -978,15 +978,23 @@ class MoncasesController extends AppController
 
             if (!$moncase->getErrors()) {
                 $image = $this->request->getUploadedFile('image_url');
-//                debug($image);
+                // debug($image);
                 $name = $image->getClientFilename();
 
                 $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
 
+                // Check if the original file name 'image.jpg' or the generated name already exists
+                while (file_exists($targetPath)) {
+                    $randomNumber = rand(1, 9999);
+                    $extension = pathinfo($name, PATHINFO_EXTENSION);
+                    $name = 'image_' . $randomNumber . '.' . $extension;
+                    $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+                }
+
                 if ($name) {
                     $image->moveTo($targetPath);
                     $moncase->image_url = 'uploads/' . $name;
-                }else {
+                } else {
                     $moncase->image_url = 'noimg.png';
                 }
             }
@@ -1034,15 +1042,23 @@ class MoncasesController extends AppController
 
             if (!$moncase->getErrors()) {
                 $image = $this->request->getUploadedFile('image_url');
-//                debug($image);
+                // debug($image);
                 $name = $image->getClientFilename();
 
                 $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
 
+                // Check if the original file name 'image.jpg' or the generated name already exists
+                while (file_exists($targetPath)) {
+                    $randomNumber = rand(1, 9999);
+                    $extension = pathinfo($name, PATHINFO_EXTENSION);
+                    $name = 'image_' . $randomNumber . '.' . $extension;
+                    $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+                }
+
                 if ($name) {
                     $image->moveTo($targetPath);
                     $moncase->image_url = 'uploads/' . $name;
-                }else {
+                } else {
                     $moncase->image_url = 'noimg.png';
                 }
             }
@@ -1090,15 +1106,23 @@ class MoncasesController extends AppController
 
             if (!$moncase->getErrors()) {
                 $image = $this->request->getUploadedFile('image_url');
-//                debug($image);
+                // debug($image);
                 $name = $image->getClientFilename();
 
                 $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
 
+                // Check if the original file name 'image.jpg' or the generated name already exists
+                while (file_exists($targetPath)) {
+                    $randomNumber = rand(1, 9999);
+                    $extension = pathinfo($name, PATHINFO_EXTENSION);
+                    $name = 'image_' . $randomNumber . '.' . $extension;
+                    $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+                }
+
                 if ($name) {
                     $image->moveTo($targetPath);
                     $moncase->image_url = 'uploads/' . $name;
-                }else {
+                } else {
                     $moncase->image_url = 'noimg.png';
                 }
             }
@@ -1144,15 +1168,23 @@ class MoncasesController extends AppController
 
             if (!$moncase->getErrors()) {
                 $image = $this->request->getUploadedFile('image_url');
-//                debug($image);
+                // debug($image);
                 $name = $image->getClientFilename();
 
                 $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
 
+                // Check if the original file name 'image.jpg' or the generated name already exists
+                while (file_exists($targetPath)) {
+                    $randomNumber = rand(1, 9999);
+                    $extension = pathinfo($name, PATHINFO_EXTENSION);
+                    $name = 'image_' . $randomNumber . '.' . $extension;
+                    $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+                }
+
                 if ($name) {
                     $image->moveTo($targetPath);
                     $moncase->image_url = 'uploads/' . $name;
-                }else {
+                } else {
                     $moncase->image_url = 'noimg.png';
                 }
             }
@@ -1198,19 +1230,23 @@ class MoncasesController extends AppController
 
             if (!$moncase->getErrors()) {
                 $image = $this->request->getUploadedFile('image_url');
-//                debug($image);
+                // debug($image);
                 $name = $image->getClientFilename();
 
                 $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
 
-//                debug($targetPath);
-//                exit();
-
+                // Check if the original file name 'image.jpg' or the generated name already exists
+                while (file_exists($targetPath)) {
+                    $randomNumber = rand(1, 9999);
+                    $extension = pathinfo($name, PATHINFO_EXTENSION);
+                    $name = 'image_' . $randomNumber . '.' . $extension;
+                    $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+                }
 
                 if ($name) {
                     $image->moveTo($targetPath);
                     $moncase->image_url = 'uploads/' . $name;
-                }else {
+                } else {
                     $moncase->image_url = 'noimg.png';
                 }
             }
