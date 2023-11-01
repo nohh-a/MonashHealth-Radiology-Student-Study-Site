@@ -211,6 +211,15 @@ class MoncasesController extends AppController
                 if ($uploadedFile && $uploadedFile->getError() === UPLOAD_ERR_OK) {
                     $name = $uploadedFile->getClientFilename();
                     $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+
+                    // Check if the original file name 'image.jpg' or the generated name already exists
+                    while (file_exists($targetPath)) {
+                        $randomNumber = rand(1, 9999);
+                        $extension = pathinfo($name, PATHINFO_EXTENSION);
+                        $name = 'image_' . $randomNumber . '.' . $extension;
+                        $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . $name;
+                    }
+
                     $uploadedFile->moveTo($targetPath);
 
                     // Delete the old image if it exists
