@@ -109,15 +109,60 @@
                             <td><?= h($user->email) ?></td>
                             <td><?= h($user->access_role) ?></td>
                             <td><?= h($user->contributor) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class' => 'btn btn-outline-primary']) ?>
-                                <?= $this->Html->link(__('Change Password'), ['controller' => 'Auth', 'action' => 'change-password', $user->id], ['class' => 'btn btn-outline-secondary']) ?>
-                                <?php if ($user->access_role !== 'ADMIN') : ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], [
-                                        'class' => 'btn btn-outline-danger',
-                                        'confirm' => __("Are you sure you want to delete this user?\n{0} {1} ({2})", $user->first_name, $user->last_name, $user->email)]) ?>
-                                <?php endif; ?>
-                            </td>
+                           
+                                <td class="actions">
+                                    <?php if (\Cake\Core\Configure::read('DemoMode')): ?>
+                                        <button
+                                            type="button"
+                                            class="btn btn-outline-primary"
+                                            onclick="alert('This website is running in demo mode. Editing users is disabled.')"
+                                        >
+                                            Edit
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="btn btn-outline-secondary"
+                                            onclick="alert('This website is running in demo mode. Changing passwords is disabled.')"
+                                        >
+                                            Change Password
+                                        </button>
+
+                                        <?php if ($user->access_role !== 'ADMIN'): ?>
+                                            <button
+                                                type="button"
+                                                class="btn btn-outline-danger"
+                                                onclick="alert('This website is running in demo mode. Deleting users is disabled.')"
+                                            >
+                                                Delete
+                                            </button>
+                                        <?php endif; ?>
+
+                                    <?php else: ?>
+                                        <?= $this->Html->link(
+                                            __('Edit'),
+                                            ['action' => 'edit', $user->id],
+                                            ['class' => 'btn btn-outline-primary']
+                                        ) ?>
+
+                                        <?= $this->Html->link(
+                                            __('Change Password'),
+                                            ['controller' => 'Auth', 'action' => 'change-password', $user->id],
+                                            ['class' => 'btn btn-outline-secondary']
+                                        ) ?>
+
+                                        <?php if ($user->access_role !== 'ADMIN'): ?>
+                                            <?= $this->Form->postLink(
+                                                __('Delete'),
+                                                ['action' => 'delete', $user->id],
+                                                [
+                                                    'class' => 'btn btn-outline-danger',
+                                                    'confirm' => __("Are you sure you want to delete this user?\n{0} {1} ({2})", $user->first_name, $user->last_name, $user->email),
+                                                ]
+                                            ) ?>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                </td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

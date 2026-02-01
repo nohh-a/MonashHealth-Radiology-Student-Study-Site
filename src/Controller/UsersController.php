@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Core\Configure;
+
+
 /**
  * Users Controller
  *
@@ -11,6 +14,17 @@ namespace App\Controller;
  */
 class UsersController extends AppController
 {
+
+    private function blockDemoEdits()
+    {
+        if (Configure::read('DemoMode')) {
+            $this->Flash->error('Demo mode: user management changes are disabled.');
+            return $this->redirect(['action' => 'index']);
+        }
+
+        return null;
+    }
+
     /**
      * Index method
      *
@@ -95,6 +109,11 @@ class UsersController extends AppController
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }
 
+            
+        if ($redirect = $this->blockDemoEdits()) {
+            return $redirect;
+        }
+
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
@@ -136,6 +155,11 @@ class UsersController extends AppController
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }
 
+            
+        if ($redirect = $this->blockDemoEdits()) {
+            return $redirect;
+        }
+
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
@@ -166,6 +190,11 @@ class UsersController extends AppController
             return $this->redirect(['controller' => 'moncases', 'action' => 'userlistNotadmin']);
         }
 
+        
+        if ($redirect = $this->blockDemoEdits()) {
+            return $redirect;
+        }
+
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
@@ -176,4 +205,5 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
 }

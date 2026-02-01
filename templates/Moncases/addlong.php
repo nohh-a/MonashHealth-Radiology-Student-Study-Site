@@ -335,9 +335,19 @@ $this->assign('title', 'Add Long Case - Cases');
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer text-center">
+                                   <div class="card-footer text-center">
+                               <?php  if (\Cake\Core\Configure::read('DemoMode')): ?>
+                                    <button
+                                        type="button"
+                                        class="theme-btn style-two"
+                                        onclick="alert('This website is running in demo mode. New cases cannot be created.')"
+                                    >
+                                        Create
+                                    </button>
+                                <?php else: ?>
                                     <?= $this->Form->button(__('Create'), ['class' => 'theme-btn style-two']) ?>
-                                </div>
+                                <?php endif; ?>
+                                 </div>
                             </div>
                             <?= $this->Form->end() ?>
                         </div>

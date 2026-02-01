@@ -50,5 +50,58 @@ class AppController extends Controller {
 
         // Load component from Authentication plugin
         $this->loadComponent('Authentication.Authentication');
+
     }
+
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+
+        if (!\Cake\Core\Configure::read('DemoMode')) {
+            return;
+        }
+
+        if ($this->Authentication->getIdentity()) {
+            return;
+        }
+
+        $controller = $this->request->getParam('controller');
+        $action = $this->request->getParam('action');
+        if ($controller === 'Auth' && $action === 'logout') {
+            $this->Flash->error('For Demo purposes, you cannot logout.');
+
+            return;
+        }
+
+        $usersTable = $this->fetchTable('Users');
+
+        $admin = $usersTable->find()
+            ->where([
+                'username' => 'admin',
+            ])
+            ->first();
+
+        if (!$admin) {
+            $admin = $usersTable->find()
+                ->where(['access_role' => 'ADMIN'])
+                ->orderAsc('id')
+                ->first();
+        }
+
+        if (!$admin) {
+            $this->Flash->error('Demo mode: default admin user not found.');
+            return;
+        }
+
+        $this->Authentication->setIdentity($admin);
+
+        $session = $this->getRequest()->getSession();
+        $session->write('Auth.id', $admin->id);
+        $session->write('Auth.username', $admin->username);
+        $session->write('Auth.first_name', $admin->first_name);
+        $session->write('Auth.last_name', $admin->last_name);
+        $session->write('Auth.access_role', $admin->access_role);
+        $session->write('Auth.contributor', $admin->contributor ?? null);
+}
+
 }

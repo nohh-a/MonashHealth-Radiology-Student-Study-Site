@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Core\Configure;
+
+
 /**
  * Moncases Controller
  *
@@ -253,6 +256,17 @@ class MoncasesController extends AppController
 
     }
 
+    private function blockDemoEdits()
+    {
+        if (Configure::read('DemoMode')) {
+            $this->Flash->error('Demo mode: Moncases changes are disabled.');
+            return $this->redirect(['action' => 'index']);
+        }
+
+        return null;
+    }
+
+
     /**
      * Delete method
      *
@@ -262,6 +276,11 @@ class MoncasesController extends AppController
      */
     public function delete($id = null)
     {
+
+         if ($redirect = $this->blockDemoEdits()) {
+            return $redirect;
+        }
+
         $this->request->allowMethod(['post', 'delete']);
         $moncase = $this->Moncases->get($id);
         if ($this->Moncases->delete($moncase)) {
@@ -686,14 +705,16 @@ class MoncasesController extends AppController
             $moncase = $this->Moncases->patchEntity($moncase, $this->request->getData());
 
             // check status
-            if ($moncase->archive_status === 'no') {
+             if ($moncase->archive_status === 'yes') {
+                $this->Flash->success(__('This case is already archived.'));
+                return $this->redirect($this->referer());
+              }
+
                 $moncase->archive_status = 'yes';
-            } else {
-                $moncase->archive_status = 'no';
-            }
+
 
             if ($this->Moncases->save($moncase)) {
-                $this->Flash->success(__('The case has been archived. Check it in Archived Case!'));
+                $this->Flash->success(__('The case has been archived. Check it in Archived Cases!'));
 
                 // Redirect logic based on access_role
                 $accessRole = $this->getRequest()->getSession()->read('Auth.access_role');

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Core\Configure;
 use Cake\I18n\FrozenTime;
 use Cake\Mailer\Mailer;
 use Cake\Utility\Security;
@@ -200,6 +201,11 @@ class AuthController extends AppController {
      * @return \Cake\Http\Response|void|null Redirect to location before authentication
      */
     public function login() {
+
+      if (\Cake\Core\Configure::read('DemoMode')) {
+        return $this->redirect(['controller' => 'Moncases', 'action' => 'index']);
+    }
+
         $this->request->allowMethod(['get', 'post']);
         $result = $this->Authentication->getResult();
 
@@ -230,7 +236,7 @@ class AuthController extends AppController {
         if ($result && $result->isValid()) {
             $this->Authentication->logout();
 
-            $this->Flash->success('You have been logged out successfully. ');
+            $this->Flash->error('For demo purposes, you cannot logout.');
         }
 
         // Otherwise just send them to the login page
