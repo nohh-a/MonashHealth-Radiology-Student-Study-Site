@@ -1,53 +1,93 @@
-# CakePHP Application Skeleton
+# Monash Health Radiology – Student Case Study Platform
 
-![Build Status](https://github.com/cakephp/app/actions/workflows/ci.yml/badge.svg?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
-[![PHPStan](https://img.shields.io/badge/PHPStan-level%207-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
+This project is a full-stack web application built in collaboration with Monash Health Radiology to support the creation, management, and study of radiology case material for radiology students.
 
-A skeleton for creating applications with [CakePHP](https://cakephp.org) 4.x.
+This project was requested by Dr Beng Tan, who wished for an overhaul of an existing but poorly designed system. This project was awarded the Student Choice Award for Best Website and Most Visited Project at Monash University.
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+## Overview
+
+The application allows users to browse, search, and save radiology cases, while contributors and administrators can manage content through a structured case lifecycle. A strong emphasis was placed on user experience, performance, and safety.
+
+Key system requirements included significantly reducing the time required to create new cases and improving how quickly users could locate relevant cases from the home page.
+
+## Impact and Outcomes
+
+- Reduced case creation time by approximately 70% through improved UI and validation
+- Reduced case discovery time by approximately 85% via optimized search and filtering
+- Awarded Student Choice Award – Best Website and Most Visited Project\*\*
+
+## Technical Stack
+
+- **Backend:** CakePHP
+- **Database:** MySQL
+- **Frontend:** HTML, CSS, Bootstrap
+- **Authentication:** CakePHP Authentication Plugin
+
+The system follows a traditional MVC architecture with server-rendered views and controller-level authorization.
+
+## Prerequisites
+
+To run this project locally, ensure the following are installed on your system:
+
+- **PHP 8.1**
+- **Composer**
+- **Apache / Nginx** or a local stack such as XAMPP
 
 ## Installation
 
-1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+1. Clone the repo
 
-If Composer is installed globally, run
+   ```sh
+   git clone https://github.com/nohh-a/MonashHealth-Radiology-Student-Study-Site.git
+   ```
 
-```bash
-composer create-project --prefer-dist cakephp/app
-```
+2. Navigate into the project directory
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
+   ```sh
+   cd MonashHealth-Radiology-Student-Study-Site
+   ```
 
-```bash
-composer create-project --prefer-dist cakephp/app myapp
-```
+3. Install PHP dependencies
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
+   ```sh
+   composer install
+   ```
 
-```bash
-bin/cake server -p 8765
-```
+4. Set up the database
+   - Create a MySQL database
+   - Import the provided SQL schema or run migrations if available
 
-Then visit `http://localhost:8765` to see the welcome page.
+5. Configure environment variables
+   - Change app_local.php to connect to database
+   - Change default datasource username, password and database to new database
+   - (Optional) Enable Demo Mode
 
-## Update
+   ```php
+   Configure::write('DemoMode', true);
+   ```
 
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
+6. Start the local development server
 
-## Configuration
+   ```sh
+   bin/cake server
+   ```
 
-Read and edit the environment specific `config/app_local.php` and setup the 
-`'Datasources'` and any other configuration relevant for your application.
-Other environment agnostic settings can be changed in `config/app.php`.
+7. Open the application in your browser
+   ```
+   http://localhost:8765
+   ```
 
-## Layout
+## Demo Mode
 
-The app skeleton uses [Milligram](https://milligram.io/) (v1.3) minimalist CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+The project includes a Demo Mode intended for public demonstration and portfolio use.
+
+When enabled:
+
+- The application automatically logs in as a predefined admin user
+- User creation, editing, deletion, and password changes are disabled
+- Case deletion and bulk delete actions are blocked
+- All restrictions are enforced server-side to prevent bypassing via direct URLs
+
+## Author
+
+Noah Rodriguez
